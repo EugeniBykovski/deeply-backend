@@ -42,7 +42,7 @@ export class AuthController {
   @ApiBadRequestResponse({ description: 'Validation error' })
   @ApiUnauthorizedResponse({ description: 'Invalid Apple identity token' })
   async apple(@Body() dto: AppleLoginDto) {
-    return this.auth.loginWithApple(dto.appleToken);
+    return this.auth.loginWithApple(dto.token);
   }
 
   @Post('refresh')

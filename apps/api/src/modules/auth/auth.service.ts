@@ -19,8 +19,8 @@ export class AuthService {
     private readonly config: ConfigService,
   ) {}
 
-  async loginWithApple(appleToken: string) {
-    const claims = await this.apple.verifyIdentityToken(appleToken);
+  async loginWithApple(token: string) {
+    const claims = await this.apple.verifyIdentityToken(token);
 
     const user = await this.prisma.user.upsert({
       where: { appleSub: claims.sub },
@@ -29,7 +29,7 @@ export class AuthService {
         appleSub: claims.sub,
         ...(claims.email ? { email: claims.email } : {}),
       },
-      select: { id: true, email: true, appleSub: true },
+      select: { id: true },
     });
 
     const accessToken = await this.tokens.signAccessToken(user.id);
@@ -45,7 +45,7 @@ export class AuthService {
 
     await this.pruneOldRefreshTokens(user.id);
 
-    return { user, accessToken, refreshToken };
+    return { accessToken, refreshToken };
   }
 
   async refresh(refreshToken: string) {

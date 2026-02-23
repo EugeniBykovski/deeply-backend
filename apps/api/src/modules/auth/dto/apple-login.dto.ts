@@ -8,5 +8,5 @@ export class AppleLoginDto {
   })
   @IsString()
   @MinLength(20)
-  appleToken!: string;
+  token!: string;
 }
