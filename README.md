@@ -134,19 +134,14 @@ Learn more about the power of Turborepo:
 - [Configuration Options](https://turborepo.dev/docs/reference/configuration)
 - [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
 
-## DB migrating
+## DB migrating & seed
 
 ```
 cd packages/database:
 
-"build": "tsc -p tsconfig.build.json",
-"db:generate": "prisma generate",
-"db:migrate": "prisma migrate dev",
-"db:deploy": "prisma migrate deploy",
-"db:migrate:gen": "prisma migrate dev && prisma generate"
-
-or:
 npx prisma generate
 npx prisma migrate dev
 npx prisma migrate deploy
+
+npx prisma db seed
 ```
