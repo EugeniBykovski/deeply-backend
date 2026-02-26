@@ -1,3 +1,4 @@
+import { CULTURE_SECTIONS } from './culture.constants';
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { PRISMA } from '../../database/prisma.provider';
 import type { PrismaClient, Language, CultureSection } from '@repo/db';
@@ -14,34 +15,7 @@ export class CultureService {
   constructor(@Inject(PRISMA) private readonly prisma: PrismaClient) {}
 
   getSections() {
-    return [
-      {
-        key: 'STORIES',
-        title: 'Stories',
-        description: 'Истории и ключевые моменты',
-      },
-      {
-        key: 'ATHLETES',
-        title: 'Athletes',
-        description: 'Спортсмены и их путь',
-      },
-      {
-        key: 'COMPETITIONS',
-        title: 'Competitions',
-        description: 'Соревнования и факты',
-      },
-      {
-        key: 'TRAINING',
-        title: 'Training',
-        description: 'Методики тренировок',
-      },
-      { key: 'RELAX', title: 'Relax', description: 'Восстановление и дыхание' },
-      {
-        key: 'SAFETY',
-        title: 'Safety',
-        description: 'Безопасность и чек-листы',
-      },
-    ];
+    return CULTURE_SECTIONS;
   }
 
   private normalizeLang(lang?: string): Language {
