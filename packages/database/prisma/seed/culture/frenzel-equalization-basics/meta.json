@@ -1,0 +1,20 @@
+{
+  "slug": "frenzel-equalization-basics",
+  "section": "TRAINING",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Frenzel: базовая техника эквализации",
+      "subtitle": "Почему “просто продуваться” не работает на глубине",
+      "description": "Что такое Frenzel, какие ошибки самые частые и как тренировать навык вне воды."
+    },
+    "en": {
+      "title": "Frenzel: Equalization Basics",
+      "subtitle": "Why “just blowing” fails at depth",
+      "description": "What Frenzel is, the most common mistakes, and how to practice on land."
+    }
+  }
+}

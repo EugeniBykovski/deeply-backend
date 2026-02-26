@@ -1,0 +1,20 @@
+{
+  "slug": "ama-last-sea-women",
+  "section": "STORIES",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Ama: последние ныряльщицы",
+      "subtitle": "Традиция апноэ-ныряния, которая пережила века",
+      "description": "Кто такие ama, как они ныряли без баллонов и почему эта культура постепенно исчезает."
+    },
+    "en": {
+      "title": "Ama: The Last Sea Women",
+      "subtitle": "A breath-hold diving tradition that survived centuries",
+      "description": "Who the ama are, how they dove without tanks, and why this culture is slowly fading."
+    }
+  }
+}

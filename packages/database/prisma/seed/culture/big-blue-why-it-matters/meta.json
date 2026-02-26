@@ -1,0 +1,20 @@
+{
+  "slug": "big-blue-why-it-matters",
+  "section": "STORIES",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "«The Big Blue» и почему он важен",
+      "subtitle": "Фильм, который сформировал образ фридайвинга",
+      "description": "Как кино 1988 года повлияло на культуру спорта — и какие мифы важно отделять от реальности."
+    },
+    "en": {
+      "title": "The Big Blue — Why It Matters",
+      "subtitle": "The film that shaped freediving’s public image",
+      "description": "How the 1988 movie influenced the sport’s culture — and which myths to separate from reality."
+    }
+  }
+}

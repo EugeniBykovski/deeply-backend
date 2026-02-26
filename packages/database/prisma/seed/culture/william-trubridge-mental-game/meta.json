@@ -1,0 +1,20 @@
+{
+  "slug": "william-trubridge-mental-game",
+  "section": "ATHLETES",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "William Trubridge: стиль и ментальная игра",
+      "subtitle": "Почему спокойствие — это навык, а не характер",
+      "description": "История про контроль, ритм и то, как “умение не спешить” становится преимуществом."
+    },
+    "en": {
+      "title": "William Trubridge: Style & Mental Game",
+      "subtitle": "Why calm is a skill, not a personality trait",
+      "description": "Control, rhythm, and how “not rushing” becomes a competitive advantage."
+    }
+  }
+}

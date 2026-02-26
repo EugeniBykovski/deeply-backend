@@ -23,6 +23,59 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type RefreshToken = $Result.DefaultSelection<Prisma.$RefreshTokenPayload>
+/**
+ * Model CultureArticle
+ * 
+ */
+export type CultureArticle = $Result.DefaultSelection<Prisma.$CultureArticlePayload>
+/**
+ * Model CultureArticleTranslation
+ * 
+ */
+export type CultureArticleTranslation = $Result.DefaultSelection<Prisma.$CultureArticleTranslationPayload>
+/**
+ * Model CultureTag
+ * 
+ */
+export type CultureTag = $Result.DefaultSelection<Prisma.$CultureTagPayload>
+/**
+ * Model CultureTagOnArticle
+ * 
+ */
+export type CultureTagOnArticle = $Result.DefaultSelection<Prisma.$CultureTagOnArticlePayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const Language: {
+  en: 'en',
+  ru: 'ru'
+};
+
+export type Language = (typeof Language)[keyof typeof Language]
+
+
+export const CultureSection: {
+  STORIES: 'STORIES',
+  ATHLETES: 'ATHLETES',
+  COMPETITIONS: 'COMPETITIONS',
+  TRAINING: 'TRAINING',
+  RELAX: 'RELAX',
+  SAFETY: 'SAFETY'
+};
+
+export type CultureSection = (typeof CultureSection)[keyof typeof CultureSection]
+
+}
+
+export type Language = $Enums.Language
+
+export const Language: typeof $Enums.Language
+
+export type CultureSection = $Enums.CultureSection
+
+export const CultureSection: typeof $Enums.CultureSection
 
 /**
  * ##  Prisma Client ʲˢ
@@ -160,6 +213,46 @@ export class PrismaClient<
     * ```
     */
   get refreshToken(): Prisma.RefreshTokenDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cultureArticle`: Exposes CRUD operations for the **CultureArticle** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CultureArticles
+    * const cultureArticles = await prisma.cultureArticle.findMany()
+    * ```
+    */
+  get cultureArticle(): Prisma.CultureArticleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cultureArticleTranslation`: Exposes CRUD operations for the **CultureArticleTranslation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CultureArticleTranslations
+    * const cultureArticleTranslations = await prisma.cultureArticleTranslation.findMany()
+    * ```
+    */
+  get cultureArticleTranslation(): Prisma.CultureArticleTranslationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cultureTag`: Exposes CRUD operations for the **CultureTag** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CultureTags
+    * const cultureTags = await prisma.cultureTag.findMany()
+    * ```
+    */
+  get cultureTag(): Prisma.CultureTagDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cultureTagOnArticle`: Exposes CRUD operations for the **CultureTagOnArticle** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CultureTagOnArticles
+    * const cultureTagOnArticles = await prisma.cultureTagOnArticle.findMany()
+    * ```
+    */
+  get cultureTagOnArticle(): Prisma.CultureTagOnArticleDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -595,7 +688,11 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    RefreshToken: 'RefreshToken'
+    RefreshToken: 'RefreshToken',
+    CultureArticle: 'CultureArticle',
+    CultureArticleTranslation: 'CultureArticleTranslation',
+    CultureTag: 'CultureTag',
+    CultureTagOnArticle: 'CultureTagOnArticle'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -611,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshToken"
+      modelProps: "user" | "refreshToken" | "cultureArticle" | "cultureArticleTranslation" | "cultureTag" | "cultureTagOnArticle"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -763,6 +860,302 @@ export namespace Prisma {
           }
         }
       }
+      CultureArticle: {
+        payload: Prisma.$CultureArticlePayload<ExtArgs>
+        fields: Prisma.CultureArticleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CultureArticleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CultureArticleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>
+          }
+          findFirst: {
+            args: Prisma.CultureArticleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CultureArticleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>
+          }
+          findMany: {
+            args: Prisma.CultureArticleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>[]
+          }
+          create: {
+            args: Prisma.CultureArticleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>
+          }
+          createMany: {
+            args: Prisma.CultureArticleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CultureArticleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>[]
+          }
+          delete: {
+            args: Prisma.CultureArticleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>
+          }
+          update: {
+            args: Prisma.CultureArticleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>
+          }
+          deleteMany: {
+            args: Prisma.CultureArticleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CultureArticleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CultureArticleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>[]
+          }
+          upsert: {
+            args: Prisma.CultureArticleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticlePayload>
+          }
+          aggregate: {
+            args: Prisma.CultureArticleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCultureArticle>
+          }
+          groupBy: {
+            args: Prisma.CultureArticleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CultureArticleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CultureArticleCountArgs<ExtArgs>
+            result: $Utils.Optional<CultureArticleCountAggregateOutputType> | number
+          }
+        }
+      }
+      CultureArticleTranslation: {
+        payload: Prisma.$CultureArticleTranslationPayload<ExtArgs>
+        fields: Prisma.CultureArticleTranslationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CultureArticleTranslationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CultureArticleTranslationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>
+          }
+          findFirst: {
+            args: Prisma.CultureArticleTranslationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CultureArticleTranslationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>
+          }
+          findMany: {
+            args: Prisma.CultureArticleTranslationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>[]
+          }
+          create: {
+            args: Prisma.CultureArticleTranslationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>
+          }
+          createMany: {
+            args: Prisma.CultureArticleTranslationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CultureArticleTranslationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>[]
+          }
+          delete: {
+            args: Prisma.CultureArticleTranslationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>
+          }
+          update: {
+            args: Prisma.CultureArticleTranslationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>
+          }
+          deleteMany: {
+            args: Prisma.CultureArticleTranslationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CultureArticleTranslationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CultureArticleTranslationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>[]
+          }
+          upsert: {
+            args: Prisma.CultureArticleTranslationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureArticleTranslationPayload>
+          }
+          aggregate: {
+            args: Prisma.CultureArticleTranslationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCultureArticleTranslation>
+          }
+          groupBy: {
+            args: Prisma.CultureArticleTranslationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CultureArticleTranslationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CultureArticleTranslationCountArgs<ExtArgs>
+            result: $Utils.Optional<CultureArticleTranslationCountAggregateOutputType> | number
+          }
+        }
+      }
+      CultureTag: {
+        payload: Prisma.$CultureTagPayload<ExtArgs>
+        fields: Prisma.CultureTagFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CultureTagFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CultureTagFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>
+          }
+          findFirst: {
+            args: Prisma.CultureTagFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CultureTagFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>
+          }
+          findMany: {
+            args: Prisma.CultureTagFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>[]
+          }
+          create: {
+            args: Prisma.CultureTagCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>
+          }
+          createMany: {
+            args: Prisma.CultureTagCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CultureTagCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>[]
+          }
+          delete: {
+            args: Prisma.CultureTagDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>
+          }
+          update: {
+            args: Prisma.CultureTagUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>
+          }
+          deleteMany: {
+            args: Prisma.CultureTagDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CultureTagUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CultureTagUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>[]
+          }
+          upsert: {
+            args: Prisma.CultureTagUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagPayload>
+          }
+          aggregate: {
+            args: Prisma.CultureTagAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCultureTag>
+          }
+          groupBy: {
+            args: Prisma.CultureTagGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CultureTagGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CultureTagCountArgs<ExtArgs>
+            result: $Utils.Optional<CultureTagCountAggregateOutputType> | number
+          }
+        }
+      }
+      CultureTagOnArticle: {
+        payload: Prisma.$CultureTagOnArticlePayload<ExtArgs>
+        fields: Prisma.CultureTagOnArticleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CultureTagOnArticleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CultureTagOnArticleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>
+          }
+          findFirst: {
+            args: Prisma.CultureTagOnArticleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CultureTagOnArticleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>
+          }
+          findMany: {
+            args: Prisma.CultureTagOnArticleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>[]
+          }
+          create: {
+            args: Prisma.CultureTagOnArticleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>
+          }
+          createMany: {
+            args: Prisma.CultureTagOnArticleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CultureTagOnArticleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>[]
+          }
+          delete: {
+            args: Prisma.CultureTagOnArticleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>
+          }
+          update: {
+            args: Prisma.CultureTagOnArticleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>
+          }
+          deleteMany: {
+            args: Prisma.CultureTagOnArticleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CultureTagOnArticleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CultureTagOnArticleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>[]
+          }
+          upsert: {
+            args: Prisma.CultureTagOnArticleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CultureTagOnArticlePayload>
+          }
+          aggregate: {
+            args: Prisma.CultureTagOnArticleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCultureTagOnArticle>
+          }
+          groupBy: {
+            args: Prisma.CultureTagOnArticleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CultureTagOnArticleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CultureTagOnArticleCountArgs<ExtArgs>
+            result: $Utils.Optional<CultureTagOnArticleCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -873,6 +1266,10 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     refreshToken?: RefreshTokenOmit
+    cultureArticle?: CultureArticleOmit
+    cultureArticleTranslation?: CultureArticleTranslationOmit
+    cultureTag?: CultureTagOmit
+    cultureTagOnArticle?: CultureTagOnArticleOmit
   }
 
   /* Types for Logging */
@@ -976,6 +1373,77 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountRefreshTokensArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RefreshTokenWhereInput
+  }
+
+
+  /**
+   * Count Type CultureArticleCountOutputType
+   */
+
+  export type CultureArticleCountOutputType = {
+    translations: number
+    tags: number
+  }
+
+  export type CultureArticleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | CultureArticleCountOutputTypeCountTranslationsArgs
+    tags?: boolean | CultureArticleCountOutputTypeCountTagsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CultureArticleCountOutputType without action
+   */
+  export type CultureArticleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleCountOutputType
+     */
+    select?: CultureArticleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CultureArticleCountOutputType without action
+   */
+  export type CultureArticleCountOutputTypeCountTranslationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CultureArticleTranslationWhereInput
+  }
+
+  /**
+   * CultureArticleCountOutputType without action
+   */
+  export type CultureArticleCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CultureTagOnArticleWhereInput
+  }
+
+
+  /**
+   * Count Type CultureTagCountOutputType
+   */
+
+  export type CultureTagCountOutputType = {
+    articles: number
+  }
+
+  export type CultureTagCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    articles?: boolean | CultureTagCountOutputTypeCountArticlesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CultureTagCountOutputType without action
+   */
+  export type CultureTagCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagCountOutputType
+     */
+    select?: CultureTagCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CultureTagCountOutputType without action
+   */
+  export type CultureTagCountOutputTypeCountArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CultureTagOnArticleWhereInput
   }
 
 
@@ -3138,6 +3606,4371 @@ export namespace Prisma {
 
 
   /**
+   * Model CultureArticle
+   */
+
+  export type AggregateCultureArticle = {
+    _count: CultureArticleCountAggregateOutputType | null
+    _avg: CultureArticleAvgAggregateOutputType | null
+    _sum: CultureArticleSumAggregateOutputType | null
+    _min: CultureArticleMinAggregateOutputType | null
+    _max: CultureArticleMaxAggregateOutputType | null
+  }
+
+  export type CultureArticleAvgAggregateOutputType = {
+    readTimeMinutes: number | null
+  }
+
+  export type CultureArticleSumAggregateOutputType = {
+    readTimeMinutes: number | null
+  }
+
+  export type CultureArticleMinAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    section: $Enums.CultureSection | null
+    coverImageUrl: string | null
+    readTimeMinutes: number | null
+    publishedAt: Date | null
+    isPublished: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CultureArticleMaxAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    section: $Enums.CultureSection | null
+    coverImageUrl: string | null
+    readTimeMinutes: number | null
+    publishedAt: Date | null
+    isPublished: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CultureArticleCountAggregateOutputType = {
+    id: number
+    slug: number
+    section: number
+    coverImageUrl: number
+    readTimeMinutes: number
+    publishedAt: number
+    isPublished: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CultureArticleAvgAggregateInputType = {
+    readTimeMinutes?: true
+  }
+
+  export type CultureArticleSumAggregateInputType = {
+    readTimeMinutes?: true
+  }
+
+  export type CultureArticleMinAggregateInputType = {
+    id?: true
+    slug?: true
+    section?: true
+    coverImageUrl?: true
+    readTimeMinutes?: true
+    publishedAt?: true
+    isPublished?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CultureArticleMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    section?: true
+    coverImageUrl?: true
+    readTimeMinutes?: true
+    publishedAt?: true
+    isPublished?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CultureArticleCountAggregateInputType = {
+    id?: true
+    slug?: true
+    section?: true
+    coverImageUrl?: true
+    readTimeMinutes?: true
+    publishedAt?: true
+    isPublished?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CultureArticleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CultureArticle to aggregate.
+     */
+    where?: CultureArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureArticles to fetch.
+     */
+    orderBy?: CultureArticleOrderByWithRelationInput | CultureArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CultureArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CultureArticles
+    **/
+    _count?: true | CultureArticleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CultureArticleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CultureArticleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CultureArticleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CultureArticleMaxAggregateInputType
+  }
+
+  export type GetCultureArticleAggregateType<T extends CultureArticleAggregateArgs> = {
+        [P in keyof T & keyof AggregateCultureArticle]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCultureArticle[P]>
+      : GetScalarType<T[P], AggregateCultureArticle[P]>
+  }
+
+
+
+
+  export type CultureArticleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CultureArticleWhereInput
+    orderBy?: CultureArticleOrderByWithAggregationInput | CultureArticleOrderByWithAggregationInput[]
+    by: CultureArticleScalarFieldEnum[] | CultureArticleScalarFieldEnum
+    having?: CultureArticleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CultureArticleCountAggregateInputType | true
+    _avg?: CultureArticleAvgAggregateInputType
+    _sum?: CultureArticleSumAggregateInputType
+    _min?: CultureArticleMinAggregateInputType
+    _max?: CultureArticleMaxAggregateInputType
+  }
+
+  export type CultureArticleGroupByOutputType = {
+    id: string
+    slug: string
+    section: $Enums.CultureSection
+    coverImageUrl: string | null
+    readTimeMinutes: number | null
+    publishedAt: Date | null
+    isPublished: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: CultureArticleCountAggregateOutputType | null
+    _avg: CultureArticleAvgAggregateOutputType | null
+    _sum: CultureArticleSumAggregateOutputType | null
+    _min: CultureArticleMinAggregateOutputType | null
+    _max: CultureArticleMaxAggregateOutputType | null
+  }
+
+  type GetCultureArticleGroupByPayload<T extends CultureArticleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CultureArticleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CultureArticleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CultureArticleGroupByOutputType[P]>
+            : GetScalarType<T[P], CultureArticleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CultureArticleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    section?: boolean
+    coverImageUrl?: boolean
+    readTimeMinutes?: boolean
+    publishedAt?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    translations?: boolean | CultureArticle$translationsArgs<ExtArgs>
+    tags?: boolean | CultureArticle$tagsArgs<ExtArgs>
+    _count?: boolean | CultureArticleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cultureArticle"]>
+
+  export type CultureArticleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    section?: boolean
+    coverImageUrl?: boolean
+    readTimeMinutes?: boolean
+    publishedAt?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["cultureArticle"]>
+
+  export type CultureArticleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    section?: boolean
+    coverImageUrl?: boolean
+    readTimeMinutes?: boolean
+    publishedAt?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["cultureArticle"]>
+
+  export type CultureArticleSelectScalar = {
+    id?: boolean
+    slug?: boolean
+    section?: boolean
+    coverImageUrl?: boolean
+    readTimeMinutes?: boolean
+    publishedAt?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CultureArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "section" | "coverImageUrl" | "readTimeMinutes" | "publishedAt" | "isPublished" | "createdAt" | "updatedAt", ExtArgs["result"]["cultureArticle"]>
+  export type CultureArticleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | CultureArticle$translationsArgs<ExtArgs>
+    tags?: boolean | CultureArticle$tagsArgs<ExtArgs>
+    _count?: boolean | CultureArticleCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CultureArticleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CultureArticleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CultureArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CultureArticle"
+    objects: {
+      translations: Prisma.$CultureArticleTranslationPayload<ExtArgs>[]
+      tags: Prisma.$CultureTagOnArticlePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      slug: string
+      section: $Enums.CultureSection
+      coverImageUrl: string | null
+      readTimeMinutes: number | null
+      publishedAt: Date | null
+      isPublished: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["cultureArticle"]>
+    composites: {}
+  }
+
+  type CultureArticleGetPayload<S extends boolean | null | undefined | CultureArticleDefaultArgs> = $Result.GetResult<Prisma.$CultureArticlePayload, S>
+
+  type CultureArticleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CultureArticleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CultureArticleCountAggregateInputType | true
+    }
+
+  export interface CultureArticleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CultureArticle'], meta: { name: 'CultureArticle' } }
+    /**
+     * Find zero or one CultureArticle that matches the filter.
+     * @param {CultureArticleFindUniqueArgs} args - Arguments to find a CultureArticle
+     * @example
+     * // Get one CultureArticle
+     * const cultureArticle = await prisma.cultureArticle.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CultureArticleFindUniqueArgs>(args: SelectSubset<T, CultureArticleFindUniqueArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CultureArticle that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CultureArticleFindUniqueOrThrowArgs} args - Arguments to find a CultureArticle
+     * @example
+     * // Get one CultureArticle
+     * const cultureArticle = await prisma.cultureArticle.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CultureArticleFindUniqueOrThrowArgs>(args: SelectSubset<T, CultureArticleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CultureArticle that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleFindFirstArgs} args - Arguments to find a CultureArticle
+     * @example
+     * // Get one CultureArticle
+     * const cultureArticle = await prisma.cultureArticle.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CultureArticleFindFirstArgs>(args?: SelectSubset<T, CultureArticleFindFirstArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CultureArticle that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleFindFirstOrThrowArgs} args - Arguments to find a CultureArticle
+     * @example
+     * // Get one CultureArticle
+     * const cultureArticle = await prisma.cultureArticle.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CultureArticleFindFirstOrThrowArgs>(args?: SelectSubset<T, CultureArticleFindFirstOrThrowArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CultureArticles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CultureArticles
+     * const cultureArticles = await prisma.cultureArticle.findMany()
+     * 
+     * // Get first 10 CultureArticles
+     * const cultureArticles = await prisma.cultureArticle.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cultureArticleWithIdOnly = await prisma.cultureArticle.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CultureArticleFindManyArgs>(args?: SelectSubset<T, CultureArticleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CultureArticle.
+     * @param {CultureArticleCreateArgs} args - Arguments to create a CultureArticle.
+     * @example
+     * // Create one CultureArticle
+     * const CultureArticle = await prisma.cultureArticle.create({
+     *   data: {
+     *     // ... data to create a CultureArticle
+     *   }
+     * })
+     * 
+     */
+    create<T extends CultureArticleCreateArgs>(args: SelectSubset<T, CultureArticleCreateArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CultureArticles.
+     * @param {CultureArticleCreateManyArgs} args - Arguments to create many CultureArticles.
+     * @example
+     * // Create many CultureArticles
+     * const cultureArticle = await prisma.cultureArticle.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CultureArticleCreateManyArgs>(args?: SelectSubset<T, CultureArticleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CultureArticles and returns the data saved in the database.
+     * @param {CultureArticleCreateManyAndReturnArgs} args - Arguments to create many CultureArticles.
+     * @example
+     * // Create many CultureArticles
+     * const cultureArticle = await prisma.cultureArticle.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CultureArticles and only return the `id`
+     * const cultureArticleWithIdOnly = await prisma.cultureArticle.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CultureArticleCreateManyAndReturnArgs>(args?: SelectSubset<T, CultureArticleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CultureArticle.
+     * @param {CultureArticleDeleteArgs} args - Arguments to delete one CultureArticle.
+     * @example
+     * // Delete one CultureArticle
+     * const CultureArticle = await prisma.cultureArticle.delete({
+     *   where: {
+     *     // ... filter to delete one CultureArticle
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CultureArticleDeleteArgs>(args: SelectSubset<T, CultureArticleDeleteArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CultureArticle.
+     * @param {CultureArticleUpdateArgs} args - Arguments to update one CultureArticle.
+     * @example
+     * // Update one CultureArticle
+     * const cultureArticle = await prisma.cultureArticle.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CultureArticleUpdateArgs>(args: SelectSubset<T, CultureArticleUpdateArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CultureArticles.
+     * @param {CultureArticleDeleteManyArgs} args - Arguments to filter CultureArticles to delete.
+     * @example
+     * // Delete a few CultureArticles
+     * const { count } = await prisma.cultureArticle.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CultureArticleDeleteManyArgs>(args?: SelectSubset<T, CultureArticleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CultureArticles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CultureArticles
+     * const cultureArticle = await prisma.cultureArticle.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CultureArticleUpdateManyArgs>(args: SelectSubset<T, CultureArticleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CultureArticles and returns the data updated in the database.
+     * @param {CultureArticleUpdateManyAndReturnArgs} args - Arguments to update many CultureArticles.
+     * @example
+     * // Update many CultureArticles
+     * const cultureArticle = await prisma.cultureArticle.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CultureArticles and only return the `id`
+     * const cultureArticleWithIdOnly = await prisma.cultureArticle.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CultureArticleUpdateManyAndReturnArgs>(args: SelectSubset<T, CultureArticleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CultureArticle.
+     * @param {CultureArticleUpsertArgs} args - Arguments to update or create a CultureArticle.
+     * @example
+     * // Update or create a CultureArticle
+     * const cultureArticle = await prisma.cultureArticle.upsert({
+     *   create: {
+     *     // ... data to create a CultureArticle
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CultureArticle we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CultureArticleUpsertArgs>(args: SelectSubset<T, CultureArticleUpsertArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CultureArticles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleCountArgs} args - Arguments to filter CultureArticles to count.
+     * @example
+     * // Count the number of CultureArticles
+     * const count = await prisma.cultureArticle.count({
+     *   where: {
+     *     // ... the filter for the CultureArticles we want to count
+     *   }
+     * })
+    **/
+    count<T extends CultureArticleCountArgs>(
+      args?: Subset<T, CultureArticleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CultureArticleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CultureArticle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CultureArticleAggregateArgs>(args: Subset<T, CultureArticleAggregateArgs>): Prisma.PrismaPromise<GetCultureArticleAggregateType<T>>
+
+    /**
+     * Group by CultureArticle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CultureArticleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CultureArticleGroupByArgs['orderBy'] }
+        : { orderBy?: CultureArticleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CultureArticleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCultureArticleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CultureArticle model
+   */
+  readonly fields: CultureArticleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CultureArticle.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CultureArticleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    translations<T extends CultureArticle$translationsArgs<ExtArgs> = {}>(args?: Subset<T, CultureArticle$translationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tags<T extends CultureArticle$tagsArgs<ExtArgs> = {}>(args?: Subset<T, CultureArticle$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CultureArticle model
+   */
+  interface CultureArticleFieldRefs {
+    readonly id: FieldRef<"CultureArticle", 'String'>
+    readonly slug: FieldRef<"CultureArticle", 'String'>
+    readonly section: FieldRef<"CultureArticle", 'CultureSection'>
+    readonly coverImageUrl: FieldRef<"CultureArticle", 'String'>
+    readonly readTimeMinutes: FieldRef<"CultureArticle", 'Int'>
+    readonly publishedAt: FieldRef<"CultureArticle", 'DateTime'>
+    readonly isPublished: FieldRef<"CultureArticle", 'Boolean'>
+    readonly createdAt: FieldRef<"CultureArticle", 'DateTime'>
+    readonly updatedAt: FieldRef<"CultureArticle", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CultureArticle findUnique
+   */
+  export type CultureArticleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticle to fetch.
+     */
+    where: CultureArticleWhereUniqueInput
+  }
+
+  /**
+   * CultureArticle findUniqueOrThrow
+   */
+  export type CultureArticleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticle to fetch.
+     */
+    where: CultureArticleWhereUniqueInput
+  }
+
+  /**
+   * CultureArticle findFirst
+   */
+  export type CultureArticleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticle to fetch.
+     */
+    where?: CultureArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureArticles to fetch.
+     */
+    orderBy?: CultureArticleOrderByWithRelationInput | CultureArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CultureArticles.
+     */
+    cursor?: CultureArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CultureArticles.
+     */
+    distinct?: CultureArticleScalarFieldEnum | CultureArticleScalarFieldEnum[]
+  }
+
+  /**
+   * CultureArticle findFirstOrThrow
+   */
+  export type CultureArticleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticle to fetch.
+     */
+    where?: CultureArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureArticles to fetch.
+     */
+    orderBy?: CultureArticleOrderByWithRelationInput | CultureArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CultureArticles.
+     */
+    cursor?: CultureArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CultureArticles.
+     */
+    distinct?: CultureArticleScalarFieldEnum | CultureArticleScalarFieldEnum[]
+  }
+
+  /**
+   * CultureArticle findMany
+   */
+  export type CultureArticleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticles to fetch.
+     */
+    where?: CultureArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureArticles to fetch.
+     */
+    orderBy?: CultureArticleOrderByWithRelationInput | CultureArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CultureArticles.
+     */
+    cursor?: CultureArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureArticles.
+     */
+    skip?: number
+    distinct?: CultureArticleScalarFieldEnum | CultureArticleScalarFieldEnum[]
+  }
+
+  /**
+   * CultureArticle create
+   */
+  export type CultureArticleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CultureArticle.
+     */
+    data: XOR<CultureArticleCreateInput, CultureArticleUncheckedCreateInput>
+  }
+
+  /**
+   * CultureArticle createMany
+   */
+  export type CultureArticleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CultureArticles.
+     */
+    data: CultureArticleCreateManyInput | CultureArticleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CultureArticle createManyAndReturn
+   */
+  export type CultureArticleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * The data used to create many CultureArticles.
+     */
+    data: CultureArticleCreateManyInput | CultureArticleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CultureArticle update
+   */
+  export type CultureArticleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CultureArticle.
+     */
+    data: XOR<CultureArticleUpdateInput, CultureArticleUncheckedUpdateInput>
+    /**
+     * Choose, which CultureArticle to update.
+     */
+    where: CultureArticleWhereUniqueInput
+  }
+
+  /**
+   * CultureArticle updateMany
+   */
+  export type CultureArticleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CultureArticles.
+     */
+    data: XOR<CultureArticleUpdateManyMutationInput, CultureArticleUncheckedUpdateManyInput>
+    /**
+     * Filter which CultureArticles to update
+     */
+    where?: CultureArticleWhereInput
+    /**
+     * Limit how many CultureArticles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureArticle updateManyAndReturn
+   */
+  export type CultureArticleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * The data used to update CultureArticles.
+     */
+    data: XOR<CultureArticleUpdateManyMutationInput, CultureArticleUncheckedUpdateManyInput>
+    /**
+     * Filter which CultureArticles to update
+     */
+    where?: CultureArticleWhereInput
+    /**
+     * Limit how many CultureArticles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureArticle upsert
+   */
+  export type CultureArticleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CultureArticle to update in case it exists.
+     */
+    where: CultureArticleWhereUniqueInput
+    /**
+     * In case the CultureArticle found by the `where` argument doesn't exist, create a new CultureArticle with this data.
+     */
+    create: XOR<CultureArticleCreateInput, CultureArticleUncheckedCreateInput>
+    /**
+     * In case the CultureArticle was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CultureArticleUpdateInput, CultureArticleUncheckedUpdateInput>
+  }
+
+  /**
+   * CultureArticle delete
+   */
+  export type CultureArticleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+    /**
+     * Filter which CultureArticle to delete.
+     */
+    where: CultureArticleWhereUniqueInput
+  }
+
+  /**
+   * CultureArticle deleteMany
+   */
+  export type CultureArticleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CultureArticles to delete
+     */
+    where?: CultureArticleWhereInput
+    /**
+     * Limit how many CultureArticles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureArticle.translations
+   */
+  export type CultureArticle$translationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    where?: CultureArticleTranslationWhereInput
+    orderBy?: CultureArticleTranslationOrderByWithRelationInput | CultureArticleTranslationOrderByWithRelationInput[]
+    cursor?: CultureArticleTranslationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CultureArticleTranslationScalarFieldEnum | CultureArticleTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * CultureArticle.tags
+   */
+  export type CultureArticle$tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    where?: CultureTagOnArticleWhereInput
+    orderBy?: CultureTagOnArticleOrderByWithRelationInput | CultureTagOnArticleOrderByWithRelationInput[]
+    cursor?: CultureTagOnArticleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CultureTagOnArticleScalarFieldEnum | CultureTagOnArticleScalarFieldEnum[]
+  }
+
+  /**
+   * CultureArticle without action
+   */
+  export type CultureArticleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticle
+     */
+    select?: CultureArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticle
+     */
+    omit?: CultureArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CultureArticleTranslation
+   */
+
+  export type AggregateCultureArticleTranslation = {
+    _count: CultureArticleTranslationCountAggregateOutputType | null
+    _min: CultureArticleTranslationMinAggregateOutputType | null
+    _max: CultureArticleTranslationMaxAggregateOutputType | null
+  }
+
+  export type CultureArticleTranslationMinAggregateOutputType = {
+    id: string | null
+    articleId: string | null
+    lang: $Enums.Language | null
+    title: string | null
+    subtitle: string | null
+    description: string | null
+    contentMarkdown: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CultureArticleTranslationMaxAggregateOutputType = {
+    id: string | null
+    articleId: string | null
+    lang: $Enums.Language | null
+    title: string | null
+    subtitle: string | null
+    description: string | null
+    contentMarkdown: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CultureArticleTranslationCountAggregateOutputType = {
+    id: number
+    articleId: number
+    lang: number
+    title: number
+    subtitle: number
+    description: number
+    contentMarkdown: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CultureArticleTranslationMinAggregateInputType = {
+    id?: true
+    articleId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+    contentMarkdown?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CultureArticleTranslationMaxAggregateInputType = {
+    id?: true
+    articleId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+    contentMarkdown?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CultureArticleTranslationCountAggregateInputType = {
+    id?: true
+    articleId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+    contentMarkdown?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CultureArticleTranslationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CultureArticleTranslation to aggregate.
+     */
+    where?: CultureArticleTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureArticleTranslations to fetch.
+     */
+    orderBy?: CultureArticleTranslationOrderByWithRelationInput | CultureArticleTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CultureArticleTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureArticleTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureArticleTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CultureArticleTranslations
+    **/
+    _count?: true | CultureArticleTranslationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CultureArticleTranslationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CultureArticleTranslationMaxAggregateInputType
+  }
+
+  export type GetCultureArticleTranslationAggregateType<T extends CultureArticleTranslationAggregateArgs> = {
+        [P in keyof T & keyof AggregateCultureArticleTranslation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCultureArticleTranslation[P]>
+      : GetScalarType<T[P], AggregateCultureArticleTranslation[P]>
+  }
+
+
+
+
+  export type CultureArticleTranslationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CultureArticleTranslationWhereInput
+    orderBy?: CultureArticleTranslationOrderByWithAggregationInput | CultureArticleTranslationOrderByWithAggregationInput[]
+    by: CultureArticleTranslationScalarFieldEnum[] | CultureArticleTranslationScalarFieldEnum
+    having?: CultureArticleTranslationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CultureArticleTranslationCountAggregateInputType | true
+    _min?: CultureArticleTranslationMinAggregateInputType
+    _max?: CultureArticleTranslationMaxAggregateInputType
+  }
+
+  export type CultureArticleTranslationGroupByOutputType = {
+    id: string
+    articleId: string
+    lang: $Enums.Language
+    title: string
+    subtitle: string | null
+    description: string | null
+    contentMarkdown: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CultureArticleTranslationCountAggregateOutputType | null
+    _min: CultureArticleTranslationMinAggregateOutputType | null
+    _max: CultureArticleTranslationMaxAggregateOutputType | null
+  }
+
+  type GetCultureArticleTranslationGroupByPayload<T extends CultureArticleTranslationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CultureArticleTranslationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CultureArticleTranslationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CultureArticleTranslationGroupByOutputType[P]>
+            : GetScalarType<T[P], CultureArticleTranslationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CultureArticleTranslationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    articleId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    contentMarkdown?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cultureArticleTranslation"]>
+
+  export type CultureArticleTranslationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    articleId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    contentMarkdown?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cultureArticleTranslation"]>
+
+  export type CultureArticleTranslationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    articleId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    contentMarkdown?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cultureArticleTranslation"]>
+
+  export type CultureArticleTranslationSelectScalar = {
+    id?: boolean
+    articleId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    contentMarkdown?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CultureArticleTranslationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "articleId" | "lang" | "title" | "subtitle" | "description" | "contentMarkdown" | "createdAt" | "updatedAt", ExtArgs["result"]["cultureArticleTranslation"]>
+  export type CultureArticleTranslationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+  }
+  export type CultureArticleTranslationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+  }
+  export type CultureArticleTranslationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+  }
+
+  export type $CultureArticleTranslationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CultureArticleTranslation"
+    objects: {
+      article: Prisma.$CultureArticlePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      articleId: string
+      lang: $Enums.Language
+      title: string
+      subtitle: string | null
+      description: string | null
+      contentMarkdown: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["cultureArticleTranslation"]>
+    composites: {}
+  }
+
+  type CultureArticleTranslationGetPayload<S extends boolean | null | undefined | CultureArticleTranslationDefaultArgs> = $Result.GetResult<Prisma.$CultureArticleTranslationPayload, S>
+
+  type CultureArticleTranslationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CultureArticleTranslationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CultureArticleTranslationCountAggregateInputType | true
+    }
+
+  export interface CultureArticleTranslationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CultureArticleTranslation'], meta: { name: 'CultureArticleTranslation' } }
+    /**
+     * Find zero or one CultureArticleTranslation that matches the filter.
+     * @param {CultureArticleTranslationFindUniqueArgs} args - Arguments to find a CultureArticleTranslation
+     * @example
+     * // Get one CultureArticleTranslation
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CultureArticleTranslationFindUniqueArgs>(args: SelectSubset<T, CultureArticleTranslationFindUniqueArgs<ExtArgs>>): Prisma__CultureArticleTranslationClient<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CultureArticleTranslation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CultureArticleTranslationFindUniqueOrThrowArgs} args - Arguments to find a CultureArticleTranslation
+     * @example
+     * // Get one CultureArticleTranslation
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CultureArticleTranslationFindUniqueOrThrowArgs>(args: SelectSubset<T, CultureArticleTranslationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CultureArticleTranslationClient<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CultureArticleTranslation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleTranslationFindFirstArgs} args - Arguments to find a CultureArticleTranslation
+     * @example
+     * // Get one CultureArticleTranslation
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CultureArticleTranslationFindFirstArgs>(args?: SelectSubset<T, CultureArticleTranslationFindFirstArgs<ExtArgs>>): Prisma__CultureArticleTranslationClient<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CultureArticleTranslation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleTranslationFindFirstOrThrowArgs} args - Arguments to find a CultureArticleTranslation
+     * @example
+     * // Get one CultureArticleTranslation
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CultureArticleTranslationFindFirstOrThrowArgs>(args?: SelectSubset<T, CultureArticleTranslationFindFirstOrThrowArgs<ExtArgs>>): Prisma__CultureArticleTranslationClient<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CultureArticleTranslations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleTranslationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CultureArticleTranslations
+     * const cultureArticleTranslations = await prisma.cultureArticleTranslation.findMany()
+     * 
+     * // Get first 10 CultureArticleTranslations
+     * const cultureArticleTranslations = await prisma.cultureArticleTranslation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cultureArticleTranslationWithIdOnly = await prisma.cultureArticleTranslation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CultureArticleTranslationFindManyArgs>(args?: SelectSubset<T, CultureArticleTranslationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CultureArticleTranslation.
+     * @param {CultureArticleTranslationCreateArgs} args - Arguments to create a CultureArticleTranslation.
+     * @example
+     * // Create one CultureArticleTranslation
+     * const CultureArticleTranslation = await prisma.cultureArticleTranslation.create({
+     *   data: {
+     *     // ... data to create a CultureArticleTranslation
+     *   }
+     * })
+     * 
+     */
+    create<T extends CultureArticleTranslationCreateArgs>(args: SelectSubset<T, CultureArticleTranslationCreateArgs<ExtArgs>>): Prisma__CultureArticleTranslationClient<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CultureArticleTranslations.
+     * @param {CultureArticleTranslationCreateManyArgs} args - Arguments to create many CultureArticleTranslations.
+     * @example
+     * // Create many CultureArticleTranslations
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CultureArticleTranslationCreateManyArgs>(args?: SelectSubset<T, CultureArticleTranslationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CultureArticleTranslations and returns the data saved in the database.
+     * @param {CultureArticleTranslationCreateManyAndReturnArgs} args - Arguments to create many CultureArticleTranslations.
+     * @example
+     * // Create many CultureArticleTranslations
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CultureArticleTranslations and only return the `id`
+     * const cultureArticleTranslationWithIdOnly = await prisma.cultureArticleTranslation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CultureArticleTranslationCreateManyAndReturnArgs>(args?: SelectSubset<T, CultureArticleTranslationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CultureArticleTranslation.
+     * @param {CultureArticleTranslationDeleteArgs} args - Arguments to delete one CultureArticleTranslation.
+     * @example
+     * // Delete one CultureArticleTranslation
+     * const CultureArticleTranslation = await prisma.cultureArticleTranslation.delete({
+     *   where: {
+     *     // ... filter to delete one CultureArticleTranslation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CultureArticleTranslationDeleteArgs>(args: SelectSubset<T, CultureArticleTranslationDeleteArgs<ExtArgs>>): Prisma__CultureArticleTranslationClient<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CultureArticleTranslation.
+     * @param {CultureArticleTranslationUpdateArgs} args - Arguments to update one CultureArticleTranslation.
+     * @example
+     * // Update one CultureArticleTranslation
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CultureArticleTranslationUpdateArgs>(args: SelectSubset<T, CultureArticleTranslationUpdateArgs<ExtArgs>>): Prisma__CultureArticleTranslationClient<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CultureArticleTranslations.
+     * @param {CultureArticleTranslationDeleteManyArgs} args - Arguments to filter CultureArticleTranslations to delete.
+     * @example
+     * // Delete a few CultureArticleTranslations
+     * const { count } = await prisma.cultureArticleTranslation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CultureArticleTranslationDeleteManyArgs>(args?: SelectSubset<T, CultureArticleTranslationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CultureArticleTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleTranslationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CultureArticleTranslations
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CultureArticleTranslationUpdateManyArgs>(args: SelectSubset<T, CultureArticleTranslationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CultureArticleTranslations and returns the data updated in the database.
+     * @param {CultureArticleTranslationUpdateManyAndReturnArgs} args - Arguments to update many CultureArticleTranslations.
+     * @example
+     * // Update many CultureArticleTranslations
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CultureArticleTranslations and only return the `id`
+     * const cultureArticleTranslationWithIdOnly = await prisma.cultureArticleTranslation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CultureArticleTranslationUpdateManyAndReturnArgs>(args: SelectSubset<T, CultureArticleTranslationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CultureArticleTranslation.
+     * @param {CultureArticleTranslationUpsertArgs} args - Arguments to update or create a CultureArticleTranslation.
+     * @example
+     * // Update or create a CultureArticleTranslation
+     * const cultureArticleTranslation = await prisma.cultureArticleTranslation.upsert({
+     *   create: {
+     *     // ... data to create a CultureArticleTranslation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CultureArticleTranslation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CultureArticleTranslationUpsertArgs>(args: SelectSubset<T, CultureArticleTranslationUpsertArgs<ExtArgs>>): Prisma__CultureArticleTranslationClient<$Result.GetResult<Prisma.$CultureArticleTranslationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CultureArticleTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleTranslationCountArgs} args - Arguments to filter CultureArticleTranslations to count.
+     * @example
+     * // Count the number of CultureArticleTranslations
+     * const count = await prisma.cultureArticleTranslation.count({
+     *   where: {
+     *     // ... the filter for the CultureArticleTranslations we want to count
+     *   }
+     * })
+    **/
+    count<T extends CultureArticleTranslationCountArgs>(
+      args?: Subset<T, CultureArticleTranslationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CultureArticleTranslationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CultureArticleTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleTranslationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CultureArticleTranslationAggregateArgs>(args: Subset<T, CultureArticleTranslationAggregateArgs>): Prisma.PrismaPromise<GetCultureArticleTranslationAggregateType<T>>
+
+    /**
+     * Group by CultureArticleTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureArticleTranslationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CultureArticleTranslationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CultureArticleTranslationGroupByArgs['orderBy'] }
+        : { orderBy?: CultureArticleTranslationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CultureArticleTranslationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCultureArticleTranslationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CultureArticleTranslation model
+   */
+  readonly fields: CultureArticleTranslationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CultureArticleTranslation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CultureArticleTranslationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    article<T extends CultureArticleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CultureArticleDefaultArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CultureArticleTranslation model
+   */
+  interface CultureArticleTranslationFieldRefs {
+    readonly id: FieldRef<"CultureArticleTranslation", 'String'>
+    readonly articleId: FieldRef<"CultureArticleTranslation", 'String'>
+    readonly lang: FieldRef<"CultureArticleTranslation", 'Language'>
+    readonly title: FieldRef<"CultureArticleTranslation", 'String'>
+    readonly subtitle: FieldRef<"CultureArticleTranslation", 'String'>
+    readonly description: FieldRef<"CultureArticleTranslation", 'String'>
+    readonly contentMarkdown: FieldRef<"CultureArticleTranslation", 'String'>
+    readonly createdAt: FieldRef<"CultureArticleTranslation", 'DateTime'>
+    readonly updatedAt: FieldRef<"CultureArticleTranslation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CultureArticleTranslation findUnique
+   */
+  export type CultureArticleTranslationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticleTranslation to fetch.
+     */
+    where: CultureArticleTranslationWhereUniqueInput
+  }
+
+  /**
+   * CultureArticleTranslation findUniqueOrThrow
+   */
+  export type CultureArticleTranslationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticleTranslation to fetch.
+     */
+    where: CultureArticleTranslationWhereUniqueInput
+  }
+
+  /**
+   * CultureArticleTranslation findFirst
+   */
+  export type CultureArticleTranslationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticleTranslation to fetch.
+     */
+    where?: CultureArticleTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureArticleTranslations to fetch.
+     */
+    orderBy?: CultureArticleTranslationOrderByWithRelationInput | CultureArticleTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CultureArticleTranslations.
+     */
+    cursor?: CultureArticleTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureArticleTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureArticleTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CultureArticleTranslations.
+     */
+    distinct?: CultureArticleTranslationScalarFieldEnum | CultureArticleTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * CultureArticleTranslation findFirstOrThrow
+   */
+  export type CultureArticleTranslationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticleTranslation to fetch.
+     */
+    where?: CultureArticleTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureArticleTranslations to fetch.
+     */
+    orderBy?: CultureArticleTranslationOrderByWithRelationInput | CultureArticleTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CultureArticleTranslations.
+     */
+    cursor?: CultureArticleTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureArticleTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureArticleTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CultureArticleTranslations.
+     */
+    distinct?: CultureArticleTranslationScalarFieldEnum | CultureArticleTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * CultureArticleTranslation findMany
+   */
+  export type CultureArticleTranslationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureArticleTranslations to fetch.
+     */
+    where?: CultureArticleTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureArticleTranslations to fetch.
+     */
+    orderBy?: CultureArticleTranslationOrderByWithRelationInput | CultureArticleTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CultureArticleTranslations.
+     */
+    cursor?: CultureArticleTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureArticleTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureArticleTranslations.
+     */
+    skip?: number
+    distinct?: CultureArticleTranslationScalarFieldEnum | CultureArticleTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * CultureArticleTranslation create
+   */
+  export type CultureArticleTranslationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CultureArticleTranslation.
+     */
+    data: XOR<CultureArticleTranslationCreateInput, CultureArticleTranslationUncheckedCreateInput>
+  }
+
+  /**
+   * CultureArticleTranslation createMany
+   */
+  export type CultureArticleTranslationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CultureArticleTranslations.
+     */
+    data: CultureArticleTranslationCreateManyInput | CultureArticleTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CultureArticleTranslation createManyAndReturn
+   */
+  export type CultureArticleTranslationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * The data used to create many CultureArticleTranslations.
+     */
+    data: CultureArticleTranslationCreateManyInput | CultureArticleTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CultureArticleTranslation update
+   */
+  export type CultureArticleTranslationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CultureArticleTranslation.
+     */
+    data: XOR<CultureArticleTranslationUpdateInput, CultureArticleTranslationUncheckedUpdateInput>
+    /**
+     * Choose, which CultureArticleTranslation to update.
+     */
+    where: CultureArticleTranslationWhereUniqueInput
+  }
+
+  /**
+   * CultureArticleTranslation updateMany
+   */
+  export type CultureArticleTranslationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CultureArticleTranslations.
+     */
+    data: XOR<CultureArticleTranslationUpdateManyMutationInput, CultureArticleTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which CultureArticleTranslations to update
+     */
+    where?: CultureArticleTranslationWhereInput
+    /**
+     * Limit how many CultureArticleTranslations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureArticleTranslation updateManyAndReturn
+   */
+  export type CultureArticleTranslationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * The data used to update CultureArticleTranslations.
+     */
+    data: XOR<CultureArticleTranslationUpdateManyMutationInput, CultureArticleTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which CultureArticleTranslations to update
+     */
+    where?: CultureArticleTranslationWhereInput
+    /**
+     * Limit how many CultureArticleTranslations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CultureArticleTranslation upsert
+   */
+  export type CultureArticleTranslationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CultureArticleTranslation to update in case it exists.
+     */
+    where: CultureArticleTranslationWhereUniqueInput
+    /**
+     * In case the CultureArticleTranslation found by the `where` argument doesn't exist, create a new CultureArticleTranslation with this data.
+     */
+    create: XOR<CultureArticleTranslationCreateInput, CultureArticleTranslationUncheckedCreateInput>
+    /**
+     * In case the CultureArticleTranslation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CultureArticleTranslationUpdateInput, CultureArticleTranslationUncheckedUpdateInput>
+  }
+
+  /**
+   * CultureArticleTranslation delete
+   */
+  export type CultureArticleTranslationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+    /**
+     * Filter which CultureArticleTranslation to delete.
+     */
+    where: CultureArticleTranslationWhereUniqueInput
+  }
+
+  /**
+   * CultureArticleTranslation deleteMany
+   */
+  export type CultureArticleTranslationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CultureArticleTranslations to delete
+     */
+    where?: CultureArticleTranslationWhereInput
+    /**
+     * Limit how many CultureArticleTranslations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureArticleTranslation without action
+   */
+  export type CultureArticleTranslationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureArticleTranslation
+     */
+    select?: CultureArticleTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureArticleTranslation
+     */
+    omit?: CultureArticleTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureArticleTranslationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CultureTag
+   */
+
+  export type AggregateCultureTag = {
+    _count: CultureTagCountAggregateOutputType | null
+    _min: CultureTagMinAggregateOutputType | null
+    _max: CultureTagMaxAggregateOutputType | null
+  }
+
+  export type CultureTagMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+  }
+
+  export type CultureTagMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+  }
+
+  export type CultureTagCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CultureTagMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+  }
+
+  export type CultureTagMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+  }
+
+  export type CultureTagCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CultureTagAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CultureTag to aggregate.
+     */
+    where?: CultureTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureTags to fetch.
+     */
+    orderBy?: CultureTagOrderByWithRelationInput | CultureTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CultureTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CultureTags
+    **/
+    _count?: true | CultureTagCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CultureTagMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CultureTagMaxAggregateInputType
+  }
+
+  export type GetCultureTagAggregateType<T extends CultureTagAggregateArgs> = {
+        [P in keyof T & keyof AggregateCultureTag]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCultureTag[P]>
+      : GetScalarType<T[P], AggregateCultureTag[P]>
+  }
+
+
+
+
+  export type CultureTagGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CultureTagWhereInput
+    orderBy?: CultureTagOrderByWithAggregationInput | CultureTagOrderByWithAggregationInput[]
+    by: CultureTagScalarFieldEnum[] | CultureTagScalarFieldEnum
+    having?: CultureTagScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CultureTagCountAggregateInputType | true
+    _min?: CultureTagMinAggregateInputType
+    _max?: CultureTagMaxAggregateInputType
+  }
+
+  export type CultureTagGroupByOutputType = {
+    id: string
+    name: string
+    createdAt: Date
+    _count: CultureTagCountAggregateOutputType | null
+    _min: CultureTagMinAggregateOutputType | null
+    _max: CultureTagMaxAggregateOutputType | null
+  }
+
+  type GetCultureTagGroupByPayload<T extends CultureTagGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CultureTagGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CultureTagGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CultureTagGroupByOutputType[P]>
+            : GetScalarType<T[P], CultureTagGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CultureTagSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    articles?: boolean | CultureTag$articlesArgs<ExtArgs>
+    _count?: boolean | CultureTagCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cultureTag"]>
+
+  export type CultureTagSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["cultureTag"]>
+
+  export type CultureTagSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["cultureTag"]>
+
+  export type CultureTagSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+  }
+
+  export type CultureTagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt", ExtArgs["result"]["cultureTag"]>
+  export type CultureTagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    articles?: boolean | CultureTag$articlesArgs<ExtArgs>
+    _count?: boolean | CultureTagCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CultureTagIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CultureTagIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CultureTagPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CultureTag"
+    objects: {
+      articles: Prisma.$CultureTagOnArticlePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      createdAt: Date
+    }, ExtArgs["result"]["cultureTag"]>
+    composites: {}
+  }
+
+  type CultureTagGetPayload<S extends boolean | null | undefined | CultureTagDefaultArgs> = $Result.GetResult<Prisma.$CultureTagPayload, S>
+
+  type CultureTagCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CultureTagFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CultureTagCountAggregateInputType | true
+    }
+
+  export interface CultureTagDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CultureTag'], meta: { name: 'CultureTag' } }
+    /**
+     * Find zero or one CultureTag that matches the filter.
+     * @param {CultureTagFindUniqueArgs} args - Arguments to find a CultureTag
+     * @example
+     * // Get one CultureTag
+     * const cultureTag = await prisma.cultureTag.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CultureTagFindUniqueArgs>(args: SelectSubset<T, CultureTagFindUniqueArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CultureTag that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CultureTagFindUniqueOrThrowArgs} args - Arguments to find a CultureTag
+     * @example
+     * // Get one CultureTag
+     * const cultureTag = await prisma.cultureTag.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CultureTagFindUniqueOrThrowArgs>(args: SelectSubset<T, CultureTagFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CultureTag that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagFindFirstArgs} args - Arguments to find a CultureTag
+     * @example
+     * // Get one CultureTag
+     * const cultureTag = await prisma.cultureTag.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CultureTagFindFirstArgs>(args?: SelectSubset<T, CultureTagFindFirstArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CultureTag that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagFindFirstOrThrowArgs} args - Arguments to find a CultureTag
+     * @example
+     * // Get one CultureTag
+     * const cultureTag = await prisma.cultureTag.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CultureTagFindFirstOrThrowArgs>(args?: SelectSubset<T, CultureTagFindFirstOrThrowArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CultureTags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CultureTags
+     * const cultureTags = await prisma.cultureTag.findMany()
+     * 
+     * // Get first 10 CultureTags
+     * const cultureTags = await prisma.cultureTag.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cultureTagWithIdOnly = await prisma.cultureTag.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CultureTagFindManyArgs>(args?: SelectSubset<T, CultureTagFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CultureTag.
+     * @param {CultureTagCreateArgs} args - Arguments to create a CultureTag.
+     * @example
+     * // Create one CultureTag
+     * const CultureTag = await prisma.cultureTag.create({
+     *   data: {
+     *     // ... data to create a CultureTag
+     *   }
+     * })
+     * 
+     */
+    create<T extends CultureTagCreateArgs>(args: SelectSubset<T, CultureTagCreateArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CultureTags.
+     * @param {CultureTagCreateManyArgs} args - Arguments to create many CultureTags.
+     * @example
+     * // Create many CultureTags
+     * const cultureTag = await prisma.cultureTag.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CultureTagCreateManyArgs>(args?: SelectSubset<T, CultureTagCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CultureTags and returns the data saved in the database.
+     * @param {CultureTagCreateManyAndReturnArgs} args - Arguments to create many CultureTags.
+     * @example
+     * // Create many CultureTags
+     * const cultureTag = await prisma.cultureTag.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CultureTags and only return the `id`
+     * const cultureTagWithIdOnly = await prisma.cultureTag.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CultureTagCreateManyAndReturnArgs>(args?: SelectSubset<T, CultureTagCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CultureTag.
+     * @param {CultureTagDeleteArgs} args - Arguments to delete one CultureTag.
+     * @example
+     * // Delete one CultureTag
+     * const CultureTag = await prisma.cultureTag.delete({
+     *   where: {
+     *     // ... filter to delete one CultureTag
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CultureTagDeleteArgs>(args: SelectSubset<T, CultureTagDeleteArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CultureTag.
+     * @param {CultureTagUpdateArgs} args - Arguments to update one CultureTag.
+     * @example
+     * // Update one CultureTag
+     * const cultureTag = await prisma.cultureTag.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CultureTagUpdateArgs>(args: SelectSubset<T, CultureTagUpdateArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CultureTags.
+     * @param {CultureTagDeleteManyArgs} args - Arguments to filter CultureTags to delete.
+     * @example
+     * // Delete a few CultureTags
+     * const { count } = await prisma.cultureTag.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CultureTagDeleteManyArgs>(args?: SelectSubset<T, CultureTagDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CultureTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CultureTags
+     * const cultureTag = await prisma.cultureTag.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CultureTagUpdateManyArgs>(args: SelectSubset<T, CultureTagUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CultureTags and returns the data updated in the database.
+     * @param {CultureTagUpdateManyAndReturnArgs} args - Arguments to update many CultureTags.
+     * @example
+     * // Update many CultureTags
+     * const cultureTag = await prisma.cultureTag.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CultureTags and only return the `id`
+     * const cultureTagWithIdOnly = await prisma.cultureTag.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CultureTagUpdateManyAndReturnArgs>(args: SelectSubset<T, CultureTagUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CultureTag.
+     * @param {CultureTagUpsertArgs} args - Arguments to update or create a CultureTag.
+     * @example
+     * // Update or create a CultureTag
+     * const cultureTag = await prisma.cultureTag.upsert({
+     *   create: {
+     *     // ... data to create a CultureTag
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CultureTag we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CultureTagUpsertArgs>(args: SelectSubset<T, CultureTagUpsertArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CultureTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagCountArgs} args - Arguments to filter CultureTags to count.
+     * @example
+     * // Count the number of CultureTags
+     * const count = await prisma.cultureTag.count({
+     *   where: {
+     *     // ... the filter for the CultureTags we want to count
+     *   }
+     * })
+    **/
+    count<T extends CultureTagCountArgs>(
+      args?: Subset<T, CultureTagCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CultureTagCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CultureTag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CultureTagAggregateArgs>(args: Subset<T, CultureTagAggregateArgs>): Prisma.PrismaPromise<GetCultureTagAggregateType<T>>
+
+    /**
+     * Group by CultureTag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CultureTagGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CultureTagGroupByArgs['orderBy'] }
+        : { orderBy?: CultureTagGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CultureTagGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCultureTagGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CultureTag model
+   */
+  readonly fields: CultureTagFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CultureTag.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CultureTagClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    articles<T extends CultureTag$articlesArgs<ExtArgs> = {}>(args?: Subset<T, CultureTag$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CultureTag model
+   */
+  interface CultureTagFieldRefs {
+    readonly id: FieldRef<"CultureTag", 'String'>
+    readonly name: FieldRef<"CultureTag", 'String'>
+    readonly createdAt: FieldRef<"CultureTag", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CultureTag findUnique
+   */
+  export type CultureTagFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTag to fetch.
+     */
+    where: CultureTagWhereUniqueInput
+  }
+
+  /**
+   * CultureTag findUniqueOrThrow
+   */
+  export type CultureTagFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTag to fetch.
+     */
+    where: CultureTagWhereUniqueInput
+  }
+
+  /**
+   * CultureTag findFirst
+   */
+  export type CultureTagFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTag to fetch.
+     */
+    where?: CultureTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureTags to fetch.
+     */
+    orderBy?: CultureTagOrderByWithRelationInput | CultureTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CultureTags.
+     */
+    cursor?: CultureTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CultureTags.
+     */
+    distinct?: CultureTagScalarFieldEnum | CultureTagScalarFieldEnum[]
+  }
+
+  /**
+   * CultureTag findFirstOrThrow
+   */
+  export type CultureTagFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTag to fetch.
+     */
+    where?: CultureTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureTags to fetch.
+     */
+    orderBy?: CultureTagOrderByWithRelationInput | CultureTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CultureTags.
+     */
+    cursor?: CultureTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CultureTags.
+     */
+    distinct?: CultureTagScalarFieldEnum | CultureTagScalarFieldEnum[]
+  }
+
+  /**
+   * CultureTag findMany
+   */
+  export type CultureTagFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTags to fetch.
+     */
+    where?: CultureTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureTags to fetch.
+     */
+    orderBy?: CultureTagOrderByWithRelationInput | CultureTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CultureTags.
+     */
+    cursor?: CultureTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureTags.
+     */
+    skip?: number
+    distinct?: CultureTagScalarFieldEnum | CultureTagScalarFieldEnum[]
+  }
+
+  /**
+   * CultureTag create
+   */
+  export type CultureTagCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CultureTag.
+     */
+    data: XOR<CultureTagCreateInput, CultureTagUncheckedCreateInput>
+  }
+
+  /**
+   * CultureTag createMany
+   */
+  export type CultureTagCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CultureTags.
+     */
+    data: CultureTagCreateManyInput | CultureTagCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CultureTag createManyAndReturn
+   */
+  export type CultureTagCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * The data used to create many CultureTags.
+     */
+    data: CultureTagCreateManyInput | CultureTagCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CultureTag update
+   */
+  export type CultureTagUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CultureTag.
+     */
+    data: XOR<CultureTagUpdateInput, CultureTagUncheckedUpdateInput>
+    /**
+     * Choose, which CultureTag to update.
+     */
+    where: CultureTagWhereUniqueInput
+  }
+
+  /**
+   * CultureTag updateMany
+   */
+  export type CultureTagUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CultureTags.
+     */
+    data: XOR<CultureTagUpdateManyMutationInput, CultureTagUncheckedUpdateManyInput>
+    /**
+     * Filter which CultureTags to update
+     */
+    where?: CultureTagWhereInput
+    /**
+     * Limit how many CultureTags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureTag updateManyAndReturn
+   */
+  export type CultureTagUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * The data used to update CultureTags.
+     */
+    data: XOR<CultureTagUpdateManyMutationInput, CultureTagUncheckedUpdateManyInput>
+    /**
+     * Filter which CultureTags to update
+     */
+    where?: CultureTagWhereInput
+    /**
+     * Limit how many CultureTags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureTag upsert
+   */
+  export type CultureTagUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CultureTag to update in case it exists.
+     */
+    where: CultureTagWhereUniqueInput
+    /**
+     * In case the CultureTag found by the `where` argument doesn't exist, create a new CultureTag with this data.
+     */
+    create: XOR<CultureTagCreateInput, CultureTagUncheckedCreateInput>
+    /**
+     * In case the CultureTag was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CultureTagUpdateInput, CultureTagUncheckedUpdateInput>
+  }
+
+  /**
+   * CultureTag delete
+   */
+  export type CultureTagDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+    /**
+     * Filter which CultureTag to delete.
+     */
+    where: CultureTagWhereUniqueInput
+  }
+
+  /**
+   * CultureTag deleteMany
+   */
+  export type CultureTagDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CultureTags to delete
+     */
+    where?: CultureTagWhereInput
+    /**
+     * Limit how many CultureTags to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureTag.articles
+   */
+  export type CultureTag$articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    where?: CultureTagOnArticleWhereInput
+    orderBy?: CultureTagOnArticleOrderByWithRelationInput | CultureTagOnArticleOrderByWithRelationInput[]
+    cursor?: CultureTagOnArticleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CultureTagOnArticleScalarFieldEnum | CultureTagOnArticleScalarFieldEnum[]
+  }
+
+  /**
+   * CultureTag without action
+   */
+  export type CultureTagDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTag
+     */
+    select?: CultureTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTag
+     */
+    omit?: CultureTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CultureTagOnArticle
+   */
+
+  export type AggregateCultureTagOnArticle = {
+    _count: CultureTagOnArticleCountAggregateOutputType | null
+    _min: CultureTagOnArticleMinAggregateOutputType | null
+    _max: CultureTagOnArticleMaxAggregateOutputType | null
+  }
+
+  export type CultureTagOnArticleMinAggregateOutputType = {
+    articleId: string | null
+    tagId: string | null
+  }
+
+  export type CultureTagOnArticleMaxAggregateOutputType = {
+    articleId: string | null
+    tagId: string | null
+  }
+
+  export type CultureTagOnArticleCountAggregateOutputType = {
+    articleId: number
+    tagId: number
+    _all: number
+  }
+
+
+  export type CultureTagOnArticleMinAggregateInputType = {
+    articleId?: true
+    tagId?: true
+  }
+
+  export type CultureTagOnArticleMaxAggregateInputType = {
+    articleId?: true
+    tagId?: true
+  }
+
+  export type CultureTagOnArticleCountAggregateInputType = {
+    articleId?: true
+    tagId?: true
+    _all?: true
+  }
+
+  export type CultureTagOnArticleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CultureTagOnArticle to aggregate.
+     */
+    where?: CultureTagOnArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureTagOnArticles to fetch.
+     */
+    orderBy?: CultureTagOnArticleOrderByWithRelationInput | CultureTagOnArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CultureTagOnArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureTagOnArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureTagOnArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CultureTagOnArticles
+    **/
+    _count?: true | CultureTagOnArticleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CultureTagOnArticleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CultureTagOnArticleMaxAggregateInputType
+  }
+
+  export type GetCultureTagOnArticleAggregateType<T extends CultureTagOnArticleAggregateArgs> = {
+        [P in keyof T & keyof AggregateCultureTagOnArticle]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCultureTagOnArticle[P]>
+      : GetScalarType<T[P], AggregateCultureTagOnArticle[P]>
+  }
+
+
+
+
+  export type CultureTagOnArticleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CultureTagOnArticleWhereInput
+    orderBy?: CultureTagOnArticleOrderByWithAggregationInput | CultureTagOnArticleOrderByWithAggregationInput[]
+    by: CultureTagOnArticleScalarFieldEnum[] | CultureTagOnArticleScalarFieldEnum
+    having?: CultureTagOnArticleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CultureTagOnArticleCountAggregateInputType | true
+    _min?: CultureTagOnArticleMinAggregateInputType
+    _max?: CultureTagOnArticleMaxAggregateInputType
+  }
+
+  export type CultureTagOnArticleGroupByOutputType = {
+    articleId: string
+    tagId: string
+    _count: CultureTagOnArticleCountAggregateOutputType | null
+    _min: CultureTagOnArticleMinAggregateOutputType | null
+    _max: CultureTagOnArticleMaxAggregateOutputType | null
+  }
+
+  type GetCultureTagOnArticleGroupByPayload<T extends CultureTagOnArticleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CultureTagOnArticleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CultureTagOnArticleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CultureTagOnArticleGroupByOutputType[P]>
+            : GetScalarType<T[P], CultureTagOnArticleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CultureTagOnArticleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    articleId?: boolean
+    tagId?: boolean
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+    tag?: boolean | CultureTagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cultureTagOnArticle"]>
+
+  export type CultureTagOnArticleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    articleId?: boolean
+    tagId?: boolean
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+    tag?: boolean | CultureTagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cultureTagOnArticle"]>
+
+  export type CultureTagOnArticleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    articleId?: boolean
+    tagId?: boolean
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+    tag?: boolean | CultureTagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cultureTagOnArticle"]>
+
+  export type CultureTagOnArticleSelectScalar = {
+    articleId?: boolean
+    tagId?: boolean
+  }
+
+  export type CultureTagOnArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"articleId" | "tagId", ExtArgs["result"]["cultureTagOnArticle"]>
+  export type CultureTagOnArticleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+    tag?: boolean | CultureTagDefaultArgs<ExtArgs>
+  }
+  export type CultureTagOnArticleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+    tag?: boolean | CultureTagDefaultArgs<ExtArgs>
+  }
+  export type CultureTagOnArticleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    article?: boolean | CultureArticleDefaultArgs<ExtArgs>
+    tag?: boolean | CultureTagDefaultArgs<ExtArgs>
+  }
+
+  export type $CultureTagOnArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CultureTagOnArticle"
+    objects: {
+      article: Prisma.$CultureArticlePayload<ExtArgs>
+      tag: Prisma.$CultureTagPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      articleId: string
+      tagId: string
+    }, ExtArgs["result"]["cultureTagOnArticle"]>
+    composites: {}
+  }
+
+  type CultureTagOnArticleGetPayload<S extends boolean | null | undefined | CultureTagOnArticleDefaultArgs> = $Result.GetResult<Prisma.$CultureTagOnArticlePayload, S>
+
+  type CultureTagOnArticleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CultureTagOnArticleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CultureTagOnArticleCountAggregateInputType | true
+    }
+
+  export interface CultureTagOnArticleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CultureTagOnArticle'], meta: { name: 'CultureTagOnArticle' } }
+    /**
+     * Find zero or one CultureTagOnArticle that matches the filter.
+     * @param {CultureTagOnArticleFindUniqueArgs} args - Arguments to find a CultureTagOnArticle
+     * @example
+     * // Get one CultureTagOnArticle
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CultureTagOnArticleFindUniqueArgs>(args: SelectSubset<T, CultureTagOnArticleFindUniqueArgs<ExtArgs>>): Prisma__CultureTagOnArticleClient<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CultureTagOnArticle that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CultureTagOnArticleFindUniqueOrThrowArgs} args - Arguments to find a CultureTagOnArticle
+     * @example
+     * // Get one CultureTagOnArticle
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CultureTagOnArticleFindUniqueOrThrowArgs>(args: SelectSubset<T, CultureTagOnArticleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CultureTagOnArticleClient<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CultureTagOnArticle that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagOnArticleFindFirstArgs} args - Arguments to find a CultureTagOnArticle
+     * @example
+     * // Get one CultureTagOnArticle
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CultureTagOnArticleFindFirstArgs>(args?: SelectSubset<T, CultureTagOnArticleFindFirstArgs<ExtArgs>>): Prisma__CultureTagOnArticleClient<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CultureTagOnArticle that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagOnArticleFindFirstOrThrowArgs} args - Arguments to find a CultureTagOnArticle
+     * @example
+     * // Get one CultureTagOnArticle
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CultureTagOnArticleFindFirstOrThrowArgs>(args?: SelectSubset<T, CultureTagOnArticleFindFirstOrThrowArgs<ExtArgs>>): Prisma__CultureTagOnArticleClient<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CultureTagOnArticles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagOnArticleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CultureTagOnArticles
+     * const cultureTagOnArticles = await prisma.cultureTagOnArticle.findMany()
+     * 
+     * // Get first 10 CultureTagOnArticles
+     * const cultureTagOnArticles = await prisma.cultureTagOnArticle.findMany({ take: 10 })
+     * 
+     * // Only select the `articleId`
+     * const cultureTagOnArticleWithArticleIdOnly = await prisma.cultureTagOnArticle.findMany({ select: { articleId: true } })
+     * 
+     */
+    findMany<T extends CultureTagOnArticleFindManyArgs>(args?: SelectSubset<T, CultureTagOnArticleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CultureTagOnArticle.
+     * @param {CultureTagOnArticleCreateArgs} args - Arguments to create a CultureTagOnArticle.
+     * @example
+     * // Create one CultureTagOnArticle
+     * const CultureTagOnArticle = await prisma.cultureTagOnArticle.create({
+     *   data: {
+     *     // ... data to create a CultureTagOnArticle
+     *   }
+     * })
+     * 
+     */
+    create<T extends CultureTagOnArticleCreateArgs>(args: SelectSubset<T, CultureTagOnArticleCreateArgs<ExtArgs>>): Prisma__CultureTagOnArticleClient<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CultureTagOnArticles.
+     * @param {CultureTagOnArticleCreateManyArgs} args - Arguments to create many CultureTagOnArticles.
+     * @example
+     * // Create many CultureTagOnArticles
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CultureTagOnArticleCreateManyArgs>(args?: SelectSubset<T, CultureTagOnArticleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CultureTagOnArticles and returns the data saved in the database.
+     * @param {CultureTagOnArticleCreateManyAndReturnArgs} args - Arguments to create many CultureTagOnArticles.
+     * @example
+     * // Create many CultureTagOnArticles
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CultureTagOnArticles and only return the `articleId`
+     * const cultureTagOnArticleWithArticleIdOnly = await prisma.cultureTagOnArticle.createManyAndReturn({
+     *   select: { articleId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CultureTagOnArticleCreateManyAndReturnArgs>(args?: SelectSubset<T, CultureTagOnArticleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CultureTagOnArticle.
+     * @param {CultureTagOnArticleDeleteArgs} args - Arguments to delete one CultureTagOnArticle.
+     * @example
+     * // Delete one CultureTagOnArticle
+     * const CultureTagOnArticle = await prisma.cultureTagOnArticle.delete({
+     *   where: {
+     *     // ... filter to delete one CultureTagOnArticle
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CultureTagOnArticleDeleteArgs>(args: SelectSubset<T, CultureTagOnArticleDeleteArgs<ExtArgs>>): Prisma__CultureTagOnArticleClient<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CultureTagOnArticle.
+     * @param {CultureTagOnArticleUpdateArgs} args - Arguments to update one CultureTagOnArticle.
+     * @example
+     * // Update one CultureTagOnArticle
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CultureTagOnArticleUpdateArgs>(args: SelectSubset<T, CultureTagOnArticleUpdateArgs<ExtArgs>>): Prisma__CultureTagOnArticleClient<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CultureTagOnArticles.
+     * @param {CultureTagOnArticleDeleteManyArgs} args - Arguments to filter CultureTagOnArticles to delete.
+     * @example
+     * // Delete a few CultureTagOnArticles
+     * const { count } = await prisma.cultureTagOnArticle.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CultureTagOnArticleDeleteManyArgs>(args?: SelectSubset<T, CultureTagOnArticleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CultureTagOnArticles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagOnArticleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CultureTagOnArticles
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CultureTagOnArticleUpdateManyArgs>(args: SelectSubset<T, CultureTagOnArticleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CultureTagOnArticles and returns the data updated in the database.
+     * @param {CultureTagOnArticleUpdateManyAndReturnArgs} args - Arguments to update many CultureTagOnArticles.
+     * @example
+     * // Update many CultureTagOnArticles
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CultureTagOnArticles and only return the `articleId`
+     * const cultureTagOnArticleWithArticleIdOnly = await prisma.cultureTagOnArticle.updateManyAndReturn({
+     *   select: { articleId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CultureTagOnArticleUpdateManyAndReturnArgs>(args: SelectSubset<T, CultureTagOnArticleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CultureTagOnArticle.
+     * @param {CultureTagOnArticleUpsertArgs} args - Arguments to update or create a CultureTagOnArticle.
+     * @example
+     * // Update or create a CultureTagOnArticle
+     * const cultureTagOnArticle = await prisma.cultureTagOnArticle.upsert({
+     *   create: {
+     *     // ... data to create a CultureTagOnArticle
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CultureTagOnArticle we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CultureTagOnArticleUpsertArgs>(args: SelectSubset<T, CultureTagOnArticleUpsertArgs<ExtArgs>>): Prisma__CultureTagOnArticleClient<$Result.GetResult<Prisma.$CultureTagOnArticlePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CultureTagOnArticles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagOnArticleCountArgs} args - Arguments to filter CultureTagOnArticles to count.
+     * @example
+     * // Count the number of CultureTagOnArticles
+     * const count = await prisma.cultureTagOnArticle.count({
+     *   where: {
+     *     // ... the filter for the CultureTagOnArticles we want to count
+     *   }
+     * })
+    **/
+    count<T extends CultureTagOnArticleCountArgs>(
+      args?: Subset<T, CultureTagOnArticleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CultureTagOnArticleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CultureTagOnArticle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagOnArticleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CultureTagOnArticleAggregateArgs>(args: Subset<T, CultureTagOnArticleAggregateArgs>): Prisma.PrismaPromise<GetCultureTagOnArticleAggregateType<T>>
+
+    /**
+     * Group by CultureTagOnArticle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CultureTagOnArticleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CultureTagOnArticleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CultureTagOnArticleGroupByArgs['orderBy'] }
+        : { orderBy?: CultureTagOnArticleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CultureTagOnArticleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCultureTagOnArticleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CultureTagOnArticle model
+   */
+  readonly fields: CultureTagOnArticleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CultureTagOnArticle.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CultureTagOnArticleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    article<T extends CultureArticleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CultureArticleDefaultArgs<ExtArgs>>): Prisma__CultureArticleClient<$Result.GetResult<Prisma.$CultureArticlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tag<T extends CultureTagDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CultureTagDefaultArgs<ExtArgs>>): Prisma__CultureTagClient<$Result.GetResult<Prisma.$CultureTagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CultureTagOnArticle model
+   */
+  interface CultureTagOnArticleFieldRefs {
+    readonly articleId: FieldRef<"CultureTagOnArticle", 'String'>
+    readonly tagId: FieldRef<"CultureTagOnArticle", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CultureTagOnArticle findUnique
+   */
+  export type CultureTagOnArticleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTagOnArticle to fetch.
+     */
+    where: CultureTagOnArticleWhereUniqueInput
+  }
+
+  /**
+   * CultureTagOnArticle findUniqueOrThrow
+   */
+  export type CultureTagOnArticleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTagOnArticle to fetch.
+     */
+    where: CultureTagOnArticleWhereUniqueInput
+  }
+
+  /**
+   * CultureTagOnArticle findFirst
+   */
+  export type CultureTagOnArticleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTagOnArticle to fetch.
+     */
+    where?: CultureTagOnArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureTagOnArticles to fetch.
+     */
+    orderBy?: CultureTagOnArticleOrderByWithRelationInput | CultureTagOnArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CultureTagOnArticles.
+     */
+    cursor?: CultureTagOnArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureTagOnArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureTagOnArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CultureTagOnArticles.
+     */
+    distinct?: CultureTagOnArticleScalarFieldEnum | CultureTagOnArticleScalarFieldEnum[]
+  }
+
+  /**
+   * CultureTagOnArticle findFirstOrThrow
+   */
+  export type CultureTagOnArticleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTagOnArticle to fetch.
+     */
+    where?: CultureTagOnArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureTagOnArticles to fetch.
+     */
+    orderBy?: CultureTagOnArticleOrderByWithRelationInput | CultureTagOnArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CultureTagOnArticles.
+     */
+    cursor?: CultureTagOnArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureTagOnArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureTagOnArticles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CultureTagOnArticles.
+     */
+    distinct?: CultureTagOnArticleScalarFieldEnum | CultureTagOnArticleScalarFieldEnum[]
+  }
+
+  /**
+   * CultureTagOnArticle findMany
+   */
+  export type CultureTagOnArticleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * Filter, which CultureTagOnArticles to fetch.
+     */
+    where?: CultureTagOnArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CultureTagOnArticles to fetch.
+     */
+    orderBy?: CultureTagOnArticleOrderByWithRelationInput | CultureTagOnArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CultureTagOnArticles.
+     */
+    cursor?: CultureTagOnArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CultureTagOnArticles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CultureTagOnArticles.
+     */
+    skip?: number
+    distinct?: CultureTagOnArticleScalarFieldEnum | CultureTagOnArticleScalarFieldEnum[]
+  }
+
+  /**
+   * CultureTagOnArticle create
+   */
+  export type CultureTagOnArticleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CultureTagOnArticle.
+     */
+    data: XOR<CultureTagOnArticleCreateInput, CultureTagOnArticleUncheckedCreateInput>
+  }
+
+  /**
+   * CultureTagOnArticle createMany
+   */
+  export type CultureTagOnArticleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CultureTagOnArticles.
+     */
+    data: CultureTagOnArticleCreateManyInput | CultureTagOnArticleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CultureTagOnArticle createManyAndReturn
+   */
+  export type CultureTagOnArticleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * The data used to create many CultureTagOnArticles.
+     */
+    data: CultureTagOnArticleCreateManyInput | CultureTagOnArticleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CultureTagOnArticle update
+   */
+  export type CultureTagOnArticleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CultureTagOnArticle.
+     */
+    data: XOR<CultureTagOnArticleUpdateInput, CultureTagOnArticleUncheckedUpdateInput>
+    /**
+     * Choose, which CultureTagOnArticle to update.
+     */
+    where: CultureTagOnArticleWhereUniqueInput
+  }
+
+  /**
+   * CultureTagOnArticle updateMany
+   */
+  export type CultureTagOnArticleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CultureTagOnArticles.
+     */
+    data: XOR<CultureTagOnArticleUpdateManyMutationInput, CultureTagOnArticleUncheckedUpdateManyInput>
+    /**
+     * Filter which CultureTagOnArticles to update
+     */
+    where?: CultureTagOnArticleWhereInput
+    /**
+     * Limit how many CultureTagOnArticles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureTagOnArticle updateManyAndReturn
+   */
+  export type CultureTagOnArticleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * The data used to update CultureTagOnArticles.
+     */
+    data: XOR<CultureTagOnArticleUpdateManyMutationInput, CultureTagOnArticleUncheckedUpdateManyInput>
+    /**
+     * Filter which CultureTagOnArticles to update
+     */
+    where?: CultureTagOnArticleWhereInput
+    /**
+     * Limit how many CultureTagOnArticles to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CultureTagOnArticle upsert
+   */
+  export type CultureTagOnArticleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CultureTagOnArticle to update in case it exists.
+     */
+    where: CultureTagOnArticleWhereUniqueInput
+    /**
+     * In case the CultureTagOnArticle found by the `where` argument doesn't exist, create a new CultureTagOnArticle with this data.
+     */
+    create: XOR<CultureTagOnArticleCreateInput, CultureTagOnArticleUncheckedCreateInput>
+    /**
+     * In case the CultureTagOnArticle was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CultureTagOnArticleUpdateInput, CultureTagOnArticleUncheckedUpdateInput>
+  }
+
+  /**
+   * CultureTagOnArticle delete
+   */
+  export type CultureTagOnArticleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+    /**
+     * Filter which CultureTagOnArticle to delete.
+     */
+    where: CultureTagOnArticleWhereUniqueInput
+  }
+
+  /**
+   * CultureTagOnArticle deleteMany
+   */
+  export type CultureTagOnArticleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CultureTagOnArticles to delete
+     */
+    where?: CultureTagOnArticleWhereInput
+    /**
+     * Limit how many CultureTagOnArticles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CultureTagOnArticle without action
+   */
+  export type CultureTagOnArticleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CultureTagOnArticle
+     */
+    select?: CultureTagOnArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CultureTagOnArticle
+     */
+    omit?: CultureTagOnArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CultureTagOnArticleInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -3173,6 +8006,53 @@ export namespace Prisma {
   };
 
   export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
+
+
+  export const CultureArticleScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    section: 'section',
+    coverImageUrl: 'coverImageUrl',
+    readTimeMinutes: 'readTimeMinutes',
+    publishedAt: 'publishedAt',
+    isPublished: 'isPublished',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CultureArticleScalarFieldEnum = (typeof CultureArticleScalarFieldEnum)[keyof typeof CultureArticleScalarFieldEnum]
+
+
+  export const CultureArticleTranslationScalarFieldEnum: {
+    id: 'id',
+    articleId: 'articleId',
+    lang: 'lang',
+    title: 'title',
+    subtitle: 'subtitle',
+    description: 'description',
+    contentMarkdown: 'contentMarkdown',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CultureArticleTranslationScalarFieldEnum = (typeof CultureArticleTranslationScalarFieldEnum)[keyof typeof CultureArticleTranslationScalarFieldEnum]
+
+
+  export const CultureTagScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt'
+  };
+
+  export type CultureTagScalarFieldEnum = (typeof CultureTagScalarFieldEnum)[keyof typeof CultureTagScalarFieldEnum]
+
+
+  export const CultureTagOnArticleScalarFieldEnum: {
+    articleId: 'articleId',
+    tagId: 'tagId'
+  };
+
+  export type CultureTagOnArticleScalarFieldEnum = (typeof CultureTagOnArticleScalarFieldEnum)[keyof typeof CultureTagOnArticleScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3233,6 +8113,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'CultureSection'
+   */
+  export type EnumCultureSectionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CultureSection'>
+    
+
+
+  /**
+   * Reference to a field of type 'CultureSection[]'
+   */
+  export type ListEnumCultureSectionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CultureSection[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -3243,6 +8137,41 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Language'
+   */
+  export type EnumLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Language'>
+    
+
+
+  /**
+   * Reference to a field of type 'Language[]'
+   */
+  export type ListEnumLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Language[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -3367,6 +8296,251 @@ export namespace Prisma {
     expiresAt?: DateTimeWithAggregatesFilter<"RefreshToken"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"RefreshToken"> | Date | string
     revokedAt?: DateTimeNullableWithAggregatesFilter<"RefreshToken"> | Date | string | null
+  }
+
+  export type CultureArticleWhereInput = {
+    AND?: CultureArticleWhereInput | CultureArticleWhereInput[]
+    OR?: CultureArticleWhereInput[]
+    NOT?: CultureArticleWhereInput | CultureArticleWhereInput[]
+    id?: StringFilter<"CultureArticle"> | string
+    slug?: StringFilter<"CultureArticle"> | string
+    section?: EnumCultureSectionFilter<"CultureArticle"> | $Enums.CultureSection
+    coverImageUrl?: StringNullableFilter<"CultureArticle"> | string | null
+    readTimeMinutes?: IntNullableFilter<"CultureArticle"> | number | null
+    publishedAt?: DateTimeNullableFilter<"CultureArticle"> | Date | string | null
+    isPublished?: BoolFilter<"CultureArticle"> | boolean
+    createdAt?: DateTimeFilter<"CultureArticle"> | Date | string
+    updatedAt?: DateTimeFilter<"CultureArticle"> | Date | string
+    translations?: CultureArticleTranslationListRelationFilter
+    tags?: CultureTagOnArticleListRelationFilter
+  }
+
+  export type CultureArticleOrderByWithRelationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    section?: SortOrder
+    coverImageUrl?: SortOrderInput | SortOrder
+    readTimeMinutes?: SortOrderInput | SortOrder
+    publishedAt?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    translations?: CultureArticleTranslationOrderByRelationAggregateInput
+    tags?: CultureTagOnArticleOrderByRelationAggregateInput
+  }
+
+  export type CultureArticleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: CultureArticleWhereInput | CultureArticleWhereInput[]
+    OR?: CultureArticleWhereInput[]
+    NOT?: CultureArticleWhereInput | CultureArticleWhereInput[]
+    section?: EnumCultureSectionFilter<"CultureArticle"> | $Enums.CultureSection
+    coverImageUrl?: StringNullableFilter<"CultureArticle"> | string | null
+    readTimeMinutes?: IntNullableFilter<"CultureArticle"> | number | null
+    publishedAt?: DateTimeNullableFilter<"CultureArticle"> | Date | string | null
+    isPublished?: BoolFilter<"CultureArticle"> | boolean
+    createdAt?: DateTimeFilter<"CultureArticle"> | Date | string
+    updatedAt?: DateTimeFilter<"CultureArticle"> | Date | string
+    translations?: CultureArticleTranslationListRelationFilter
+    tags?: CultureTagOnArticleListRelationFilter
+  }, "id" | "slug">
+
+  export type CultureArticleOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    section?: SortOrder
+    coverImageUrl?: SortOrderInput | SortOrder
+    readTimeMinutes?: SortOrderInput | SortOrder
+    publishedAt?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CultureArticleCountOrderByAggregateInput
+    _avg?: CultureArticleAvgOrderByAggregateInput
+    _max?: CultureArticleMaxOrderByAggregateInput
+    _min?: CultureArticleMinOrderByAggregateInput
+    _sum?: CultureArticleSumOrderByAggregateInput
+  }
+
+  export type CultureArticleScalarWhereWithAggregatesInput = {
+    AND?: CultureArticleScalarWhereWithAggregatesInput | CultureArticleScalarWhereWithAggregatesInput[]
+    OR?: CultureArticleScalarWhereWithAggregatesInput[]
+    NOT?: CultureArticleScalarWhereWithAggregatesInput | CultureArticleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CultureArticle"> | string
+    slug?: StringWithAggregatesFilter<"CultureArticle"> | string
+    section?: EnumCultureSectionWithAggregatesFilter<"CultureArticle"> | $Enums.CultureSection
+    coverImageUrl?: StringNullableWithAggregatesFilter<"CultureArticle"> | string | null
+    readTimeMinutes?: IntNullableWithAggregatesFilter<"CultureArticle"> | number | null
+    publishedAt?: DateTimeNullableWithAggregatesFilter<"CultureArticle"> | Date | string | null
+    isPublished?: BoolWithAggregatesFilter<"CultureArticle"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"CultureArticle"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CultureArticle"> | Date | string
+  }
+
+  export type CultureArticleTranslationWhereInput = {
+    AND?: CultureArticleTranslationWhereInput | CultureArticleTranslationWhereInput[]
+    OR?: CultureArticleTranslationWhereInput[]
+    NOT?: CultureArticleTranslationWhereInput | CultureArticleTranslationWhereInput[]
+    id?: StringFilter<"CultureArticleTranslation"> | string
+    articleId?: StringFilter<"CultureArticleTranslation"> | string
+    lang?: EnumLanguageFilter<"CultureArticleTranslation"> | $Enums.Language
+    title?: StringFilter<"CultureArticleTranslation"> | string
+    subtitle?: StringNullableFilter<"CultureArticleTranslation"> | string | null
+    description?: StringNullableFilter<"CultureArticleTranslation"> | string | null
+    contentMarkdown?: StringFilter<"CultureArticleTranslation"> | string
+    createdAt?: DateTimeFilter<"CultureArticleTranslation"> | Date | string
+    updatedAt?: DateTimeFilter<"CultureArticleTranslation"> | Date | string
+    article?: XOR<CultureArticleScalarRelationFilter, CultureArticleWhereInput>
+  }
+
+  export type CultureArticleTranslationOrderByWithRelationInput = {
+    id?: SortOrder
+    articleId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    contentMarkdown?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    article?: CultureArticleOrderByWithRelationInput
+  }
+
+  export type CultureArticleTranslationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    articleId_lang?: CultureArticleTranslationArticleIdLangCompoundUniqueInput
+    AND?: CultureArticleTranslationWhereInput | CultureArticleTranslationWhereInput[]
+    OR?: CultureArticleTranslationWhereInput[]
+    NOT?: CultureArticleTranslationWhereInput | CultureArticleTranslationWhereInput[]
+    articleId?: StringFilter<"CultureArticleTranslation"> | string
+    lang?: EnumLanguageFilter<"CultureArticleTranslation"> | $Enums.Language
+    title?: StringFilter<"CultureArticleTranslation"> | string
+    subtitle?: StringNullableFilter<"CultureArticleTranslation"> | string | null
+    description?: StringNullableFilter<"CultureArticleTranslation"> | string | null
+    contentMarkdown?: StringFilter<"CultureArticleTranslation"> | string
+    createdAt?: DateTimeFilter<"CultureArticleTranslation"> | Date | string
+    updatedAt?: DateTimeFilter<"CultureArticleTranslation"> | Date | string
+    article?: XOR<CultureArticleScalarRelationFilter, CultureArticleWhereInput>
+  }, "id" | "articleId_lang">
+
+  export type CultureArticleTranslationOrderByWithAggregationInput = {
+    id?: SortOrder
+    articleId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    contentMarkdown?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CultureArticleTranslationCountOrderByAggregateInput
+    _max?: CultureArticleTranslationMaxOrderByAggregateInput
+    _min?: CultureArticleTranslationMinOrderByAggregateInput
+  }
+
+  export type CultureArticleTranslationScalarWhereWithAggregatesInput = {
+    AND?: CultureArticleTranslationScalarWhereWithAggregatesInput | CultureArticleTranslationScalarWhereWithAggregatesInput[]
+    OR?: CultureArticleTranslationScalarWhereWithAggregatesInput[]
+    NOT?: CultureArticleTranslationScalarWhereWithAggregatesInput | CultureArticleTranslationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CultureArticleTranslation"> | string
+    articleId?: StringWithAggregatesFilter<"CultureArticleTranslation"> | string
+    lang?: EnumLanguageWithAggregatesFilter<"CultureArticleTranslation"> | $Enums.Language
+    title?: StringWithAggregatesFilter<"CultureArticleTranslation"> | string
+    subtitle?: StringNullableWithAggregatesFilter<"CultureArticleTranslation"> | string | null
+    description?: StringNullableWithAggregatesFilter<"CultureArticleTranslation"> | string | null
+    contentMarkdown?: StringWithAggregatesFilter<"CultureArticleTranslation"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CultureArticleTranslation"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CultureArticleTranslation"> | Date | string
+  }
+
+  export type CultureTagWhereInput = {
+    AND?: CultureTagWhereInput | CultureTagWhereInput[]
+    OR?: CultureTagWhereInput[]
+    NOT?: CultureTagWhereInput | CultureTagWhereInput[]
+    id?: StringFilter<"CultureTag"> | string
+    name?: StringFilter<"CultureTag"> | string
+    createdAt?: DateTimeFilter<"CultureTag"> | Date | string
+    articles?: CultureTagOnArticleListRelationFilter
+  }
+
+  export type CultureTagOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    articles?: CultureTagOnArticleOrderByRelationAggregateInput
+  }
+
+  export type CultureTagWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: CultureTagWhereInput | CultureTagWhereInput[]
+    OR?: CultureTagWhereInput[]
+    NOT?: CultureTagWhereInput | CultureTagWhereInput[]
+    createdAt?: DateTimeFilter<"CultureTag"> | Date | string
+    articles?: CultureTagOnArticleListRelationFilter
+  }, "id" | "name">
+
+  export type CultureTagOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    _count?: CultureTagCountOrderByAggregateInput
+    _max?: CultureTagMaxOrderByAggregateInput
+    _min?: CultureTagMinOrderByAggregateInput
+  }
+
+  export type CultureTagScalarWhereWithAggregatesInput = {
+    AND?: CultureTagScalarWhereWithAggregatesInput | CultureTagScalarWhereWithAggregatesInput[]
+    OR?: CultureTagScalarWhereWithAggregatesInput[]
+    NOT?: CultureTagScalarWhereWithAggregatesInput | CultureTagScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CultureTag"> | string
+    name?: StringWithAggregatesFilter<"CultureTag"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CultureTag"> | Date | string
+  }
+
+  export type CultureTagOnArticleWhereInput = {
+    AND?: CultureTagOnArticleWhereInput | CultureTagOnArticleWhereInput[]
+    OR?: CultureTagOnArticleWhereInput[]
+    NOT?: CultureTagOnArticleWhereInput | CultureTagOnArticleWhereInput[]
+    articleId?: StringFilter<"CultureTagOnArticle"> | string
+    tagId?: StringFilter<"CultureTagOnArticle"> | string
+    article?: XOR<CultureArticleScalarRelationFilter, CultureArticleWhereInput>
+    tag?: XOR<CultureTagScalarRelationFilter, CultureTagWhereInput>
+  }
+
+  export type CultureTagOnArticleOrderByWithRelationInput = {
+    articleId?: SortOrder
+    tagId?: SortOrder
+    article?: CultureArticleOrderByWithRelationInput
+    tag?: CultureTagOrderByWithRelationInput
+  }
+
+  export type CultureTagOnArticleWhereUniqueInput = Prisma.AtLeast<{
+    articleId_tagId?: CultureTagOnArticleArticleIdTagIdCompoundUniqueInput
+    AND?: CultureTagOnArticleWhereInput | CultureTagOnArticleWhereInput[]
+    OR?: CultureTagOnArticleWhereInput[]
+    NOT?: CultureTagOnArticleWhereInput | CultureTagOnArticleWhereInput[]
+    articleId?: StringFilter<"CultureTagOnArticle"> | string
+    tagId?: StringFilter<"CultureTagOnArticle"> | string
+    article?: XOR<CultureArticleScalarRelationFilter, CultureArticleWhereInput>
+    tag?: XOR<CultureTagScalarRelationFilter, CultureTagWhereInput>
+  }, "articleId_tagId">
+
+  export type CultureTagOnArticleOrderByWithAggregationInput = {
+    articleId?: SortOrder
+    tagId?: SortOrder
+    _count?: CultureTagOnArticleCountOrderByAggregateInput
+    _max?: CultureTagOnArticleMaxOrderByAggregateInput
+    _min?: CultureTagOnArticleMinOrderByAggregateInput
+  }
+
+  export type CultureTagOnArticleScalarWhereWithAggregatesInput = {
+    AND?: CultureTagOnArticleScalarWhereWithAggregatesInput | CultureTagOnArticleScalarWhereWithAggregatesInput[]
+    OR?: CultureTagOnArticleScalarWhereWithAggregatesInput[]
+    NOT?: CultureTagOnArticleScalarWhereWithAggregatesInput | CultureTagOnArticleScalarWhereWithAggregatesInput[]
+    articleId?: StringWithAggregatesFilter<"CultureTagOnArticle"> | string
+    tagId?: StringWithAggregatesFilter<"CultureTagOnArticle"> | string
   }
 
   export type UserCreateInput = {
@@ -3496,6 +8670,261 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     revokedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CultureArticleCreateInput = {
+    id?: string
+    slug: string
+    section: $Enums.CultureSection
+    coverImageUrl?: string | null
+    readTimeMinutes?: number | null
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: CultureArticleTranslationCreateNestedManyWithoutArticleInput
+    tags?: CultureTagOnArticleCreateNestedManyWithoutArticleInput
+  }
+
+  export type CultureArticleUncheckedCreateInput = {
+    id?: string
+    slug: string
+    section: $Enums.CultureSection
+    coverImageUrl?: string | null
+    readTimeMinutes?: number | null
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: CultureArticleTranslationUncheckedCreateNestedManyWithoutArticleInput
+    tags?: CultureTagOnArticleUncheckedCreateNestedManyWithoutArticleInput
+  }
+
+  export type CultureArticleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    section?: EnumCultureSectionFieldUpdateOperationsInput | $Enums.CultureSection
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    readTimeMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: CultureArticleTranslationUpdateManyWithoutArticleNestedInput
+    tags?: CultureTagOnArticleUpdateManyWithoutArticleNestedInput
+  }
+
+  export type CultureArticleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    section?: EnumCultureSectionFieldUpdateOperationsInput | $Enums.CultureSection
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    readTimeMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: CultureArticleTranslationUncheckedUpdateManyWithoutArticleNestedInput
+    tags?: CultureTagOnArticleUncheckedUpdateManyWithoutArticleNestedInput
+  }
+
+  export type CultureArticleCreateManyInput = {
+    id?: string
+    slug: string
+    section: $Enums.CultureSection
+    coverImageUrl?: string | null
+    readTimeMinutes?: number | null
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CultureArticleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    section?: EnumCultureSectionFieldUpdateOperationsInput | $Enums.CultureSection
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    readTimeMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureArticleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    section?: EnumCultureSectionFieldUpdateOperationsInput | $Enums.CultureSection
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    readTimeMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureArticleTranslationCreateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+    contentMarkdown: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    article: CultureArticleCreateNestedOneWithoutTranslationsInput
+  }
+
+  export type CultureArticleTranslationUncheckedCreateInput = {
+    id?: string
+    articleId: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+    contentMarkdown: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CultureArticleTranslationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    contentMarkdown?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    article?: CultureArticleUpdateOneRequiredWithoutTranslationsNestedInput
+  }
+
+  export type CultureArticleTranslationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    articleId?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    contentMarkdown?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureArticleTranslationCreateManyInput = {
+    id?: string
+    articleId: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+    contentMarkdown: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CultureArticleTranslationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    contentMarkdown?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureArticleTranslationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    articleId?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    contentMarkdown?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureTagCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    articles?: CultureTagOnArticleCreateNestedManyWithoutTagInput
+  }
+
+  export type CultureTagUncheckedCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    articles?: CultureTagOnArticleUncheckedCreateNestedManyWithoutTagInput
+  }
+
+  export type CultureTagUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    articles?: CultureTagOnArticleUpdateManyWithoutTagNestedInput
+  }
+
+  export type CultureTagUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    articles?: CultureTagOnArticleUncheckedUpdateManyWithoutTagNestedInput
+  }
+
+  export type CultureTagCreateManyInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+  }
+
+  export type CultureTagUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureTagUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureTagOnArticleCreateInput = {
+    article: CultureArticleCreateNestedOneWithoutTagsInput
+    tag: CultureTagCreateNestedOneWithoutArticlesInput
+  }
+
+  export type CultureTagOnArticleUncheckedCreateInput = {
+    articleId: string
+    tagId: string
+  }
+
+  export type CultureTagOnArticleUpdateInput = {
+    article?: CultureArticleUpdateOneRequiredWithoutTagsNestedInput
+    tag?: CultureTagUpdateOneRequiredWithoutArticlesNestedInput
+  }
+
+  export type CultureTagOnArticleUncheckedUpdateInput = {
+    articleId?: StringFieldUpdateOperationsInput | string
+    tagId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CultureTagOnArticleCreateManyInput = {
+    articleId: string
+    tagId: string
+  }
+
+  export type CultureTagOnArticleUpdateManyMutationInput = {
+
+  }
+
+  export type CultureTagOnArticleUncheckedUpdateManyInput = {
+    articleId?: StringFieldUpdateOperationsInput | string
+    tagId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3688,6 +9117,233 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type EnumCultureSectionFilter<$PrismaModel = never> = {
+    equals?: $Enums.CultureSection | EnumCultureSectionFieldRefInput<$PrismaModel>
+    in?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumCultureSectionFilter<$PrismaModel> | $Enums.CultureSection
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type CultureArticleTranslationListRelationFilter = {
+    every?: CultureArticleTranslationWhereInput
+    some?: CultureArticleTranslationWhereInput
+    none?: CultureArticleTranslationWhereInput
+  }
+
+  export type CultureTagOnArticleListRelationFilter = {
+    every?: CultureTagOnArticleWhereInput
+    some?: CultureTagOnArticleWhereInput
+    none?: CultureTagOnArticleWhereInput
+  }
+
+  export type CultureArticleTranslationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CultureTagOnArticleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CultureArticleCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    section?: SortOrder
+    coverImageUrl?: SortOrder
+    readTimeMinutes?: SortOrder
+    publishedAt?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CultureArticleAvgOrderByAggregateInput = {
+    readTimeMinutes?: SortOrder
+  }
+
+  export type CultureArticleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    section?: SortOrder
+    coverImageUrl?: SortOrder
+    readTimeMinutes?: SortOrder
+    publishedAt?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CultureArticleMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    section?: SortOrder
+    coverImageUrl?: SortOrder
+    readTimeMinutes?: SortOrder
+    publishedAt?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CultureArticleSumOrderByAggregateInput = {
+    readTimeMinutes?: SortOrder
+  }
+
+  export type EnumCultureSectionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CultureSection | EnumCultureSectionFieldRefInput<$PrismaModel>
+    in?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumCultureSectionWithAggregatesFilter<$PrismaModel> | $Enums.CultureSection
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCultureSectionFilter<$PrismaModel>
+    _max?: NestedEnumCultureSectionFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type EnumLanguageFilter<$PrismaModel = never> = {
+    equals?: $Enums.Language | EnumLanguageFieldRefInput<$PrismaModel>
+    in?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageFilter<$PrismaModel> | $Enums.Language
+  }
+
+  export type CultureArticleScalarRelationFilter = {
+    is?: CultureArticleWhereInput
+    isNot?: CultureArticleWhereInput
+  }
+
+  export type CultureArticleTranslationArticleIdLangCompoundUniqueInput = {
+    articleId: string
+    lang: $Enums.Language
+  }
+
+  export type CultureArticleTranslationCountOrderByAggregateInput = {
+    id?: SortOrder
+    articleId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+    contentMarkdown?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CultureArticleTranslationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    articleId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+    contentMarkdown?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CultureArticleTranslationMinOrderByAggregateInput = {
+    id?: SortOrder
+    articleId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+    contentMarkdown?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumLanguageWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Language | EnumLanguageFieldRefInput<$PrismaModel>
+    in?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageWithAggregatesFilter<$PrismaModel> | $Enums.Language
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLanguageFilter<$PrismaModel>
+    _max?: NestedEnumLanguageFilter<$PrismaModel>
+  }
+
+  export type CultureTagCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CultureTagMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CultureTagMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CultureTagScalarRelationFilter = {
+    is?: CultureTagWhereInput
+    isNot?: CultureTagWhereInput
+  }
+
+  export type CultureTagOnArticleArticleIdTagIdCompoundUniqueInput = {
+    articleId: string
+    tagId: string
+  }
+
+  export type CultureTagOnArticleCountOrderByAggregateInput = {
+    articleId?: SortOrder
+    tagId?: SortOrder
+  }
+
+  export type CultureTagOnArticleMaxOrderByAggregateInput = {
+    articleId?: SortOrder
+    tagId?: SortOrder
+  }
+
+  export type CultureTagOnArticleMinOrderByAggregateInput = {
+    articleId?: SortOrder
+    tagId?: SortOrder
+  }
+
   export type RefreshTokenCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput> | RefreshTokenCreateWithoutUserInput[] | RefreshTokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput | RefreshTokenCreateOrConnectWithoutUserInput[]
@@ -3758,6 +9414,194 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutRefreshTokensInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRefreshTokensInput, UserUpdateWithoutRefreshTokensInput>, UserUncheckedUpdateWithoutRefreshTokensInput>
+  }
+
+  export type CultureArticleTranslationCreateNestedManyWithoutArticleInput = {
+    create?: XOR<CultureArticleTranslationCreateWithoutArticleInput, CultureArticleTranslationUncheckedCreateWithoutArticleInput> | CultureArticleTranslationCreateWithoutArticleInput[] | CultureArticleTranslationUncheckedCreateWithoutArticleInput[]
+    connectOrCreate?: CultureArticleTranslationCreateOrConnectWithoutArticleInput | CultureArticleTranslationCreateOrConnectWithoutArticleInput[]
+    createMany?: CultureArticleTranslationCreateManyArticleInputEnvelope
+    connect?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+  }
+
+  export type CultureTagOnArticleCreateNestedManyWithoutArticleInput = {
+    create?: XOR<CultureTagOnArticleCreateWithoutArticleInput, CultureTagOnArticleUncheckedCreateWithoutArticleInput> | CultureTagOnArticleCreateWithoutArticleInput[] | CultureTagOnArticleUncheckedCreateWithoutArticleInput[]
+    connectOrCreate?: CultureTagOnArticleCreateOrConnectWithoutArticleInput | CultureTagOnArticleCreateOrConnectWithoutArticleInput[]
+    createMany?: CultureTagOnArticleCreateManyArticleInputEnvelope
+    connect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+  }
+
+  export type CultureArticleTranslationUncheckedCreateNestedManyWithoutArticleInput = {
+    create?: XOR<CultureArticleTranslationCreateWithoutArticleInput, CultureArticleTranslationUncheckedCreateWithoutArticleInput> | CultureArticleTranslationCreateWithoutArticleInput[] | CultureArticleTranslationUncheckedCreateWithoutArticleInput[]
+    connectOrCreate?: CultureArticleTranslationCreateOrConnectWithoutArticleInput | CultureArticleTranslationCreateOrConnectWithoutArticleInput[]
+    createMany?: CultureArticleTranslationCreateManyArticleInputEnvelope
+    connect?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+  }
+
+  export type CultureTagOnArticleUncheckedCreateNestedManyWithoutArticleInput = {
+    create?: XOR<CultureTagOnArticleCreateWithoutArticleInput, CultureTagOnArticleUncheckedCreateWithoutArticleInput> | CultureTagOnArticleCreateWithoutArticleInput[] | CultureTagOnArticleUncheckedCreateWithoutArticleInput[]
+    connectOrCreate?: CultureTagOnArticleCreateOrConnectWithoutArticleInput | CultureTagOnArticleCreateOrConnectWithoutArticleInput[]
+    createMany?: CultureTagOnArticleCreateManyArticleInputEnvelope
+    connect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+  }
+
+  export type EnumCultureSectionFieldUpdateOperationsInput = {
+    set?: $Enums.CultureSection
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type CultureArticleTranslationUpdateManyWithoutArticleNestedInput = {
+    create?: XOR<CultureArticleTranslationCreateWithoutArticleInput, CultureArticleTranslationUncheckedCreateWithoutArticleInput> | CultureArticleTranslationCreateWithoutArticleInput[] | CultureArticleTranslationUncheckedCreateWithoutArticleInput[]
+    connectOrCreate?: CultureArticleTranslationCreateOrConnectWithoutArticleInput | CultureArticleTranslationCreateOrConnectWithoutArticleInput[]
+    upsert?: CultureArticleTranslationUpsertWithWhereUniqueWithoutArticleInput | CultureArticleTranslationUpsertWithWhereUniqueWithoutArticleInput[]
+    createMany?: CultureArticleTranslationCreateManyArticleInputEnvelope
+    set?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+    disconnect?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+    delete?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+    connect?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+    update?: CultureArticleTranslationUpdateWithWhereUniqueWithoutArticleInput | CultureArticleTranslationUpdateWithWhereUniqueWithoutArticleInput[]
+    updateMany?: CultureArticleTranslationUpdateManyWithWhereWithoutArticleInput | CultureArticleTranslationUpdateManyWithWhereWithoutArticleInput[]
+    deleteMany?: CultureArticleTranslationScalarWhereInput | CultureArticleTranslationScalarWhereInput[]
+  }
+
+  export type CultureTagOnArticleUpdateManyWithoutArticleNestedInput = {
+    create?: XOR<CultureTagOnArticleCreateWithoutArticleInput, CultureTagOnArticleUncheckedCreateWithoutArticleInput> | CultureTagOnArticleCreateWithoutArticleInput[] | CultureTagOnArticleUncheckedCreateWithoutArticleInput[]
+    connectOrCreate?: CultureTagOnArticleCreateOrConnectWithoutArticleInput | CultureTagOnArticleCreateOrConnectWithoutArticleInput[]
+    upsert?: CultureTagOnArticleUpsertWithWhereUniqueWithoutArticleInput | CultureTagOnArticleUpsertWithWhereUniqueWithoutArticleInput[]
+    createMany?: CultureTagOnArticleCreateManyArticleInputEnvelope
+    set?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    disconnect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    delete?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    connect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    update?: CultureTagOnArticleUpdateWithWhereUniqueWithoutArticleInput | CultureTagOnArticleUpdateWithWhereUniqueWithoutArticleInput[]
+    updateMany?: CultureTagOnArticleUpdateManyWithWhereWithoutArticleInput | CultureTagOnArticleUpdateManyWithWhereWithoutArticleInput[]
+    deleteMany?: CultureTagOnArticleScalarWhereInput | CultureTagOnArticleScalarWhereInput[]
+  }
+
+  export type CultureArticleTranslationUncheckedUpdateManyWithoutArticleNestedInput = {
+    create?: XOR<CultureArticleTranslationCreateWithoutArticleInput, CultureArticleTranslationUncheckedCreateWithoutArticleInput> | CultureArticleTranslationCreateWithoutArticleInput[] | CultureArticleTranslationUncheckedCreateWithoutArticleInput[]
+    connectOrCreate?: CultureArticleTranslationCreateOrConnectWithoutArticleInput | CultureArticleTranslationCreateOrConnectWithoutArticleInput[]
+    upsert?: CultureArticleTranslationUpsertWithWhereUniqueWithoutArticleInput | CultureArticleTranslationUpsertWithWhereUniqueWithoutArticleInput[]
+    createMany?: CultureArticleTranslationCreateManyArticleInputEnvelope
+    set?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+    disconnect?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+    delete?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+    connect?: CultureArticleTranslationWhereUniqueInput | CultureArticleTranslationWhereUniqueInput[]
+    update?: CultureArticleTranslationUpdateWithWhereUniqueWithoutArticleInput | CultureArticleTranslationUpdateWithWhereUniqueWithoutArticleInput[]
+    updateMany?: CultureArticleTranslationUpdateManyWithWhereWithoutArticleInput | CultureArticleTranslationUpdateManyWithWhereWithoutArticleInput[]
+    deleteMany?: CultureArticleTranslationScalarWhereInput | CultureArticleTranslationScalarWhereInput[]
+  }
+
+  export type CultureTagOnArticleUncheckedUpdateManyWithoutArticleNestedInput = {
+    create?: XOR<CultureTagOnArticleCreateWithoutArticleInput, CultureTagOnArticleUncheckedCreateWithoutArticleInput> | CultureTagOnArticleCreateWithoutArticleInput[] | CultureTagOnArticleUncheckedCreateWithoutArticleInput[]
+    connectOrCreate?: CultureTagOnArticleCreateOrConnectWithoutArticleInput | CultureTagOnArticleCreateOrConnectWithoutArticleInput[]
+    upsert?: CultureTagOnArticleUpsertWithWhereUniqueWithoutArticleInput | CultureTagOnArticleUpsertWithWhereUniqueWithoutArticleInput[]
+    createMany?: CultureTagOnArticleCreateManyArticleInputEnvelope
+    set?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    disconnect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    delete?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    connect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    update?: CultureTagOnArticleUpdateWithWhereUniqueWithoutArticleInput | CultureTagOnArticleUpdateWithWhereUniqueWithoutArticleInput[]
+    updateMany?: CultureTagOnArticleUpdateManyWithWhereWithoutArticleInput | CultureTagOnArticleUpdateManyWithWhereWithoutArticleInput[]
+    deleteMany?: CultureTagOnArticleScalarWhereInput | CultureTagOnArticleScalarWhereInput[]
+  }
+
+  export type CultureArticleCreateNestedOneWithoutTranslationsInput = {
+    create?: XOR<CultureArticleCreateWithoutTranslationsInput, CultureArticleUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: CultureArticleCreateOrConnectWithoutTranslationsInput
+    connect?: CultureArticleWhereUniqueInput
+  }
+
+  export type EnumLanguageFieldUpdateOperationsInput = {
+    set?: $Enums.Language
+  }
+
+  export type CultureArticleUpdateOneRequiredWithoutTranslationsNestedInput = {
+    create?: XOR<CultureArticleCreateWithoutTranslationsInput, CultureArticleUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: CultureArticleCreateOrConnectWithoutTranslationsInput
+    upsert?: CultureArticleUpsertWithoutTranslationsInput
+    connect?: CultureArticleWhereUniqueInput
+    update?: XOR<XOR<CultureArticleUpdateToOneWithWhereWithoutTranslationsInput, CultureArticleUpdateWithoutTranslationsInput>, CultureArticleUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type CultureTagOnArticleCreateNestedManyWithoutTagInput = {
+    create?: XOR<CultureTagOnArticleCreateWithoutTagInput, CultureTagOnArticleUncheckedCreateWithoutTagInput> | CultureTagOnArticleCreateWithoutTagInput[] | CultureTagOnArticleUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: CultureTagOnArticleCreateOrConnectWithoutTagInput | CultureTagOnArticleCreateOrConnectWithoutTagInput[]
+    createMany?: CultureTagOnArticleCreateManyTagInputEnvelope
+    connect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+  }
+
+  export type CultureTagOnArticleUncheckedCreateNestedManyWithoutTagInput = {
+    create?: XOR<CultureTagOnArticleCreateWithoutTagInput, CultureTagOnArticleUncheckedCreateWithoutTagInput> | CultureTagOnArticleCreateWithoutTagInput[] | CultureTagOnArticleUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: CultureTagOnArticleCreateOrConnectWithoutTagInput | CultureTagOnArticleCreateOrConnectWithoutTagInput[]
+    createMany?: CultureTagOnArticleCreateManyTagInputEnvelope
+    connect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+  }
+
+  export type CultureTagOnArticleUpdateManyWithoutTagNestedInput = {
+    create?: XOR<CultureTagOnArticleCreateWithoutTagInput, CultureTagOnArticleUncheckedCreateWithoutTagInput> | CultureTagOnArticleCreateWithoutTagInput[] | CultureTagOnArticleUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: CultureTagOnArticleCreateOrConnectWithoutTagInput | CultureTagOnArticleCreateOrConnectWithoutTagInput[]
+    upsert?: CultureTagOnArticleUpsertWithWhereUniqueWithoutTagInput | CultureTagOnArticleUpsertWithWhereUniqueWithoutTagInput[]
+    createMany?: CultureTagOnArticleCreateManyTagInputEnvelope
+    set?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    disconnect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    delete?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    connect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    update?: CultureTagOnArticleUpdateWithWhereUniqueWithoutTagInput | CultureTagOnArticleUpdateWithWhereUniqueWithoutTagInput[]
+    updateMany?: CultureTagOnArticleUpdateManyWithWhereWithoutTagInput | CultureTagOnArticleUpdateManyWithWhereWithoutTagInput[]
+    deleteMany?: CultureTagOnArticleScalarWhereInput | CultureTagOnArticleScalarWhereInput[]
+  }
+
+  export type CultureTagOnArticleUncheckedUpdateManyWithoutTagNestedInput = {
+    create?: XOR<CultureTagOnArticleCreateWithoutTagInput, CultureTagOnArticleUncheckedCreateWithoutTagInput> | CultureTagOnArticleCreateWithoutTagInput[] | CultureTagOnArticleUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: CultureTagOnArticleCreateOrConnectWithoutTagInput | CultureTagOnArticleCreateOrConnectWithoutTagInput[]
+    upsert?: CultureTagOnArticleUpsertWithWhereUniqueWithoutTagInput | CultureTagOnArticleUpsertWithWhereUniqueWithoutTagInput[]
+    createMany?: CultureTagOnArticleCreateManyTagInputEnvelope
+    set?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    disconnect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    delete?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    connect?: CultureTagOnArticleWhereUniqueInput | CultureTagOnArticleWhereUniqueInput[]
+    update?: CultureTagOnArticleUpdateWithWhereUniqueWithoutTagInput | CultureTagOnArticleUpdateWithWhereUniqueWithoutTagInput[]
+    updateMany?: CultureTagOnArticleUpdateManyWithWhereWithoutTagInput | CultureTagOnArticleUpdateManyWithWhereWithoutTagInput[]
+    deleteMany?: CultureTagOnArticleScalarWhereInput | CultureTagOnArticleScalarWhereInput[]
+  }
+
+  export type CultureArticleCreateNestedOneWithoutTagsInput = {
+    create?: XOR<CultureArticleCreateWithoutTagsInput, CultureArticleUncheckedCreateWithoutTagsInput>
+    connectOrCreate?: CultureArticleCreateOrConnectWithoutTagsInput
+    connect?: CultureArticleWhereUniqueInput
+  }
+
+  export type CultureTagCreateNestedOneWithoutArticlesInput = {
+    create?: XOR<CultureTagCreateWithoutArticlesInput, CultureTagUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: CultureTagCreateOrConnectWithoutArticlesInput
+    connect?: CultureTagWhereUniqueInput
+  }
+
+  export type CultureArticleUpdateOneRequiredWithoutTagsNestedInput = {
+    create?: XOR<CultureArticleCreateWithoutTagsInput, CultureArticleUncheckedCreateWithoutTagsInput>
+    connectOrCreate?: CultureArticleCreateOrConnectWithoutTagsInput
+    upsert?: CultureArticleUpsertWithoutTagsInput
+    connect?: CultureArticleWhereUniqueInput
+    update?: XOR<XOR<CultureArticleUpdateToOneWithWhereWithoutTagsInput, CultureArticleUpdateWithoutTagsInput>, CultureArticleUncheckedUpdateWithoutTagsInput>
+  }
+
+  export type CultureTagUpdateOneRequiredWithoutArticlesNestedInput = {
+    create?: XOR<CultureTagCreateWithoutArticlesInput, CultureTagUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: CultureTagCreateOrConnectWithoutArticlesInput
+    upsert?: CultureTagUpsertWithoutArticlesInput
+    connect?: CultureTagWhereUniqueInput
+    update?: XOR<XOR<CultureTagUpdateToOneWithWhereWithoutArticlesInput, CultureTagUpdateWithoutArticlesInput>, CultureTagUncheckedUpdateWithoutArticlesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3894,6 +9738,80 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumCultureSectionFilter<$PrismaModel = never> = {
+    equals?: $Enums.CultureSection | EnumCultureSectionFieldRefInput<$PrismaModel>
+    in?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumCultureSectionFilter<$PrismaModel> | $Enums.CultureSection
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedEnumCultureSectionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CultureSection | EnumCultureSectionFieldRefInput<$PrismaModel>
+    in?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumCultureSectionWithAggregatesFilter<$PrismaModel> | $Enums.CultureSection
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCultureSectionFilter<$PrismaModel>
+    _max?: NestedEnumCultureSectionFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedEnumLanguageFilter<$PrismaModel = never> = {
+    equals?: $Enums.Language | EnumLanguageFieldRefInput<$PrismaModel>
+    in?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageFilter<$PrismaModel> | $Enums.Language
+  }
+
+  export type NestedEnumLanguageWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Language | EnumLanguageFieldRefInput<$PrismaModel>
+    in?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageWithAggregatesFilter<$PrismaModel> | $Enums.Language
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLanguageFilter<$PrismaModel>
+    _max?: NestedEnumLanguageFilter<$PrismaModel>
+  }
+
   export type RefreshTokenCreateWithoutUserInput = {
     id?: string
     tokenHash: string
@@ -3999,6 +9917,321 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CultureArticleTranslationCreateWithoutArticleInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+    contentMarkdown: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CultureArticleTranslationUncheckedCreateWithoutArticleInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+    contentMarkdown: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CultureArticleTranslationCreateOrConnectWithoutArticleInput = {
+    where: CultureArticleTranslationWhereUniqueInput
+    create: XOR<CultureArticleTranslationCreateWithoutArticleInput, CultureArticleTranslationUncheckedCreateWithoutArticleInput>
+  }
+
+  export type CultureArticleTranslationCreateManyArticleInputEnvelope = {
+    data: CultureArticleTranslationCreateManyArticleInput | CultureArticleTranslationCreateManyArticleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CultureTagOnArticleCreateWithoutArticleInput = {
+    tag: CultureTagCreateNestedOneWithoutArticlesInput
+  }
+
+  export type CultureTagOnArticleUncheckedCreateWithoutArticleInput = {
+    tagId: string
+  }
+
+  export type CultureTagOnArticleCreateOrConnectWithoutArticleInput = {
+    where: CultureTagOnArticleWhereUniqueInput
+    create: XOR<CultureTagOnArticleCreateWithoutArticleInput, CultureTagOnArticleUncheckedCreateWithoutArticleInput>
+  }
+
+  export type CultureTagOnArticleCreateManyArticleInputEnvelope = {
+    data: CultureTagOnArticleCreateManyArticleInput | CultureTagOnArticleCreateManyArticleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CultureArticleTranslationUpsertWithWhereUniqueWithoutArticleInput = {
+    where: CultureArticleTranslationWhereUniqueInput
+    update: XOR<CultureArticleTranslationUpdateWithoutArticleInput, CultureArticleTranslationUncheckedUpdateWithoutArticleInput>
+    create: XOR<CultureArticleTranslationCreateWithoutArticleInput, CultureArticleTranslationUncheckedCreateWithoutArticleInput>
+  }
+
+  export type CultureArticleTranslationUpdateWithWhereUniqueWithoutArticleInput = {
+    where: CultureArticleTranslationWhereUniqueInput
+    data: XOR<CultureArticleTranslationUpdateWithoutArticleInput, CultureArticleTranslationUncheckedUpdateWithoutArticleInput>
+  }
+
+  export type CultureArticleTranslationUpdateManyWithWhereWithoutArticleInput = {
+    where: CultureArticleTranslationScalarWhereInput
+    data: XOR<CultureArticleTranslationUpdateManyMutationInput, CultureArticleTranslationUncheckedUpdateManyWithoutArticleInput>
+  }
+
+  export type CultureArticleTranslationScalarWhereInput = {
+    AND?: CultureArticleTranslationScalarWhereInput | CultureArticleTranslationScalarWhereInput[]
+    OR?: CultureArticleTranslationScalarWhereInput[]
+    NOT?: CultureArticleTranslationScalarWhereInput | CultureArticleTranslationScalarWhereInput[]
+    id?: StringFilter<"CultureArticleTranslation"> | string
+    articleId?: StringFilter<"CultureArticleTranslation"> | string
+    lang?: EnumLanguageFilter<"CultureArticleTranslation"> | $Enums.Language
+    title?: StringFilter<"CultureArticleTranslation"> | string
+    subtitle?: StringNullableFilter<"CultureArticleTranslation"> | string | null
+    description?: StringNullableFilter<"CultureArticleTranslation"> | string | null
+    contentMarkdown?: StringFilter<"CultureArticleTranslation"> | string
+    createdAt?: DateTimeFilter<"CultureArticleTranslation"> | Date | string
+    updatedAt?: DateTimeFilter<"CultureArticleTranslation"> | Date | string
+  }
+
+  export type CultureTagOnArticleUpsertWithWhereUniqueWithoutArticleInput = {
+    where: CultureTagOnArticleWhereUniqueInput
+    update: XOR<CultureTagOnArticleUpdateWithoutArticleInput, CultureTagOnArticleUncheckedUpdateWithoutArticleInput>
+    create: XOR<CultureTagOnArticleCreateWithoutArticleInput, CultureTagOnArticleUncheckedCreateWithoutArticleInput>
+  }
+
+  export type CultureTagOnArticleUpdateWithWhereUniqueWithoutArticleInput = {
+    where: CultureTagOnArticleWhereUniqueInput
+    data: XOR<CultureTagOnArticleUpdateWithoutArticleInput, CultureTagOnArticleUncheckedUpdateWithoutArticleInput>
+  }
+
+  export type CultureTagOnArticleUpdateManyWithWhereWithoutArticleInput = {
+    where: CultureTagOnArticleScalarWhereInput
+    data: XOR<CultureTagOnArticleUpdateManyMutationInput, CultureTagOnArticleUncheckedUpdateManyWithoutArticleInput>
+  }
+
+  export type CultureTagOnArticleScalarWhereInput = {
+    AND?: CultureTagOnArticleScalarWhereInput | CultureTagOnArticleScalarWhereInput[]
+    OR?: CultureTagOnArticleScalarWhereInput[]
+    NOT?: CultureTagOnArticleScalarWhereInput | CultureTagOnArticleScalarWhereInput[]
+    articleId?: StringFilter<"CultureTagOnArticle"> | string
+    tagId?: StringFilter<"CultureTagOnArticle"> | string
+  }
+
+  export type CultureArticleCreateWithoutTranslationsInput = {
+    id?: string
+    slug: string
+    section: $Enums.CultureSection
+    coverImageUrl?: string | null
+    readTimeMinutes?: number | null
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tags?: CultureTagOnArticleCreateNestedManyWithoutArticleInput
+  }
+
+  export type CultureArticleUncheckedCreateWithoutTranslationsInput = {
+    id?: string
+    slug: string
+    section: $Enums.CultureSection
+    coverImageUrl?: string | null
+    readTimeMinutes?: number | null
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tags?: CultureTagOnArticleUncheckedCreateNestedManyWithoutArticleInput
+  }
+
+  export type CultureArticleCreateOrConnectWithoutTranslationsInput = {
+    where: CultureArticleWhereUniqueInput
+    create: XOR<CultureArticleCreateWithoutTranslationsInput, CultureArticleUncheckedCreateWithoutTranslationsInput>
+  }
+
+  export type CultureArticleUpsertWithoutTranslationsInput = {
+    update: XOR<CultureArticleUpdateWithoutTranslationsInput, CultureArticleUncheckedUpdateWithoutTranslationsInput>
+    create: XOR<CultureArticleCreateWithoutTranslationsInput, CultureArticleUncheckedCreateWithoutTranslationsInput>
+    where?: CultureArticleWhereInput
+  }
+
+  export type CultureArticleUpdateToOneWithWhereWithoutTranslationsInput = {
+    where?: CultureArticleWhereInput
+    data: XOR<CultureArticleUpdateWithoutTranslationsInput, CultureArticleUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type CultureArticleUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    section?: EnumCultureSectionFieldUpdateOperationsInput | $Enums.CultureSection
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    readTimeMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tags?: CultureTagOnArticleUpdateManyWithoutArticleNestedInput
+  }
+
+  export type CultureArticleUncheckedUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    section?: EnumCultureSectionFieldUpdateOperationsInput | $Enums.CultureSection
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    readTimeMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tags?: CultureTagOnArticleUncheckedUpdateManyWithoutArticleNestedInput
+  }
+
+  export type CultureTagOnArticleCreateWithoutTagInput = {
+    article: CultureArticleCreateNestedOneWithoutTagsInput
+  }
+
+  export type CultureTagOnArticleUncheckedCreateWithoutTagInput = {
+    articleId: string
+  }
+
+  export type CultureTagOnArticleCreateOrConnectWithoutTagInput = {
+    where: CultureTagOnArticleWhereUniqueInput
+    create: XOR<CultureTagOnArticleCreateWithoutTagInput, CultureTagOnArticleUncheckedCreateWithoutTagInput>
+  }
+
+  export type CultureTagOnArticleCreateManyTagInputEnvelope = {
+    data: CultureTagOnArticleCreateManyTagInput | CultureTagOnArticleCreateManyTagInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CultureTagOnArticleUpsertWithWhereUniqueWithoutTagInput = {
+    where: CultureTagOnArticleWhereUniqueInput
+    update: XOR<CultureTagOnArticleUpdateWithoutTagInput, CultureTagOnArticleUncheckedUpdateWithoutTagInput>
+    create: XOR<CultureTagOnArticleCreateWithoutTagInput, CultureTagOnArticleUncheckedCreateWithoutTagInput>
+  }
+
+  export type CultureTagOnArticleUpdateWithWhereUniqueWithoutTagInput = {
+    where: CultureTagOnArticleWhereUniqueInput
+    data: XOR<CultureTagOnArticleUpdateWithoutTagInput, CultureTagOnArticleUncheckedUpdateWithoutTagInput>
+  }
+
+  export type CultureTagOnArticleUpdateManyWithWhereWithoutTagInput = {
+    where: CultureTagOnArticleScalarWhereInput
+    data: XOR<CultureTagOnArticleUpdateManyMutationInput, CultureTagOnArticleUncheckedUpdateManyWithoutTagInput>
+  }
+
+  export type CultureArticleCreateWithoutTagsInput = {
+    id?: string
+    slug: string
+    section: $Enums.CultureSection
+    coverImageUrl?: string | null
+    readTimeMinutes?: number | null
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: CultureArticleTranslationCreateNestedManyWithoutArticleInput
+  }
+
+  export type CultureArticleUncheckedCreateWithoutTagsInput = {
+    id?: string
+    slug: string
+    section: $Enums.CultureSection
+    coverImageUrl?: string | null
+    readTimeMinutes?: number | null
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: CultureArticleTranslationUncheckedCreateNestedManyWithoutArticleInput
+  }
+
+  export type CultureArticleCreateOrConnectWithoutTagsInput = {
+    where: CultureArticleWhereUniqueInput
+    create: XOR<CultureArticleCreateWithoutTagsInput, CultureArticleUncheckedCreateWithoutTagsInput>
+  }
+
+  export type CultureTagCreateWithoutArticlesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+  }
+
+  export type CultureTagUncheckedCreateWithoutArticlesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+  }
+
+  export type CultureTagCreateOrConnectWithoutArticlesInput = {
+    where: CultureTagWhereUniqueInput
+    create: XOR<CultureTagCreateWithoutArticlesInput, CultureTagUncheckedCreateWithoutArticlesInput>
+  }
+
+  export type CultureArticleUpsertWithoutTagsInput = {
+    update: XOR<CultureArticleUpdateWithoutTagsInput, CultureArticleUncheckedUpdateWithoutTagsInput>
+    create: XOR<CultureArticleCreateWithoutTagsInput, CultureArticleUncheckedCreateWithoutTagsInput>
+    where?: CultureArticleWhereInput
+  }
+
+  export type CultureArticleUpdateToOneWithWhereWithoutTagsInput = {
+    where?: CultureArticleWhereInput
+    data: XOR<CultureArticleUpdateWithoutTagsInput, CultureArticleUncheckedUpdateWithoutTagsInput>
+  }
+
+  export type CultureArticleUpdateWithoutTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    section?: EnumCultureSectionFieldUpdateOperationsInput | $Enums.CultureSection
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    readTimeMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: CultureArticleTranslationUpdateManyWithoutArticleNestedInput
+  }
+
+  export type CultureArticleUncheckedUpdateWithoutTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    section?: EnumCultureSectionFieldUpdateOperationsInput | $Enums.CultureSection
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    readTimeMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: CultureArticleTranslationUncheckedUpdateManyWithoutArticleNestedInput
+  }
+
+  export type CultureTagUpsertWithoutArticlesInput = {
+    update: XOR<CultureTagUpdateWithoutArticlesInput, CultureTagUncheckedUpdateWithoutArticlesInput>
+    create: XOR<CultureTagCreateWithoutArticlesInput, CultureTagUncheckedCreateWithoutArticlesInput>
+    where?: CultureTagWhereInput
+  }
+
+  export type CultureTagUpdateToOneWithWhereWithoutArticlesInput = {
+    where?: CultureTagWhereInput
+    data: XOR<CultureTagUpdateWithoutArticlesInput, CultureTagUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type CultureTagUpdateWithoutArticlesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureTagUncheckedUpdateWithoutArticlesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type RefreshTokenCreateManyUserInput = {
     id?: string
     tokenHash: string
@@ -4033,6 +10266,82 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     revokedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CultureArticleTranslationCreateManyArticleInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+    contentMarkdown: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CultureTagOnArticleCreateManyArticleInput = {
+    tagId: string
+  }
+
+  export type CultureArticleTranslationUpdateWithoutArticleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    contentMarkdown?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureArticleTranslationUncheckedUpdateWithoutArticleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    contentMarkdown?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureArticleTranslationUncheckedUpdateManyWithoutArticleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    contentMarkdown?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CultureTagOnArticleUpdateWithoutArticleInput = {
+    tag?: CultureTagUpdateOneRequiredWithoutArticlesNestedInput
+  }
+
+  export type CultureTagOnArticleUncheckedUpdateWithoutArticleInput = {
+    tagId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CultureTagOnArticleUncheckedUpdateManyWithoutArticleInput = {
+    tagId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CultureTagOnArticleCreateManyTagInput = {
+    articleId: string
+  }
+
+  export type CultureTagOnArticleUpdateWithoutTagInput = {
+    article?: CultureArticleUpdateOneRequiredWithoutTagsNestedInput
+  }
+
+  export type CultureTagOnArticleUncheckedUpdateWithoutTagInput = {
+    articleId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CultureTagOnArticleUncheckedUpdateManyWithoutTagInput = {
+    articleId?: StringFieldUpdateOperationsInput | string
   }
 
 

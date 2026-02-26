@@ -1,0 +1,20 @@
+{
+  "slug": "post-session-downshift",
+  "section": "RELAX",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Восстановление после тренировки: “downshift”",
+      "subtitle": "Как быстрее вернуть спокойный пульс и ясность",
+      "description": "Простой протокол на 3–5 минут: дыхание, внимание и мягкое переключение нервной системы."
+    },
+    "en": {
+      "title": "Post‑Session Downshift",
+      "subtitle": "How to return to a calm pulse and clear mind",
+      "description": "A simple 3–5 minute protocol: breathing, attention, and nervous-system downshifting."
+    }
+  }
+}

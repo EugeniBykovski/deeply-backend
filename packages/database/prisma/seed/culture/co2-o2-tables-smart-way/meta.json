@@ -1,0 +1,20 @@
+{
+  "slug": "co2-o2-tables-smart-way",
+  "section": "TRAINING",
+  "coverImageUrl": null,
+  "readTimeMinutes": 7,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "CO₂ и O₂ таблицы: умный подход",
+      "subtitle": "Как тренировать толерантность, а не героизм",
+      "description": "Зачем нужны таблицы, что они тренируют, и как не превратить их в опасный эксперимент."
+    },
+    "en": {
+      "title": "CO₂ & O₂ Tables: The Smart Way",
+      "subtitle": "Training tolerance, not heroics",
+      "description": "What tables actually train — and how to avoid turning them into a risky experiment."
+    }
+  }
+}

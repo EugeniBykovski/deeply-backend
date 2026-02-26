@@ -1,0 +1,20 @@
+{
+  "slug": "buddy-protocol-checklist",
+  "section": "SAFETY",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Правило напарника: чек‑лист",
+      "subtitle": "Минимальный протокол, который должен знать каждый",
+      "description": "Кого считать “напарником”, где смотреть, что делать на поверхности и когда вмешиваться."
+    },
+    "en": {
+      "title": "Buddy Rule: A Checklist",
+      "subtitle": "A minimal protocol everyone should know",
+      "description": "Who counts as a buddy, where to watch, what to do on the surface, and when to intervene."
+    }
+  }
+}

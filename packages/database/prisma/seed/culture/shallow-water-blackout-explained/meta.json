@@ -1,0 +1,20 @@
+{
+  "slug": "shallow-water-blackout-explained",
+  "section": "SAFETY",
+  "coverImageUrl": null,
+  "readTimeMinutes": 7,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Shallow‑water blackout: что это и почему происходит",
+      "subtitle": "Самая опасная часть задержки дыхания — “на выходе”",
+      "description": "Как может наступить потеря сознания без предупреждения и почему гипервентиляция повышает риск."
+    },
+    "en": {
+      "title": "Shallow‑Water Blackout: What It Is",
+      "subtitle": "The most dangerous moment is often the surfacing phase",
+      "description": "How blackout can happen without warning — and why hyperventilation increases risk."
+    }
+  }
+}

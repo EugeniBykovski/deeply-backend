@@ -1,0 +1,20 @@
+{
+  "slug": "vertical-blue-deans-blue-hole",
+  "section": "COMPETITIONS",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Vertical Blue и Dean’s Blue Hole",
+      "subtitle": "Почему это место стало “меккой” глубины",
+      "description": "Локация, условия и атмосфера легендарного соревнования — и почему туда стремятся атлеты."
+    },
+    "en": {
+      "title": "Vertical Blue & Dean’s Blue Hole",
+      "subtitle": "Why this spot became a depth icon",
+      "description": "The location, conditions, and the vibe behind one of freediving’s most iconic competitions."
+    }
+  }
+}

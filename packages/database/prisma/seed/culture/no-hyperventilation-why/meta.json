@@ -1,0 +1,20 @@
+{
+  "slug": "no-hyperventilation-why",
+  "section": "SAFETY",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Почему нельзя гипервентилировать",
+      "subtitle": "Самая частая ошибка новичков",
+      "description": "Гипервентиляция не “даёт больше кислорода”, но может убрать сигнал опасности и повысить риск blackout."
+    },
+    "en": {
+      "title": "Why You Shouldn’t Hyperventilate",
+      "subtitle": "The most common beginner mistake",
+      "description": "Hyperventilation doesn’t meaningfully “add oxygen,” but it can remove warning signals and raise blackout risk."
+    }
+  }
+}

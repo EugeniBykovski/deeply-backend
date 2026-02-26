@@ -138,6 +138,41 @@ exports.Prisma.RefreshTokenScalarFieldEnum = {
   revokedAt: 'revokedAt'
 };
 
+exports.Prisma.CultureArticleScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  section: 'section',
+  coverImageUrl: 'coverImageUrl',
+  readTimeMinutes: 'readTimeMinutes',
+  publishedAt: 'publishedAt',
+  isPublished: 'isPublished',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CultureArticleTranslationScalarFieldEnum = {
+  id: 'id',
+  articleId: 'articleId',
+  lang: 'lang',
+  title: 'title',
+  subtitle: 'subtitle',
+  description: 'description',
+  contentMarkdown: 'contentMarkdown',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CultureTagScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CultureTagOnArticleScalarFieldEnum = {
+  articleId: 'articleId',
+  tagId: 'tagId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -152,11 +187,27 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.CultureSection = exports.$Enums.CultureSection = {
+  STORIES: 'STORIES',
+  ATHLETES: 'ATHLETES',
+  COMPETITIONS: 'COMPETITIONS',
+  TRAINING: 'TRAINING',
+  RELAX: 'RELAX',
+  SAFETY: 'SAFETY'
+};
 
+exports.Language = exports.$Enums.Language = {
+  en: 'en',
+  ru: 'ru'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
-  RefreshToken: 'RefreshToken'
+  RefreshToken: 'RefreshToken',
+  CultureArticle: 'CultureArticle',
+  CultureArticleTranslation: 'CultureArticleTranslation',
+  CultureTag: 'CultureTag',
+  CultureTagOnArticle: 'CultureTagOnArticle'
 };
 
 /**

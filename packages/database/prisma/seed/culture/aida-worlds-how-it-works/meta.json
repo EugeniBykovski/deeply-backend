@@ -1,0 +1,20 @@
+{
+  "slug": "aida-worlds-how-it-works",
+  "section": "COMPETITIONS",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "AIDA Worlds: как устроены старты",
+      "subtitle": "Что происходит “за кадром” чемпионатов",
+      "description": "Протоколы, заявка глубины/времени, судейство и почему соревнования — это дисциплина безопасности."
+    },
+    "en": {
+      "title": "AIDA Worlds: How Competitions Work",
+      "subtitle": "What happens behind the scenes",
+      "description": "Announcements, judging, protocols — and why competition is structured safety."
+    }
+  }
+}

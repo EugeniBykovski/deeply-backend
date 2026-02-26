@@ -1,0 +1,20 @@
+{
+  "slug": "natalia-molchanova-legacy",
+  "section": "ATHLETES",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Наталья Молчанова: наследие",
+      "subtitle": "Почему её подход до сих пор считают эталонным",
+      "description": "Не про цифры — про стиль: эффективность, спокойствие и системность в тренировках."
+    },
+    "en": {
+      "title": "Natalia Molchanova: The Legacy",
+      "subtitle": "Why her approach is still considered the gold standard",
+      "description": "Less about numbers, more about style: efficiency, calm, and a system-first mindset."
+    }
+  }
+}

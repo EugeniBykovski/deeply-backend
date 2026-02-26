@@ -1,0 +1,20 @@
+{
+  "slug": "why-no-limits-is-gone",
+  "section": "STORIES",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Почему современный спорт ушёл от No Limits",
+      "subtitle": "Эволюция правил: от “самого глубокого” к “самому контролируемому”",
+      "description": "No Limits выглядел как вершина свободы, но правила и культура спорта выбрали безопасность и повторяемость."
+    },
+    "en": {
+      "title": "Why Modern Sport Moved Away from No Limits",
+      "subtitle": "From “deepest possible” to “most controlled”",
+      "description": "No Limits looked like ultimate freedom, but the sport chose safety, standards, and repeatability."
+    }
+  }
+}

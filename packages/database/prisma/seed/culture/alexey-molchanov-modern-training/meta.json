@@ -1,0 +1,20 @@
+{
+  "slug": "alexey-molchanov-modern-training",
+  "section": "ATHLETES",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-02-26",
+  "translations": {
+    "ru": {
+      "title": "Алексей Молчанов: современный подход",
+      "subtitle": "Как выглядит фридайвинг в эпоху системных тренировок",
+      "description": "Планирование, объём, восстановление и психологическая устойчивость как часть результата."
+    },
+    "en": {
+      "title": "Alexey Molchanov: A Modern Approach",
+      "subtitle": "Freediving in the era of systems-based training",
+      "description": "Planning, volume, recovery, and mental resilience as part of performance."
+    }
+  }
+}
