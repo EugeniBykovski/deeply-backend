@@ -7,6 +7,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { seedTrain } from "./seed.train";
 
 const connectionString = process.env.DATABASE_URL;
 if (!connectionString) {
@@ -116,6 +117,8 @@ async function main() {
   for (const folder of folders) {
     await upsertArticle(folder);
   }
+
+  await seedTrain(prisma);
 }
 
 main()

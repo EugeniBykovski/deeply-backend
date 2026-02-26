@@ -43,6 +43,36 @@ export type CultureTag = $Result.DefaultSelection<Prisma.$CultureTagPayload>
  * 
  */
 export type CultureTagOnArticle = $Result.DefaultSelection<Prisma.$CultureTagOnArticlePayload>
+/**
+ * Model TrainingProgram
+ * 
+ */
+export type TrainingProgram = $Result.DefaultSelection<Prisma.$TrainingProgramPayload>
+/**
+ * Model TrainingProgramTranslation
+ * 
+ */
+export type TrainingProgramTranslation = $Result.DefaultSelection<Prisma.$TrainingProgramTranslationPayload>
+/**
+ * Model TrainingTemplate
+ * 
+ */
+export type TrainingTemplate = $Result.DefaultSelection<Prisma.$TrainingTemplatePayload>
+/**
+ * Model TrainingTemplateTranslation
+ * 
+ */
+export type TrainingTemplateTranslation = $Result.DefaultSelection<Prisma.$TrainingTemplateTranslationPayload>
+/**
+ * Model TrainingStep
+ * 
+ */
+export type TrainingStep = $Result.DefaultSelection<Prisma.$TrainingStepPayload>
+/**
+ * Model TrainingRun
+ * 
+ */
+export type TrainingRun = $Result.DefaultSelection<Prisma.$TrainingRunPayload>
 
 /**
  * Enums
@@ -67,6 +97,35 @@ export const CultureSection: {
 
 export type CultureSection = (typeof CultureSection)[keyof typeof CultureSection]
 
+
+export const TrainingProgramKey: {
+  BEGINNER: 'BEGINNER',
+  INTERMEDIATE: 'INTERMEDIATE',
+  PRO: 'PRO',
+  SQUARE: 'SQUARE',
+  CALMING: 'CALMING'
+};
+
+export type TrainingProgramKey = (typeof TrainingProgramKey)[keyof typeof TrainingProgramKey]
+
+
+export const TrainingKind: {
+  PRESET: 'PRESET',
+  PRIVATE: 'PRIVATE'
+};
+
+export type TrainingKind = (typeof TrainingKind)[keyof typeof TrainingKind]
+
+
+export const BreathPhase: {
+  INHALE: 'INHALE',
+  HOLD: 'HOLD',
+  EXHALE: 'EXHALE',
+  REST: 'REST'
+};
+
+export type BreathPhase = (typeof BreathPhase)[keyof typeof BreathPhase]
+
 }
 
 export type Language = $Enums.Language
@@ -76,6 +135,18 @@ export const Language: typeof $Enums.Language
 export type CultureSection = $Enums.CultureSection
 
 export const CultureSection: typeof $Enums.CultureSection
+
+export type TrainingProgramKey = $Enums.TrainingProgramKey
+
+export const TrainingProgramKey: typeof $Enums.TrainingProgramKey
+
+export type TrainingKind = $Enums.TrainingKind
+
+export const TrainingKind: typeof $Enums.TrainingKind
+
+export type BreathPhase = $Enums.BreathPhase
+
+export const BreathPhase: typeof $Enums.BreathPhase
 
 /**
  * ##  Prisma Client ʲˢ
@@ -253,6 +324,66 @@ export class PrismaClient<
     * ```
     */
   get cultureTagOnArticle(): Prisma.CultureTagOnArticleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trainingProgram`: Exposes CRUD operations for the **TrainingProgram** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrainingPrograms
+    * const trainingPrograms = await prisma.trainingProgram.findMany()
+    * ```
+    */
+  get trainingProgram(): Prisma.TrainingProgramDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trainingProgramTranslation`: Exposes CRUD operations for the **TrainingProgramTranslation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrainingProgramTranslations
+    * const trainingProgramTranslations = await prisma.trainingProgramTranslation.findMany()
+    * ```
+    */
+  get trainingProgramTranslation(): Prisma.TrainingProgramTranslationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trainingTemplate`: Exposes CRUD operations for the **TrainingTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrainingTemplates
+    * const trainingTemplates = await prisma.trainingTemplate.findMany()
+    * ```
+    */
+  get trainingTemplate(): Prisma.TrainingTemplateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trainingTemplateTranslation`: Exposes CRUD operations for the **TrainingTemplateTranslation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrainingTemplateTranslations
+    * const trainingTemplateTranslations = await prisma.trainingTemplateTranslation.findMany()
+    * ```
+    */
+  get trainingTemplateTranslation(): Prisma.TrainingTemplateTranslationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trainingStep`: Exposes CRUD operations for the **TrainingStep** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrainingSteps
+    * const trainingSteps = await prisma.trainingStep.findMany()
+    * ```
+    */
+  get trainingStep(): Prisma.TrainingStepDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trainingRun`: Exposes CRUD operations for the **TrainingRun** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrainingRuns
+    * const trainingRuns = await prisma.trainingRun.findMany()
+    * ```
+    */
+  get trainingRun(): Prisma.TrainingRunDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -692,7 +823,13 @@ export namespace Prisma {
     CultureArticle: 'CultureArticle',
     CultureArticleTranslation: 'CultureArticleTranslation',
     CultureTag: 'CultureTag',
-    CultureTagOnArticle: 'CultureTagOnArticle'
+    CultureTagOnArticle: 'CultureTagOnArticle',
+    TrainingProgram: 'TrainingProgram',
+    TrainingProgramTranslation: 'TrainingProgramTranslation',
+    TrainingTemplate: 'TrainingTemplate',
+    TrainingTemplateTranslation: 'TrainingTemplateTranslation',
+    TrainingStep: 'TrainingStep',
+    TrainingRun: 'TrainingRun'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -708,7 +845,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshToken" | "cultureArticle" | "cultureArticleTranslation" | "cultureTag" | "cultureTagOnArticle"
+      modelProps: "user" | "refreshToken" | "cultureArticle" | "cultureArticleTranslation" | "cultureTag" | "cultureTagOnArticle" | "trainingProgram" | "trainingProgramTranslation" | "trainingTemplate" | "trainingTemplateTranslation" | "trainingStep" | "trainingRun"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1156,6 +1293,450 @@ export namespace Prisma {
           }
         }
       }
+      TrainingProgram: {
+        payload: Prisma.$TrainingProgramPayload<ExtArgs>
+        fields: Prisma.TrainingProgramFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrainingProgramFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrainingProgramFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>
+          }
+          findFirst: {
+            args: Prisma.TrainingProgramFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrainingProgramFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>
+          }
+          findMany: {
+            args: Prisma.TrainingProgramFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>[]
+          }
+          create: {
+            args: Prisma.TrainingProgramCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>
+          }
+          createMany: {
+            args: Prisma.TrainingProgramCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrainingProgramCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>[]
+          }
+          delete: {
+            args: Prisma.TrainingProgramDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>
+          }
+          update: {
+            args: Prisma.TrainingProgramUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrainingProgramDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrainingProgramUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrainingProgramUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>[]
+          }
+          upsert: {
+            args: Prisma.TrainingProgramUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramPayload>
+          }
+          aggregate: {
+            args: Prisma.TrainingProgramAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrainingProgram>
+          }
+          groupBy: {
+            args: Prisma.TrainingProgramGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrainingProgramGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrainingProgramCountArgs<ExtArgs>
+            result: $Utils.Optional<TrainingProgramCountAggregateOutputType> | number
+          }
+        }
+      }
+      TrainingProgramTranslation: {
+        payload: Prisma.$TrainingProgramTranslationPayload<ExtArgs>
+        fields: Prisma.TrainingProgramTranslationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrainingProgramTranslationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrainingProgramTranslationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>
+          }
+          findFirst: {
+            args: Prisma.TrainingProgramTranslationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrainingProgramTranslationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>
+          }
+          findMany: {
+            args: Prisma.TrainingProgramTranslationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>[]
+          }
+          create: {
+            args: Prisma.TrainingProgramTranslationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>
+          }
+          createMany: {
+            args: Prisma.TrainingProgramTranslationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrainingProgramTranslationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>[]
+          }
+          delete: {
+            args: Prisma.TrainingProgramTranslationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>
+          }
+          update: {
+            args: Prisma.TrainingProgramTranslationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrainingProgramTranslationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrainingProgramTranslationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrainingProgramTranslationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>[]
+          }
+          upsert: {
+            args: Prisma.TrainingProgramTranslationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgramTranslationPayload>
+          }
+          aggregate: {
+            args: Prisma.TrainingProgramTranslationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrainingProgramTranslation>
+          }
+          groupBy: {
+            args: Prisma.TrainingProgramTranslationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrainingProgramTranslationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrainingProgramTranslationCountArgs<ExtArgs>
+            result: $Utils.Optional<TrainingProgramTranslationCountAggregateOutputType> | number
+          }
+        }
+      }
+      TrainingTemplate: {
+        payload: Prisma.$TrainingTemplatePayload<ExtArgs>
+        fields: Prisma.TrainingTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrainingTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrainingTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.TrainingTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrainingTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.TrainingTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.TrainingTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.TrainingTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrainingTemplateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.TrainingTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>
+          }
+          update: {
+            args: Prisma.TrainingTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.TrainingTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrainingTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrainingTemplateUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>[]
+          }
+          upsert: {
+            args: Prisma.TrainingTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.TrainingTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrainingTemplate>
+          }
+          groupBy: {
+            args: Prisma.TrainingTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrainingTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrainingTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<TrainingTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
+      TrainingTemplateTranslation: {
+        payload: Prisma.$TrainingTemplateTranslationPayload<ExtArgs>
+        fields: Prisma.TrainingTemplateTranslationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrainingTemplateTranslationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrainingTemplateTranslationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>
+          }
+          findFirst: {
+            args: Prisma.TrainingTemplateTranslationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrainingTemplateTranslationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>
+          }
+          findMany: {
+            args: Prisma.TrainingTemplateTranslationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>[]
+          }
+          create: {
+            args: Prisma.TrainingTemplateTranslationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>
+          }
+          createMany: {
+            args: Prisma.TrainingTemplateTranslationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrainingTemplateTranslationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>[]
+          }
+          delete: {
+            args: Prisma.TrainingTemplateTranslationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>
+          }
+          update: {
+            args: Prisma.TrainingTemplateTranslationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrainingTemplateTranslationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrainingTemplateTranslationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrainingTemplateTranslationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>[]
+          }
+          upsert: {
+            args: Prisma.TrainingTemplateTranslationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingTemplateTranslationPayload>
+          }
+          aggregate: {
+            args: Prisma.TrainingTemplateTranslationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrainingTemplateTranslation>
+          }
+          groupBy: {
+            args: Prisma.TrainingTemplateTranslationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrainingTemplateTranslationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrainingTemplateTranslationCountArgs<ExtArgs>
+            result: $Utils.Optional<TrainingTemplateTranslationCountAggregateOutputType> | number
+          }
+        }
+      }
+      TrainingStep: {
+        payload: Prisma.$TrainingStepPayload<ExtArgs>
+        fields: Prisma.TrainingStepFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrainingStepFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrainingStepFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>
+          }
+          findFirst: {
+            args: Prisma.TrainingStepFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrainingStepFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>
+          }
+          findMany: {
+            args: Prisma.TrainingStepFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>[]
+          }
+          create: {
+            args: Prisma.TrainingStepCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>
+          }
+          createMany: {
+            args: Prisma.TrainingStepCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrainingStepCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>[]
+          }
+          delete: {
+            args: Prisma.TrainingStepDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>
+          }
+          update: {
+            args: Prisma.TrainingStepUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrainingStepDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrainingStepUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrainingStepUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>[]
+          }
+          upsert: {
+            args: Prisma.TrainingStepUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingStepPayload>
+          }
+          aggregate: {
+            args: Prisma.TrainingStepAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrainingStep>
+          }
+          groupBy: {
+            args: Prisma.TrainingStepGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrainingStepGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrainingStepCountArgs<ExtArgs>
+            result: $Utils.Optional<TrainingStepCountAggregateOutputType> | number
+          }
+        }
+      }
+      TrainingRun: {
+        payload: Prisma.$TrainingRunPayload<ExtArgs>
+        fields: Prisma.TrainingRunFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrainingRunFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrainingRunFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>
+          }
+          findFirst: {
+            args: Prisma.TrainingRunFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrainingRunFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>
+          }
+          findMany: {
+            args: Prisma.TrainingRunFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>[]
+          }
+          create: {
+            args: Prisma.TrainingRunCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>
+          }
+          createMany: {
+            args: Prisma.TrainingRunCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrainingRunCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>[]
+          }
+          delete: {
+            args: Prisma.TrainingRunDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>
+          }
+          update: {
+            args: Prisma.TrainingRunUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrainingRunDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrainingRunUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrainingRunUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>[]
+          }
+          upsert: {
+            args: Prisma.TrainingRunUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRunPayload>
+          }
+          aggregate: {
+            args: Prisma.TrainingRunAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrainingRun>
+          }
+          groupBy: {
+            args: Prisma.TrainingRunGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrainingRunGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrainingRunCountArgs<ExtArgs>
+            result: $Utils.Optional<TrainingRunCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1270,6 +1851,12 @@ export namespace Prisma {
     cultureArticleTranslation?: CultureArticleTranslationOmit
     cultureTag?: CultureTagOmit
     cultureTagOnArticle?: CultureTagOnArticleOmit
+    trainingProgram?: TrainingProgramOmit
+    trainingProgramTranslation?: TrainingProgramTranslationOmit
+    trainingTemplate?: TrainingTemplateOmit
+    trainingTemplateTranslation?: TrainingTemplateTranslationOmit
+    trainingStep?: TrainingStepOmit
+    trainingRun?: TrainingRunOmit
   }
 
   /* Types for Logging */
@@ -1351,10 +1938,14 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     refreshTokens: number
+    privateTrainingTemplates: number
+    trainingRuns: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshTokens?: boolean | UserCountOutputTypeCountRefreshTokensArgs
+    privateTrainingTemplates?: boolean | UserCountOutputTypeCountPrivateTrainingTemplatesArgs
+    trainingRuns?: boolean | UserCountOutputTypeCountTrainingRunsArgs
   }
 
   // Custom InputTypes
@@ -1373,6 +1964,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountRefreshTokensArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RefreshTokenWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPrivateTrainingTemplatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingTemplateWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTrainingRunsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingRunWhereInput
   }
 
 
@@ -1444,6 +2049,95 @@ export namespace Prisma {
    */
   export type CultureTagCountOutputTypeCountArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CultureTagOnArticleWhereInput
+  }
+
+
+  /**
+   * Count Type TrainingProgramCountOutputType
+   */
+
+  export type TrainingProgramCountOutputType = {
+    translations: number
+    trainings: number
+  }
+
+  export type TrainingProgramCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | TrainingProgramCountOutputTypeCountTranslationsArgs
+    trainings?: boolean | TrainingProgramCountOutputTypeCountTrainingsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TrainingProgramCountOutputType without action
+   */
+  export type TrainingProgramCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramCountOutputType
+     */
+    select?: TrainingProgramCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TrainingProgramCountOutputType without action
+   */
+  export type TrainingProgramCountOutputTypeCountTranslationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingProgramTranslationWhereInput
+  }
+
+  /**
+   * TrainingProgramCountOutputType without action
+   */
+  export type TrainingProgramCountOutputTypeCountTrainingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingTemplateWhereInput
+  }
+
+
+  /**
+   * Count Type TrainingTemplateCountOutputType
+   */
+
+  export type TrainingTemplateCountOutputType = {
+    translations: number
+    steps: number
+    runs: number
+  }
+
+  export type TrainingTemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | TrainingTemplateCountOutputTypeCountTranslationsArgs
+    steps?: boolean | TrainingTemplateCountOutputTypeCountStepsArgs
+    runs?: boolean | TrainingTemplateCountOutputTypeCountRunsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TrainingTemplateCountOutputType without action
+   */
+  export type TrainingTemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateCountOutputType
+     */
+    select?: TrainingTemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TrainingTemplateCountOutputType without action
+   */
+  export type TrainingTemplateCountOutputTypeCountTranslationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingTemplateTranslationWhereInput
+  }
+
+  /**
+   * TrainingTemplateCountOutputType without action
+   */
+  export type TrainingTemplateCountOutputTypeCountStepsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingStepWhereInput
+  }
+
+  /**
+   * TrainingTemplateCountOutputType without action
+   */
+  export type TrainingTemplateCountOutputTypeCountRunsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingRunWhereInput
   }
 
 
@@ -1616,6 +2310,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     refreshTokens?: boolean | User$refreshTokensArgs<ExtArgs>
+    privateTrainingTemplates?: boolean | User$privateTrainingTemplatesArgs<ExtArgs>
+    trainingRuns?: boolean | User$trainingRunsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1646,6 +2342,8 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "appleSub" | "email" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshTokens?: boolean | User$refreshTokensArgs<ExtArgs>
+    privateTrainingTemplates?: boolean | User$privateTrainingTemplatesArgs<ExtArgs>
+    trainingRuns?: boolean | User$trainingRunsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1655,6 +2353,8 @@ export namespace Prisma {
     name: "User"
     objects: {
       refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
+      privateTrainingTemplates: Prisma.$TrainingTemplatePayload<ExtArgs>[]
+      trainingRuns: Prisma.$TrainingRunPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2057,6 +2757,8 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     refreshTokens<T extends User$refreshTokensArgs<ExtArgs> = {}>(args?: Subset<T, User$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    privateTrainingTemplates<T extends User$privateTrainingTemplatesArgs<ExtArgs> = {}>(args?: Subset<T, User$privateTrainingTemplatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    trainingRuns<T extends User$trainingRunsArgs<ExtArgs> = {}>(args?: Subset<T, User$trainingRunsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2500,6 +3202,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RefreshTokenScalarFieldEnum | RefreshTokenScalarFieldEnum[]
+  }
+
+  /**
+   * User.privateTrainingTemplates
+   */
+  export type User$privateTrainingTemplatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    where?: TrainingTemplateWhereInput
+    orderBy?: TrainingTemplateOrderByWithRelationInput | TrainingTemplateOrderByWithRelationInput[]
+    cursor?: TrainingTemplateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrainingTemplateScalarFieldEnum | TrainingTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * User.trainingRuns
+   */
+  export type User$trainingRunsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    where?: TrainingRunWhereInput
+    orderBy?: TrainingRunOrderByWithRelationInput | TrainingRunOrderByWithRelationInput[]
+    cursor?: TrainingRunWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrainingRunScalarFieldEnum | TrainingRunScalarFieldEnum[]
   }
 
   /**
@@ -7971,6 +8721,6933 @@ export namespace Prisma {
 
 
   /**
+   * Model TrainingProgram
+   */
+
+  export type AggregateTrainingProgram = {
+    _count: TrainingProgramCountAggregateOutputType | null
+    _avg: TrainingProgramAvgAggregateOutputType | null
+    _sum: TrainingProgramSumAggregateOutputType | null
+    _min: TrainingProgramMinAggregateOutputType | null
+    _max: TrainingProgramMaxAggregateOutputType | null
+  }
+
+  export type TrainingProgramAvgAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type TrainingProgramSumAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type TrainingProgramMinAggregateOutputType = {
+    id: string | null
+    key: $Enums.TrainingProgramKey | null
+    slug: string | null
+    sortOrder: number | null
+    isPublished: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TrainingProgramMaxAggregateOutputType = {
+    id: string | null
+    key: $Enums.TrainingProgramKey | null
+    slug: string | null
+    sortOrder: number | null
+    isPublished: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TrainingProgramCountAggregateOutputType = {
+    id: number
+    key: number
+    slug: number
+    sortOrder: number
+    isPublished: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TrainingProgramAvgAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type TrainingProgramSumAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type TrainingProgramMinAggregateInputType = {
+    id?: true
+    key?: true
+    slug?: true
+    sortOrder?: true
+    isPublished?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TrainingProgramMaxAggregateInputType = {
+    id?: true
+    key?: true
+    slug?: true
+    sortOrder?: true
+    isPublished?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TrainingProgramCountAggregateInputType = {
+    id?: true
+    key?: true
+    slug?: true
+    sortOrder?: true
+    isPublished?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TrainingProgramAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingProgram to aggregate.
+     */
+    where?: TrainingProgramWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingPrograms to fetch.
+     */
+    orderBy?: TrainingProgramOrderByWithRelationInput | TrainingProgramOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrainingProgramWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingPrograms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingPrograms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrainingPrograms
+    **/
+    _count?: true | TrainingProgramCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TrainingProgramAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TrainingProgramSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrainingProgramMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrainingProgramMaxAggregateInputType
+  }
+
+  export type GetTrainingProgramAggregateType<T extends TrainingProgramAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrainingProgram]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrainingProgram[P]>
+      : GetScalarType<T[P], AggregateTrainingProgram[P]>
+  }
+
+
+
+
+  export type TrainingProgramGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingProgramWhereInput
+    orderBy?: TrainingProgramOrderByWithAggregationInput | TrainingProgramOrderByWithAggregationInput[]
+    by: TrainingProgramScalarFieldEnum[] | TrainingProgramScalarFieldEnum
+    having?: TrainingProgramScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrainingProgramCountAggregateInputType | true
+    _avg?: TrainingProgramAvgAggregateInputType
+    _sum?: TrainingProgramSumAggregateInputType
+    _min?: TrainingProgramMinAggregateInputType
+    _max?: TrainingProgramMaxAggregateInputType
+  }
+
+  export type TrainingProgramGroupByOutputType = {
+    id: string
+    key: $Enums.TrainingProgramKey
+    slug: string
+    sortOrder: number
+    isPublished: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: TrainingProgramCountAggregateOutputType | null
+    _avg: TrainingProgramAvgAggregateOutputType | null
+    _sum: TrainingProgramSumAggregateOutputType | null
+    _min: TrainingProgramMinAggregateOutputType | null
+    _max: TrainingProgramMaxAggregateOutputType | null
+  }
+
+  type GetTrainingProgramGroupByPayload<T extends TrainingProgramGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrainingProgramGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrainingProgramGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrainingProgramGroupByOutputType[P]>
+            : GetScalarType<T[P], TrainingProgramGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrainingProgramSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    slug?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    translations?: boolean | TrainingProgram$translationsArgs<ExtArgs>
+    trainings?: boolean | TrainingProgram$trainingsArgs<ExtArgs>
+    _count?: boolean | TrainingProgramCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingProgram"]>
+
+  export type TrainingProgramSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    slug?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["trainingProgram"]>
+
+  export type TrainingProgramSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    slug?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["trainingProgram"]>
+
+  export type TrainingProgramSelectScalar = {
+    id?: boolean
+    key?: boolean
+    slug?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TrainingProgramOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "slug" | "sortOrder" | "isPublished" | "createdAt" | "updatedAt", ExtArgs["result"]["trainingProgram"]>
+  export type TrainingProgramInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | TrainingProgram$translationsArgs<ExtArgs>
+    trainings?: boolean | TrainingProgram$trainingsArgs<ExtArgs>
+    _count?: boolean | TrainingProgramCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TrainingProgramIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TrainingProgramIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $TrainingProgramPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrainingProgram"
+    objects: {
+      translations: Prisma.$TrainingProgramTranslationPayload<ExtArgs>[]
+      trainings: Prisma.$TrainingTemplatePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      key: $Enums.TrainingProgramKey
+      slug: string
+      sortOrder: number
+      isPublished: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["trainingProgram"]>
+    composites: {}
+  }
+
+  type TrainingProgramGetPayload<S extends boolean | null | undefined | TrainingProgramDefaultArgs> = $Result.GetResult<Prisma.$TrainingProgramPayload, S>
+
+  type TrainingProgramCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrainingProgramFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrainingProgramCountAggregateInputType | true
+    }
+
+  export interface TrainingProgramDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrainingProgram'], meta: { name: 'TrainingProgram' } }
+    /**
+     * Find zero or one TrainingProgram that matches the filter.
+     * @param {TrainingProgramFindUniqueArgs} args - Arguments to find a TrainingProgram
+     * @example
+     * // Get one TrainingProgram
+     * const trainingProgram = await prisma.trainingProgram.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrainingProgramFindUniqueArgs>(args: SelectSubset<T, TrainingProgramFindUniqueArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrainingProgram that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrainingProgramFindUniqueOrThrowArgs} args - Arguments to find a TrainingProgram
+     * @example
+     * // Get one TrainingProgram
+     * const trainingProgram = await prisma.trainingProgram.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrainingProgramFindUniqueOrThrowArgs>(args: SelectSubset<T, TrainingProgramFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingProgram that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramFindFirstArgs} args - Arguments to find a TrainingProgram
+     * @example
+     * // Get one TrainingProgram
+     * const trainingProgram = await prisma.trainingProgram.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrainingProgramFindFirstArgs>(args?: SelectSubset<T, TrainingProgramFindFirstArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingProgram that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramFindFirstOrThrowArgs} args - Arguments to find a TrainingProgram
+     * @example
+     * // Get one TrainingProgram
+     * const trainingProgram = await prisma.trainingProgram.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrainingProgramFindFirstOrThrowArgs>(args?: SelectSubset<T, TrainingProgramFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrainingPrograms that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrainingPrograms
+     * const trainingPrograms = await prisma.trainingProgram.findMany()
+     * 
+     * // Get first 10 TrainingPrograms
+     * const trainingPrograms = await prisma.trainingProgram.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trainingProgramWithIdOnly = await prisma.trainingProgram.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrainingProgramFindManyArgs>(args?: SelectSubset<T, TrainingProgramFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrainingProgram.
+     * @param {TrainingProgramCreateArgs} args - Arguments to create a TrainingProgram.
+     * @example
+     * // Create one TrainingProgram
+     * const TrainingProgram = await prisma.trainingProgram.create({
+     *   data: {
+     *     // ... data to create a TrainingProgram
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrainingProgramCreateArgs>(args: SelectSubset<T, TrainingProgramCreateArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrainingPrograms.
+     * @param {TrainingProgramCreateManyArgs} args - Arguments to create many TrainingPrograms.
+     * @example
+     * // Create many TrainingPrograms
+     * const trainingProgram = await prisma.trainingProgram.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrainingProgramCreateManyArgs>(args?: SelectSubset<T, TrainingProgramCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TrainingPrograms and returns the data saved in the database.
+     * @param {TrainingProgramCreateManyAndReturnArgs} args - Arguments to create many TrainingPrograms.
+     * @example
+     * // Create many TrainingPrograms
+     * const trainingProgram = await prisma.trainingProgram.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TrainingPrograms and only return the `id`
+     * const trainingProgramWithIdOnly = await prisma.trainingProgram.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrainingProgramCreateManyAndReturnArgs>(args?: SelectSubset<T, TrainingProgramCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TrainingProgram.
+     * @param {TrainingProgramDeleteArgs} args - Arguments to delete one TrainingProgram.
+     * @example
+     * // Delete one TrainingProgram
+     * const TrainingProgram = await prisma.trainingProgram.delete({
+     *   where: {
+     *     // ... filter to delete one TrainingProgram
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrainingProgramDeleteArgs>(args: SelectSubset<T, TrainingProgramDeleteArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrainingProgram.
+     * @param {TrainingProgramUpdateArgs} args - Arguments to update one TrainingProgram.
+     * @example
+     * // Update one TrainingProgram
+     * const trainingProgram = await prisma.trainingProgram.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrainingProgramUpdateArgs>(args: SelectSubset<T, TrainingProgramUpdateArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrainingPrograms.
+     * @param {TrainingProgramDeleteManyArgs} args - Arguments to filter TrainingPrograms to delete.
+     * @example
+     * // Delete a few TrainingPrograms
+     * const { count } = await prisma.trainingProgram.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrainingProgramDeleteManyArgs>(args?: SelectSubset<T, TrainingProgramDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingPrograms.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrainingPrograms
+     * const trainingProgram = await prisma.trainingProgram.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrainingProgramUpdateManyArgs>(args: SelectSubset<T, TrainingProgramUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingPrograms and returns the data updated in the database.
+     * @param {TrainingProgramUpdateManyAndReturnArgs} args - Arguments to update many TrainingPrograms.
+     * @example
+     * // Update many TrainingPrograms
+     * const trainingProgram = await prisma.trainingProgram.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TrainingPrograms and only return the `id`
+     * const trainingProgramWithIdOnly = await prisma.trainingProgram.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrainingProgramUpdateManyAndReturnArgs>(args: SelectSubset<T, TrainingProgramUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TrainingProgram.
+     * @param {TrainingProgramUpsertArgs} args - Arguments to update or create a TrainingProgram.
+     * @example
+     * // Update or create a TrainingProgram
+     * const trainingProgram = await prisma.trainingProgram.upsert({
+     *   create: {
+     *     // ... data to create a TrainingProgram
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrainingProgram we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrainingProgramUpsertArgs>(args: SelectSubset<T, TrainingProgramUpsertArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TrainingPrograms.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramCountArgs} args - Arguments to filter TrainingPrograms to count.
+     * @example
+     * // Count the number of TrainingPrograms
+     * const count = await prisma.trainingProgram.count({
+     *   where: {
+     *     // ... the filter for the TrainingPrograms we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrainingProgramCountArgs>(
+      args?: Subset<T, TrainingProgramCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrainingProgramCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrainingProgram.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrainingProgramAggregateArgs>(args: Subset<T, TrainingProgramAggregateArgs>): Prisma.PrismaPromise<GetTrainingProgramAggregateType<T>>
+
+    /**
+     * Group by TrainingProgram.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrainingProgramGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrainingProgramGroupByArgs['orderBy'] }
+        : { orderBy?: TrainingProgramGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrainingProgramGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrainingProgramGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrainingProgram model
+   */
+  readonly fields: TrainingProgramFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrainingProgram.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrainingProgramClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    translations<T extends TrainingProgram$translationsArgs<ExtArgs> = {}>(args?: Subset<T, TrainingProgram$translationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    trainings<T extends TrainingProgram$trainingsArgs<ExtArgs> = {}>(args?: Subset<T, TrainingProgram$trainingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrainingProgram model
+   */
+  interface TrainingProgramFieldRefs {
+    readonly id: FieldRef<"TrainingProgram", 'String'>
+    readonly key: FieldRef<"TrainingProgram", 'TrainingProgramKey'>
+    readonly slug: FieldRef<"TrainingProgram", 'String'>
+    readonly sortOrder: FieldRef<"TrainingProgram", 'Int'>
+    readonly isPublished: FieldRef<"TrainingProgram", 'Boolean'>
+    readonly createdAt: FieldRef<"TrainingProgram", 'DateTime'>
+    readonly updatedAt: FieldRef<"TrainingProgram", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrainingProgram findUnique
+   */
+  export type TrainingProgramFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgram to fetch.
+     */
+    where: TrainingProgramWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgram findUniqueOrThrow
+   */
+  export type TrainingProgramFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgram to fetch.
+     */
+    where: TrainingProgramWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgram findFirst
+   */
+  export type TrainingProgramFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgram to fetch.
+     */
+    where?: TrainingProgramWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingPrograms to fetch.
+     */
+    orderBy?: TrainingProgramOrderByWithRelationInput | TrainingProgramOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingPrograms.
+     */
+    cursor?: TrainingProgramWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingPrograms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingPrograms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingPrograms.
+     */
+    distinct?: TrainingProgramScalarFieldEnum | TrainingProgramScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgram findFirstOrThrow
+   */
+  export type TrainingProgramFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgram to fetch.
+     */
+    where?: TrainingProgramWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingPrograms to fetch.
+     */
+    orderBy?: TrainingProgramOrderByWithRelationInput | TrainingProgramOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingPrograms.
+     */
+    cursor?: TrainingProgramWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingPrograms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingPrograms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingPrograms.
+     */
+    distinct?: TrainingProgramScalarFieldEnum | TrainingProgramScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgram findMany
+   */
+  export type TrainingProgramFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingPrograms to fetch.
+     */
+    where?: TrainingProgramWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingPrograms to fetch.
+     */
+    orderBy?: TrainingProgramOrderByWithRelationInput | TrainingProgramOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrainingPrograms.
+     */
+    cursor?: TrainingProgramWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingPrograms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingPrograms.
+     */
+    skip?: number
+    distinct?: TrainingProgramScalarFieldEnum | TrainingProgramScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgram create
+   */
+  export type TrainingProgramCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TrainingProgram.
+     */
+    data: XOR<TrainingProgramCreateInput, TrainingProgramUncheckedCreateInput>
+  }
+
+  /**
+   * TrainingProgram createMany
+   */
+  export type TrainingProgramCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrainingPrograms.
+     */
+    data: TrainingProgramCreateManyInput | TrainingProgramCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingProgram createManyAndReturn
+   */
+  export type TrainingProgramCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * The data used to create many TrainingPrograms.
+     */
+    data: TrainingProgramCreateManyInput | TrainingProgramCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingProgram update
+   */
+  export type TrainingProgramUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TrainingProgram.
+     */
+    data: XOR<TrainingProgramUpdateInput, TrainingProgramUncheckedUpdateInput>
+    /**
+     * Choose, which TrainingProgram to update.
+     */
+    where: TrainingProgramWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgram updateMany
+   */
+  export type TrainingProgramUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrainingPrograms.
+     */
+    data: XOR<TrainingProgramUpdateManyMutationInput, TrainingProgramUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingPrograms to update
+     */
+    where?: TrainingProgramWhereInput
+    /**
+     * Limit how many TrainingPrograms to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingProgram updateManyAndReturn
+   */
+  export type TrainingProgramUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * The data used to update TrainingPrograms.
+     */
+    data: XOR<TrainingProgramUpdateManyMutationInput, TrainingProgramUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingPrograms to update
+     */
+    where?: TrainingProgramWhereInput
+    /**
+     * Limit how many TrainingPrograms to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingProgram upsert
+   */
+  export type TrainingProgramUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TrainingProgram to update in case it exists.
+     */
+    where: TrainingProgramWhereUniqueInput
+    /**
+     * In case the TrainingProgram found by the `where` argument doesn't exist, create a new TrainingProgram with this data.
+     */
+    create: XOR<TrainingProgramCreateInput, TrainingProgramUncheckedCreateInput>
+    /**
+     * In case the TrainingProgram was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrainingProgramUpdateInput, TrainingProgramUncheckedUpdateInput>
+  }
+
+  /**
+   * TrainingProgram delete
+   */
+  export type TrainingProgramDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    /**
+     * Filter which TrainingProgram to delete.
+     */
+    where: TrainingProgramWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgram deleteMany
+   */
+  export type TrainingProgramDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingPrograms to delete
+     */
+    where?: TrainingProgramWhereInput
+    /**
+     * Limit how many TrainingPrograms to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingProgram.translations
+   */
+  export type TrainingProgram$translationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    where?: TrainingProgramTranslationWhereInput
+    orderBy?: TrainingProgramTranslationOrderByWithRelationInput | TrainingProgramTranslationOrderByWithRelationInput[]
+    cursor?: TrainingProgramTranslationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrainingProgramTranslationScalarFieldEnum | TrainingProgramTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgram.trainings
+   */
+  export type TrainingProgram$trainingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    where?: TrainingTemplateWhereInput
+    orderBy?: TrainingTemplateOrderByWithRelationInput | TrainingTemplateOrderByWithRelationInput[]
+    cursor?: TrainingTemplateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrainingTemplateScalarFieldEnum | TrainingTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgram without action
+   */
+  export type TrainingProgramDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TrainingProgramTranslation
+   */
+
+  export type AggregateTrainingProgramTranslation = {
+    _count: TrainingProgramTranslationCountAggregateOutputType | null
+    _min: TrainingProgramTranslationMinAggregateOutputType | null
+    _max: TrainingProgramTranslationMaxAggregateOutputType | null
+  }
+
+  export type TrainingProgramTranslationMinAggregateOutputType = {
+    id: string | null
+    programId: string | null
+    lang: $Enums.Language | null
+    title: string | null
+    description: string | null
+  }
+
+  export type TrainingProgramTranslationMaxAggregateOutputType = {
+    id: string | null
+    programId: string | null
+    lang: $Enums.Language | null
+    title: string | null
+    description: string | null
+  }
+
+  export type TrainingProgramTranslationCountAggregateOutputType = {
+    id: number
+    programId: number
+    lang: number
+    title: number
+    description: number
+    _all: number
+  }
+
+
+  export type TrainingProgramTranslationMinAggregateInputType = {
+    id?: true
+    programId?: true
+    lang?: true
+    title?: true
+    description?: true
+  }
+
+  export type TrainingProgramTranslationMaxAggregateInputType = {
+    id?: true
+    programId?: true
+    lang?: true
+    title?: true
+    description?: true
+  }
+
+  export type TrainingProgramTranslationCountAggregateInputType = {
+    id?: true
+    programId?: true
+    lang?: true
+    title?: true
+    description?: true
+    _all?: true
+  }
+
+  export type TrainingProgramTranslationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingProgramTranslation to aggregate.
+     */
+    where?: TrainingProgramTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingProgramTranslations to fetch.
+     */
+    orderBy?: TrainingProgramTranslationOrderByWithRelationInput | TrainingProgramTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrainingProgramTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingProgramTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingProgramTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrainingProgramTranslations
+    **/
+    _count?: true | TrainingProgramTranslationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrainingProgramTranslationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrainingProgramTranslationMaxAggregateInputType
+  }
+
+  export type GetTrainingProgramTranslationAggregateType<T extends TrainingProgramTranslationAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrainingProgramTranslation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrainingProgramTranslation[P]>
+      : GetScalarType<T[P], AggregateTrainingProgramTranslation[P]>
+  }
+
+
+
+
+  export type TrainingProgramTranslationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingProgramTranslationWhereInput
+    orderBy?: TrainingProgramTranslationOrderByWithAggregationInput | TrainingProgramTranslationOrderByWithAggregationInput[]
+    by: TrainingProgramTranslationScalarFieldEnum[] | TrainingProgramTranslationScalarFieldEnum
+    having?: TrainingProgramTranslationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrainingProgramTranslationCountAggregateInputType | true
+    _min?: TrainingProgramTranslationMinAggregateInputType
+    _max?: TrainingProgramTranslationMaxAggregateInputType
+  }
+
+  export type TrainingProgramTranslationGroupByOutputType = {
+    id: string
+    programId: string
+    lang: $Enums.Language
+    title: string
+    description: string | null
+    _count: TrainingProgramTranslationCountAggregateOutputType | null
+    _min: TrainingProgramTranslationMinAggregateOutputType | null
+    _max: TrainingProgramTranslationMaxAggregateOutputType | null
+  }
+
+  type GetTrainingProgramTranslationGroupByPayload<T extends TrainingProgramTranslationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrainingProgramTranslationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrainingProgramTranslationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrainingProgramTranslationGroupByOutputType[P]>
+            : GetScalarType<T[P], TrainingProgramTranslationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrainingProgramTranslationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    programId?: boolean
+    lang?: boolean
+    title?: boolean
+    description?: boolean
+    program?: boolean | TrainingProgramDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingProgramTranslation"]>
+
+  export type TrainingProgramTranslationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    programId?: boolean
+    lang?: boolean
+    title?: boolean
+    description?: boolean
+    program?: boolean | TrainingProgramDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingProgramTranslation"]>
+
+  export type TrainingProgramTranslationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    programId?: boolean
+    lang?: boolean
+    title?: boolean
+    description?: boolean
+    program?: boolean | TrainingProgramDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingProgramTranslation"]>
+
+  export type TrainingProgramTranslationSelectScalar = {
+    id?: boolean
+    programId?: boolean
+    lang?: boolean
+    title?: boolean
+    description?: boolean
+  }
+
+  export type TrainingProgramTranslationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "programId" | "lang" | "title" | "description", ExtArgs["result"]["trainingProgramTranslation"]>
+  export type TrainingProgramTranslationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    program?: boolean | TrainingProgramDefaultArgs<ExtArgs>
+  }
+  export type TrainingProgramTranslationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    program?: boolean | TrainingProgramDefaultArgs<ExtArgs>
+  }
+  export type TrainingProgramTranslationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    program?: boolean | TrainingProgramDefaultArgs<ExtArgs>
+  }
+
+  export type $TrainingProgramTranslationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrainingProgramTranslation"
+    objects: {
+      program: Prisma.$TrainingProgramPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      programId: string
+      lang: $Enums.Language
+      title: string
+      description: string | null
+    }, ExtArgs["result"]["trainingProgramTranslation"]>
+    composites: {}
+  }
+
+  type TrainingProgramTranslationGetPayload<S extends boolean | null | undefined | TrainingProgramTranslationDefaultArgs> = $Result.GetResult<Prisma.$TrainingProgramTranslationPayload, S>
+
+  type TrainingProgramTranslationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrainingProgramTranslationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrainingProgramTranslationCountAggregateInputType | true
+    }
+
+  export interface TrainingProgramTranslationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrainingProgramTranslation'], meta: { name: 'TrainingProgramTranslation' } }
+    /**
+     * Find zero or one TrainingProgramTranslation that matches the filter.
+     * @param {TrainingProgramTranslationFindUniqueArgs} args - Arguments to find a TrainingProgramTranslation
+     * @example
+     * // Get one TrainingProgramTranslation
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrainingProgramTranslationFindUniqueArgs>(args: SelectSubset<T, TrainingProgramTranslationFindUniqueArgs<ExtArgs>>): Prisma__TrainingProgramTranslationClient<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrainingProgramTranslation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrainingProgramTranslationFindUniqueOrThrowArgs} args - Arguments to find a TrainingProgramTranslation
+     * @example
+     * // Get one TrainingProgramTranslation
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrainingProgramTranslationFindUniqueOrThrowArgs>(args: SelectSubset<T, TrainingProgramTranslationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrainingProgramTranslationClient<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingProgramTranslation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramTranslationFindFirstArgs} args - Arguments to find a TrainingProgramTranslation
+     * @example
+     * // Get one TrainingProgramTranslation
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrainingProgramTranslationFindFirstArgs>(args?: SelectSubset<T, TrainingProgramTranslationFindFirstArgs<ExtArgs>>): Prisma__TrainingProgramTranslationClient<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingProgramTranslation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramTranslationFindFirstOrThrowArgs} args - Arguments to find a TrainingProgramTranslation
+     * @example
+     * // Get one TrainingProgramTranslation
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrainingProgramTranslationFindFirstOrThrowArgs>(args?: SelectSubset<T, TrainingProgramTranslationFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrainingProgramTranslationClient<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrainingProgramTranslations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramTranslationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrainingProgramTranslations
+     * const trainingProgramTranslations = await prisma.trainingProgramTranslation.findMany()
+     * 
+     * // Get first 10 TrainingProgramTranslations
+     * const trainingProgramTranslations = await prisma.trainingProgramTranslation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trainingProgramTranslationWithIdOnly = await prisma.trainingProgramTranslation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrainingProgramTranslationFindManyArgs>(args?: SelectSubset<T, TrainingProgramTranslationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrainingProgramTranslation.
+     * @param {TrainingProgramTranslationCreateArgs} args - Arguments to create a TrainingProgramTranslation.
+     * @example
+     * // Create one TrainingProgramTranslation
+     * const TrainingProgramTranslation = await prisma.trainingProgramTranslation.create({
+     *   data: {
+     *     // ... data to create a TrainingProgramTranslation
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrainingProgramTranslationCreateArgs>(args: SelectSubset<T, TrainingProgramTranslationCreateArgs<ExtArgs>>): Prisma__TrainingProgramTranslationClient<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrainingProgramTranslations.
+     * @param {TrainingProgramTranslationCreateManyArgs} args - Arguments to create many TrainingProgramTranslations.
+     * @example
+     * // Create many TrainingProgramTranslations
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrainingProgramTranslationCreateManyArgs>(args?: SelectSubset<T, TrainingProgramTranslationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TrainingProgramTranslations and returns the data saved in the database.
+     * @param {TrainingProgramTranslationCreateManyAndReturnArgs} args - Arguments to create many TrainingProgramTranslations.
+     * @example
+     * // Create many TrainingProgramTranslations
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TrainingProgramTranslations and only return the `id`
+     * const trainingProgramTranslationWithIdOnly = await prisma.trainingProgramTranslation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrainingProgramTranslationCreateManyAndReturnArgs>(args?: SelectSubset<T, TrainingProgramTranslationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TrainingProgramTranslation.
+     * @param {TrainingProgramTranslationDeleteArgs} args - Arguments to delete one TrainingProgramTranslation.
+     * @example
+     * // Delete one TrainingProgramTranslation
+     * const TrainingProgramTranslation = await prisma.trainingProgramTranslation.delete({
+     *   where: {
+     *     // ... filter to delete one TrainingProgramTranslation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrainingProgramTranslationDeleteArgs>(args: SelectSubset<T, TrainingProgramTranslationDeleteArgs<ExtArgs>>): Prisma__TrainingProgramTranslationClient<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrainingProgramTranslation.
+     * @param {TrainingProgramTranslationUpdateArgs} args - Arguments to update one TrainingProgramTranslation.
+     * @example
+     * // Update one TrainingProgramTranslation
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrainingProgramTranslationUpdateArgs>(args: SelectSubset<T, TrainingProgramTranslationUpdateArgs<ExtArgs>>): Prisma__TrainingProgramTranslationClient<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrainingProgramTranslations.
+     * @param {TrainingProgramTranslationDeleteManyArgs} args - Arguments to filter TrainingProgramTranslations to delete.
+     * @example
+     * // Delete a few TrainingProgramTranslations
+     * const { count } = await prisma.trainingProgramTranslation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrainingProgramTranslationDeleteManyArgs>(args?: SelectSubset<T, TrainingProgramTranslationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingProgramTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramTranslationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrainingProgramTranslations
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrainingProgramTranslationUpdateManyArgs>(args: SelectSubset<T, TrainingProgramTranslationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingProgramTranslations and returns the data updated in the database.
+     * @param {TrainingProgramTranslationUpdateManyAndReturnArgs} args - Arguments to update many TrainingProgramTranslations.
+     * @example
+     * // Update many TrainingProgramTranslations
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TrainingProgramTranslations and only return the `id`
+     * const trainingProgramTranslationWithIdOnly = await prisma.trainingProgramTranslation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrainingProgramTranslationUpdateManyAndReturnArgs>(args: SelectSubset<T, TrainingProgramTranslationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TrainingProgramTranslation.
+     * @param {TrainingProgramTranslationUpsertArgs} args - Arguments to update or create a TrainingProgramTranslation.
+     * @example
+     * // Update or create a TrainingProgramTranslation
+     * const trainingProgramTranslation = await prisma.trainingProgramTranslation.upsert({
+     *   create: {
+     *     // ... data to create a TrainingProgramTranslation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrainingProgramTranslation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrainingProgramTranslationUpsertArgs>(args: SelectSubset<T, TrainingProgramTranslationUpsertArgs<ExtArgs>>): Prisma__TrainingProgramTranslationClient<$Result.GetResult<Prisma.$TrainingProgramTranslationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TrainingProgramTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramTranslationCountArgs} args - Arguments to filter TrainingProgramTranslations to count.
+     * @example
+     * // Count the number of TrainingProgramTranslations
+     * const count = await prisma.trainingProgramTranslation.count({
+     *   where: {
+     *     // ... the filter for the TrainingProgramTranslations we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrainingProgramTranslationCountArgs>(
+      args?: Subset<T, TrainingProgramTranslationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrainingProgramTranslationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrainingProgramTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramTranslationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrainingProgramTranslationAggregateArgs>(args: Subset<T, TrainingProgramTranslationAggregateArgs>): Prisma.PrismaPromise<GetTrainingProgramTranslationAggregateType<T>>
+
+    /**
+     * Group by TrainingProgramTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgramTranslationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrainingProgramTranslationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrainingProgramTranslationGroupByArgs['orderBy'] }
+        : { orderBy?: TrainingProgramTranslationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrainingProgramTranslationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrainingProgramTranslationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrainingProgramTranslation model
+   */
+  readonly fields: TrainingProgramTranslationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrainingProgramTranslation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrainingProgramTranslationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    program<T extends TrainingProgramDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TrainingProgramDefaultArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrainingProgramTranslation model
+   */
+  interface TrainingProgramTranslationFieldRefs {
+    readonly id: FieldRef<"TrainingProgramTranslation", 'String'>
+    readonly programId: FieldRef<"TrainingProgramTranslation", 'String'>
+    readonly lang: FieldRef<"TrainingProgramTranslation", 'Language'>
+    readonly title: FieldRef<"TrainingProgramTranslation", 'String'>
+    readonly description: FieldRef<"TrainingProgramTranslation", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrainingProgramTranslation findUnique
+   */
+  export type TrainingProgramTranslationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgramTranslation to fetch.
+     */
+    where: TrainingProgramTranslationWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgramTranslation findUniqueOrThrow
+   */
+  export type TrainingProgramTranslationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgramTranslation to fetch.
+     */
+    where: TrainingProgramTranslationWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgramTranslation findFirst
+   */
+  export type TrainingProgramTranslationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgramTranslation to fetch.
+     */
+    where?: TrainingProgramTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingProgramTranslations to fetch.
+     */
+    orderBy?: TrainingProgramTranslationOrderByWithRelationInput | TrainingProgramTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingProgramTranslations.
+     */
+    cursor?: TrainingProgramTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingProgramTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingProgramTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingProgramTranslations.
+     */
+    distinct?: TrainingProgramTranslationScalarFieldEnum | TrainingProgramTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgramTranslation findFirstOrThrow
+   */
+  export type TrainingProgramTranslationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgramTranslation to fetch.
+     */
+    where?: TrainingProgramTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingProgramTranslations to fetch.
+     */
+    orderBy?: TrainingProgramTranslationOrderByWithRelationInput | TrainingProgramTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingProgramTranslations.
+     */
+    cursor?: TrainingProgramTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingProgramTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingProgramTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingProgramTranslations.
+     */
+    distinct?: TrainingProgramTranslationScalarFieldEnum | TrainingProgramTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgramTranslation findMany
+   */
+  export type TrainingProgramTranslationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgramTranslations to fetch.
+     */
+    where?: TrainingProgramTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingProgramTranslations to fetch.
+     */
+    orderBy?: TrainingProgramTranslationOrderByWithRelationInput | TrainingProgramTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrainingProgramTranslations.
+     */
+    cursor?: TrainingProgramTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingProgramTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingProgramTranslations.
+     */
+    skip?: number
+    distinct?: TrainingProgramTranslationScalarFieldEnum | TrainingProgramTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgramTranslation create
+   */
+  export type TrainingProgramTranslationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TrainingProgramTranslation.
+     */
+    data: XOR<TrainingProgramTranslationCreateInput, TrainingProgramTranslationUncheckedCreateInput>
+  }
+
+  /**
+   * TrainingProgramTranslation createMany
+   */
+  export type TrainingProgramTranslationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrainingProgramTranslations.
+     */
+    data: TrainingProgramTranslationCreateManyInput | TrainingProgramTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingProgramTranslation createManyAndReturn
+   */
+  export type TrainingProgramTranslationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * The data used to create many TrainingProgramTranslations.
+     */
+    data: TrainingProgramTranslationCreateManyInput | TrainingProgramTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingProgramTranslation update
+   */
+  export type TrainingProgramTranslationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TrainingProgramTranslation.
+     */
+    data: XOR<TrainingProgramTranslationUpdateInput, TrainingProgramTranslationUncheckedUpdateInput>
+    /**
+     * Choose, which TrainingProgramTranslation to update.
+     */
+    where: TrainingProgramTranslationWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgramTranslation updateMany
+   */
+  export type TrainingProgramTranslationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrainingProgramTranslations.
+     */
+    data: XOR<TrainingProgramTranslationUpdateManyMutationInput, TrainingProgramTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingProgramTranslations to update
+     */
+    where?: TrainingProgramTranslationWhereInput
+    /**
+     * Limit how many TrainingProgramTranslations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingProgramTranslation updateManyAndReturn
+   */
+  export type TrainingProgramTranslationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * The data used to update TrainingProgramTranslations.
+     */
+    data: XOR<TrainingProgramTranslationUpdateManyMutationInput, TrainingProgramTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingProgramTranslations to update
+     */
+    where?: TrainingProgramTranslationWhereInput
+    /**
+     * Limit how many TrainingProgramTranslations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingProgramTranslation upsert
+   */
+  export type TrainingProgramTranslationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TrainingProgramTranslation to update in case it exists.
+     */
+    where: TrainingProgramTranslationWhereUniqueInput
+    /**
+     * In case the TrainingProgramTranslation found by the `where` argument doesn't exist, create a new TrainingProgramTranslation with this data.
+     */
+    create: XOR<TrainingProgramTranslationCreateInput, TrainingProgramTranslationUncheckedCreateInput>
+    /**
+     * In case the TrainingProgramTranslation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrainingProgramTranslationUpdateInput, TrainingProgramTranslationUncheckedUpdateInput>
+  }
+
+  /**
+   * TrainingProgramTranslation delete
+   */
+  export type TrainingProgramTranslationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+    /**
+     * Filter which TrainingProgramTranslation to delete.
+     */
+    where: TrainingProgramTranslationWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgramTranslation deleteMany
+   */
+  export type TrainingProgramTranslationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingProgramTranslations to delete
+     */
+    where?: TrainingProgramTranslationWhereInput
+    /**
+     * Limit how many TrainingProgramTranslations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingProgramTranslation without action
+   */
+  export type TrainingProgramTranslationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgramTranslation
+     */
+    select?: TrainingProgramTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgramTranslation
+     */
+    omit?: TrainingProgramTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramTranslationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TrainingTemplate
+   */
+
+  export type AggregateTrainingTemplate = {
+    _count: TrainingTemplateCountAggregateOutputType | null
+    _avg: TrainingTemplateAvgAggregateOutputType | null
+    _sum: TrainingTemplateSumAggregateOutputType | null
+    _min: TrainingTemplateMinAggregateOutputType | null
+    _max: TrainingTemplateMaxAggregateOutputType | null
+  }
+
+  export type TrainingTemplateAvgAggregateOutputType = {
+    sortOrder: number | null
+    pointCount: number | null
+    repeats: number | null
+    estimatedMinutes: number | null
+    intensityLevel: number | null
+  }
+
+  export type TrainingTemplateSumAggregateOutputType = {
+    sortOrder: number | null
+    pointCount: number | null
+    repeats: number | null
+    estimatedMinutes: number | null
+    intensityLevel: number | null
+  }
+
+  export type TrainingTemplateMinAggregateOutputType = {
+    id: string | null
+    kind: $Enums.TrainingKind | null
+    slug: string | null
+    programId: string | null
+    ownerId: string | null
+    name: string | null
+    sortOrder: number | null
+    isPublished: boolean | null
+    isPremium: boolean | null
+    pointCount: number | null
+    repeats: number | null
+    saveResults: boolean | null
+    saveCO2: boolean | null
+    onlyClock: boolean | null
+    estimatedMinutes: number | null
+    intensityLevel: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TrainingTemplateMaxAggregateOutputType = {
+    id: string | null
+    kind: $Enums.TrainingKind | null
+    slug: string | null
+    programId: string | null
+    ownerId: string | null
+    name: string | null
+    sortOrder: number | null
+    isPublished: boolean | null
+    isPremium: boolean | null
+    pointCount: number | null
+    repeats: number | null
+    saveResults: boolean | null
+    saveCO2: boolean | null
+    onlyClock: boolean | null
+    estimatedMinutes: number | null
+    intensityLevel: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TrainingTemplateCountAggregateOutputType = {
+    id: number
+    kind: number
+    slug: number
+    programId: number
+    ownerId: number
+    name: number
+    sortOrder: number
+    isPublished: number
+    isPremium: number
+    pointCount: number
+    repeats: number
+    saveResults: number
+    saveCO2: number
+    onlyClock: number
+    estimatedMinutes: number
+    intensityLevel: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TrainingTemplateAvgAggregateInputType = {
+    sortOrder?: true
+    pointCount?: true
+    repeats?: true
+    estimatedMinutes?: true
+    intensityLevel?: true
+  }
+
+  export type TrainingTemplateSumAggregateInputType = {
+    sortOrder?: true
+    pointCount?: true
+    repeats?: true
+    estimatedMinutes?: true
+    intensityLevel?: true
+  }
+
+  export type TrainingTemplateMinAggregateInputType = {
+    id?: true
+    kind?: true
+    slug?: true
+    programId?: true
+    ownerId?: true
+    name?: true
+    sortOrder?: true
+    isPublished?: true
+    isPremium?: true
+    pointCount?: true
+    repeats?: true
+    saveResults?: true
+    saveCO2?: true
+    onlyClock?: true
+    estimatedMinutes?: true
+    intensityLevel?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TrainingTemplateMaxAggregateInputType = {
+    id?: true
+    kind?: true
+    slug?: true
+    programId?: true
+    ownerId?: true
+    name?: true
+    sortOrder?: true
+    isPublished?: true
+    isPremium?: true
+    pointCount?: true
+    repeats?: true
+    saveResults?: true
+    saveCO2?: true
+    onlyClock?: true
+    estimatedMinutes?: true
+    intensityLevel?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TrainingTemplateCountAggregateInputType = {
+    id?: true
+    kind?: true
+    slug?: true
+    programId?: true
+    ownerId?: true
+    name?: true
+    sortOrder?: true
+    isPublished?: true
+    isPremium?: true
+    pointCount?: true
+    repeats?: true
+    saveResults?: true
+    saveCO2?: true
+    onlyClock?: true
+    estimatedMinutes?: true
+    intensityLevel?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TrainingTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingTemplate to aggregate.
+     */
+    where?: TrainingTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingTemplates to fetch.
+     */
+    orderBy?: TrainingTemplateOrderByWithRelationInput | TrainingTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrainingTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrainingTemplates
+    **/
+    _count?: true | TrainingTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TrainingTemplateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TrainingTemplateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrainingTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrainingTemplateMaxAggregateInputType
+  }
+
+  export type GetTrainingTemplateAggregateType<T extends TrainingTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrainingTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrainingTemplate[P]>
+      : GetScalarType<T[P], AggregateTrainingTemplate[P]>
+  }
+
+
+
+
+  export type TrainingTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingTemplateWhereInput
+    orderBy?: TrainingTemplateOrderByWithAggregationInput | TrainingTemplateOrderByWithAggregationInput[]
+    by: TrainingTemplateScalarFieldEnum[] | TrainingTemplateScalarFieldEnum
+    having?: TrainingTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrainingTemplateCountAggregateInputType | true
+    _avg?: TrainingTemplateAvgAggregateInputType
+    _sum?: TrainingTemplateSumAggregateInputType
+    _min?: TrainingTemplateMinAggregateInputType
+    _max?: TrainingTemplateMaxAggregateInputType
+  }
+
+  export type TrainingTemplateGroupByOutputType = {
+    id: string
+    kind: $Enums.TrainingKind
+    slug: string | null
+    programId: string | null
+    ownerId: string | null
+    name: string | null
+    sortOrder: number
+    isPublished: boolean
+    isPremium: boolean
+    pointCount: number | null
+    repeats: number | null
+    saveResults: boolean
+    saveCO2: boolean
+    onlyClock: boolean
+    estimatedMinutes: number | null
+    intensityLevel: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: TrainingTemplateCountAggregateOutputType | null
+    _avg: TrainingTemplateAvgAggregateOutputType | null
+    _sum: TrainingTemplateSumAggregateOutputType | null
+    _min: TrainingTemplateMinAggregateOutputType | null
+    _max: TrainingTemplateMaxAggregateOutputType | null
+  }
+
+  type GetTrainingTemplateGroupByPayload<T extends TrainingTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrainingTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrainingTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrainingTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], TrainingTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrainingTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kind?: boolean
+    slug?: boolean
+    programId?: boolean
+    ownerId?: boolean
+    name?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: boolean
+    repeats?: boolean
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: boolean
+    intensityLevel?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    program?: boolean | TrainingTemplate$programArgs<ExtArgs>
+    owner?: boolean | TrainingTemplate$ownerArgs<ExtArgs>
+    translations?: boolean | TrainingTemplate$translationsArgs<ExtArgs>
+    steps?: boolean | TrainingTemplate$stepsArgs<ExtArgs>
+    runs?: boolean | TrainingTemplate$runsArgs<ExtArgs>
+    _count?: boolean | TrainingTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingTemplate"]>
+
+  export type TrainingTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kind?: boolean
+    slug?: boolean
+    programId?: boolean
+    ownerId?: boolean
+    name?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: boolean
+    repeats?: boolean
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: boolean
+    intensityLevel?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    program?: boolean | TrainingTemplate$programArgs<ExtArgs>
+    owner?: boolean | TrainingTemplate$ownerArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingTemplate"]>
+
+  export type TrainingTemplateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kind?: boolean
+    slug?: boolean
+    programId?: boolean
+    ownerId?: boolean
+    name?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: boolean
+    repeats?: boolean
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: boolean
+    intensityLevel?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    program?: boolean | TrainingTemplate$programArgs<ExtArgs>
+    owner?: boolean | TrainingTemplate$ownerArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingTemplate"]>
+
+  export type TrainingTemplateSelectScalar = {
+    id?: boolean
+    kind?: boolean
+    slug?: boolean
+    programId?: boolean
+    ownerId?: boolean
+    name?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: boolean
+    repeats?: boolean
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: boolean
+    intensityLevel?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TrainingTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "kind" | "slug" | "programId" | "ownerId" | "name" | "sortOrder" | "isPublished" | "isPremium" | "pointCount" | "repeats" | "saveResults" | "saveCO2" | "onlyClock" | "estimatedMinutes" | "intensityLevel" | "createdAt" | "updatedAt", ExtArgs["result"]["trainingTemplate"]>
+  export type TrainingTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    program?: boolean | TrainingTemplate$programArgs<ExtArgs>
+    owner?: boolean | TrainingTemplate$ownerArgs<ExtArgs>
+    translations?: boolean | TrainingTemplate$translationsArgs<ExtArgs>
+    steps?: boolean | TrainingTemplate$stepsArgs<ExtArgs>
+    runs?: boolean | TrainingTemplate$runsArgs<ExtArgs>
+    _count?: boolean | TrainingTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TrainingTemplateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    program?: boolean | TrainingTemplate$programArgs<ExtArgs>
+    owner?: boolean | TrainingTemplate$ownerArgs<ExtArgs>
+  }
+  export type TrainingTemplateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    program?: boolean | TrainingTemplate$programArgs<ExtArgs>
+    owner?: boolean | TrainingTemplate$ownerArgs<ExtArgs>
+  }
+
+  export type $TrainingTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrainingTemplate"
+    objects: {
+      program: Prisma.$TrainingProgramPayload<ExtArgs> | null
+      owner: Prisma.$UserPayload<ExtArgs> | null
+      translations: Prisma.$TrainingTemplateTranslationPayload<ExtArgs>[]
+      steps: Prisma.$TrainingStepPayload<ExtArgs>[]
+      runs: Prisma.$TrainingRunPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      kind: $Enums.TrainingKind
+      slug: string | null
+      programId: string | null
+      ownerId: string | null
+      name: string | null
+      sortOrder: number
+      isPublished: boolean
+      isPremium: boolean
+      pointCount: number | null
+      repeats: number | null
+      saveResults: boolean
+      saveCO2: boolean
+      onlyClock: boolean
+      estimatedMinutes: number | null
+      intensityLevel: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["trainingTemplate"]>
+    composites: {}
+  }
+
+  type TrainingTemplateGetPayload<S extends boolean | null | undefined | TrainingTemplateDefaultArgs> = $Result.GetResult<Prisma.$TrainingTemplatePayload, S>
+
+  type TrainingTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrainingTemplateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrainingTemplateCountAggregateInputType | true
+    }
+
+  export interface TrainingTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrainingTemplate'], meta: { name: 'TrainingTemplate' } }
+    /**
+     * Find zero or one TrainingTemplate that matches the filter.
+     * @param {TrainingTemplateFindUniqueArgs} args - Arguments to find a TrainingTemplate
+     * @example
+     * // Get one TrainingTemplate
+     * const trainingTemplate = await prisma.trainingTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrainingTemplateFindUniqueArgs>(args: SelectSubset<T, TrainingTemplateFindUniqueArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrainingTemplate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrainingTemplateFindUniqueOrThrowArgs} args - Arguments to find a TrainingTemplate
+     * @example
+     * // Get one TrainingTemplate
+     * const trainingTemplate = await prisma.trainingTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrainingTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, TrainingTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateFindFirstArgs} args - Arguments to find a TrainingTemplate
+     * @example
+     * // Get one TrainingTemplate
+     * const trainingTemplate = await prisma.trainingTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrainingTemplateFindFirstArgs>(args?: SelectSubset<T, TrainingTemplateFindFirstArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateFindFirstOrThrowArgs} args - Arguments to find a TrainingTemplate
+     * @example
+     * // Get one TrainingTemplate
+     * const trainingTemplate = await prisma.trainingTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrainingTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, TrainingTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrainingTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrainingTemplates
+     * const trainingTemplates = await prisma.trainingTemplate.findMany()
+     * 
+     * // Get first 10 TrainingTemplates
+     * const trainingTemplates = await prisma.trainingTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trainingTemplateWithIdOnly = await prisma.trainingTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrainingTemplateFindManyArgs>(args?: SelectSubset<T, TrainingTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrainingTemplate.
+     * @param {TrainingTemplateCreateArgs} args - Arguments to create a TrainingTemplate.
+     * @example
+     * // Create one TrainingTemplate
+     * const TrainingTemplate = await prisma.trainingTemplate.create({
+     *   data: {
+     *     // ... data to create a TrainingTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrainingTemplateCreateArgs>(args: SelectSubset<T, TrainingTemplateCreateArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrainingTemplates.
+     * @param {TrainingTemplateCreateManyArgs} args - Arguments to create many TrainingTemplates.
+     * @example
+     * // Create many TrainingTemplates
+     * const trainingTemplate = await prisma.trainingTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrainingTemplateCreateManyArgs>(args?: SelectSubset<T, TrainingTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TrainingTemplates and returns the data saved in the database.
+     * @param {TrainingTemplateCreateManyAndReturnArgs} args - Arguments to create many TrainingTemplates.
+     * @example
+     * // Create many TrainingTemplates
+     * const trainingTemplate = await prisma.trainingTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TrainingTemplates and only return the `id`
+     * const trainingTemplateWithIdOnly = await prisma.trainingTemplate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrainingTemplateCreateManyAndReturnArgs>(args?: SelectSubset<T, TrainingTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TrainingTemplate.
+     * @param {TrainingTemplateDeleteArgs} args - Arguments to delete one TrainingTemplate.
+     * @example
+     * // Delete one TrainingTemplate
+     * const TrainingTemplate = await prisma.trainingTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one TrainingTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrainingTemplateDeleteArgs>(args: SelectSubset<T, TrainingTemplateDeleteArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrainingTemplate.
+     * @param {TrainingTemplateUpdateArgs} args - Arguments to update one TrainingTemplate.
+     * @example
+     * // Update one TrainingTemplate
+     * const trainingTemplate = await prisma.trainingTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrainingTemplateUpdateArgs>(args: SelectSubset<T, TrainingTemplateUpdateArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrainingTemplates.
+     * @param {TrainingTemplateDeleteManyArgs} args - Arguments to filter TrainingTemplates to delete.
+     * @example
+     * // Delete a few TrainingTemplates
+     * const { count } = await prisma.trainingTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrainingTemplateDeleteManyArgs>(args?: SelectSubset<T, TrainingTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrainingTemplates
+     * const trainingTemplate = await prisma.trainingTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrainingTemplateUpdateManyArgs>(args: SelectSubset<T, TrainingTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingTemplates and returns the data updated in the database.
+     * @param {TrainingTemplateUpdateManyAndReturnArgs} args - Arguments to update many TrainingTemplates.
+     * @example
+     * // Update many TrainingTemplates
+     * const trainingTemplate = await prisma.trainingTemplate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TrainingTemplates and only return the `id`
+     * const trainingTemplateWithIdOnly = await prisma.trainingTemplate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrainingTemplateUpdateManyAndReturnArgs>(args: SelectSubset<T, TrainingTemplateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TrainingTemplate.
+     * @param {TrainingTemplateUpsertArgs} args - Arguments to update or create a TrainingTemplate.
+     * @example
+     * // Update or create a TrainingTemplate
+     * const trainingTemplate = await prisma.trainingTemplate.upsert({
+     *   create: {
+     *     // ... data to create a TrainingTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrainingTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrainingTemplateUpsertArgs>(args: SelectSubset<T, TrainingTemplateUpsertArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TrainingTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateCountArgs} args - Arguments to filter TrainingTemplates to count.
+     * @example
+     * // Count the number of TrainingTemplates
+     * const count = await prisma.trainingTemplate.count({
+     *   where: {
+     *     // ... the filter for the TrainingTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrainingTemplateCountArgs>(
+      args?: Subset<T, TrainingTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrainingTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrainingTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrainingTemplateAggregateArgs>(args: Subset<T, TrainingTemplateAggregateArgs>): Prisma.PrismaPromise<GetTrainingTemplateAggregateType<T>>
+
+    /**
+     * Group by TrainingTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrainingTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrainingTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: TrainingTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrainingTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrainingTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrainingTemplate model
+   */
+  readonly fields: TrainingTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrainingTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrainingTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    program<T extends TrainingTemplate$programArgs<ExtArgs> = {}>(args?: Subset<T, TrainingTemplate$programArgs<ExtArgs>>): Prisma__TrainingProgramClient<$Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    owner<T extends TrainingTemplate$ownerArgs<ExtArgs> = {}>(args?: Subset<T, TrainingTemplate$ownerArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    translations<T extends TrainingTemplate$translationsArgs<ExtArgs> = {}>(args?: Subset<T, TrainingTemplate$translationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    steps<T extends TrainingTemplate$stepsArgs<ExtArgs> = {}>(args?: Subset<T, TrainingTemplate$stepsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    runs<T extends TrainingTemplate$runsArgs<ExtArgs> = {}>(args?: Subset<T, TrainingTemplate$runsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrainingTemplate model
+   */
+  interface TrainingTemplateFieldRefs {
+    readonly id: FieldRef<"TrainingTemplate", 'String'>
+    readonly kind: FieldRef<"TrainingTemplate", 'TrainingKind'>
+    readonly slug: FieldRef<"TrainingTemplate", 'String'>
+    readonly programId: FieldRef<"TrainingTemplate", 'String'>
+    readonly ownerId: FieldRef<"TrainingTemplate", 'String'>
+    readonly name: FieldRef<"TrainingTemplate", 'String'>
+    readonly sortOrder: FieldRef<"TrainingTemplate", 'Int'>
+    readonly isPublished: FieldRef<"TrainingTemplate", 'Boolean'>
+    readonly isPremium: FieldRef<"TrainingTemplate", 'Boolean'>
+    readonly pointCount: FieldRef<"TrainingTemplate", 'Int'>
+    readonly repeats: FieldRef<"TrainingTemplate", 'Int'>
+    readonly saveResults: FieldRef<"TrainingTemplate", 'Boolean'>
+    readonly saveCO2: FieldRef<"TrainingTemplate", 'Boolean'>
+    readonly onlyClock: FieldRef<"TrainingTemplate", 'Boolean'>
+    readonly estimatedMinutes: FieldRef<"TrainingTemplate", 'Int'>
+    readonly intensityLevel: FieldRef<"TrainingTemplate", 'Int'>
+    readonly createdAt: FieldRef<"TrainingTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"TrainingTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrainingTemplate findUnique
+   */
+  export type TrainingTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplate to fetch.
+     */
+    where: TrainingTemplateWhereUniqueInput
+  }
+
+  /**
+   * TrainingTemplate findUniqueOrThrow
+   */
+  export type TrainingTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplate to fetch.
+     */
+    where: TrainingTemplateWhereUniqueInput
+  }
+
+  /**
+   * TrainingTemplate findFirst
+   */
+  export type TrainingTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplate to fetch.
+     */
+    where?: TrainingTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingTemplates to fetch.
+     */
+    orderBy?: TrainingTemplateOrderByWithRelationInput | TrainingTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingTemplates.
+     */
+    cursor?: TrainingTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingTemplates.
+     */
+    distinct?: TrainingTemplateScalarFieldEnum | TrainingTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplate findFirstOrThrow
+   */
+  export type TrainingTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplate to fetch.
+     */
+    where?: TrainingTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingTemplates to fetch.
+     */
+    orderBy?: TrainingTemplateOrderByWithRelationInput | TrainingTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingTemplates.
+     */
+    cursor?: TrainingTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingTemplates.
+     */
+    distinct?: TrainingTemplateScalarFieldEnum | TrainingTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplate findMany
+   */
+  export type TrainingTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplates to fetch.
+     */
+    where?: TrainingTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingTemplates to fetch.
+     */
+    orderBy?: TrainingTemplateOrderByWithRelationInput | TrainingTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrainingTemplates.
+     */
+    cursor?: TrainingTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingTemplates.
+     */
+    skip?: number
+    distinct?: TrainingTemplateScalarFieldEnum | TrainingTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplate create
+   */
+  export type TrainingTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TrainingTemplate.
+     */
+    data: XOR<TrainingTemplateCreateInput, TrainingTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * TrainingTemplate createMany
+   */
+  export type TrainingTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrainingTemplates.
+     */
+    data: TrainingTemplateCreateManyInput | TrainingTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingTemplate createManyAndReturn
+   */
+  export type TrainingTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to create many TrainingTemplates.
+     */
+    data: TrainingTemplateCreateManyInput | TrainingTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingTemplate update
+   */
+  export type TrainingTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TrainingTemplate.
+     */
+    data: XOR<TrainingTemplateUpdateInput, TrainingTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which TrainingTemplate to update.
+     */
+    where: TrainingTemplateWhereUniqueInput
+  }
+
+  /**
+   * TrainingTemplate updateMany
+   */
+  export type TrainingTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrainingTemplates.
+     */
+    data: XOR<TrainingTemplateUpdateManyMutationInput, TrainingTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingTemplates to update
+     */
+    where?: TrainingTemplateWhereInput
+    /**
+     * Limit how many TrainingTemplates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingTemplate updateManyAndReturn
+   */
+  export type TrainingTemplateUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to update TrainingTemplates.
+     */
+    data: XOR<TrainingTemplateUpdateManyMutationInput, TrainingTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingTemplates to update
+     */
+    where?: TrainingTemplateWhereInput
+    /**
+     * Limit how many TrainingTemplates to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingTemplate upsert
+   */
+  export type TrainingTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TrainingTemplate to update in case it exists.
+     */
+    where: TrainingTemplateWhereUniqueInput
+    /**
+     * In case the TrainingTemplate found by the `where` argument doesn't exist, create a new TrainingTemplate with this data.
+     */
+    create: XOR<TrainingTemplateCreateInput, TrainingTemplateUncheckedCreateInput>
+    /**
+     * In case the TrainingTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrainingTemplateUpdateInput, TrainingTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * TrainingTemplate delete
+   */
+  export type TrainingTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which TrainingTemplate to delete.
+     */
+    where: TrainingTemplateWhereUniqueInput
+  }
+
+  /**
+   * TrainingTemplate deleteMany
+   */
+  export type TrainingTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingTemplates to delete
+     */
+    where?: TrainingTemplateWhereInput
+    /**
+     * Limit how many TrainingTemplates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingTemplate.program
+   */
+  export type TrainingTemplate$programArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgram
+     */
+    select?: TrainingProgramSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgram
+     */
+    omit?: TrainingProgramOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgramInclude<ExtArgs> | null
+    where?: TrainingProgramWhereInput
+  }
+
+  /**
+   * TrainingTemplate.owner
+   */
+  export type TrainingTemplate$ownerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * TrainingTemplate.translations
+   */
+  export type TrainingTemplate$translationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    where?: TrainingTemplateTranslationWhereInput
+    orderBy?: TrainingTemplateTranslationOrderByWithRelationInput | TrainingTemplateTranslationOrderByWithRelationInput[]
+    cursor?: TrainingTemplateTranslationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrainingTemplateTranslationScalarFieldEnum | TrainingTemplateTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplate.steps
+   */
+  export type TrainingTemplate$stepsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    where?: TrainingStepWhereInput
+    orderBy?: TrainingStepOrderByWithRelationInput | TrainingStepOrderByWithRelationInput[]
+    cursor?: TrainingStepWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrainingStepScalarFieldEnum | TrainingStepScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplate.runs
+   */
+  export type TrainingTemplate$runsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    where?: TrainingRunWhereInput
+    orderBy?: TrainingRunOrderByWithRelationInput | TrainingRunOrderByWithRelationInput[]
+    cursor?: TrainingRunWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrainingRunScalarFieldEnum | TrainingRunScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplate without action
+   */
+  export type TrainingTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplate
+     */
+    select?: TrainingTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplate
+     */
+    omit?: TrainingTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TrainingTemplateTranslation
+   */
+
+  export type AggregateTrainingTemplateTranslation = {
+    _count: TrainingTemplateTranslationCountAggregateOutputType | null
+    _min: TrainingTemplateTranslationMinAggregateOutputType | null
+    _max: TrainingTemplateTranslationMaxAggregateOutputType | null
+  }
+
+  export type TrainingTemplateTranslationMinAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    lang: $Enums.Language | null
+    title: string | null
+    subtitle: string | null
+    description: string | null
+  }
+
+  export type TrainingTemplateTranslationMaxAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    lang: $Enums.Language | null
+    title: string | null
+    subtitle: string | null
+    description: string | null
+  }
+
+  export type TrainingTemplateTranslationCountAggregateOutputType = {
+    id: number
+    templateId: number
+    lang: number
+    title: number
+    subtitle: number
+    description: number
+    _all: number
+  }
+
+
+  export type TrainingTemplateTranslationMinAggregateInputType = {
+    id?: true
+    templateId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+  }
+
+  export type TrainingTemplateTranslationMaxAggregateInputType = {
+    id?: true
+    templateId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+  }
+
+  export type TrainingTemplateTranslationCountAggregateInputType = {
+    id?: true
+    templateId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+    _all?: true
+  }
+
+  export type TrainingTemplateTranslationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingTemplateTranslation to aggregate.
+     */
+    where?: TrainingTemplateTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingTemplateTranslations to fetch.
+     */
+    orderBy?: TrainingTemplateTranslationOrderByWithRelationInput | TrainingTemplateTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrainingTemplateTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingTemplateTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingTemplateTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrainingTemplateTranslations
+    **/
+    _count?: true | TrainingTemplateTranslationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrainingTemplateTranslationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrainingTemplateTranslationMaxAggregateInputType
+  }
+
+  export type GetTrainingTemplateTranslationAggregateType<T extends TrainingTemplateTranslationAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrainingTemplateTranslation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrainingTemplateTranslation[P]>
+      : GetScalarType<T[P], AggregateTrainingTemplateTranslation[P]>
+  }
+
+
+
+
+  export type TrainingTemplateTranslationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingTemplateTranslationWhereInput
+    orderBy?: TrainingTemplateTranslationOrderByWithAggregationInput | TrainingTemplateTranslationOrderByWithAggregationInput[]
+    by: TrainingTemplateTranslationScalarFieldEnum[] | TrainingTemplateTranslationScalarFieldEnum
+    having?: TrainingTemplateTranslationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrainingTemplateTranslationCountAggregateInputType | true
+    _min?: TrainingTemplateTranslationMinAggregateInputType
+    _max?: TrainingTemplateTranslationMaxAggregateInputType
+  }
+
+  export type TrainingTemplateTranslationGroupByOutputType = {
+    id: string
+    templateId: string
+    lang: $Enums.Language
+    title: string
+    subtitle: string | null
+    description: string | null
+    _count: TrainingTemplateTranslationCountAggregateOutputType | null
+    _min: TrainingTemplateTranslationMinAggregateOutputType | null
+    _max: TrainingTemplateTranslationMaxAggregateOutputType | null
+  }
+
+  type GetTrainingTemplateTranslationGroupByPayload<T extends TrainingTemplateTranslationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrainingTemplateTranslationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrainingTemplateTranslationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrainingTemplateTranslationGroupByOutputType[P]>
+            : GetScalarType<T[P], TrainingTemplateTranslationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrainingTemplateTranslationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingTemplateTranslation"]>
+
+  export type TrainingTemplateTranslationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingTemplateTranslation"]>
+
+  export type TrainingTemplateTranslationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingTemplateTranslation"]>
+
+  export type TrainingTemplateTranslationSelectScalar = {
+    id?: boolean
+    templateId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+  }
+
+  export type TrainingTemplateTranslationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateId" | "lang" | "title" | "subtitle" | "description", ExtArgs["result"]["trainingTemplateTranslation"]>
+  export type TrainingTemplateTranslationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+  export type TrainingTemplateTranslationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+  export type TrainingTemplateTranslationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $TrainingTemplateTranslationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrainingTemplateTranslation"
+    objects: {
+      template: Prisma.$TrainingTemplatePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      templateId: string
+      lang: $Enums.Language
+      title: string
+      subtitle: string | null
+      description: string | null
+    }, ExtArgs["result"]["trainingTemplateTranslation"]>
+    composites: {}
+  }
+
+  type TrainingTemplateTranslationGetPayload<S extends boolean | null | undefined | TrainingTemplateTranslationDefaultArgs> = $Result.GetResult<Prisma.$TrainingTemplateTranslationPayload, S>
+
+  type TrainingTemplateTranslationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrainingTemplateTranslationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrainingTemplateTranslationCountAggregateInputType | true
+    }
+
+  export interface TrainingTemplateTranslationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrainingTemplateTranslation'], meta: { name: 'TrainingTemplateTranslation' } }
+    /**
+     * Find zero or one TrainingTemplateTranslation that matches the filter.
+     * @param {TrainingTemplateTranslationFindUniqueArgs} args - Arguments to find a TrainingTemplateTranslation
+     * @example
+     * // Get one TrainingTemplateTranslation
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrainingTemplateTranslationFindUniqueArgs>(args: SelectSubset<T, TrainingTemplateTranslationFindUniqueArgs<ExtArgs>>): Prisma__TrainingTemplateTranslationClient<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrainingTemplateTranslation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrainingTemplateTranslationFindUniqueOrThrowArgs} args - Arguments to find a TrainingTemplateTranslation
+     * @example
+     * // Get one TrainingTemplateTranslation
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrainingTemplateTranslationFindUniqueOrThrowArgs>(args: SelectSubset<T, TrainingTemplateTranslationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrainingTemplateTranslationClient<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingTemplateTranslation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateTranslationFindFirstArgs} args - Arguments to find a TrainingTemplateTranslation
+     * @example
+     * // Get one TrainingTemplateTranslation
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrainingTemplateTranslationFindFirstArgs>(args?: SelectSubset<T, TrainingTemplateTranslationFindFirstArgs<ExtArgs>>): Prisma__TrainingTemplateTranslationClient<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingTemplateTranslation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateTranslationFindFirstOrThrowArgs} args - Arguments to find a TrainingTemplateTranslation
+     * @example
+     * // Get one TrainingTemplateTranslation
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrainingTemplateTranslationFindFirstOrThrowArgs>(args?: SelectSubset<T, TrainingTemplateTranslationFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrainingTemplateTranslationClient<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrainingTemplateTranslations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateTranslationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrainingTemplateTranslations
+     * const trainingTemplateTranslations = await prisma.trainingTemplateTranslation.findMany()
+     * 
+     * // Get first 10 TrainingTemplateTranslations
+     * const trainingTemplateTranslations = await prisma.trainingTemplateTranslation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trainingTemplateTranslationWithIdOnly = await prisma.trainingTemplateTranslation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrainingTemplateTranslationFindManyArgs>(args?: SelectSubset<T, TrainingTemplateTranslationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrainingTemplateTranslation.
+     * @param {TrainingTemplateTranslationCreateArgs} args - Arguments to create a TrainingTemplateTranslation.
+     * @example
+     * // Create one TrainingTemplateTranslation
+     * const TrainingTemplateTranslation = await prisma.trainingTemplateTranslation.create({
+     *   data: {
+     *     // ... data to create a TrainingTemplateTranslation
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrainingTemplateTranslationCreateArgs>(args: SelectSubset<T, TrainingTemplateTranslationCreateArgs<ExtArgs>>): Prisma__TrainingTemplateTranslationClient<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrainingTemplateTranslations.
+     * @param {TrainingTemplateTranslationCreateManyArgs} args - Arguments to create many TrainingTemplateTranslations.
+     * @example
+     * // Create many TrainingTemplateTranslations
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrainingTemplateTranslationCreateManyArgs>(args?: SelectSubset<T, TrainingTemplateTranslationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TrainingTemplateTranslations and returns the data saved in the database.
+     * @param {TrainingTemplateTranslationCreateManyAndReturnArgs} args - Arguments to create many TrainingTemplateTranslations.
+     * @example
+     * // Create many TrainingTemplateTranslations
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TrainingTemplateTranslations and only return the `id`
+     * const trainingTemplateTranslationWithIdOnly = await prisma.trainingTemplateTranslation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrainingTemplateTranslationCreateManyAndReturnArgs>(args?: SelectSubset<T, TrainingTemplateTranslationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TrainingTemplateTranslation.
+     * @param {TrainingTemplateTranslationDeleteArgs} args - Arguments to delete one TrainingTemplateTranslation.
+     * @example
+     * // Delete one TrainingTemplateTranslation
+     * const TrainingTemplateTranslation = await prisma.trainingTemplateTranslation.delete({
+     *   where: {
+     *     // ... filter to delete one TrainingTemplateTranslation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrainingTemplateTranslationDeleteArgs>(args: SelectSubset<T, TrainingTemplateTranslationDeleteArgs<ExtArgs>>): Prisma__TrainingTemplateTranslationClient<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrainingTemplateTranslation.
+     * @param {TrainingTemplateTranslationUpdateArgs} args - Arguments to update one TrainingTemplateTranslation.
+     * @example
+     * // Update one TrainingTemplateTranslation
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrainingTemplateTranslationUpdateArgs>(args: SelectSubset<T, TrainingTemplateTranslationUpdateArgs<ExtArgs>>): Prisma__TrainingTemplateTranslationClient<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrainingTemplateTranslations.
+     * @param {TrainingTemplateTranslationDeleteManyArgs} args - Arguments to filter TrainingTemplateTranslations to delete.
+     * @example
+     * // Delete a few TrainingTemplateTranslations
+     * const { count } = await prisma.trainingTemplateTranslation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrainingTemplateTranslationDeleteManyArgs>(args?: SelectSubset<T, TrainingTemplateTranslationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingTemplateTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateTranslationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrainingTemplateTranslations
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrainingTemplateTranslationUpdateManyArgs>(args: SelectSubset<T, TrainingTemplateTranslationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingTemplateTranslations and returns the data updated in the database.
+     * @param {TrainingTemplateTranslationUpdateManyAndReturnArgs} args - Arguments to update many TrainingTemplateTranslations.
+     * @example
+     * // Update many TrainingTemplateTranslations
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TrainingTemplateTranslations and only return the `id`
+     * const trainingTemplateTranslationWithIdOnly = await prisma.trainingTemplateTranslation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrainingTemplateTranslationUpdateManyAndReturnArgs>(args: SelectSubset<T, TrainingTemplateTranslationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TrainingTemplateTranslation.
+     * @param {TrainingTemplateTranslationUpsertArgs} args - Arguments to update or create a TrainingTemplateTranslation.
+     * @example
+     * // Update or create a TrainingTemplateTranslation
+     * const trainingTemplateTranslation = await prisma.trainingTemplateTranslation.upsert({
+     *   create: {
+     *     // ... data to create a TrainingTemplateTranslation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrainingTemplateTranslation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrainingTemplateTranslationUpsertArgs>(args: SelectSubset<T, TrainingTemplateTranslationUpsertArgs<ExtArgs>>): Prisma__TrainingTemplateTranslationClient<$Result.GetResult<Prisma.$TrainingTemplateTranslationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TrainingTemplateTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateTranslationCountArgs} args - Arguments to filter TrainingTemplateTranslations to count.
+     * @example
+     * // Count the number of TrainingTemplateTranslations
+     * const count = await prisma.trainingTemplateTranslation.count({
+     *   where: {
+     *     // ... the filter for the TrainingTemplateTranslations we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrainingTemplateTranslationCountArgs>(
+      args?: Subset<T, TrainingTemplateTranslationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrainingTemplateTranslationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrainingTemplateTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateTranslationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrainingTemplateTranslationAggregateArgs>(args: Subset<T, TrainingTemplateTranslationAggregateArgs>): Prisma.PrismaPromise<GetTrainingTemplateTranslationAggregateType<T>>
+
+    /**
+     * Group by TrainingTemplateTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingTemplateTranslationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrainingTemplateTranslationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrainingTemplateTranslationGroupByArgs['orderBy'] }
+        : { orderBy?: TrainingTemplateTranslationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrainingTemplateTranslationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrainingTemplateTranslationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrainingTemplateTranslation model
+   */
+  readonly fields: TrainingTemplateTranslationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrainingTemplateTranslation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrainingTemplateTranslationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    template<T extends TrainingTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TrainingTemplateDefaultArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrainingTemplateTranslation model
+   */
+  interface TrainingTemplateTranslationFieldRefs {
+    readonly id: FieldRef<"TrainingTemplateTranslation", 'String'>
+    readonly templateId: FieldRef<"TrainingTemplateTranslation", 'String'>
+    readonly lang: FieldRef<"TrainingTemplateTranslation", 'Language'>
+    readonly title: FieldRef<"TrainingTemplateTranslation", 'String'>
+    readonly subtitle: FieldRef<"TrainingTemplateTranslation", 'String'>
+    readonly description: FieldRef<"TrainingTemplateTranslation", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrainingTemplateTranslation findUnique
+   */
+  export type TrainingTemplateTranslationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplateTranslation to fetch.
+     */
+    where: TrainingTemplateTranslationWhereUniqueInput
+  }
+
+  /**
+   * TrainingTemplateTranslation findUniqueOrThrow
+   */
+  export type TrainingTemplateTranslationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplateTranslation to fetch.
+     */
+    where: TrainingTemplateTranslationWhereUniqueInput
+  }
+
+  /**
+   * TrainingTemplateTranslation findFirst
+   */
+  export type TrainingTemplateTranslationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplateTranslation to fetch.
+     */
+    where?: TrainingTemplateTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingTemplateTranslations to fetch.
+     */
+    orderBy?: TrainingTemplateTranslationOrderByWithRelationInput | TrainingTemplateTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingTemplateTranslations.
+     */
+    cursor?: TrainingTemplateTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingTemplateTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingTemplateTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingTemplateTranslations.
+     */
+    distinct?: TrainingTemplateTranslationScalarFieldEnum | TrainingTemplateTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplateTranslation findFirstOrThrow
+   */
+  export type TrainingTemplateTranslationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplateTranslation to fetch.
+     */
+    where?: TrainingTemplateTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingTemplateTranslations to fetch.
+     */
+    orderBy?: TrainingTemplateTranslationOrderByWithRelationInput | TrainingTemplateTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingTemplateTranslations.
+     */
+    cursor?: TrainingTemplateTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingTemplateTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingTemplateTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingTemplateTranslations.
+     */
+    distinct?: TrainingTemplateTranslationScalarFieldEnum | TrainingTemplateTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplateTranslation findMany
+   */
+  export type TrainingTemplateTranslationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingTemplateTranslations to fetch.
+     */
+    where?: TrainingTemplateTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingTemplateTranslations to fetch.
+     */
+    orderBy?: TrainingTemplateTranslationOrderByWithRelationInput | TrainingTemplateTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrainingTemplateTranslations.
+     */
+    cursor?: TrainingTemplateTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingTemplateTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingTemplateTranslations.
+     */
+    skip?: number
+    distinct?: TrainingTemplateTranslationScalarFieldEnum | TrainingTemplateTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingTemplateTranslation create
+   */
+  export type TrainingTemplateTranslationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TrainingTemplateTranslation.
+     */
+    data: XOR<TrainingTemplateTranslationCreateInput, TrainingTemplateTranslationUncheckedCreateInput>
+  }
+
+  /**
+   * TrainingTemplateTranslation createMany
+   */
+  export type TrainingTemplateTranslationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrainingTemplateTranslations.
+     */
+    data: TrainingTemplateTranslationCreateManyInput | TrainingTemplateTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingTemplateTranslation createManyAndReturn
+   */
+  export type TrainingTemplateTranslationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * The data used to create many TrainingTemplateTranslations.
+     */
+    data: TrainingTemplateTranslationCreateManyInput | TrainingTemplateTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingTemplateTranslation update
+   */
+  export type TrainingTemplateTranslationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TrainingTemplateTranslation.
+     */
+    data: XOR<TrainingTemplateTranslationUpdateInput, TrainingTemplateTranslationUncheckedUpdateInput>
+    /**
+     * Choose, which TrainingTemplateTranslation to update.
+     */
+    where: TrainingTemplateTranslationWhereUniqueInput
+  }
+
+  /**
+   * TrainingTemplateTranslation updateMany
+   */
+  export type TrainingTemplateTranslationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrainingTemplateTranslations.
+     */
+    data: XOR<TrainingTemplateTranslationUpdateManyMutationInput, TrainingTemplateTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingTemplateTranslations to update
+     */
+    where?: TrainingTemplateTranslationWhereInput
+    /**
+     * Limit how many TrainingTemplateTranslations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingTemplateTranslation updateManyAndReturn
+   */
+  export type TrainingTemplateTranslationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * The data used to update TrainingTemplateTranslations.
+     */
+    data: XOR<TrainingTemplateTranslationUpdateManyMutationInput, TrainingTemplateTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingTemplateTranslations to update
+     */
+    where?: TrainingTemplateTranslationWhereInput
+    /**
+     * Limit how many TrainingTemplateTranslations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingTemplateTranslation upsert
+   */
+  export type TrainingTemplateTranslationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TrainingTemplateTranslation to update in case it exists.
+     */
+    where: TrainingTemplateTranslationWhereUniqueInput
+    /**
+     * In case the TrainingTemplateTranslation found by the `where` argument doesn't exist, create a new TrainingTemplateTranslation with this data.
+     */
+    create: XOR<TrainingTemplateTranslationCreateInput, TrainingTemplateTranslationUncheckedCreateInput>
+    /**
+     * In case the TrainingTemplateTranslation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrainingTemplateTranslationUpdateInput, TrainingTemplateTranslationUncheckedUpdateInput>
+  }
+
+  /**
+   * TrainingTemplateTranslation delete
+   */
+  export type TrainingTemplateTranslationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter which TrainingTemplateTranslation to delete.
+     */
+    where: TrainingTemplateTranslationWhereUniqueInput
+  }
+
+  /**
+   * TrainingTemplateTranslation deleteMany
+   */
+  export type TrainingTemplateTranslationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingTemplateTranslations to delete
+     */
+    where?: TrainingTemplateTranslationWhereInput
+    /**
+     * Limit how many TrainingTemplateTranslations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingTemplateTranslation without action
+   */
+  export type TrainingTemplateTranslationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingTemplateTranslation
+     */
+    select?: TrainingTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingTemplateTranslation
+     */
+    omit?: TrainingTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingTemplateTranslationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TrainingStep
+   */
+
+  export type AggregateTrainingStep = {
+    _count: TrainingStepCountAggregateOutputType | null
+    _avg: TrainingStepAvgAggregateOutputType | null
+    _sum: TrainingStepSumAggregateOutputType | null
+    _min: TrainingStepMinAggregateOutputType | null
+    _max: TrainingStepMaxAggregateOutputType | null
+  }
+
+  export type TrainingStepAvgAggregateOutputType = {
+    sortOrder: number | null
+    durationSeconds: number | null
+  }
+
+  export type TrainingStepSumAggregateOutputType = {
+    sortOrder: number | null
+    durationSeconds: number | null
+  }
+
+  export type TrainingStepMinAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    sortOrder: number | null
+    phase: $Enums.BreathPhase | null
+    durationSeconds: number | null
+  }
+
+  export type TrainingStepMaxAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    sortOrder: number | null
+    phase: $Enums.BreathPhase | null
+    durationSeconds: number | null
+  }
+
+  export type TrainingStepCountAggregateOutputType = {
+    id: number
+    templateId: number
+    sortOrder: number
+    phase: number
+    durationSeconds: number
+    _all: number
+  }
+
+
+  export type TrainingStepAvgAggregateInputType = {
+    sortOrder?: true
+    durationSeconds?: true
+  }
+
+  export type TrainingStepSumAggregateInputType = {
+    sortOrder?: true
+    durationSeconds?: true
+  }
+
+  export type TrainingStepMinAggregateInputType = {
+    id?: true
+    templateId?: true
+    sortOrder?: true
+    phase?: true
+    durationSeconds?: true
+  }
+
+  export type TrainingStepMaxAggregateInputType = {
+    id?: true
+    templateId?: true
+    sortOrder?: true
+    phase?: true
+    durationSeconds?: true
+  }
+
+  export type TrainingStepCountAggregateInputType = {
+    id?: true
+    templateId?: true
+    sortOrder?: true
+    phase?: true
+    durationSeconds?: true
+    _all?: true
+  }
+
+  export type TrainingStepAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingStep to aggregate.
+     */
+    where?: TrainingStepWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingSteps to fetch.
+     */
+    orderBy?: TrainingStepOrderByWithRelationInput | TrainingStepOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrainingStepWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingSteps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingSteps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrainingSteps
+    **/
+    _count?: true | TrainingStepCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TrainingStepAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TrainingStepSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrainingStepMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrainingStepMaxAggregateInputType
+  }
+
+  export type GetTrainingStepAggregateType<T extends TrainingStepAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrainingStep]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrainingStep[P]>
+      : GetScalarType<T[P], AggregateTrainingStep[P]>
+  }
+
+
+
+
+  export type TrainingStepGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingStepWhereInput
+    orderBy?: TrainingStepOrderByWithAggregationInput | TrainingStepOrderByWithAggregationInput[]
+    by: TrainingStepScalarFieldEnum[] | TrainingStepScalarFieldEnum
+    having?: TrainingStepScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrainingStepCountAggregateInputType | true
+    _avg?: TrainingStepAvgAggregateInputType
+    _sum?: TrainingStepSumAggregateInputType
+    _min?: TrainingStepMinAggregateInputType
+    _max?: TrainingStepMaxAggregateInputType
+  }
+
+  export type TrainingStepGroupByOutputType = {
+    id: string
+    templateId: string
+    sortOrder: number
+    phase: $Enums.BreathPhase
+    durationSeconds: number
+    _count: TrainingStepCountAggregateOutputType | null
+    _avg: TrainingStepAvgAggregateOutputType | null
+    _sum: TrainingStepSumAggregateOutputType | null
+    _min: TrainingStepMinAggregateOutputType | null
+    _max: TrainingStepMaxAggregateOutputType | null
+  }
+
+  type GetTrainingStepGroupByPayload<T extends TrainingStepGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrainingStepGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrainingStepGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrainingStepGroupByOutputType[P]>
+            : GetScalarType<T[P], TrainingStepGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrainingStepSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    sortOrder?: boolean
+    phase?: boolean
+    durationSeconds?: boolean
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingStep"]>
+
+  export type TrainingStepSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    sortOrder?: boolean
+    phase?: boolean
+    durationSeconds?: boolean
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingStep"]>
+
+  export type TrainingStepSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    sortOrder?: boolean
+    phase?: boolean
+    durationSeconds?: boolean
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingStep"]>
+
+  export type TrainingStepSelectScalar = {
+    id?: boolean
+    templateId?: boolean
+    sortOrder?: boolean
+    phase?: boolean
+    durationSeconds?: boolean
+  }
+
+  export type TrainingStepOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateId" | "sortOrder" | "phase" | "durationSeconds", ExtArgs["result"]["trainingStep"]>
+  export type TrainingStepInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+  export type TrainingStepIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+  export type TrainingStepIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $TrainingStepPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrainingStep"
+    objects: {
+      template: Prisma.$TrainingTemplatePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      templateId: string
+      sortOrder: number
+      phase: $Enums.BreathPhase
+      durationSeconds: number
+    }, ExtArgs["result"]["trainingStep"]>
+    composites: {}
+  }
+
+  type TrainingStepGetPayload<S extends boolean | null | undefined | TrainingStepDefaultArgs> = $Result.GetResult<Prisma.$TrainingStepPayload, S>
+
+  type TrainingStepCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrainingStepFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrainingStepCountAggregateInputType | true
+    }
+
+  export interface TrainingStepDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrainingStep'], meta: { name: 'TrainingStep' } }
+    /**
+     * Find zero or one TrainingStep that matches the filter.
+     * @param {TrainingStepFindUniqueArgs} args - Arguments to find a TrainingStep
+     * @example
+     * // Get one TrainingStep
+     * const trainingStep = await prisma.trainingStep.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrainingStepFindUniqueArgs>(args: SelectSubset<T, TrainingStepFindUniqueArgs<ExtArgs>>): Prisma__TrainingStepClient<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrainingStep that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrainingStepFindUniqueOrThrowArgs} args - Arguments to find a TrainingStep
+     * @example
+     * // Get one TrainingStep
+     * const trainingStep = await prisma.trainingStep.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrainingStepFindUniqueOrThrowArgs>(args: SelectSubset<T, TrainingStepFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrainingStepClient<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingStep that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingStepFindFirstArgs} args - Arguments to find a TrainingStep
+     * @example
+     * // Get one TrainingStep
+     * const trainingStep = await prisma.trainingStep.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrainingStepFindFirstArgs>(args?: SelectSubset<T, TrainingStepFindFirstArgs<ExtArgs>>): Prisma__TrainingStepClient<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingStep that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingStepFindFirstOrThrowArgs} args - Arguments to find a TrainingStep
+     * @example
+     * // Get one TrainingStep
+     * const trainingStep = await prisma.trainingStep.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrainingStepFindFirstOrThrowArgs>(args?: SelectSubset<T, TrainingStepFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrainingStepClient<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrainingSteps that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingStepFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrainingSteps
+     * const trainingSteps = await prisma.trainingStep.findMany()
+     * 
+     * // Get first 10 TrainingSteps
+     * const trainingSteps = await prisma.trainingStep.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trainingStepWithIdOnly = await prisma.trainingStep.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrainingStepFindManyArgs>(args?: SelectSubset<T, TrainingStepFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrainingStep.
+     * @param {TrainingStepCreateArgs} args - Arguments to create a TrainingStep.
+     * @example
+     * // Create one TrainingStep
+     * const TrainingStep = await prisma.trainingStep.create({
+     *   data: {
+     *     // ... data to create a TrainingStep
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrainingStepCreateArgs>(args: SelectSubset<T, TrainingStepCreateArgs<ExtArgs>>): Prisma__TrainingStepClient<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrainingSteps.
+     * @param {TrainingStepCreateManyArgs} args - Arguments to create many TrainingSteps.
+     * @example
+     * // Create many TrainingSteps
+     * const trainingStep = await prisma.trainingStep.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrainingStepCreateManyArgs>(args?: SelectSubset<T, TrainingStepCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TrainingSteps and returns the data saved in the database.
+     * @param {TrainingStepCreateManyAndReturnArgs} args - Arguments to create many TrainingSteps.
+     * @example
+     * // Create many TrainingSteps
+     * const trainingStep = await prisma.trainingStep.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TrainingSteps and only return the `id`
+     * const trainingStepWithIdOnly = await prisma.trainingStep.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrainingStepCreateManyAndReturnArgs>(args?: SelectSubset<T, TrainingStepCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TrainingStep.
+     * @param {TrainingStepDeleteArgs} args - Arguments to delete one TrainingStep.
+     * @example
+     * // Delete one TrainingStep
+     * const TrainingStep = await prisma.trainingStep.delete({
+     *   where: {
+     *     // ... filter to delete one TrainingStep
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrainingStepDeleteArgs>(args: SelectSubset<T, TrainingStepDeleteArgs<ExtArgs>>): Prisma__TrainingStepClient<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrainingStep.
+     * @param {TrainingStepUpdateArgs} args - Arguments to update one TrainingStep.
+     * @example
+     * // Update one TrainingStep
+     * const trainingStep = await prisma.trainingStep.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrainingStepUpdateArgs>(args: SelectSubset<T, TrainingStepUpdateArgs<ExtArgs>>): Prisma__TrainingStepClient<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrainingSteps.
+     * @param {TrainingStepDeleteManyArgs} args - Arguments to filter TrainingSteps to delete.
+     * @example
+     * // Delete a few TrainingSteps
+     * const { count } = await prisma.trainingStep.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrainingStepDeleteManyArgs>(args?: SelectSubset<T, TrainingStepDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingSteps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingStepUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrainingSteps
+     * const trainingStep = await prisma.trainingStep.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrainingStepUpdateManyArgs>(args: SelectSubset<T, TrainingStepUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingSteps and returns the data updated in the database.
+     * @param {TrainingStepUpdateManyAndReturnArgs} args - Arguments to update many TrainingSteps.
+     * @example
+     * // Update many TrainingSteps
+     * const trainingStep = await prisma.trainingStep.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TrainingSteps and only return the `id`
+     * const trainingStepWithIdOnly = await prisma.trainingStep.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrainingStepUpdateManyAndReturnArgs>(args: SelectSubset<T, TrainingStepUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TrainingStep.
+     * @param {TrainingStepUpsertArgs} args - Arguments to update or create a TrainingStep.
+     * @example
+     * // Update or create a TrainingStep
+     * const trainingStep = await prisma.trainingStep.upsert({
+     *   create: {
+     *     // ... data to create a TrainingStep
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrainingStep we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrainingStepUpsertArgs>(args: SelectSubset<T, TrainingStepUpsertArgs<ExtArgs>>): Prisma__TrainingStepClient<$Result.GetResult<Prisma.$TrainingStepPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TrainingSteps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingStepCountArgs} args - Arguments to filter TrainingSteps to count.
+     * @example
+     * // Count the number of TrainingSteps
+     * const count = await prisma.trainingStep.count({
+     *   where: {
+     *     // ... the filter for the TrainingSteps we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrainingStepCountArgs>(
+      args?: Subset<T, TrainingStepCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrainingStepCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrainingStep.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingStepAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrainingStepAggregateArgs>(args: Subset<T, TrainingStepAggregateArgs>): Prisma.PrismaPromise<GetTrainingStepAggregateType<T>>
+
+    /**
+     * Group by TrainingStep.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingStepGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrainingStepGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrainingStepGroupByArgs['orderBy'] }
+        : { orderBy?: TrainingStepGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrainingStepGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrainingStepGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrainingStep model
+   */
+  readonly fields: TrainingStepFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrainingStep.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrainingStepClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    template<T extends TrainingTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TrainingTemplateDefaultArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrainingStep model
+   */
+  interface TrainingStepFieldRefs {
+    readonly id: FieldRef<"TrainingStep", 'String'>
+    readonly templateId: FieldRef<"TrainingStep", 'String'>
+    readonly sortOrder: FieldRef<"TrainingStep", 'Int'>
+    readonly phase: FieldRef<"TrainingStep", 'BreathPhase'>
+    readonly durationSeconds: FieldRef<"TrainingStep", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrainingStep findUnique
+   */
+  export type TrainingStepFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingStep to fetch.
+     */
+    where: TrainingStepWhereUniqueInput
+  }
+
+  /**
+   * TrainingStep findUniqueOrThrow
+   */
+  export type TrainingStepFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingStep to fetch.
+     */
+    where: TrainingStepWhereUniqueInput
+  }
+
+  /**
+   * TrainingStep findFirst
+   */
+  export type TrainingStepFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingStep to fetch.
+     */
+    where?: TrainingStepWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingSteps to fetch.
+     */
+    orderBy?: TrainingStepOrderByWithRelationInput | TrainingStepOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingSteps.
+     */
+    cursor?: TrainingStepWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingSteps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingSteps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingSteps.
+     */
+    distinct?: TrainingStepScalarFieldEnum | TrainingStepScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingStep findFirstOrThrow
+   */
+  export type TrainingStepFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingStep to fetch.
+     */
+    where?: TrainingStepWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingSteps to fetch.
+     */
+    orderBy?: TrainingStepOrderByWithRelationInput | TrainingStepOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingSteps.
+     */
+    cursor?: TrainingStepWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingSteps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingSteps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingSteps.
+     */
+    distinct?: TrainingStepScalarFieldEnum | TrainingStepScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingStep findMany
+   */
+  export type TrainingStepFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingSteps to fetch.
+     */
+    where?: TrainingStepWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingSteps to fetch.
+     */
+    orderBy?: TrainingStepOrderByWithRelationInput | TrainingStepOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrainingSteps.
+     */
+    cursor?: TrainingStepWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingSteps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingSteps.
+     */
+    skip?: number
+    distinct?: TrainingStepScalarFieldEnum | TrainingStepScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingStep create
+   */
+  export type TrainingStepCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TrainingStep.
+     */
+    data: XOR<TrainingStepCreateInput, TrainingStepUncheckedCreateInput>
+  }
+
+  /**
+   * TrainingStep createMany
+   */
+  export type TrainingStepCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrainingSteps.
+     */
+    data: TrainingStepCreateManyInput | TrainingStepCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingStep createManyAndReturn
+   */
+  export type TrainingStepCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * The data used to create many TrainingSteps.
+     */
+    data: TrainingStepCreateManyInput | TrainingStepCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingStep update
+   */
+  export type TrainingStepUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TrainingStep.
+     */
+    data: XOR<TrainingStepUpdateInput, TrainingStepUncheckedUpdateInput>
+    /**
+     * Choose, which TrainingStep to update.
+     */
+    where: TrainingStepWhereUniqueInput
+  }
+
+  /**
+   * TrainingStep updateMany
+   */
+  export type TrainingStepUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrainingSteps.
+     */
+    data: XOR<TrainingStepUpdateManyMutationInput, TrainingStepUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingSteps to update
+     */
+    where?: TrainingStepWhereInput
+    /**
+     * Limit how many TrainingSteps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingStep updateManyAndReturn
+   */
+  export type TrainingStepUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * The data used to update TrainingSteps.
+     */
+    data: XOR<TrainingStepUpdateManyMutationInput, TrainingStepUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingSteps to update
+     */
+    where?: TrainingStepWhereInput
+    /**
+     * Limit how many TrainingSteps to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingStep upsert
+   */
+  export type TrainingStepUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TrainingStep to update in case it exists.
+     */
+    where: TrainingStepWhereUniqueInput
+    /**
+     * In case the TrainingStep found by the `where` argument doesn't exist, create a new TrainingStep with this data.
+     */
+    create: XOR<TrainingStepCreateInput, TrainingStepUncheckedCreateInput>
+    /**
+     * In case the TrainingStep was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrainingStepUpdateInput, TrainingStepUncheckedUpdateInput>
+  }
+
+  /**
+   * TrainingStep delete
+   */
+  export type TrainingStepDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+    /**
+     * Filter which TrainingStep to delete.
+     */
+    where: TrainingStepWhereUniqueInput
+  }
+
+  /**
+   * TrainingStep deleteMany
+   */
+  export type TrainingStepDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingSteps to delete
+     */
+    where?: TrainingStepWhereInput
+    /**
+     * Limit how many TrainingSteps to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingStep without action
+   */
+  export type TrainingStepDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingStep
+     */
+    select?: TrainingStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingStep
+     */
+    omit?: TrainingStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingStepInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TrainingRun
+   */
+
+  export type AggregateTrainingRun = {
+    _count: TrainingRunCountAggregateOutputType | null
+    _avg: TrainingRunAvgAggregateOutputType | null
+    _sum: TrainingRunSumAggregateOutputType | null
+    _min: TrainingRunMinAggregateOutputType | null
+    _max: TrainingRunMaxAggregateOutputType | null
+  }
+
+  export type TrainingRunAvgAggregateOutputType = {
+    totalSeconds: number | null
+  }
+
+  export type TrainingRunSumAggregateOutputType = {
+    totalSeconds: number | null
+  }
+
+  export type TrainingRunMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    templateId: string | null
+    startedAt: Date | null
+    finishedAt: Date | null
+    totalSeconds: number | null
+    completed: boolean | null
+  }
+
+  export type TrainingRunMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    templateId: string | null
+    startedAt: Date | null
+    finishedAt: Date | null
+    totalSeconds: number | null
+    completed: boolean | null
+  }
+
+  export type TrainingRunCountAggregateOutputType = {
+    id: number
+    userId: number
+    templateId: number
+    startedAt: number
+    finishedAt: number
+    totalSeconds: number
+    completed: number
+    metrics: number
+    _all: number
+  }
+
+
+  export type TrainingRunAvgAggregateInputType = {
+    totalSeconds?: true
+  }
+
+  export type TrainingRunSumAggregateInputType = {
+    totalSeconds?: true
+  }
+
+  export type TrainingRunMinAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    startedAt?: true
+    finishedAt?: true
+    totalSeconds?: true
+    completed?: true
+  }
+
+  export type TrainingRunMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    startedAt?: true
+    finishedAt?: true
+    totalSeconds?: true
+    completed?: true
+  }
+
+  export type TrainingRunCountAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    startedAt?: true
+    finishedAt?: true
+    totalSeconds?: true
+    completed?: true
+    metrics?: true
+    _all?: true
+  }
+
+  export type TrainingRunAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingRun to aggregate.
+     */
+    where?: TrainingRunWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingRuns to fetch.
+     */
+    orderBy?: TrainingRunOrderByWithRelationInput | TrainingRunOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrainingRunWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingRuns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingRuns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrainingRuns
+    **/
+    _count?: true | TrainingRunCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TrainingRunAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TrainingRunSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrainingRunMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrainingRunMaxAggregateInputType
+  }
+
+  export type GetTrainingRunAggregateType<T extends TrainingRunAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrainingRun]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrainingRun[P]>
+      : GetScalarType<T[P], AggregateTrainingRun[P]>
+  }
+
+
+
+
+  export type TrainingRunGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingRunWhereInput
+    orderBy?: TrainingRunOrderByWithAggregationInput | TrainingRunOrderByWithAggregationInput[]
+    by: TrainingRunScalarFieldEnum[] | TrainingRunScalarFieldEnum
+    having?: TrainingRunScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrainingRunCountAggregateInputType | true
+    _avg?: TrainingRunAvgAggregateInputType
+    _sum?: TrainingRunSumAggregateInputType
+    _min?: TrainingRunMinAggregateInputType
+    _max?: TrainingRunMaxAggregateInputType
+  }
+
+  export type TrainingRunGroupByOutputType = {
+    id: string
+    userId: string
+    templateId: string
+    startedAt: Date
+    finishedAt: Date | null
+    totalSeconds: number | null
+    completed: boolean
+    metrics: JsonValue | null
+    _count: TrainingRunCountAggregateOutputType | null
+    _avg: TrainingRunAvgAggregateOutputType | null
+    _sum: TrainingRunSumAggregateOutputType | null
+    _min: TrainingRunMinAggregateOutputType | null
+    _max: TrainingRunMaxAggregateOutputType | null
+  }
+
+  type GetTrainingRunGroupByPayload<T extends TrainingRunGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrainingRunGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrainingRunGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrainingRunGroupByOutputType[P]>
+            : GetScalarType<T[P], TrainingRunGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrainingRunSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    startedAt?: boolean
+    finishedAt?: boolean
+    totalSeconds?: boolean
+    completed?: boolean
+    metrics?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingRun"]>
+
+  export type TrainingRunSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    startedAt?: boolean
+    finishedAt?: boolean
+    totalSeconds?: boolean
+    completed?: boolean
+    metrics?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingRun"]>
+
+  export type TrainingRunSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    startedAt?: boolean
+    finishedAt?: boolean
+    totalSeconds?: boolean
+    completed?: boolean
+    metrics?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingRun"]>
+
+  export type TrainingRunSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    startedAt?: boolean
+    finishedAt?: boolean
+    totalSeconds?: boolean
+    completed?: boolean
+    metrics?: boolean
+  }
+
+  export type TrainingRunOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "templateId" | "startedAt" | "finishedAt" | "totalSeconds" | "completed" | "metrics", ExtArgs["result"]["trainingRun"]>
+  export type TrainingRunInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+  export type TrainingRunIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+  export type TrainingRunIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | TrainingTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $TrainingRunPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrainingRun"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      template: Prisma.$TrainingTemplatePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      templateId: string
+      startedAt: Date
+      finishedAt: Date | null
+      totalSeconds: number | null
+      completed: boolean
+      metrics: Prisma.JsonValue | null
+    }, ExtArgs["result"]["trainingRun"]>
+    composites: {}
+  }
+
+  type TrainingRunGetPayload<S extends boolean | null | undefined | TrainingRunDefaultArgs> = $Result.GetResult<Prisma.$TrainingRunPayload, S>
+
+  type TrainingRunCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrainingRunFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrainingRunCountAggregateInputType | true
+    }
+
+  export interface TrainingRunDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrainingRun'], meta: { name: 'TrainingRun' } }
+    /**
+     * Find zero or one TrainingRun that matches the filter.
+     * @param {TrainingRunFindUniqueArgs} args - Arguments to find a TrainingRun
+     * @example
+     * // Get one TrainingRun
+     * const trainingRun = await prisma.trainingRun.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrainingRunFindUniqueArgs>(args: SelectSubset<T, TrainingRunFindUniqueArgs<ExtArgs>>): Prisma__TrainingRunClient<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrainingRun that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrainingRunFindUniqueOrThrowArgs} args - Arguments to find a TrainingRun
+     * @example
+     * // Get one TrainingRun
+     * const trainingRun = await prisma.trainingRun.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrainingRunFindUniqueOrThrowArgs>(args: SelectSubset<T, TrainingRunFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrainingRunClient<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingRun that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRunFindFirstArgs} args - Arguments to find a TrainingRun
+     * @example
+     * // Get one TrainingRun
+     * const trainingRun = await prisma.trainingRun.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrainingRunFindFirstArgs>(args?: SelectSubset<T, TrainingRunFindFirstArgs<ExtArgs>>): Prisma__TrainingRunClient<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingRun that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRunFindFirstOrThrowArgs} args - Arguments to find a TrainingRun
+     * @example
+     * // Get one TrainingRun
+     * const trainingRun = await prisma.trainingRun.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrainingRunFindFirstOrThrowArgs>(args?: SelectSubset<T, TrainingRunFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrainingRunClient<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrainingRuns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRunFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrainingRuns
+     * const trainingRuns = await prisma.trainingRun.findMany()
+     * 
+     * // Get first 10 TrainingRuns
+     * const trainingRuns = await prisma.trainingRun.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trainingRunWithIdOnly = await prisma.trainingRun.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrainingRunFindManyArgs>(args?: SelectSubset<T, TrainingRunFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrainingRun.
+     * @param {TrainingRunCreateArgs} args - Arguments to create a TrainingRun.
+     * @example
+     * // Create one TrainingRun
+     * const TrainingRun = await prisma.trainingRun.create({
+     *   data: {
+     *     // ... data to create a TrainingRun
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrainingRunCreateArgs>(args: SelectSubset<T, TrainingRunCreateArgs<ExtArgs>>): Prisma__TrainingRunClient<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrainingRuns.
+     * @param {TrainingRunCreateManyArgs} args - Arguments to create many TrainingRuns.
+     * @example
+     * // Create many TrainingRuns
+     * const trainingRun = await prisma.trainingRun.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrainingRunCreateManyArgs>(args?: SelectSubset<T, TrainingRunCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TrainingRuns and returns the data saved in the database.
+     * @param {TrainingRunCreateManyAndReturnArgs} args - Arguments to create many TrainingRuns.
+     * @example
+     * // Create many TrainingRuns
+     * const trainingRun = await prisma.trainingRun.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TrainingRuns and only return the `id`
+     * const trainingRunWithIdOnly = await prisma.trainingRun.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrainingRunCreateManyAndReturnArgs>(args?: SelectSubset<T, TrainingRunCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TrainingRun.
+     * @param {TrainingRunDeleteArgs} args - Arguments to delete one TrainingRun.
+     * @example
+     * // Delete one TrainingRun
+     * const TrainingRun = await prisma.trainingRun.delete({
+     *   where: {
+     *     // ... filter to delete one TrainingRun
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrainingRunDeleteArgs>(args: SelectSubset<T, TrainingRunDeleteArgs<ExtArgs>>): Prisma__TrainingRunClient<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrainingRun.
+     * @param {TrainingRunUpdateArgs} args - Arguments to update one TrainingRun.
+     * @example
+     * // Update one TrainingRun
+     * const trainingRun = await prisma.trainingRun.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrainingRunUpdateArgs>(args: SelectSubset<T, TrainingRunUpdateArgs<ExtArgs>>): Prisma__TrainingRunClient<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrainingRuns.
+     * @param {TrainingRunDeleteManyArgs} args - Arguments to filter TrainingRuns to delete.
+     * @example
+     * // Delete a few TrainingRuns
+     * const { count } = await prisma.trainingRun.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrainingRunDeleteManyArgs>(args?: SelectSubset<T, TrainingRunDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingRuns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRunUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrainingRuns
+     * const trainingRun = await prisma.trainingRun.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrainingRunUpdateManyArgs>(args: SelectSubset<T, TrainingRunUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingRuns and returns the data updated in the database.
+     * @param {TrainingRunUpdateManyAndReturnArgs} args - Arguments to update many TrainingRuns.
+     * @example
+     * // Update many TrainingRuns
+     * const trainingRun = await prisma.trainingRun.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TrainingRuns and only return the `id`
+     * const trainingRunWithIdOnly = await prisma.trainingRun.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrainingRunUpdateManyAndReturnArgs>(args: SelectSubset<T, TrainingRunUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TrainingRun.
+     * @param {TrainingRunUpsertArgs} args - Arguments to update or create a TrainingRun.
+     * @example
+     * // Update or create a TrainingRun
+     * const trainingRun = await prisma.trainingRun.upsert({
+     *   create: {
+     *     // ... data to create a TrainingRun
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrainingRun we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrainingRunUpsertArgs>(args: SelectSubset<T, TrainingRunUpsertArgs<ExtArgs>>): Prisma__TrainingRunClient<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TrainingRuns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRunCountArgs} args - Arguments to filter TrainingRuns to count.
+     * @example
+     * // Count the number of TrainingRuns
+     * const count = await prisma.trainingRun.count({
+     *   where: {
+     *     // ... the filter for the TrainingRuns we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrainingRunCountArgs>(
+      args?: Subset<T, TrainingRunCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrainingRunCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrainingRun.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRunAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrainingRunAggregateArgs>(args: Subset<T, TrainingRunAggregateArgs>): Prisma.PrismaPromise<GetTrainingRunAggregateType<T>>
+
+    /**
+     * Group by TrainingRun.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRunGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrainingRunGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrainingRunGroupByArgs['orderBy'] }
+        : { orderBy?: TrainingRunGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrainingRunGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrainingRunGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrainingRun model
+   */
+  readonly fields: TrainingRunFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrainingRun.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrainingRunClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    template<T extends TrainingTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TrainingTemplateDefaultArgs<ExtArgs>>): Prisma__TrainingTemplateClient<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrainingRun model
+   */
+  interface TrainingRunFieldRefs {
+    readonly id: FieldRef<"TrainingRun", 'String'>
+    readonly userId: FieldRef<"TrainingRun", 'String'>
+    readonly templateId: FieldRef<"TrainingRun", 'String'>
+    readonly startedAt: FieldRef<"TrainingRun", 'DateTime'>
+    readonly finishedAt: FieldRef<"TrainingRun", 'DateTime'>
+    readonly totalSeconds: FieldRef<"TrainingRun", 'Int'>
+    readonly completed: FieldRef<"TrainingRun", 'Boolean'>
+    readonly metrics: FieldRef<"TrainingRun", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrainingRun findUnique
+   */
+  export type TrainingRunFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingRun to fetch.
+     */
+    where: TrainingRunWhereUniqueInput
+  }
+
+  /**
+   * TrainingRun findUniqueOrThrow
+   */
+  export type TrainingRunFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingRun to fetch.
+     */
+    where: TrainingRunWhereUniqueInput
+  }
+
+  /**
+   * TrainingRun findFirst
+   */
+  export type TrainingRunFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingRun to fetch.
+     */
+    where?: TrainingRunWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingRuns to fetch.
+     */
+    orderBy?: TrainingRunOrderByWithRelationInput | TrainingRunOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingRuns.
+     */
+    cursor?: TrainingRunWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingRuns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingRuns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingRuns.
+     */
+    distinct?: TrainingRunScalarFieldEnum | TrainingRunScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingRun findFirstOrThrow
+   */
+  export type TrainingRunFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingRun to fetch.
+     */
+    where?: TrainingRunWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingRuns to fetch.
+     */
+    orderBy?: TrainingRunOrderByWithRelationInput | TrainingRunOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingRuns.
+     */
+    cursor?: TrainingRunWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingRuns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingRuns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingRuns.
+     */
+    distinct?: TrainingRunScalarFieldEnum | TrainingRunScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingRun findMany
+   */
+  export type TrainingRunFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingRuns to fetch.
+     */
+    where?: TrainingRunWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingRuns to fetch.
+     */
+    orderBy?: TrainingRunOrderByWithRelationInput | TrainingRunOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrainingRuns.
+     */
+    cursor?: TrainingRunWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingRuns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingRuns.
+     */
+    skip?: number
+    distinct?: TrainingRunScalarFieldEnum | TrainingRunScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingRun create
+   */
+  export type TrainingRunCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TrainingRun.
+     */
+    data: XOR<TrainingRunCreateInput, TrainingRunUncheckedCreateInput>
+  }
+
+  /**
+   * TrainingRun createMany
+   */
+  export type TrainingRunCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrainingRuns.
+     */
+    data: TrainingRunCreateManyInput | TrainingRunCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingRun createManyAndReturn
+   */
+  export type TrainingRunCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * The data used to create many TrainingRuns.
+     */
+    data: TrainingRunCreateManyInput | TrainingRunCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingRun update
+   */
+  export type TrainingRunUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TrainingRun.
+     */
+    data: XOR<TrainingRunUpdateInput, TrainingRunUncheckedUpdateInput>
+    /**
+     * Choose, which TrainingRun to update.
+     */
+    where: TrainingRunWhereUniqueInput
+  }
+
+  /**
+   * TrainingRun updateMany
+   */
+  export type TrainingRunUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrainingRuns.
+     */
+    data: XOR<TrainingRunUpdateManyMutationInput, TrainingRunUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingRuns to update
+     */
+    where?: TrainingRunWhereInput
+    /**
+     * Limit how many TrainingRuns to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingRun updateManyAndReturn
+   */
+  export type TrainingRunUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * The data used to update TrainingRuns.
+     */
+    data: XOR<TrainingRunUpdateManyMutationInput, TrainingRunUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingRuns to update
+     */
+    where?: TrainingRunWhereInput
+    /**
+     * Limit how many TrainingRuns to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingRun upsert
+   */
+  export type TrainingRunUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TrainingRun to update in case it exists.
+     */
+    where: TrainingRunWhereUniqueInput
+    /**
+     * In case the TrainingRun found by the `where` argument doesn't exist, create a new TrainingRun with this data.
+     */
+    create: XOR<TrainingRunCreateInput, TrainingRunUncheckedCreateInput>
+    /**
+     * In case the TrainingRun was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrainingRunUpdateInput, TrainingRunUncheckedUpdateInput>
+  }
+
+  /**
+   * TrainingRun delete
+   */
+  export type TrainingRunDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+    /**
+     * Filter which TrainingRun to delete.
+     */
+    where: TrainingRunWhereUniqueInput
+  }
+
+  /**
+   * TrainingRun deleteMany
+   */
+  export type TrainingRunDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingRuns to delete
+     */
+    where?: TrainingRunWhereInput
+    /**
+     * Limit how many TrainingRuns to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingRun without action
+   */
+  export type TrainingRunDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRun
+     */
+    select?: TrainingRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRun
+     */
+    omit?: TrainingRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingRunInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8055,12 +15732,105 @@ export namespace Prisma {
   export type CultureTagOnArticleScalarFieldEnum = (typeof CultureTagOnArticleScalarFieldEnum)[keyof typeof CultureTagOnArticleScalarFieldEnum]
 
 
+  export const TrainingProgramScalarFieldEnum: {
+    id: 'id',
+    key: 'key',
+    slug: 'slug',
+    sortOrder: 'sortOrder',
+    isPublished: 'isPublished',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TrainingProgramScalarFieldEnum = (typeof TrainingProgramScalarFieldEnum)[keyof typeof TrainingProgramScalarFieldEnum]
+
+
+  export const TrainingProgramTranslationScalarFieldEnum: {
+    id: 'id',
+    programId: 'programId',
+    lang: 'lang',
+    title: 'title',
+    description: 'description'
+  };
+
+  export type TrainingProgramTranslationScalarFieldEnum = (typeof TrainingProgramTranslationScalarFieldEnum)[keyof typeof TrainingProgramTranslationScalarFieldEnum]
+
+
+  export const TrainingTemplateScalarFieldEnum: {
+    id: 'id',
+    kind: 'kind',
+    slug: 'slug',
+    programId: 'programId',
+    ownerId: 'ownerId',
+    name: 'name',
+    sortOrder: 'sortOrder',
+    isPublished: 'isPublished',
+    isPremium: 'isPremium',
+    pointCount: 'pointCount',
+    repeats: 'repeats',
+    saveResults: 'saveResults',
+    saveCO2: 'saveCO2',
+    onlyClock: 'onlyClock',
+    estimatedMinutes: 'estimatedMinutes',
+    intensityLevel: 'intensityLevel',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TrainingTemplateScalarFieldEnum = (typeof TrainingTemplateScalarFieldEnum)[keyof typeof TrainingTemplateScalarFieldEnum]
+
+
+  export const TrainingTemplateTranslationScalarFieldEnum: {
+    id: 'id',
+    templateId: 'templateId',
+    lang: 'lang',
+    title: 'title',
+    subtitle: 'subtitle',
+    description: 'description'
+  };
+
+  export type TrainingTemplateTranslationScalarFieldEnum = (typeof TrainingTemplateTranslationScalarFieldEnum)[keyof typeof TrainingTemplateTranslationScalarFieldEnum]
+
+
+  export const TrainingStepScalarFieldEnum: {
+    id: 'id',
+    templateId: 'templateId',
+    sortOrder: 'sortOrder',
+    phase: 'phase',
+    durationSeconds: 'durationSeconds'
+  };
+
+  export type TrainingStepScalarFieldEnum = (typeof TrainingStepScalarFieldEnum)[keyof typeof TrainingStepScalarFieldEnum]
+
+
+  export const TrainingRunScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    templateId: 'templateId',
+    startedAt: 'startedAt',
+    finishedAt: 'finishedAt',
+    totalSeconds: 'totalSeconds',
+    completed: 'completed',
+    metrics: 'metrics'
+  };
+
+  export type TrainingRunScalarFieldEnum = (typeof TrainingRunScalarFieldEnum)[keyof typeof TrainingRunScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -8077,6 +15847,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -8162,6 +15941,62 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'TrainingProgramKey'
+   */
+  export type EnumTrainingProgramKeyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrainingProgramKey'>
+    
+
+
+  /**
+   * Reference to a field of type 'TrainingProgramKey[]'
+   */
+  export type ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrainingProgramKey[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TrainingKind'
+   */
+  export type EnumTrainingKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrainingKind'>
+    
+
+
+  /**
+   * Reference to a field of type 'TrainingKind[]'
+   */
+  export type ListEnumTrainingKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrainingKind[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'BreathPhase'
+   */
+  export type EnumBreathPhaseFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BreathPhase'>
+    
+
+
+  /**
+   * Reference to a field of type 'BreathPhase[]'
+   */
+  export type ListEnumBreathPhaseFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BreathPhase[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -8188,6 +16023,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     refreshTokens?: RefreshTokenListRelationFilter
+    privateTrainingTemplates?: TrainingTemplateListRelationFilter
+    trainingRuns?: TrainingRunListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8197,6 +16034,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     refreshTokens?: RefreshTokenOrderByRelationAggregateInput
+    privateTrainingTemplates?: TrainingTemplateOrderByRelationAggregateInput
+    trainingRuns?: TrainingRunOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8209,6 +16048,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     refreshTokens?: RefreshTokenListRelationFilter
+    privateTrainingTemplates?: TrainingTemplateListRelationFilter
+    trainingRuns?: TrainingRunListRelationFilter
   }, "id" | "appleSub">
 
   export type UserOrderByWithAggregationInput = {
@@ -8543,6 +16384,459 @@ export namespace Prisma {
     tagId?: StringWithAggregatesFilter<"CultureTagOnArticle"> | string
   }
 
+  export type TrainingProgramWhereInput = {
+    AND?: TrainingProgramWhereInput | TrainingProgramWhereInput[]
+    OR?: TrainingProgramWhereInput[]
+    NOT?: TrainingProgramWhereInput | TrainingProgramWhereInput[]
+    id?: StringFilter<"TrainingProgram"> | string
+    key?: EnumTrainingProgramKeyFilter<"TrainingProgram"> | $Enums.TrainingProgramKey
+    slug?: StringFilter<"TrainingProgram"> | string
+    sortOrder?: IntFilter<"TrainingProgram"> | number
+    isPublished?: BoolFilter<"TrainingProgram"> | boolean
+    createdAt?: DateTimeFilter<"TrainingProgram"> | Date | string
+    updatedAt?: DateTimeFilter<"TrainingProgram"> | Date | string
+    translations?: TrainingProgramTranslationListRelationFilter
+    trainings?: TrainingTemplateListRelationFilter
+  }
+
+  export type TrainingProgramOrderByWithRelationInput = {
+    id?: SortOrder
+    key?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    translations?: TrainingProgramTranslationOrderByRelationAggregateInput
+    trainings?: TrainingTemplateOrderByRelationAggregateInput
+  }
+
+  export type TrainingProgramWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    key?: $Enums.TrainingProgramKey
+    slug?: string
+    AND?: TrainingProgramWhereInput | TrainingProgramWhereInput[]
+    OR?: TrainingProgramWhereInput[]
+    NOT?: TrainingProgramWhereInput | TrainingProgramWhereInput[]
+    sortOrder?: IntFilter<"TrainingProgram"> | number
+    isPublished?: BoolFilter<"TrainingProgram"> | boolean
+    createdAt?: DateTimeFilter<"TrainingProgram"> | Date | string
+    updatedAt?: DateTimeFilter<"TrainingProgram"> | Date | string
+    translations?: TrainingProgramTranslationListRelationFilter
+    trainings?: TrainingTemplateListRelationFilter
+  }, "id" | "key" | "slug">
+
+  export type TrainingProgramOrderByWithAggregationInput = {
+    id?: SortOrder
+    key?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TrainingProgramCountOrderByAggregateInput
+    _avg?: TrainingProgramAvgOrderByAggregateInput
+    _max?: TrainingProgramMaxOrderByAggregateInput
+    _min?: TrainingProgramMinOrderByAggregateInput
+    _sum?: TrainingProgramSumOrderByAggregateInput
+  }
+
+  export type TrainingProgramScalarWhereWithAggregatesInput = {
+    AND?: TrainingProgramScalarWhereWithAggregatesInput | TrainingProgramScalarWhereWithAggregatesInput[]
+    OR?: TrainingProgramScalarWhereWithAggregatesInput[]
+    NOT?: TrainingProgramScalarWhereWithAggregatesInput | TrainingProgramScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TrainingProgram"> | string
+    key?: EnumTrainingProgramKeyWithAggregatesFilter<"TrainingProgram"> | $Enums.TrainingProgramKey
+    slug?: StringWithAggregatesFilter<"TrainingProgram"> | string
+    sortOrder?: IntWithAggregatesFilter<"TrainingProgram"> | number
+    isPublished?: BoolWithAggregatesFilter<"TrainingProgram"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"TrainingProgram"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TrainingProgram"> | Date | string
+  }
+
+  export type TrainingProgramTranslationWhereInput = {
+    AND?: TrainingProgramTranslationWhereInput | TrainingProgramTranslationWhereInput[]
+    OR?: TrainingProgramTranslationWhereInput[]
+    NOT?: TrainingProgramTranslationWhereInput | TrainingProgramTranslationWhereInput[]
+    id?: StringFilter<"TrainingProgramTranslation"> | string
+    programId?: StringFilter<"TrainingProgramTranslation"> | string
+    lang?: EnumLanguageFilter<"TrainingProgramTranslation"> | $Enums.Language
+    title?: StringFilter<"TrainingProgramTranslation"> | string
+    description?: StringNullableFilter<"TrainingProgramTranslation"> | string | null
+    program?: XOR<TrainingProgramScalarRelationFilter, TrainingProgramWhereInput>
+  }
+
+  export type TrainingProgramTranslationOrderByWithRelationInput = {
+    id?: SortOrder
+    programId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    program?: TrainingProgramOrderByWithRelationInput
+  }
+
+  export type TrainingProgramTranslationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    programId_lang?: TrainingProgramTranslationProgramIdLangCompoundUniqueInput
+    AND?: TrainingProgramTranslationWhereInput | TrainingProgramTranslationWhereInput[]
+    OR?: TrainingProgramTranslationWhereInput[]
+    NOT?: TrainingProgramTranslationWhereInput | TrainingProgramTranslationWhereInput[]
+    programId?: StringFilter<"TrainingProgramTranslation"> | string
+    lang?: EnumLanguageFilter<"TrainingProgramTranslation"> | $Enums.Language
+    title?: StringFilter<"TrainingProgramTranslation"> | string
+    description?: StringNullableFilter<"TrainingProgramTranslation"> | string | null
+    program?: XOR<TrainingProgramScalarRelationFilter, TrainingProgramWhereInput>
+  }, "id" | "programId_lang">
+
+  export type TrainingProgramTranslationOrderByWithAggregationInput = {
+    id?: SortOrder
+    programId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    _count?: TrainingProgramTranslationCountOrderByAggregateInput
+    _max?: TrainingProgramTranslationMaxOrderByAggregateInput
+    _min?: TrainingProgramTranslationMinOrderByAggregateInput
+  }
+
+  export type TrainingProgramTranslationScalarWhereWithAggregatesInput = {
+    AND?: TrainingProgramTranslationScalarWhereWithAggregatesInput | TrainingProgramTranslationScalarWhereWithAggregatesInput[]
+    OR?: TrainingProgramTranslationScalarWhereWithAggregatesInput[]
+    NOT?: TrainingProgramTranslationScalarWhereWithAggregatesInput | TrainingProgramTranslationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TrainingProgramTranslation"> | string
+    programId?: StringWithAggregatesFilter<"TrainingProgramTranslation"> | string
+    lang?: EnumLanguageWithAggregatesFilter<"TrainingProgramTranslation"> | $Enums.Language
+    title?: StringWithAggregatesFilter<"TrainingProgramTranslation"> | string
+    description?: StringNullableWithAggregatesFilter<"TrainingProgramTranslation"> | string | null
+  }
+
+  export type TrainingTemplateWhereInput = {
+    AND?: TrainingTemplateWhereInput | TrainingTemplateWhereInput[]
+    OR?: TrainingTemplateWhereInput[]
+    NOT?: TrainingTemplateWhereInput | TrainingTemplateWhereInput[]
+    id?: StringFilter<"TrainingTemplate"> | string
+    kind?: EnumTrainingKindFilter<"TrainingTemplate"> | $Enums.TrainingKind
+    slug?: StringNullableFilter<"TrainingTemplate"> | string | null
+    programId?: StringNullableFilter<"TrainingTemplate"> | string | null
+    ownerId?: StringNullableFilter<"TrainingTemplate"> | string | null
+    name?: StringNullableFilter<"TrainingTemplate"> | string | null
+    sortOrder?: IntFilter<"TrainingTemplate"> | number
+    isPublished?: BoolFilter<"TrainingTemplate"> | boolean
+    isPremium?: BoolFilter<"TrainingTemplate"> | boolean
+    pointCount?: IntNullableFilter<"TrainingTemplate"> | number | null
+    repeats?: IntNullableFilter<"TrainingTemplate"> | number | null
+    saveResults?: BoolFilter<"TrainingTemplate"> | boolean
+    saveCO2?: BoolFilter<"TrainingTemplate"> | boolean
+    onlyClock?: BoolFilter<"TrainingTemplate"> | boolean
+    estimatedMinutes?: IntNullableFilter<"TrainingTemplate"> | number | null
+    intensityLevel?: IntNullableFilter<"TrainingTemplate"> | number | null
+    createdAt?: DateTimeFilter<"TrainingTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"TrainingTemplate"> | Date | string
+    program?: XOR<TrainingProgramNullableScalarRelationFilter, TrainingProgramWhereInput> | null
+    owner?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    translations?: TrainingTemplateTranslationListRelationFilter
+    steps?: TrainingStepListRelationFilter
+    runs?: TrainingRunListRelationFilter
+  }
+
+  export type TrainingTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    kind?: SortOrder
+    slug?: SortOrderInput | SortOrder
+    programId?: SortOrderInput | SortOrder
+    ownerId?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    pointCount?: SortOrderInput | SortOrder
+    repeats?: SortOrderInput | SortOrder
+    saveResults?: SortOrder
+    saveCO2?: SortOrder
+    onlyClock?: SortOrder
+    estimatedMinutes?: SortOrderInput | SortOrder
+    intensityLevel?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    program?: TrainingProgramOrderByWithRelationInput
+    owner?: UserOrderByWithRelationInput
+    translations?: TrainingTemplateTranslationOrderByRelationAggregateInput
+    steps?: TrainingStepOrderByRelationAggregateInput
+    runs?: TrainingRunOrderByRelationAggregateInput
+  }
+
+  export type TrainingTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: TrainingTemplateWhereInput | TrainingTemplateWhereInput[]
+    OR?: TrainingTemplateWhereInput[]
+    NOT?: TrainingTemplateWhereInput | TrainingTemplateWhereInput[]
+    kind?: EnumTrainingKindFilter<"TrainingTemplate"> | $Enums.TrainingKind
+    programId?: StringNullableFilter<"TrainingTemplate"> | string | null
+    ownerId?: StringNullableFilter<"TrainingTemplate"> | string | null
+    name?: StringNullableFilter<"TrainingTemplate"> | string | null
+    sortOrder?: IntFilter<"TrainingTemplate"> | number
+    isPublished?: BoolFilter<"TrainingTemplate"> | boolean
+    isPremium?: BoolFilter<"TrainingTemplate"> | boolean
+    pointCount?: IntNullableFilter<"TrainingTemplate"> | number | null
+    repeats?: IntNullableFilter<"TrainingTemplate"> | number | null
+    saveResults?: BoolFilter<"TrainingTemplate"> | boolean
+    saveCO2?: BoolFilter<"TrainingTemplate"> | boolean
+    onlyClock?: BoolFilter<"TrainingTemplate"> | boolean
+    estimatedMinutes?: IntNullableFilter<"TrainingTemplate"> | number | null
+    intensityLevel?: IntNullableFilter<"TrainingTemplate"> | number | null
+    createdAt?: DateTimeFilter<"TrainingTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"TrainingTemplate"> | Date | string
+    program?: XOR<TrainingProgramNullableScalarRelationFilter, TrainingProgramWhereInput> | null
+    owner?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    translations?: TrainingTemplateTranslationListRelationFilter
+    steps?: TrainingStepListRelationFilter
+    runs?: TrainingRunListRelationFilter
+  }, "id" | "slug">
+
+  export type TrainingTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    kind?: SortOrder
+    slug?: SortOrderInput | SortOrder
+    programId?: SortOrderInput | SortOrder
+    ownerId?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    pointCount?: SortOrderInput | SortOrder
+    repeats?: SortOrderInput | SortOrder
+    saveResults?: SortOrder
+    saveCO2?: SortOrder
+    onlyClock?: SortOrder
+    estimatedMinutes?: SortOrderInput | SortOrder
+    intensityLevel?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TrainingTemplateCountOrderByAggregateInput
+    _avg?: TrainingTemplateAvgOrderByAggregateInput
+    _max?: TrainingTemplateMaxOrderByAggregateInput
+    _min?: TrainingTemplateMinOrderByAggregateInput
+    _sum?: TrainingTemplateSumOrderByAggregateInput
+  }
+
+  export type TrainingTemplateScalarWhereWithAggregatesInput = {
+    AND?: TrainingTemplateScalarWhereWithAggregatesInput | TrainingTemplateScalarWhereWithAggregatesInput[]
+    OR?: TrainingTemplateScalarWhereWithAggregatesInput[]
+    NOT?: TrainingTemplateScalarWhereWithAggregatesInput | TrainingTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TrainingTemplate"> | string
+    kind?: EnumTrainingKindWithAggregatesFilter<"TrainingTemplate"> | $Enums.TrainingKind
+    slug?: StringNullableWithAggregatesFilter<"TrainingTemplate"> | string | null
+    programId?: StringNullableWithAggregatesFilter<"TrainingTemplate"> | string | null
+    ownerId?: StringNullableWithAggregatesFilter<"TrainingTemplate"> | string | null
+    name?: StringNullableWithAggregatesFilter<"TrainingTemplate"> | string | null
+    sortOrder?: IntWithAggregatesFilter<"TrainingTemplate"> | number
+    isPublished?: BoolWithAggregatesFilter<"TrainingTemplate"> | boolean
+    isPremium?: BoolWithAggregatesFilter<"TrainingTemplate"> | boolean
+    pointCount?: IntNullableWithAggregatesFilter<"TrainingTemplate"> | number | null
+    repeats?: IntNullableWithAggregatesFilter<"TrainingTemplate"> | number | null
+    saveResults?: BoolWithAggregatesFilter<"TrainingTemplate"> | boolean
+    saveCO2?: BoolWithAggregatesFilter<"TrainingTemplate"> | boolean
+    onlyClock?: BoolWithAggregatesFilter<"TrainingTemplate"> | boolean
+    estimatedMinutes?: IntNullableWithAggregatesFilter<"TrainingTemplate"> | number | null
+    intensityLevel?: IntNullableWithAggregatesFilter<"TrainingTemplate"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"TrainingTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TrainingTemplate"> | Date | string
+  }
+
+  export type TrainingTemplateTranslationWhereInput = {
+    AND?: TrainingTemplateTranslationWhereInput | TrainingTemplateTranslationWhereInput[]
+    OR?: TrainingTemplateTranslationWhereInput[]
+    NOT?: TrainingTemplateTranslationWhereInput | TrainingTemplateTranslationWhereInput[]
+    id?: StringFilter<"TrainingTemplateTranslation"> | string
+    templateId?: StringFilter<"TrainingTemplateTranslation"> | string
+    lang?: EnumLanguageFilter<"TrainingTemplateTranslation"> | $Enums.Language
+    title?: StringFilter<"TrainingTemplateTranslation"> | string
+    subtitle?: StringNullableFilter<"TrainingTemplateTranslation"> | string | null
+    description?: StringNullableFilter<"TrainingTemplateTranslation"> | string | null
+    template?: XOR<TrainingTemplateScalarRelationFilter, TrainingTemplateWhereInput>
+  }
+
+  export type TrainingTemplateTranslationOrderByWithRelationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    template?: TrainingTemplateOrderByWithRelationInput
+  }
+
+  export type TrainingTemplateTranslationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    templateId_lang?: TrainingTemplateTranslationTemplateIdLangCompoundUniqueInput
+    AND?: TrainingTemplateTranslationWhereInput | TrainingTemplateTranslationWhereInput[]
+    OR?: TrainingTemplateTranslationWhereInput[]
+    NOT?: TrainingTemplateTranslationWhereInput | TrainingTemplateTranslationWhereInput[]
+    templateId?: StringFilter<"TrainingTemplateTranslation"> | string
+    lang?: EnumLanguageFilter<"TrainingTemplateTranslation"> | $Enums.Language
+    title?: StringFilter<"TrainingTemplateTranslation"> | string
+    subtitle?: StringNullableFilter<"TrainingTemplateTranslation"> | string | null
+    description?: StringNullableFilter<"TrainingTemplateTranslation"> | string | null
+    template?: XOR<TrainingTemplateScalarRelationFilter, TrainingTemplateWhereInput>
+  }, "id" | "templateId_lang">
+
+  export type TrainingTemplateTranslationOrderByWithAggregationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    _count?: TrainingTemplateTranslationCountOrderByAggregateInput
+    _max?: TrainingTemplateTranslationMaxOrderByAggregateInput
+    _min?: TrainingTemplateTranslationMinOrderByAggregateInput
+  }
+
+  export type TrainingTemplateTranslationScalarWhereWithAggregatesInput = {
+    AND?: TrainingTemplateTranslationScalarWhereWithAggregatesInput | TrainingTemplateTranslationScalarWhereWithAggregatesInput[]
+    OR?: TrainingTemplateTranslationScalarWhereWithAggregatesInput[]
+    NOT?: TrainingTemplateTranslationScalarWhereWithAggregatesInput | TrainingTemplateTranslationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TrainingTemplateTranslation"> | string
+    templateId?: StringWithAggregatesFilter<"TrainingTemplateTranslation"> | string
+    lang?: EnumLanguageWithAggregatesFilter<"TrainingTemplateTranslation"> | $Enums.Language
+    title?: StringWithAggregatesFilter<"TrainingTemplateTranslation"> | string
+    subtitle?: StringNullableWithAggregatesFilter<"TrainingTemplateTranslation"> | string | null
+    description?: StringNullableWithAggregatesFilter<"TrainingTemplateTranslation"> | string | null
+  }
+
+  export type TrainingStepWhereInput = {
+    AND?: TrainingStepWhereInput | TrainingStepWhereInput[]
+    OR?: TrainingStepWhereInput[]
+    NOT?: TrainingStepWhereInput | TrainingStepWhereInput[]
+    id?: StringFilter<"TrainingStep"> | string
+    templateId?: StringFilter<"TrainingStep"> | string
+    sortOrder?: IntFilter<"TrainingStep"> | number
+    phase?: EnumBreathPhaseFilter<"TrainingStep"> | $Enums.BreathPhase
+    durationSeconds?: IntFilter<"TrainingStep"> | number
+    template?: XOR<TrainingTemplateScalarRelationFilter, TrainingTemplateWhereInput>
+  }
+
+  export type TrainingStepOrderByWithRelationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    phase?: SortOrder
+    durationSeconds?: SortOrder
+    template?: TrainingTemplateOrderByWithRelationInput
+  }
+
+  export type TrainingStepWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TrainingStepWhereInput | TrainingStepWhereInput[]
+    OR?: TrainingStepWhereInput[]
+    NOT?: TrainingStepWhereInput | TrainingStepWhereInput[]
+    templateId?: StringFilter<"TrainingStep"> | string
+    sortOrder?: IntFilter<"TrainingStep"> | number
+    phase?: EnumBreathPhaseFilter<"TrainingStep"> | $Enums.BreathPhase
+    durationSeconds?: IntFilter<"TrainingStep"> | number
+    template?: XOR<TrainingTemplateScalarRelationFilter, TrainingTemplateWhereInput>
+  }, "id">
+
+  export type TrainingStepOrderByWithAggregationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    phase?: SortOrder
+    durationSeconds?: SortOrder
+    _count?: TrainingStepCountOrderByAggregateInput
+    _avg?: TrainingStepAvgOrderByAggregateInput
+    _max?: TrainingStepMaxOrderByAggregateInput
+    _min?: TrainingStepMinOrderByAggregateInput
+    _sum?: TrainingStepSumOrderByAggregateInput
+  }
+
+  export type TrainingStepScalarWhereWithAggregatesInput = {
+    AND?: TrainingStepScalarWhereWithAggregatesInput | TrainingStepScalarWhereWithAggregatesInput[]
+    OR?: TrainingStepScalarWhereWithAggregatesInput[]
+    NOT?: TrainingStepScalarWhereWithAggregatesInput | TrainingStepScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TrainingStep"> | string
+    templateId?: StringWithAggregatesFilter<"TrainingStep"> | string
+    sortOrder?: IntWithAggregatesFilter<"TrainingStep"> | number
+    phase?: EnumBreathPhaseWithAggregatesFilter<"TrainingStep"> | $Enums.BreathPhase
+    durationSeconds?: IntWithAggregatesFilter<"TrainingStep"> | number
+  }
+
+  export type TrainingRunWhereInput = {
+    AND?: TrainingRunWhereInput | TrainingRunWhereInput[]
+    OR?: TrainingRunWhereInput[]
+    NOT?: TrainingRunWhereInput | TrainingRunWhereInput[]
+    id?: StringFilter<"TrainingRun"> | string
+    userId?: StringFilter<"TrainingRun"> | string
+    templateId?: StringFilter<"TrainingRun"> | string
+    startedAt?: DateTimeFilter<"TrainingRun"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"TrainingRun"> | Date | string | null
+    totalSeconds?: IntNullableFilter<"TrainingRun"> | number | null
+    completed?: BoolFilter<"TrainingRun"> | boolean
+    metrics?: JsonNullableFilter<"TrainingRun">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    template?: XOR<TrainingTemplateScalarRelationFilter, TrainingTemplateWhereInput>
+  }
+
+  export type TrainingRunOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    totalSeconds?: SortOrderInput | SortOrder
+    completed?: SortOrder
+    metrics?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    template?: TrainingTemplateOrderByWithRelationInput
+  }
+
+  export type TrainingRunWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TrainingRunWhereInput | TrainingRunWhereInput[]
+    OR?: TrainingRunWhereInput[]
+    NOT?: TrainingRunWhereInput | TrainingRunWhereInput[]
+    userId?: StringFilter<"TrainingRun"> | string
+    templateId?: StringFilter<"TrainingRun"> | string
+    startedAt?: DateTimeFilter<"TrainingRun"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"TrainingRun"> | Date | string | null
+    totalSeconds?: IntNullableFilter<"TrainingRun"> | number | null
+    completed?: BoolFilter<"TrainingRun"> | boolean
+    metrics?: JsonNullableFilter<"TrainingRun">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    template?: XOR<TrainingTemplateScalarRelationFilter, TrainingTemplateWhereInput>
+  }, "id">
+
+  export type TrainingRunOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    totalSeconds?: SortOrderInput | SortOrder
+    completed?: SortOrder
+    metrics?: SortOrderInput | SortOrder
+    _count?: TrainingRunCountOrderByAggregateInput
+    _avg?: TrainingRunAvgOrderByAggregateInput
+    _max?: TrainingRunMaxOrderByAggregateInput
+    _min?: TrainingRunMinOrderByAggregateInput
+    _sum?: TrainingRunSumOrderByAggregateInput
+  }
+
+  export type TrainingRunScalarWhereWithAggregatesInput = {
+    AND?: TrainingRunScalarWhereWithAggregatesInput | TrainingRunScalarWhereWithAggregatesInput[]
+    OR?: TrainingRunScalarWhereWithAggregatesInput[]
+    NOT?: TrainingRunScalarWhereWithAggregatesInput | TrainingRunScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TrainingRun"> | string
+    userId?: StringWithAggregatesFilter<"TrainingRun"> | string
+    templateId?: StringWithAggregatesFilter<"TrainingRun"> | string
+    startedAt?: DateTimeWithAggregatesFilter<"TrainingRun"> | Date | string
+    finishedAt?: DateTimeNullableWithAggregatesFilter<"TrainingRun"> | Date | string | null
+    totalSeconds?: IntNullableWithAggregatesFilter<"TrainingRun"> | number | null
+    completed?: BoolWithAggregatesFilter<"TrainingRun"> | boolean
+    metrics?: JsonNullableWithAggregatesFilter<"TrainingRun">
+  }
+
   export type UserCreateInput = {
     id?: string
     appleSub: string
@@ -8550,6 +16844,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8559,6 +16855,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -8568,6 +16866,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8577,6 +16877,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -8927,6 +17229,488 @@ export namespace Prisma {
     tagId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type TrainingProgramCreateInput = {
+    id?: string
+    key: $Enums.TrainingProgramKey
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingProgramTranslationCreateNestedManyWithoutProgramInput
+    trainings?: TrainingTemplateCreateNestedManyWithoutProgramInput
+  }
+
+  export type TrainingProgramUncheckedCreateInput = {
+    id?: string
+    key: $Enums.TrainingProgramKey
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingProgramTranslationUncheckedCreateNestedManyWithoutProgramInput
+    trainings?: TrainingTemplateUncheckedCreateNestedManyWithoutProgramInput
+  }
+
+  export type TrainingProgramUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: EnumTrainingProgramKeyFieldUpdateOperationsInput | $Enums.TrainingProgramKey
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingProgramTranslationUpdateManyWithoutProgramNestedInput
+    trainings?: TrainingTemplateUpdateManyWithoutProgramNestedInput
+  }
+
+  export type TrainingProgramUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: EnumTrainingProgramKeyFieldUpdateOperationsInput | $Enums.TrainingProgramKey
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingProgramTranslationUncheckedUpdateManyWithoutProgramNestedInput
+    trainings?: TrainingTemplateUncheckedUpdateManyWithoutProgramNestedInput
+  }
+
+  export type TrainingProgramCreateManyInput = {
+    id?: string
+    key: $Enums.TrainingProgramKey
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TrainingProgramUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: EnumTrainingProgramKeyFieldUpdateOperationsInput | $Enums.TrainingProgramKey
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingProgramUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: EnumTrainingProgramKeyFieldUpdateOperationsInput | $Enums.TrainingProgramKey
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingProgramTranslationCreateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    description?: string | null
+    program: TrainingProgramCreateNestedOneWithoutTranslationsInput
+  }
+
+  export type TrainingProgramTranslationUncheckedCreateInput = {
+    id?: string
+    programId: string
+    lang: $Enums.Language
+    title: string
+    description?: string | null
+  }
+
+  export type TrainingProgramTranslationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    program?: TrainingProgramUpdateOneRequiredWithoutTranslationsNestedInput
+  }
+
+  export type TrainingProgramTranslationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    programId?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingProgramTranslationCreateManyInput = {
+    id?: string
+    programId: string
+    lang: $Enums.Language
+    title: string
+    description?: string | null
+  }
+
+  export type TrainingProgramTranslationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingProgramTranslationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    programId?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingTemplateCreateInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    program?: TrainingProgramCreateNestedOneWithoutTrainingsInput
+    owner?: UserCreateNestedOneWithoutPrivateTrainingTemplatesInput
+    translations?: TrainingTemplateTranslationCreateNestedManyWithoutTemplateInput
+    steps?: TrainingStepCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateUncheckedCreateInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    programId?: string | null
+    ownerId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput
+    steps?: TrainingStepUncheckedCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    program?: TrainingProgramUpdateOneWithoutTrainingsNestedInput
+    owner?: UserUpdateOneWithoutPrivateTrainingTemplatesNestedInput
+    translations?: TrainingTemplateTranslationUpdateManyWithoutTemplateNestedInput
+    steps?: TrainingStepUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    programId?: NullableStringFieldUpdateOperationsInput | string | null
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput
+    steps?: TrainingStepUncheckedUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateCreateManyInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    programId?: string | null
+    ownerId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TrainingTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    programId?: NullableStringFieldUpdateOperationsInput | string | null
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingTemplateTranslationCreateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+    template: TrainingTemplateCreateNestedOneWithoutTranslationsInput
+  }
+
+  export type TrainingTemplateTranslationUncheckedCreateInput = {
+    id?: string
+    templateId: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type TrainingTemplateTranslationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    template?: TrainingTemplateUpdateOneRequiredWithoutTranslationsNestedInput
+  }
+
+  export type TrainingTemplateTranslationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingTemplateTranslationCreateManyInput = {
+    id?: string
+    templateId: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type TrainingTemplateTranslationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingTemplateTranslationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingStepCreateInput = {
+    id?: string
+    sortOrder: number
+    phase: $Enums.BreathPhase
+    durationSeconds: number
+    template: TrainingTemplateCreateNestedOneWithoutStepsInput
+  }
+
+  export type TrainingStepUncheckedCreateInput = {
+    id?: string
+    templateId: string
+    sortOrder: number
+    phase: $Enums.BreathPhase
+    durationSeconds: number
+  }
+
+  export type TrainingStepUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    phase?: EnumBreathPhaseFieldUpdateOperationsInput | $Enums.BreathPhase
+    durationSeconds?: IntFieldUpdateOperationsInput | number
+    template?: TrainingTemplateUpdateOneRequiredWithoutStepsNestedInput
+  }
+
+  export type TrainingStepUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    phase?: EnumBreathPhaseFieldUpdateOperationsInput | $Enums.BreathPhase
+    durationSeconds?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TrainingStepCreateManyInput = {
+    id?: string
+    templateId: string
+    sortOrder: number
+    phase: $Enums.BreathPhase
+    durationSeconds: number
+  }
+
+  export type TrainingStepUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    phase?: EnumBreathPhaseFieldUpdateOperationsInput | $Enums.BreathPhase
+    durationSeconds?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TrainingStepUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    phase?: EnumBreathPhaseFieldUpdateOperationsInput | $Enums.BreathPhase
+    durationSeconds?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TrainingRunCreateInput = {
+    id?: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    user: UserCreateNestedOneWithoutTrainingRunsInput
+    template: TrainingTemplateCreateNestedOneWithoutRunsInput
+  }
+
+  export type TrainingRunUncheckedCreateInput = {
+    id?: string
+    userId: string
+    templateId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingRunUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    user?: UserUpdateOneRequiredWithoutTrainingRunsNestedInput
+    template?: TrainingTemplateUpdateOneRequiredWithoutRunsNestedInput
+  }
+
+  export type TrainingRunUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingRunCreateManyInput = {
+    id?: string
+    userId: string
+    templateId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingRunUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingRunUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -8974,12 +17758,32 @@ export namespace Prisma {
     none?: RefreshTokenWhereInput
   }
 
+  export type TrainingTemplateListRelationFilter = {
+    every?: TrainingTemplateWhereInput
+    some?: TrainingTemplateWhereInput
+    none?: TrainingTemplateWhereInput
+  }
+
+  export type TrainingRunListRelationFilter = {
+    every?: TrainingRunWhereInput
+    some?: TrainingRunWhereInput
+    none?: TrainingRunWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type RefreshTokenOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TrainingTemplateOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TrainingRunOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9344,6 +18148,434 @@ export namespace Prisma {
     tagId?: SortOrder
   }
 
+  export type EnumTrainingProgramKeyFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrainingProgramKey | EnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    in?: $Enums.TrainingProgramKey[] | ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TrainingProgramKey[] | ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    not?: NestedEnumTrainingProgramKeyFilter<$PrismaModel> | $Enums.TrainingProgramKey
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type TrainingProgramTranslationListRelationFilter = {
+    every?: TrainingProgramTranslationWhereInput
+    some?: TrainingProgramTranslationWhereInput
+    none?: TrainingProgramTranslationWhereInput
+  }
+
+  export type TrainingProgramTranslationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TrainingProgramCountOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TrainingProgramAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type TrainingProgramMaxOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TrainingProgramMinOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TrainingProgramSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type EnumTrainingProgramKeyWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrainingProgramKey | EnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    in?: $Enums.TrainingProgramKey[] | ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TrainingProgramKey[] | ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    not?: NestedEnumTrainingProgramKeyWithAggregatesFilter<$PrismaModel> | $Enums.TrainingProgramKey
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTrainingProgramKeyFilter<$PrismaModel>
+    _max?: NestedEnumTrainingProgramKeyFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type TrainingProgramScalarRelationFilter = {
+    is?: TrainingProgramWhereInput
+    isNot?: TrainingProgramWhereInput
+  }
+
+  export type TrainingProgramTranslationProgramIdLangCompoundUniqueInput = {
+    programId: string
+    lang: $Enums.Language
+  }
+
+  export type TrainingProgramTranslationCountOrderByAggregateInput = {
+    id?: SortOrder
+    programId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+  }
+
+  export type TrainingProgramTranslationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    programId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+  }
+
+  export type TrainingProgramTranslationMinOrderByAggregateInput = {
+    id?: SortOrder
+    programId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+  }
+
+  export type EnumTrainingKindFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrainingKind | EnumTrainingKindFieldRefInput<$PrismaModel>
+    in?: $Enums.TrainingKind[] | ListEnumTrainingKindFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TrainingKind[] | ListEnumTrainingKindFieldRefInput<$PrismaModel>
+    not?: NestedEnumTrainingKindFilter<$PrismaModel> | $Enums.TrainingKind
+  }
+
+  export type TrainingProgramNullableScalarRelationFilter = {
+    is?: TrainingProgramWhereInput | null
+    isNot?: TrainingProgramWhereInput | null
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type TrainingTemplateTranslationListRelationFilter = {
+    every?: TrainingTemplateTranslationWhereInput
+    some?: TrainingTemplateTranslationWhereInput
+    none?: TrainingTemplateTranslationWhereInput
+  }
+
+  export type TrainingStepListRelationFilter = {
+    every?: TrainingStepWhereInput
+    some?: TrainingStepWhereInput
+    none?: TrainingStepWhereInput
+  }
+
+  export type TrainingTemplateTranslationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TrainingStepOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TrainingTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    kind?: SortOrder
+    slug?: SortOrder
+    programId?: SortOrder
+    ownerId?: SortOrder
+    name?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    pointCount?: SortOrder
+    repeats?: SortOrder
+    saveResults?: SortOrder
+    saveCO2?: SortOrder
+    onlyClock?: SortOrder
+    estimatedMinutes?: SortOrder
+    intensityLevel?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TrainingTemplateAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+    pointCount?: SortOrder
+    repeats?: SortOrder
+    estimatedMinutes?: SortOrder
+    intensityLevel?: SortOrder
+  }
+
+  export type TrainingTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    kind?: SortOrder
+    slug?: SortOrder
+    programId?: SortOrder
+    ownerId?: SortOrder
+    name?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    pointCount?: SortOrder
+    repeats?: SortOrder
+    saveResults?: SortOrder
+    saveCO2?: SortOrder
+    onlyClock?: SortOrder
+    estimatedMinutes?: SortOrder
+    intensityLevel?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TrainingTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    kind?: SortOrder
+    slug?: SortOrder
+    programId?: SortOrder
+    ownerId?: SortOrder
+    name?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    pointCount?: SortOrder
+    repeats?: SortOrder
+    saveResults?: SortOrder
+    saveCO2?: SortOrder
+    onlyClock?: SortOrder
+    estimatedMinutes?: SortOrder
+    intensityLevel?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TrainingTemplateSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+    pointCount?: SortOrder
+    repeats?: SortOrder
+    estimatedMinutes?: SortOrder
+    intensityLevel?: SortOrder
+  }
+
+  export type EnumTrainingKindWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrainingKind | EnumTrainingKindFieldRefInput<$PrismaModel>
+    in?: $Enums.TrainingKind[] | ListEnumTrainingKindFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TrainingKind[] | ListEnumTrainingKindFieldRefInput<$PrismaModel>
+    not?: NestedEnumTrainingKindWithAggregatesFilter<$PrismaModel> | $Enums.TrainingKind
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTrainingKindFilter<$PrismaModel>
+    _max?: NestedEnumTrainingKindFilter<$PrismaModel>
+  }
+
+  export type TrainingTemplateScalarRelationFilter = {
+    is?: TrainingTemplateWhereInput
+    isNot?: TrainingTemplateWhereInput
+  }
+
+  export type TrainingTemplateTranslationTemplateIdLangCompoundUniqueInput = {
+    templateId: string
+    lang: $Enums.Language
+  }
+
+  export type TrainingTemplateTranslationCountOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+  }
+
+  export type TrainingTemplateTranslationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+  }
+
+  export type TrainingTemplateTranslationMinOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+  }
+
+  export type EnumBreathPhaseFilter<$PrismaModel = never> = {
+    equals?: $Enums.BreathPhase | EnumBreathPhaseFieldRefInput<$PrismaModel>
+    in?: $Enums.BreathPhase[] | ListEnumBreathPhaseFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BreathPhase[] | ListEnumBreathPhaseFieldRefInput<$PrismaModel>
+    not?: NestedEnumBreathPhaseFilter<$PrismaModel> | $Enums.BreathPhase
+  }
+
+  export type TrainingStepCountOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    phase?: SortOrder
+    durationSeconds?: SortOrder
+  }
+
+  export type TrainingStepAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+    durationSeconds?: SortOrder
+  }
+
+  export type TrainingStepMaxOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    phase?: SortOrder
+    durationSeconds?: SortOrder
+  }
+
+  export type TrainingStepMinOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    phase?: SortOrder
+    durationSeconds?: SortOrder
+  }
+
+  export type TrainingStepSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+    durationSeconds?: SortOrder
+  }
+
+  export type EnumBreathPhaseWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.BreathPhase | EnumBreathPhaseFieldRefInput<$PrismaModel>
+    in?: $Enums.BreathPhase[] | ListEnumBreathPhaseFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BreathPhase[] | ListEnumBreathPhaseFieldRefInput<$PrismaModel>
+    not?: NestedEnumBreathPhaseWithAggregatesFilter<$PrismaModel> | $Enums.BreathPhase
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumBreathPhaseFilter<$PrismaModel>
+    _max?: NestedEnumBreathPhaseFilter<$PrismaModel>
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type TrainingRunCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrder
+    totalSeconds?: SortOrder
+    completed?: SortOrder
+    metrics?: SortOrder
+  }
+
+  export type TrainingRunAvgOrderByAggregateInput = {
+    totalSeconds?: SortOrder
+  }
+
+  export type TrainingRunMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrder
+    totalSeconds?: SortOrder
+    completed?: SortOrder
+  }
+
+  export type TrainingRunMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrder
+    totalSeconds?: SortOrder
+    completed?: SortOrder
+  }
+
+  export type TrainingRunSumOrderByAggregateInput = {
+    totalSeconds?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
   export type RefreshTokenCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput> | RefreshTokenCreateWithoutUserInput[] | RefreshTokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput | RefreshTokenCreateOrConnectWithoutUserInput[]
@@ -9351,11 +18583,39 @@ export namespace Prisma {
     connect?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
   }
 
+  export type TrainingTemplateCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<TrainingTemplateCreateWithoutOwnerInput, TrainingTemplateUncheckedCreateWithoutOwnerInput> | TrainingTemplateCreateWithoutOwnerInput[] | TrainingTemplateUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutOwnerInput | TrainingTemplateCreateOrConnectWithoutOwnerInput[]
+    createMany?: TrainingTemplateCreateManyOwnerInputEnvelope
+    connect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+  }
+
+  export type TrainingRunCreateNestedManyWithoutUserInput = {
+    create?: XOR<TrainingRunCreateWithoutUserInput, TrainingRunUncheckedCreateWithoutUserInput> | TrainingRunCreateWithoutUserInput[] | TrainingRunUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TrainingRunCreateOrConnectWithoutUserInput | TrainingRunCreateOrConnectWithoutUserInput[]
+    createMany?: TrainingRunCreateManyUserInputEnvelope
+    connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+  }
+
   export type RefreshTokenUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput> | RefreshTokenCreateWithoutUserInput[] | RefreshTokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput | RefreshTokenCreateOrConnectWithoutUserInput[]
     createMany?: RefreshTokenCreateManyUserInputEnvelope
     connect?: RefreshTokenWhereUniqueInput | RefreshTokenWhereUniqueInput[]
+  }
+
+  export type TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<TrainingTemplateCreateWithoutOwnerInput, TrainingTemplateUncheckedCreateWithoutOwnerInput> | TrainingTemplateCreateWithoutOwnerInput[] | TrainingTemplateUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutOwnerInput | TrainingTemplateCreateOrConnectWithoutOwnerInput[]
+    createMany?: TrainingTemplateCreateManyOwnerInputEnvelope
+    connect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+  }
+
+  export type TrainingRunUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<TrainingRunCreateWithoutUserInput, TrainingRunUncheckedCreateWithoutUserInput> | TrainingRunCreateWithoutUserInput[] | TrainingRunUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TrainingRunCreateOrConnectWithoutUserInput | TrainingRunCreateOrConnectWithoutUserInput[]
+    createMany?: TrainingRunCreateManyUserInputEnvelope
+    connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9384,6 +18644,34 @@ export namespace Prisma {
     deleteMany?: RefreshTokenScalarWhereInput | RefreshTokenScalarWhereInput[]
   }
 
+  export type TrainingTemplateUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<TrainingTemplateCreateWithoutOwnerInput, TrainingTemplateUncheckedCreateWithoutOwnerInput> | TrainingTemplateCreateWithoutOwnerInput[] | TrainingTemplateUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutOwnerInput | TrainingTemplateCreateOrConnectWithoutOwnerInput[]
+    upsert?: TrainingTemplateUpsertWithWhereUniqueWithoutOwnerInput | TrainingTemplateUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: TrainingTemplateCreateManyOwnerInputEnvelope
+    set?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    disconnect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    delete?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    connect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    update?: TrainingTemplateUpdateWithWhereUniqueWithoutOwnerInput | TrainingTemplateUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: TrainingTemplateUpdateManyWithWhereWithoutOwnerInput | TrainingTemplateUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: TrainingTemplateScalarWhereInput | TrainingTemplateScalarWhereInput[]
+  }
+
+  export type TrainingRunUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TrainingRunCreateWithoutUserInput, TrainingRunUncheckedCreateWithoutUserInput> | TrainingRunCreateWithoutUserInput[] | TrainingRunUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TrainingRunCreateOrConnectWithoutUserInput | TrainingRunCreateOrConnectWithoutUserInput[]
+    upsert?: TrainingRunUpsertWithWhereUniqueWithoutUserInput | TrainingRunUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TrainingRunCreateManyUserInputEnvelope
+    set?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    disconnect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    delete?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    update?: TrainingRunUpdateWithWhereUniqueWithoutUserInput | TrainingRunUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TrainingRunUpdateManyWithWhereWithoutUserInput | TrainingRunUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TrainingRunScalarWhereInput | TrainingRunScalarWhereInput[]
+  }
+
   export type RefreshTokenUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput> | RefreshTokenCreateWithoutUserInput[] | RefreshTokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput | RefreshTokenCreateOrConnectWithoutUserInput[]
@@ -9396,6 +18684,34 @@ export namespace Prisma {
     update?: RefreshTokenUpdateWithWhereUniqueWithoutUserInput | RefreshTokenUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: RefreshTokenUpdateManyWithWhereWithoutUserInput | RefreshTokenUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: RefreshTokenScalarWhereInput | RefreshTokenScalarWhereInput[]
+  }
+
+  export type TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<TrainingTemplateCreateWithoutOwnerInput, TrainingTemplateUncheckedCreateWithoutOwnerInput> | TrainingTemplateCreateWithoutOwnerInput[] | TrainingTemplateUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutOwnerInput | TrainingTemplateCreateOrConnectWithoutOwnerInput[]
+    upsert?: TrainingTemplateUpsertWithWhereUniqueWithoutOwnerInput | TrainingTemplateUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: TrainingTemplateCreateManyOwnerInputEnvelope
+    set?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    disconnect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    delete?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    connect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    update?: TrainingTemplateUpdateWithWhereUniqueWithoutOwnerInput | TrainingTemplateUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: TrainingTemplateUpdateManyWithWhereWithoutOwnerInput | TrainingTemplateUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: TrainingTemplateScalarWhereInput | TrainingTemplateScalarWhereInput[]
+  }
+
+  export type TrainingRunUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TrainingRunCreateWithoutUserInput, TrainingRunUncheckedCreateWithoutUserInput> | TrainingRunCreateWithoutUserInput[] | TrainingRunUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TrainingRunCreateOrConnectWithoutUserInput | TrainingRunCreateOrConnectWithoutUserInput[]
+    upsert?: TrainingRunUpsertWithWhereUniqueWithoutUserInput | TrainingRunUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TrainingRunCreateManyUserInputEnvelope
+    set?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    disconnect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    delete?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    update?: TrainingRunUpdateWithWhereUniqueWithoutUserInput | TrainingRunUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TrainingRunUpdateManyWithWhereWithoutUserInput | TrainingRunUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TrainingRunScalarWhereInput | TrainingRunScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutRefreshTokensInput = {
@@ -9602,6 +18918,338 @@ export namespace Prisma {
     upsert?: CultureTagUpsertWithoutArticlesInput
     connect?: CultureTagWhereUniqueInput
     update?: XOR<XOR<CultureTagUpdateToOneWithWhereWithoutArticlesInput, CultureTagUpdateWithoutArticlesInput>, CultureTagUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type TrainingProgramTranslationCreateNestedManyWithoutProgramInput = {
+    create?: XOR<TrainingProgramTranslationCreateWithoutProgramInput, TrainingProgramTranslationUncheckedCreateWithoutProgramInput> | TrainingProgramTranslationCreateWithoutProgramInput[] | TrainingProgramTranslationUncheckedCreateWithoutProgramInput[]
+    connectOrCreate?: TrainingProgramTranslationCreateOrConnectWithoutProgramInput | TrainingProgramTranslationCreateOrConnectWithoutProgramInput[]
+    createMany?: TrainingProgramTranslationCreateManyProgramInputEnvelope
+    connect?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+  }
+
+  export type TrainingTemplateCreateNestedManyWithoutProgramInput = {
+    create?: XOR<TrainingTemplateCreateWithoutProgramInput, TrainingTemplateUncheckedCreateWithoutProgramInput> | TrainingTemplateCreateWithoutProgramInput[] | TrainingTemplateUncheckedCreateWithoutProgramInput[]
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutProgramInput | TrainingTemplateCreateOrConnectWithoutProgramInput[]
+    createMany?: TrainingTemplateCreateManyProgramInputEnvelope
+    connect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+  }
+
+  export type TrainingProgramTranslationUncheckedCreateNestedManyWithoutProgramInput = {
+    create?: XOR<TrainingProgramTranslationCreateWithoutProgramInput, TrainingProgramTranslationUncheckedCreateWithoutProgramInput> | TrainingProgramTranslationCreateWithoutProgramInput[] | TrainingProgramTranslationUncheckedCreateWithoutProgramInput[]
+    connectOrCreate?: TrainingProgramTranslationCreateOrConnectWithoutProgramInput | TrainingProgramTranslationCreateOrConnectWithoutProgramInput[]
+    createMany?: TrainingProgramTranslationCreateManyProgramInputEnvelope
+    connect?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+  }
+
+  export type TrainingTemplateUncheckedCreateNestedManyWithoutProgramInput = {
+    create?: XOR<TrainingTemplateCreateWithoutProgramInput, TrainingTemplateUncheckedCreateWithoutProgramInput> | TrainingTemplateCreateWithoutProgramInput[] | TrainingTemplateUncheckedCreateWithoutProgramInput[]
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutProgramInput | TrainingTemplateCreateOrConnectWithoutProgramInput[]
+    createMany?: TrainingTemplateCreateManyProgramInputEnvelope
+    connect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+  }
+
+  export type EnumTrainingProgramKeyFieldUpdateOperationsInput = {
+    set?: $Enums.TrainingProgramKey
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type TrainingProgramTranslationUpdateManyWithoutProgramNestedInput = {
+    create?: XOR<TrainingProgramTranslationCreateWithoutProgramInput, TrainingProgramTranslationUncheckedCreateWithoutProgramInput> | TrainingProgramTranslationCreateWithoutProgramInput[] | TrainingProgramTranslationUncheckedCreateWithoutProgramInput[]
+    connectOrCreate?: TrainingProgramTranslationCreateOrConnectWithoutProgramInput | TrainingProgramTranslationCreateOrConnectWithoutProgramInput[]
+    upsert?: TrainingProgramTranslationUpsertWithWhereUniqueWithoutProgramInput | TrainingProgramTranslationUpsertWithWhereUniqueWithoutProgramInput[]
+    createMany?: TrainingProgramTranslationCreateManyProgramInputEnvelope
+    set?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+    disconnect?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+    delete?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+    connect?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+    update?: TrainingProgramTranslationUpdateWithWhereUniqueWithoutProgramInput | TrainingProgramTranslationUpdateWithWhereUniqueWithoutProgramInput[]
+    updateMany?: TrainingProgramTranslationUpdateManyWithWhereWithoutProgramInput | TrainingProgramTranslationUpdateManyWithWhereWithoutProgramInput[]
+    deleteMany?: TrainingProgramTranslationScalarWhereInput | TrainingProgramTranslationScalarWhereInput[]
+  }
+
+  export type TrainingTemplateUpdateManyWithoutProgramNestedInput = {
+    create?: XOR<TrainingTemplateCreateWithoutProgramInput, TrainingTemplateUncheckedCreateWithoutProgramInput> | TrainingTemplateCreateWithoutProgramInput[] | TrainingTemplateUncheckedCreateWithoutProgramInput[]
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutProgramInput | TrainingTemplateCreateOrConnectWithoutProgramInput[]
+    upsert?: TrainingTemplateUpsertWithWhereUniqueWithoutProgramInput | TrainingTemplateUpsertWithWhereUniqueWithoutProgramInput[]
+    createMany?: TrainingTemplateCreateManyProgramInputEnvelope
+    set?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    disconnect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    delete?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    connect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    update?: TrainingTemplateUpdateWithWhereUniqueWithoutProgramInput | TrainingTemplateUpdateWithWhereUniqueWithoutProgramInput[]
+    updateMany?: TrainingTemplateUpdateManyWithWhereWithoutProgramInput | TrainingTemplateUpdateManyWithWhereWithoutProgramInput[]
+    deleteMany?: TrainingTemplateScalarWhereInput | TrainingTemplateScalarWhereInput[]
+  }
+
+  export type TrainingProgramTranslationUncheckedUpdateManyWithoutProgramNestedInput = {
+    create?: XOR<TrainingProgramTranslationCreateWithoutProgramInput, TrainingProgramTranslationUncheckedCreateWithoutProgramInput> | TrainingProgramTranslationCreateWithoutProgramInput[] | TrainingProgramTranslationUncheckedCreateWithoutProgramInput[]
+    connectOrCreate?: TrainingProgramTranslationCreateOrConnectWithoutProgramInput | TrainingProgramTranslationCreateOrConnectWithoutProgramInput[]
+    upsert?: TrainingProgramTranslationUpsertWithWhereUniqueWithoutProgramInput | TrainingProgramTranslationUpsertWithWhereUniqueWithoutProgramInput[]
+    createMany?: TrainingProgramTranslationCreateManyProgramInputEnvelope
+    set?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+    disconnect?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+    delete?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+    connect?: TrainingProgramTranslationWhereUniqueInput | TrainingProgramTranslationWhereUniqueInput[]
+    update?: TrainingProgramTranslationUpdateWithWhereUniqueWithoutProgramInput | TrainingProgramTranslationUpdateWithWhereUniqueWithoutProgramInput[]
+    updateMany?: TrainingProgramTranslationUpdateManyWithWhereWithoutProgramInput | TrainingProgramTranslationUpdateManyWithWhereWithoutProgramInput[]
+    deleteMany?: TrainingProgramTranslationScalarWhereInput | TrainingProgramTranslationScalarWhereInput[]
+  }
+
+  export type TrainingTemplateUncheckedUpdateManyWithoutProgramNestedInput = {
+    create?: XOR<TrainingTemplateCreateWithoutProgramInput, TrainingTemplateUncheckedCreateWithoutProgramInput> | TrainingTemplateCreateWithoutProgramInput[] | TrainingTemplateUncheckedCreateWithoutProgramInput[]
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutProgramInput | TrainingTemplateCreateOrConnectWithoutProgramInput[]
+    upsert?: TrainingTemplateUpsertWithWhereUniqueWithoutProgramInput | TrainingTemplateUpsertWithWhereUniqueWithoutProgramInput[]
+    createMany?: TrainingTemplateCreateManyProgramInputEnvelope
+    set?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    disconnect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    delete?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    connect?: TrainingTemplateWhereUniqueInput | TrainingTemplateWhereUniqueInput[]
+    update?: TrainingTemplateUpdateWithWhereUniqueWithoutProgramInput | TrainingTemplateUpdateWithWhereUniqueWithoutProgramInput[]
+    updateMany?: TrainingTemplateUpdateManyWithWhereWithoutProgramInput | TrainingTemplateUpdateManyWithWhereWithoutProgramInput[]
+    deleteMany?: TrainingTemplateScalarWhereInput | TrainingTemplateScalarWhereInput[]
+  }
+
+  export type TrainingProgramCreateNestedOneWithoutTranslationsInput = {
+    create?: XOR<TrainingProgramCreateWithoutTranslationsInput, TrainingProgramUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: TrainingProgramCreateOrConnectWithoutTranslationsInput
+    connect?: TrainingProgramWhereUniqueInput
+  }
+
+  export type TrainingProgramUpdateOneRequiredWithoutTranslationsNestedInput = {
+    create?: XOR<TrainingProgramCreateWithoutTranslationsInput, TrainingProgramUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: TrainingProgramCreateOrConnectWithoutTranslationsInput
+    upsert?: TrainingProgramUpsertWithoutTranslationsInput
+    connect?: TrainingProgramWhereUniqueInput
+    update?: XOR<XOR<TrainingProgramUpdateToOneWithWhereWithoutTranslationsInput, TrainingProgramUpdateWithoutTranslationsInput>, TrainingProgramUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type TrainingProgramCreateNestedOneWithoutTrainingsInput = {
+    create?: XOR<TrainingProgramCreateWithoutTrainingsInput, TrainingProgramUncheckedCreateWithoutTrainingsInput>
+    connectOrCreate?: TrainingProgramCreateOrConnectWithoutTrainingsInput
+    connect?: TrainingProgramWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutPrivateTrainingTemplatesInput = {
+    create?: XOR<UserCreateWithoutPrivateTrainingTemplatesInput, UserUncheckedCreateWithoutPrivateTrainingTemplatesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPrivateTrainingTemplatesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type TrainingTemplateTranslationCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<TrainingTemplateTranslationCreateWithoutTemplateInput, TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput> | TrainingTemplateTranslationCreateWithoutTemplateInput[] | TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput | TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput[]
+    createMany?: TrainingTemplateTranslationCreateManyTemplateInputEnvelope
+    connect?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+  }
+
+  export type TrainingStepCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<TrainingStepCreateWithoutTemplateInput, TrainingStepUncheckedCreateWithoutTemplateInput> | TrainingStepCreateWithoutTemplateInput[] | TrainingStepUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingStepCreateOrConnectWithoutTemplateInput | TrainingStepCreateOrConnectWithoutTemplateInput[]
+    createMany?: TrainingStepCreateManyTemplateInputEnvelope
+    connect?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+  }
+
+  export type TrainingRunCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<TrainingRunCreateWithoutTemplateInput, TrainingRunUncheckedCreateWithoutTemplateInput> | TrainingRunCreateWithoutTemplateInput[] | TrainingRunUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingRunCreateOrConnectWithoutTemplateInput | TrainingRunCreateOrConnectWithoutTemplateInput[]
+    createMany?: TrainingRunCreateManyTemplateInputEnvelope
+    connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+  }
+
+  export type TrainingTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<TrainingTemplateTranslationCreateWithoutTemplateInput, TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput> | TrainingTemplateTranslationCreateWithoutTemplateInput[] | TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput | TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput[]
+    createMany?: TrainingTemplateTranslationCreateManyTemplateInputEnvelope
+    connect?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+  }
+
+  export type TrainingStepUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<TrainingStepCreateWithoutTemplateInput, TrainingStepUncheckedCreateWithoutTemplateInput> | TrainingStepCreateWithoutTemplateInput[] | TrainingStepUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingStepCreateOrConnectWithoutTemplateInput | TrainingStepCreateOrConnectWithoutTemplateInput[]
+    createMany?: TrainingStepCreateManyTemplateInputEnvelope
+    connect?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+  }
+
+  export type TrainingRunUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<TrainingRunCreateWithoutTemplateInput, TrainingRunUncheckedCreateWithoutTemplateInput> | TrainingRunCreateWithoutTemplateInput[] | TrainingRunUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingRunCreateOrConnectWithoutTemplateInput | TrainingRunCreateOrConnectWithoutTemplateInput[]
+    createMany?: TrainingRunCreateManyTemplateInputEnvelope
+    connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+  }
+
+  export type EnumTrainingKindFieldUpdateOperationsInput = {
+    set?: $Enums.TrainingKind
+  }
+
+  export type TrainingProgramUpdateOneWithoutTrainingsNestedInput = {
+    create?: XOR<TrainingProgramCreateWithoutTrainingsInput, TrainingProgramUncheckedCreateWithoutTrainingsInput>
+    connectOrCreate?: TrainingProgramCreateOrConnectWithoutTrainingsInput
+    upsert?: TrainingProgramUpsertWithoutTrainingsInput
+    disconnect?: TrainingProgramWhereInput | boolean
+    delete?: TrainingProgramWhereInput | boolean
+    connect?: TrainingProgramWhereUniqueInput
+    update?: XOR<XOR<TrainingProgramUpdateToOneWithWhereWithoutTrainingsInput, TrainingProgramUpdateWithoutTrainingsInput>, TrainingProgramUncheckedUpdateWithoutTrainingsInput>
+  }
+
+  export type UserUpdateOneWithoutPrivateTrainingTemplatesNestedInput = {
+    create?: XOR<UserCreateWithoutPrivateTrainingTemplatesInput, UserUncheckedCreateWithoutPrivateTrainingTemplatesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPrivateTrainingTemplatesInput
+    upsert?: UserUpsertWithoutPrivateTrainingTemplatesInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPrivateTrainingTemplatesInput, UserUpdateWithoutPrivateTrainingTemplatesInput>, UserUncheckedUpdateWithoutPrivateTrainingTemplatesInput>
+  }
+
+  export type TrainingTemplateTranslationUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<TrainingTemplateTranslationCreateWithoutTemplateInput, TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput> | TrainingTemplateTranslationCreateWithoutTemplateInput[] | TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput | TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput[]
+    upsert?: TrainingTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput | TrainingTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: TrainingTemplateTranslationCreateManyTemplateInputEnvelope
+    set?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+    disconnect?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+    delete?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+    connect?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+    update?: TrainingTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput | TrainingTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: TrainingTemplateTranslationUpdateManyWithWhereWithoutTemplateInput | TrainingTemplateTranslationUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: TrainingTemplateTranslationScalarWhereInput | TrainingTemplateTranslationScalarWhereInput[]
+  }
+
+  export type TrainingStepUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<TrainingStepCreateWithoutTemplateInput, TrainingStepUncheckedCreateWithoutTemplateInput> | TrainingStepCreateWithoutTemplateInput[] | TrainingStepUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingStepCreateOrConnectWithoutTemplateInput | TrainingStepCreateOrConnectWithoutTemplateInput[]
+    upsert?: TrainingStepUpsertWithWhereUniqueWithoutTemplateInput | TrainingStepUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: TrainingStepCreateManyTemplateInputEnvelope
+    set?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+    disconnect?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+    delete?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+    connect?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+    update?: TrainingStepUpdateWithWhereUniqueWithoutTemplateInput | TrainingStepUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: TrainingStepUpdateManyWithWhereWithoutTemplateInput | TrainingStepUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: TrainingStepScalarWhereInput | TrainingStepScalarWhereInput[]
+  }
+
+  export type TrainingRunUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<TrainingRunCreateWithoutTemplateInput, TrainingRunUncheckedCreateWithoutTemplateInput> | TrainingRunCreateWithoutTemplateInput[] | TrainingRunUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingRunCreateOrConnectWithoutTemplateInput | TrainingRunCreateOrConnectWithoutTemplateInput[]
+    upsert?: TrainingRunUpsertWithWhereUniqueWithoutTemplateInput | TrainingRunUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: TrainingRunCreateManyTemplateInputEnvelope
+    set?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    disconnect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    delete?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    update?: TrainingRunUpdateWithWhereUniqueWithoutTemplateInput | TrainingRunUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: TrainingRunUpdateManyWithWhereWithoutTemplateInput | TrainingRunUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: TrainingRunScalarWhereInput | TrainingRunScalarWhereInput[]
+  }
+
+  export type TrainingTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<TrainingTemplateTranslationCreateWithoutTemplateInput, TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput> | TrainingTemplateTranslationCreateWithoutTemplateInput[] | TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput | TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput[]
+    upsert?: TrainingTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput | TrainingTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: TrainingTemplateTranslationCreateManyTemplateInputEnvelope
+    set?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+    disconnect?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+    delete?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+    connect?: TrainingTemplateTranslationWhereUniqueInput | TrainingTemplateTranslationWhereUniqueInput[]
+    update?: TrainingTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput | TrainingTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: TrainingTemplateTranslationUpdateManyWithWhereWithoutTemplateInput | TrainingTemplateTranslationUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: TrainingTemplateTranslationScalarWhereInput | TrainingTemplateTranslationScalarWhereInput[]
+  }
+
+  export type TrainingStepUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<TrainingStepCreateWithoutTemplateInput, TrainingStepUncheckedCreateWithoutTemplateInput> | TrainingStepCreateWithoutTemplateInput[] | TrainingStepUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingStepCreateOrConnectWithoutTemplateInput | TrainingStepCreateOrConnectWithoutTemplateInput[]
+    upsert?: TrainingStepUpsertWithWhereUniqueWithoutTemplateInput | TrainingStepUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: TrainingStepCreateManyTemplateInputEnvelope
+    set?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+    disconnect?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+    delete?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+    connect?: TrainingStepWhereUniqueInput | TrainingStepWhereUniqueInput[]
+    update?: TrainingStepUpdateWithWhereUniqueWithoutTemplateInput | TrainingStepUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: TrainingStepUpdateManyWithWhereWithoutTemplateInput | TrainingStepUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: TrainingStepScalarWhereInput | TrainingStepScalarWhereInput[]
+  }
+
+  export type TrainingRunUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<TrainingRunCreateWithoutTemplateInput, TrainingRunUncheckedCreateWithoutTemplateInput> | TrainingRunCreateWithoutTemplateInput[] | TrainingRunUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TrainingRunCreateOrConnectWithoutTemplateInput | TrainingRunCreateOrConnectWithoutTemplateInput[]
+    upsert?: TrainingRunUpsertWithWhereUniqueWithoutTemplateInput | TrainingRunUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: TrainingRunCreateManyTemplateInputEnvelope
+    set?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    disconnect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    delete?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+    update?: TrainingRunUpdateWithWhereUniqueWithoutTemplateInput | TrainingRunUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: TrainingRunUpdateManyWithWhereWithoutTemplateInput | TrainingRunUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: TrainingRunScalarWhereInput | TrainingRunScalarWhereInput[]
+  }
+
+  export type TrainingTemplateCreateNestedOneWithoutTranslationsInput = {
+    create?: XOR<TrainingTemplateCreateWithoutTranslationsInput, TrainingTemplateUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutTranslationsInput
+    connect?: TrainingTemplateWhereUniqueInput
+  }
+
+  export type TrainingTemplateUpdateOneRequiredWithoutTranslationsNestedInput = {
+    create?: XOR<TrainingTemplateCreateWithoutTranslationsInput, TrainingTemplateUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutTranslationsInput
+    upsert?: TrainingTemplateUpsertWithoutTranslationsInput
+    connect?: TrainingTemplateWhereUniqueInput
+    update?: XOR<XOR<TrainingTemplateUpdateToOneWithWhereWithoutTranslationsInput, TrainingTemplateUpdateWithoutTranslationsInput>, TrainingTemplateUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type TrainingTemplateCreateNestedOneWithoutStepsInput = {
+    create?: XOR<TrainingTemplateCreateWithoutStepsInput, TrainingTemplateUncheckedCreateWithoutStepsInput>
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutStepsInput
+    connect?: TrainingTemplateWhereUniqueInput
+  }
+
+  export type EnumBreathPhaseFieldUpdateOperationsInput = {
+    set?: $Enums.BreathPhase
+  }
+
+  export type TrainingTemplateUpdateOneRequiredWithoutStepsNestedInput = {
+    create?: XOR<TrainingTemplateCreateWithoutStepsInput, TrainingTemplateUncheckedCreateWithoutStepsInput>
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutStepsInput
+    upsert?: TrainingTemplateUpsertWithoutStepsInput
+    connect?: TrainingTemplateWhereUniqueInput
+    update?: XOR<XOR<TrainingTemplateUpdateToOneWithWhereWithoutStepsInput, TrainingTemplateUpdateWithoutStepsInput>, TrainingTemplateUncheckedUpdateWithoutStepsInput>
+  }
+
+  export type UserCreateNestedOneWithoutTrainingRunsInput = {
+    create?: XOR<UserCreateWithoutTrainingRunsInput, UserUncheckedCreateWithoutTrainingRunsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTrainingRunsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type TrainingTemplateCreateNestedOneWithoutRunsInput = {
+    create?: XOR<TrainingTemplateCreateWithoutRunsInput, TrainingTemplateUncheckedCreateWithoutRunsInput>
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutRunsInput
+    connect?: TrainingTemplateWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutTrainingRunsNestedInput = {
+    create?: XOR<UserCreateWithoutTrainingRunsInput, UserUncheckedCreateWithoutTrainingRunsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTrainingRunsInput
+    upsert?: UserUpsertWithoutTrainingRunsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTrainingRunsInput, UserUpdateWithoutTrainingRunsInput>, UserUncheckedUpdateWithoutTrainingRunsInput>
+  }
+
+  export type TrainingTemplateUpdateOneRequiredWithoutRunsNestedInput = {
+    create?: XOR<TrainingTemplateCreateWithoutRunsInput, TrainingTemplateUncheckedCreateWithoutRunsInput>
+    connectOrCreate?: TrainingTemplateCreateOrConnectWithoutRunsInput
+    upsert?: TrainingTemplateUpsertWithoutRunsInput
+    connect?: TrainingTemplateWhereUniqueInput
+    update?: XOR<XOR<TrainingTemplateUpdateToOneWithWhereWithoutRunsInput, TrainingTemplateUpdateWithoutRunsInput>, TrainingTemplateUncheckedUpdateWithoutRunsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9812,6 +19460,107 @@ export namespace Prisma {
     _max?: NestedEnumLanguageFilter<$PrismaModel>
   }
 
+  export type NestedEnumTrainingProgramKeyFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrainingProgramKey | EnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    in?: $Enums.TrainingProgramKey[] | ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TrainingProgramKey[] | ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    not?: NestedEnumTrainingProgramKeyFilter<$PrismaModel> | $Enums.TrainingProgramKey
+  }
+
+  export type NestedEnumTrainingProgramKeyWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrainingProgramKey | EnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    in?: $Enums.TrainingProgramKey[] | ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TrainingProgramKey[] | ListEnumTrainingProgramKeyFieldRefInput<$PrismaModel>
+    not?: NestedEnumTrainingProgramKeyWithAggregatesFilter<$PrismaModel> | $Enums.TrainingProgramKey
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTrainingProgramKeyFilter<$PrismaModel>
+    _max?: NestedEnumTrainingProgramKeyFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumTrainingKindFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrainingKind | EnumTrainingKindFieldRefInput<$PrismaModel>
+    in?: $Enums.TrainingKind[] | ListEnumTrainingKindFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TrainingKind[] | ListEnumTrainingKindFieldRefInput<$PrismaModel>
+    not?: NestedEnumTrainingKindFilter<$PrismaModel> | $Enums.TrainingKind
+  }
+
+  export type NestedEnumTrainingKindWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrainingKind | EnumTrainingKindFieldRefInput<$PrismaModel>
+    in?: $Enums.TrainingKind[] | ListEnumTrainingKindFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TrainingKind[] | ListEnumTrainingKindFieldRefInput<$PrismaModel>
+    not?: NestedEnumTrainingKindWithAggregatesFilter<$PrismaModel> | $Enums.TrainingKind
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTrainingKindFilter<$PrismaModel>
+    _max?: NestedEnumTrainingKindFilter<$PrismaModel>
+  }
+
+  export type NestedEnumBreathPhaseFilter<$PrismaModel = never> = {
+    equals?: $Enums.BreathPhase | EnumBreathPhaseFieldRefInput<$PrismaModel>
+    in?: $Enums.BreathPhase[] | ListEnumBreathPhaseFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BreathPhase[] | ListEnumBreathPhaseFieldRefInput<$PrismaModel>
+    not?: NestedEnumBreathPhaseFilter<$PrismaModel> | $Enums.BreathPhase
+  }
+
+  export type NestedEnumBreathPhaseWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.BreathPhase | EnumBreathPhaseFieldRefInput<$PrismaModel>
+    in?: $Enums.BreathPhase[] | ListEnumBreathPhaseFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BreathPhase[] | ListEnumBreathPhaseFieldRefInput<$PrismaModel>
+    not?: NestedEnumBreathPhaseWithAggregatesFilter<$PrismaModel> | $Enums.BreathPhase
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumBreathPhaseFilter<$PrismaModel>
+    _max?: NestedEnumBreathPhaseFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
   export type RefreshTokenCreateWithoutUserInput = {
     id?: string
     tokenHash: string
@@ -9837,6 +19586,92 @@ export namespace Prisma {
 
   export type RefreshTokenCreateManyUserInputEnvelope = {
     data: RefreshTokenCreateManyUserInput | RefreshTokenCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrainingTemplateCreateWithoutOwnerInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    program?: TrainingProgramCreateNestedOneWithoutTrainingsInput
+    translations?: TrainingTemplateTranslationCreateNestedManyWithoutTemplateInput
+    steps?: TrainingStepCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    programId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput
+    steps?: TrainingStepUncheckedCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateCreateOrConnectWithoutOwnerInput = {
+    where: TrainingTemplateWhereUniqueInput
+    create: XOR<TrainingTemplateCreateWithoutOwnerInput, TrainingTemplateUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type TrainingTemplateCreateManyOwnerInputEnvelope = {
+    data: TrainingTemplateCreateManyOwnerInput | TrainingTemplateCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrainingRunCreateWithoutUserInput = {
+    id?: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    template: TrainingTemplateCreateNestedOneWithoutRunsInput
+  }
+
+  export type TrainingRunUncheckedCreateWithoutUserInput = {
+    id?: string
+    templateId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingRunCreateOrConnectWithoutUserInput = {
+    where: TrainingRunWhereUniqueInput
+    create: XOR<TrainingRunCreateWithoutUserInput, TrainingRunUncheckedCreateWithoutUserInput>
+  }
+
+  export type TrainingRunCreateManyUserInputEnvelope = {
+    data: TrainingRunCreateManyUserInput | TrainingRunCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -9869,12 +19704,84 @@ export namespace Prisma {
     revokedAt?: DateTimeNullableFilter<"RefreshToken"> | Date | string | null
   }
 
+  export type TrainingTemplateUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: TrainingTemplateWhereUniqueInput
+    update: XOR<TrainingTemplateUpdateWithoutOwnerInput, TrainingTemplateUncheckedUpdateWithoutOwnerInput>
+    create: XOR<TrainingTemplateCreateWithoutOwnerInput, TrainingTemplateUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type TrainingTemplateUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: TrainingTemplateWhereUniqueInput
+    data: XOR<TrainingTemplateUpdateWithoutOwnerInput, TrainingTemplateUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type TrainingTemplateUpdateManyWithWhereWithoutOwnerInput = {
+    where: TrainingTemplateScalarWhereInput
+    data: XOR<TrainingTemplateUpdateManyMutationInput, TrainingTemplateUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type TrainingTemplateScalarWhereInput = {
+    AND?: TrainingTemplateScalarWhereInput | TrainingTemplateScalarWhereInput[]
+    OR?: TrainingTemplateScalarWhereInput[]
+    NOT?: TrainingTemplateScalarWhereInput | TrainingTemplateScalarWhereInput[]
+    id?: StringFilter<"TrainingTemplate"> | string
+    kind?: EnumTrainingKindFilter<"TrainingTemplate"> | $Enums.TrainingKind
+    slug?: StringNullableFilter<"TrainingTemplate"> | string | null
+    programId?: StringNullableFilter<"TrainingTemplate"> | string | null
+    ownerId?: StringNullableFilter<"TrainingTemplate"> | string | null
+    name?: StringNullableFilter<"TrainingTemplate"> | string | null
+    sortOrder?: IntFilter<"TrainingTemplate"> | number
+    isPublished?: BoolFilter<"TrainingTemplate"> | boolean
+    isPremium?: BoolFilter<"TrainingTemplate"> | boolean
+    pointCount?: IntNullableFilter<"TrainingTemplate"> | number | null
+    repeats?: IntNullableFilter<"TrainingTemplate"> | number | null
+    saveResults?: BoolFilter<"TrainingTemplate"> | boolean
+    saveCO2?: BoolFilter<"TrainingTemplate"> | boolean
+    onlyClock?: BoolFilter<"TrainingTemplate"> | boolean
+    estimatedMinutes?: IntNullableFilter<"TrainingTemplate"> | number | null
+    intensityLevel?: IntNullableFilter<"TrainingTemplate"> | number | null
+    createdAt?: DateTimeFilter<"TrainingTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"TrainingTemplate"> | Date | string
+  }
+
+  export type TrainingRunUpsertWithWhereUniqueWithoutUserInput = {
+    where: TrainingRunWhereUniqueInput
+    update: XOR<TrainingRunUpdateWithoutUserInput, TrainingRunUncheckedUpdateWithoutUserInput>
+    create: XOR<TrainingRunCreateWithoutUserInput, TrainingRunUncheckedCreateWithoutUserInput>
+  }
+
+  export type TrainingRunUpdateWithWhereUniqueWithoutUserInput = {
+    where: TrainingRunWhereUniqueInput
+    data: XOR<TrainingRunUpdateWithoutUserInput, TrainingRunUncheckedUpdateWithoutUserInput>
+  }
+
+  export type TrainingRunUpdateManyWithWhereWithoutUserInput = {
+    where: TrainingRunScalarWhereInput
+    data: XOR<TrainingRunUpdateManyMutationInput, TrainingRunUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type TrainingRunScalarWhereInput = {
+    AND?: TrainingRunScalarWhereInput | TrainingRunScalarWhereInput[]
+    OR?: TrainingRunScalarWhereInput[]
+    NOT?: TrainingRunScalarWhereInput | TrainingRunScalarWhereInput[]
+    id?: StringFilter<"TrainingRun"> | string
+    userId?: StringFilter<"TrainingRun"> | string
+    templateId?: StringFilter<"TrainingRun"> | string
+    startedAt?: DateTimeFilter<"TrainingRun"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"TrainingRun"> | Date | string | null
+    totalSeconds?: IntNullableFilter<"TrainingRun"> | number | null
+    completed?: BoolFilter<"TrainingRun"> | boolean
+    metrics?: JsonNullableFilter<"TrainingRun">
+  }
+
   export type UserCreateWithoutRefreshTokensInput = {
     id?: string
     appleSub: string
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRefreshTokensInput = {
@@ -9883,6 +19790,8 @@ export namespace Prisma {
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRefreshTokensInput = {
@@ -9907,6 +19816,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefreshTokensInput = {
@@ -9915,6 +19826,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CultureArticleTranslationCreateWithoutArticleInput = {
@@ -10232,6 +20145,836 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TrainingProgramTranslationCreateWithoutProgramInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    description?: string | null
+  }
+
+  export type TrainingProgramTranslationUncheckedCreateWithoutProgramInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    description?: string | null
+  }
+
+  export type TrainingProgramTranslationCreateOrConnectWithoutProgramInput = {
+    where: TrainingProgramTranslationWhereUniqueInput
+    create: XOR<TrainingProgramTranslationCreateWithoutProgramInput, TrainingProgramTranslationUncheckedCreateWithoutProgramInput>
+  }
+
+  export type TrainingProgramTranslationCreateManyProgramInputEnvelope = {
+    data: TrainingProgramTranslationCreateManyProgramInput | TrainingProgramTranslationCreateManyProgramInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrainingTemplateCreateWithoutProgramInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner?: UserCreateNestedOneWithoutPrivateTrainingTemplatesInput
+    translations?: TrainingTemplateTranslationCreateNestedManyWithoutTemplateInput
+    steps?: TrainingStepCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateUncheckedCreateWithoutProgramInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    ownerId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput
+    steps?: TrainingStepUncheckedCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateCreateOrConnectWithoutProgramInput = {
+    where: TrainingTemplateWhereUniqueInput
+    create: XOR<TrainingTemplateCreateWithoutProgramInput, TrainingTemplateUncheckedCreateWithoutProgramInput>
+  }
+
+  export type TrainingTemplateCreateManyProgramInputEnvelope = {
+    data: TrainingTemplateCreateManyProgramInput | TrainingTemplateCreateManyProgramInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrainingProgramTranslationUpsertWithWhereUniqueWithoutProgramInput = {
+    where: TrainingProgramTranslationWhereUniqueInput
+    update: XOR<TrainingProgramTranslationUpdateWithoutProgramInput, TrainingProgramTranslationUncheckedUpdateWithoutProgramInput>
+    create: XOR<TrainingProgramTranslationCreateWithoutProgramInput, TrainingProgramTranslationUncheckedCreateWithoutProgramInput>
+  }
+
+  export type TrainingProgramTranslationUpdateWithWhereUniqueWithoutProgramInput = {
+    where: TrainingProgramTranslationWhereUniqueInput
+    data: XOR<TrainingProgramTranslationUpdateWithoutProgramInput, TrainingProgramTranslationUncheckedUpdateWithoutProgramInput>
+  }
+
+  export type TrainingProgramTranslationUpdateManyWithWhereWithoutProgramInput = {
+    where: TrainingProgramTranslationScalarWhereInput
+    data: XOR<TrainingProgramTranslationUpdateManyMutationInput, TrainingProgramTranslationUncheckedUpdateManyWithoutProgramInput>
+  }
+
+  export type TrainingProgramTranslationScalarWhereInput = {
+    AND?: TrainingProgramTranslationScalarWhereInput | TrainingProgramTranslationScalarWhereInput[]
+    OR?: TrainingProgramTranslationScalarWhereInput[]
+    NOT?: TrainingProgramTranslationScalarWhereInput | TrainingProgramTranslationScalarWhereInput[]
+    id?: StringFilter<"TrainingProgramTranslation"> | string
+    programId?: StringFilter<"TrainingProgramTranslation"> | string
+    lang?: EnumLanguageFilter<"TrainingProgramTranslation"> | $Enums.Language
+    title?: StringFilter<"TrainingProgramTranslation"> | string
+    description?: StringNullableFilter<"TrainingProgramTranslation"> | string | null
+  }
+
+  export type TrainingTemplateUpsertWithWhereUniqueWithoutProgramInput = {
+    where: TrainingTemplateWhereUniqueInput
+    update: XOR<TrainingTemplateUpdateWithoutProgramInput, TrainingTemplateUncheckedUpdateWithoutProgramInput>
+    create: XOR<TrainingTemplateCreateWithoutProgramInput, TrainingTemplateUncheckedCreateWithoutProgramInput>
+  }
+
+  export type TrainingTemplateUpdateWithWhereUniqueWithoutProgramInput = {
+    where: TrainingTemplateWhereUniqueInput
+    data: XOR<TrainingTemplateUpdateWithoutProgramInput, TrainingTemplateUncheckedUpdateWithoutProgramInput>
+  }
+
+  export type TrainingTemplateUpdateManyWithWhereWithoutProgramInput = {
+    where: TrainingTemplateScalarWhereInput
+    data: XOR<TrainingTemplateUpdateManyMutationInput, TrainingTemplateUncheckedUpdateManyWithoutProgramInput>
+  }
+
+  export type TrainingProgramCreateWithoutTranslationsInput = {
+    id?: string
+    key: $Enums.TrainingProgramKey
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    trainings?: TrainingTemplateCreateNestedManyWithoutProgramInput
+  }
+
+  export type TrainingProgramUncheckedCreateWithoutTranslationsInput = {
+    id?: string
+    key: $Enums.TrainingProgramKey
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    trainings?: TrainingTemplateUncheckedCreateNestedManyWithoutProgramInput
+  }
+
+  export type TrainingProgramCreateOrConnectWithoutTranslationsInput = {
+    where: TrainingProgramWhereUniqueInput
+    create: XOR<TrainingProgramCreateWithoutTranslationsInput, TrainingProgramUncheckedCreateWithoutTranslationsInput>
+  }
+
+  export type TrainingProgramUpsertWithoutTranslationsInput = {
+    update: XOR<TrainingProgramUpdateWithoutTranslationsInput, TrainingProgramUncheckedUpdateWithoutTranslationsInput>
+    create: XOR<TrainingProgramCreateWithoutTranslationsInput, TrainingProgramUncheckedCreateWithoutTranslationsInput>
+    where?: TrainingProgramWhereInput
+  }
+
+  export type TrainingProgramUpdateToOneWithWhereWithoutTranslationsInput = {
+    where?: TrainingProgramWhereInput
+    data: XOR<TrainingProgramUpdateWithoutTranslationsInput, TrainingProgramUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type TrainingProgramUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: EnumTrainingProgramKeyFieldUpdateOperationsInput | $Enums.TrainingProgramKey
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainings?: TrainingTemplateUpdateManyWithoutProgramNestedInput
+  }
+
+  export type TrainingProgramUncheckedUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: EnumTrainingProgramKeyFieldUpdateOperationsInput | $Enums.TrainingProgramKey
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainings?: TrainingTemplateUncheckedUpdateManyWithoutProgramNestedInput
+  }
+
+  export type TrainingProgramCreateWithoutTrainingsInput = {
+    id?: string
+    key: $Enums.TrainingProgramKey
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingProgramTranslationCreateNestedManyWithoutProgramInput
+  }
+
+  export type TrainingProgramUncheckedCreateWithoutTrainingsInput = {
+    id?: string
+    key: $Enums.TrainingProgramKey
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingProgramTranslationUncheckedCreateNestedManyWithoutProgramInput
+  }
+
+  export type TrainingProgramCreateOrConnectWithoutTrainingsInput = {
+    where: TrainingProgramWhereUniqueInput
+    create: XOR<TrainingProgramCreateWithoutTrainingsInput, TrainingProgramUncheckedCreateWithoutTrainingsInput>
+  }
+
+  export type UserCreateWithoutPrivateTrainingTemplatesInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPrivateTrainingTemplatesInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPrivateTrainingTemplatesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPrivateTrainingTemplatesInput, UserUncheckedCreateWithoutPrivateTrainingTemplatesInput>
+  }
+
+  export type TrainingTemplateTranslationCreateWithoutTemplateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type TrainingTemplateTranslationCreateOrConnectWithoutTemplateInput = {
+    where: TrainingTemplateTranslationWhereUniqueInput
+    create: XOR<TrainingTemplateTranslationCreateWithoutTemplateInput, TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type TrainingTemplateTranslationCreateManyTemplateInputEnvelope = {
+    data: TrainingTemplateTranslationCreateManyTemplateInput | TrainingTemplateTranslationCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrainingStepCreateWithoutTemplateInput = {
+    id?: string
+    sortOrder: number
+    phase: $Enums.BreathPhase
+    durationSeconds: number
+  }
+
+  export type TrainingStepUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    sortOrder: number
+    phase: $Enums.BreathPhase
+    durationSeconds: number
+  }
+
+  export type TrainingStepCreateOrConnectWithoutTemplateInput = {
+    where: TrainingStepWhereUniqueInput
+    create: XOR<TrainingStepCreateWithoutTemplateInput, TrainingStepUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type TrainingStepCreateManyTemplateInputEnvelope = {
+    data: TrainingStepCreateManyTemplateInput | TrainingStepCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrainingRunCreateWithoutTemplateInput = {
+    id?: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    user: UserCreateNestedOneWithoutTrainingRunsInput
+  }
+
+  export type TrainingRunUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    userId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingRunCreateOrConnectWithoutTemplateInput = {
+    where: TrainingRunWhereUniqueInput
+    create: XOR<TrainingRunCreateWithoutTemplateInput, TrainingRunUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type TrainingRunCreateManyTemplateInputEnvelope = {
+    data: TrainingRunCreateManyTemplateInput | TrainingRunCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrainingProgramUpsertWithoutTrainingsInput = {
+    update: XOR<TrainingProgramUpdateWithoutTrainingsInput, TrainingProgramUncheckedUpdateWithoutTrainingsInput>
+    create: XOR<TrainingProgramCreateWithoutTrainingsInput, TrainingProgramUncheckedCreateWithoutTrainingsInput>
+    where?: TrainingProgramWhereInput
+  }
+
+  export type TrainingProgramUpdateToOneWithWhereWithoutTrainingsInput = {
+    where?: TrainingProgramWhereInput
+    data: XOR<TrainingProgramUpdateWithoutTrainingsInput, TrainingProgramUncheckedUpdateWithoutTrainingsInput>
+  }
+
+  export type TrainingProgramUpdateWithoutTrainingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: EnumTrainingProgramKeyFieldUpdateOperationsInput | $Enums.TrainingProgramKey
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingProgramTranslationUpdateManyWithoutProgramNestedInput
+  }
+
+  export type TrainingProgramUncheckedUpdateWithoutTrainingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: EnumTrainingProgramKeyFieldUpdateOperationsInput | $Enums.TrainingProgramKey
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingProgramTranslationUncheckedUpdateManyWithoutProgramNestedInput
+  }
+
+  export type UserUpsertWithoutPrivateTrainingTemplatesInput = {
+    update: XOR<UserUpdateWithoutPrivateTrainingTemplatesInput, UserUncheckedUpdateWithoutPrivateTrainingTemplatesInput>
+    create: XOR<UserCreateWithoutPrivateTrainingTemplatesInput, UserUncheckedCreateWithoutPrivateTrainingTemplatesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPrivateTrainingTemplatesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPrivateTrainingTemplatesInput, UserUncheckedUpdateWithoutPrivateTrainingTemplatesInput>
+  }
+
+  export type UserUpdateWithoutPrivateTrainingTemplatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPrivateTrainingTemplatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type TrainingTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: TrainingTemplateTranslationWhereUniqueInput
+    update: XOR<TrainingTemplateTranslationUpdateWithoutTemplateInput, TrainingTemplateTranslationUncheckedUpdateWithoutTemplateInput>
+    create: XOR<TrainingTemplateTranslationCreateWithoutTemplateInput, TrainingTemplateTranslationUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type TrainingTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: TrainingTemplateTranslationWhereUniqueInput
+    data: XOR<TrainingTemplateTranslationUpdateWithoutTemplateInput, TrainingTemplateTranslationUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type TrainingTemplateTranslationUpdateManyWithWhereWithoutTemplateInput = {
+    where: TrainingTemplateTranslationScalarWhereInput
+    data: XOR<TrainingTemplateTranslationUpdateManyMutationInput, TrainingTemplateTranslationUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type TrainingTemplateTranslationScalarWhereInput = {
+    AND?: TrainingTemplateTranslationScalarWhereInput | TrainingTemplateTranslationScalarWhereInput[]
+    OR?: TrainingTemplateTranslationScalarWhereInput[]
+    NOT?: TrainingTemplateTranslationScalarWhereInput | TrainingTemplateTranslationScalarWhereInput[]
+    id?: StringFilter<"TrainingTemplateTranslation"> | string
+    templateId?: StringFilter<"TrainingTemplateTranslation"> | string
+    lang?: EnumLanguageFilter<"TrainingTemplateTranslation"> | $Enums.Language
+    title?: StringFilter<"TrainingTemplateTranslation"> | string
+    subtitle?: StringNullableFilter<"TrainingTemplateTranslation"> | string | null
+    description?: StringNullableFilter<"TrainingTemplateTranslation"> | string | null
+  }
+
+  export type TrainingStepUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: TrainingStepWhereUniqueInput
+    update: XOR<TrainingStepUpdateWithoutTemplateInput, TrainingStepUncheckedUpdateWithoutTemplateInput>
+    create: XOR<TrainingStepCreateWithoutTemplateInput, TrainingStepUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type TrainingStepUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: TrainingStepWhereUniqueInput
+    data: XOR<TrainingStepUpdateWithoutTemplateInput, TrainingStepUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type TrainingStepUpdateManyWithWhereWithoutTemplateInput = {
+    where: TrainingStepScalarWhereInput
+    data: XOR<TrainingStepUpdateManyMutationInput, TrainingStepUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type TrainingStepScalarWhereInput = {
+    AND?: TrainingStepScalarWhereInput | TrainingStepScalarWhereInput[]
+    OR?: TrainingStepScalarWhereInput[]
+    NOT?: TrainingStepScalarWhereInput | TrainingStepScalarWhereInput[]
+    id?: StringFilter<"TrainingStep"> | string
+    templateId?: StringFilter<"TrainingStep"> | string
+    sortOrder?: IntFilter<"TrainingStep"> | number
+    phase?: EnumBreathPhaseFilter<"TrainingStep"> | $Enums.BreathPhase
+    durationSeconds?: IntFilter<"TrainingStep"> | number
+  }
+
+  export type TrainingRunUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: TrainingRunWhereUniqueInput
+    update: XOR<TrainingRunUpdateWithoutTemplateInput, TrainingRunUncheckedUpdateWithoutTemplateInput>
+    create: XOR<TrainingRunCreateWithoutTemplateInput, TrainingRunUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type TrainingRunUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: TrainingRunWhereUniqueInput
+    data: XOR<TrainingRunUpdateWithoutTemplateInput, TrainingRunUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type TrainingRunUpdateManyWithWhereWithoutTemplateInput = {
+    where: TrainingRunScalarWhereInput
+    data: XOR<TrainingRunUpdateManyMutationInput, TrainingRunUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type TrainingTemplateCreateWithoutTranslationsInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    program?: TrainingProgramCreateNestedOneWithoutTrainingsInput
+    owner?: UserCreateNestedOneWithoutPrivateTrainingTemplatesInput
+    steps?: TrainingStepCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateUncheckedCreateWithoutTranslationsInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    programId?: string | null
+    ownerId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    steps?: TrainingStepUncheckedCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateCreateOrConnectWithoutTranslationsInput = {
+    where: TrainingTemplateWhereUniqueInput
+    create: XOR<TrainingTemplateCreateWithoutTranslationsInput, TrainingTemplateUncheckedCreateWithoutTranslationsInput>
+  }
+
+  export type TrainingTemplateUpsertWithoutTranslationsInput = {
+    update: XOR<TrainingTemplateUpdateWithoutTranslationsInput, TrainingTemplateUncheckedUpdateWithoutTranslationsInput>
+    create: XOR<TrainingTemplateCreateWithoutTranslationsInput, TrainingTemplateUncheckedCreateWithoutTranslationsInput>
+    where?: TrainingTemplateWhereInput
+  }
+
+  export type TrainingTemplateUpdateToOneWithWhereWithoutTranslationsInput = {
+    where?: TrainingTemplateWhereInput
+    data: XOR<TrainingTemplateUpdateWithoutTranslationsInput, TrainingTemplateUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type TrainingTemplateUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    program?: TrainingProgramUpdateOneWithoutTrainingsNestedInput
+    owner?: UserUpdateOneWithoutPrivateTrainingTemplatesNestedInput
+    steps?: TrainingStepUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateUncheckedUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    programId?: NullableStringFieldUpdateOperationsInput | string | null
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    steps?: TrainingStepUncheckedUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateCreateWithoutStepsInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    program?: TrainingProgramCreateNestedOneWithoutTrainingsInput
+    owner?: UserCreateNestedOneWithoutPrivateTrainingTemplatesInput
+    translations?: TrainingTemplateTranslationCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateUncheckedCreateWithoutStepsInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    programId?: string | null
+    ownerId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput
+    runs?: TrainingRunUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateCreateOrConnectWithoutStepsInput = {
+    where: TrainingTemplateWhereUniqueInput
+    create: XOR<TrainingTemplateCreateWithoutStepsInput, TrainingTemplateUncheckedCreateWithoutStepsInput>
+  }
+
+  export type TrainingTemplateUpsertWithoutStepsInput = {
+    update: XOR<TrainingTemplateUpdateWithoutStepsInput, TrainingTemplateUncheckedUpdateWithoutStepsInput>
+    create: XOR<TrainingTemplateCreateWithoutStepsInput, TrainingTemplateUncheckedCreateWithoutStepsInput>
+    where?: TrainingTemplateWhereInput
+  }
+
+  export type TrainingTemplateUpdateToOneWithWhereWithoutStepsInput = {
+    where?: TrainingTemplateWhereInput
+    data: XOR<TrainingTemplateUpdateWithoutStepsInput, TrainingTemplateUncheckedUpdateWithoutStepsInput>
+  }
+
+  export type TrainingTemplateUpdateWithoutStepsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    program?: TrainingProgramUpdateOneWithoutTrainingsNestedInput
+    owner?: UserUpdateOneWithoutPrivateTrainingTemplatesNestedInput
+    translations?: TrainingTemplateTranslationUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateUncheckedUpdateWithoutStepsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    programId?: NullableStringFieldUpdateOperationsInput | string | null
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type UserCreateWithoutTrainingRunsInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
+  }
+
+  export type UserUncheckedCreateWithoutTrainingRunsInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
+  }
+
+  export type UserCreateOrConnectWithoutTrainingRunsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTrainingRunsInput, UserUncheckedCreateWithoutTrainingRunsInput>
+  }
+
+  export type TrainingTemplateCreateWithoutRunsInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    program?: TrainingProgramCreateNestedOneWithoutTrainingsInput
+    owner?: UserCreateNestedOneWithoutPrivateTrainingTemplatesInput
+    translations?: TrainingTemplateTranslationCreateNestedManyWithoutTemplateInput
+    steps?: TrainingStepCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateUncheckedCreateWithoutRunsInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    programId?: string | null
+    ownerId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: TrainingTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput
+    steps?: TrainingStepUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TrainingTemplateCreateOrConnectWithoutRunsInput = {
+    where: TrainingTemplateWhereUniqueInput
+    create: XOR<TrainingTemplateCreateWithoutRunsInput, TrainingTemplateUncheckedCreateWithoutRunsInput>
+  }
+
+  export type UserUpsertWithoutTrainingRunsInput = {
+    update: XOR<UserUpdateWithoutTrainingRunsInput, UserUncheckedUpdateWithoutTrainingRunsInput>
+    create: XOR<UserCreateWithoutTrainingRunsInput, UserUncheckedCreateWithoutTrainingRunsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTrainingRunsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTrainingRunsInput, UserUncheckedUpdateWithoutTrainingRunsInput>
+  }
+
+  export type UserUpdateWithoutTrainingRunsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTrainingRunsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type TrainingTemplateUpsertWithoutRunsInput = {
+    update: XOR<TrainingTemplateUpdateWithoutRunsInput, TrainingTemplateUncheckedUpdateWithoutRunsInput>
+    create: XOR<TrainingTemplateCreateWithoutRunsInput, TrainingTemplateUncheckedCreateWithoutRunsInput>
+    where?: TrainingTemplateWhereInput
+  }
+
+  export type TrainingTemplateUpdateToOneWithWhereWithoutRunsInput = {
+    where?: TrainingTemplateWhereInput
+    data: XOR<TrainingTemplateUpdateWithoutRunsInput, TrainingTemplateUncheckedUpdateWithoutRunsInput>
+  }
+
+  export type TrainingTemplateUpdateWithoutRunsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    program?: TrainingProgramUpdateOneWithoutTrainingsNestedInput
+    owner?: UserUpdateOneWithoutPrivateTrainingTemplatesNestedInput
+    translations?: TrainingTemplateTranslationUpdateManyWithoutTemplateNestedInput
+    steps?: TrainingStepUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateUncheckedUpdateWithoutRunsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    programId?: NullableStringFieldUpdateOperationsInput | string | null
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput
+    steps?: TrainingStepUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
   export type RefreshTokenCreateManyUserInput = {
     id?: string
     tokenHash: string
@@ -10239,6 +20982,36 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     revokedAt?: Date | string | null
+  }
+
+  export type TrainingTemplateCreateManyOwnerInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    programId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TrainingRunCreateManyUserInput = {
+    id?: string
+    templateId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type RefreshTokenUpdateWithoutUserInput = {
@@ -10266,6 +21039,102 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     revokedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type TrainingTemplateUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    program?: TrainingProgramUpdateOneWithoutTrainingsNestedInput
+    translations?: TrainingTemplateTranslationUpdateManyWithoutTemplateNestedInput
+    steps?: TrainingStepUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    programId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput
+    steps?: TrainingStepUncheckedUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    programId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingRunUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    template?: TrainingTemplateUpdateOneRequiredWithoutRunsNestedInput
+  }
+
+  export type TrainingRunUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingRunUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type CultureArticleTranslationCreateManyArticleInput = {
@@ -10342,6 +21211,220 @@ export namespace Prisma {
 
   export type CultureTagOnArticleUncheckedUpdateManyWithoutTagInput = {
     articleId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrainingProgramTranslationCreateManyProgramInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    description?: string | null
+  }
+
+  export type TrainingTemplateCreateManyProgramInput = {
+    id?: string
+    kind?: $Enums.TrainingKind
+    slug?: string | null
+    ownerId?: string | null
+    name?: string | null
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    pointCount?: number | null
+    repeats?: number | null
+    saveResults?: boolean
+    saveCO2?: boolean
+    onlyClock?: boolean
+    estimatedMinutes?: number | null
+    intensityLevel?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TrainingProgramTranslationUpdateWithoutProgramInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingProgramTranslationUncheckedUpdateWithoutProgramInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingProgramTranslationUncheckedUpdateManyWithoutProgramInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingTemplateUpdateWithoutProgramInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneWithoutPrivateTrainingTemplatesNestedInput
+    translations?: TrainingTemplateTranslationUpdateManyWithoutTemplateNestedInput
+    steps?: TrainingStepUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateUncheckedUpdateWithoutProgramInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: TrainingTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput
+    steps?: TrainingStepUncheckedUpdateManyWithoutTemplateNestedInput
+    runs?: TrainingRunUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TrainingTemplateUncheckedUpdateManyWithoutProgramInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kind?: EnumTrainingKindFieldUpdateOperationsInput | $Enums.TrainingKind
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    pointCount?: NullableIntFieldUpdateOperationsInput | number | null
+    repeats?: NullableIntFieldUpdateOperationsInput | number | null
+    saveResults?: BoolFieldUpdateOperationsInput | boolean
+    saveCO2?: BoolFieldUpdateOperationsInput | boolean
+    onlyClock?: BoolFieldUpdateOperationsInput | boolean
+    estimatedMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    intensityLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingTemplateTranslationCreateManyTemplateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type TrainingStepCreateManyTemplateInput = {
+    id?: string
+    sortOrder: number
+    phase: $Enums.BreathPhase
+    durationSeconds: number
+  }
+
+  export type TrainingRunCreateManyTemplateInput = {
+    id?: string
+    userId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingTemplateTranslationUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingTemplateTranslationUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingTemplateTranslationUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrainingStepUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    phase?: EnumBreathPhaseFieldUpdateOperationsInput | $Enums.BreathPhase
+    durationSeconds?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TrainingStepUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    phase?: EnumBreathPhaseFieldUpdateOperationsInput | $Enums.BreathPhase
+    durationSeconds?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TrainingStepUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    phase?: EnumBreathPhaseFieldUpdateOperationsInput | $Enums.BreathPhase
+    durationSeconds?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TrainingRunUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    user?: UserUpdateOneRequiredWithoutTrainingRunsNestedInput
+  }
+
+  export type TrainingRunUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingRunUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
   }
 
 

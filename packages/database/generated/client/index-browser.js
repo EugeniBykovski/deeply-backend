@@ -173,9 +173,81 @@ exports.Prisma.CultureTagOnArticleScalarFieldEnum = {
   tagId: 'tagId'
 };
 
+exports.Prisma.TrainingProgramScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  slug: 'slug',
+  sortOrder: 'sortOrder',
+  isPublished: 'isPublished',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TrainingProgramTranslationScalarFieldEnum = {
+  id: 'id',
+  programId: 'programId',
+  lang: 'lang',
+  title: 'title',
+  description: 'description'
+};
+
+exports.Prisma.TrainingTemplateScalarFieldEnum = {
+  id: 'id',
+  kind: 'kind',
+  slug: 'slug',
+  programId: 'programId',
+  ownerId: 'ownerId',
+  name: 'name',
+  sortOrder: 'sortOrder',
+  isPublished: 'isPublished',
+  isPremium: 'isPremium',
+  pointCount: 'pointCount',
+  repeats: 'repeats',
+  saveResults: 'saveResults',
+  saveCO2: 'saveCO2',
+  onlyClock: 'onlyClock',
+  estimatedMinutes: 'estimatedMinutes',
+  intensityLevel: 'intensityLevel',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TrainingTemplateTranslationScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  lang: 'lang',
+  title: 'title',
+  subtitle: 'subtitle',
+  description: 'description'
+};
+
+exports.Prisma.TrainingStepScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  sortOrder: 'sortOrder',
+  phase: 'phase',
+  durationSeconds: 'durationSeconds'
+};
+
+exports.Prisma.TrainingRunScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  templateId: 'templateId',
+  startedAt: 'startedAt',
+  finishedAt: 'finishedAt',
+  totalSeconds: 'totalSeconds',
+  completed: 'completed',
+  metrics: 'metrics'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -186,6 +258,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.CultureSection = exports.$Enums.CultureSection = {
   STORIES: 'STORIES',
@@ -201,13 +279,39 @@ exports.Language = exports.$Enums.Language = {
   ru: 'ru'
 };
 
+exports.TrainingProgramKey = exports.$Enums.TrainingProgramKey = {
+  BEGINNER: 'BEGINNER',
+  INTERMEDIATE: 'INTERMEDIATE',
+  PRO: 'PRO',
+  SQUARE: 'SQUARE',
+  CALMING: 'CALMING'
+};
+
+exports.TrainingKind = exports.$Enums.TrainingKind = {
+  PRESET: 'PRESET',
+  PRIVATE: 'PRIVATE'
+};
+
+exports.BreathPhase = exports.$Enums.BreathPhase = {
+  INHALE: 'INHALE',
+  HOLD: 'HOLD',
+  EXHALE: 'EXHALE',
+  REST: 'REST'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   RefreshToken: 'RefreshToken',
   CultureArticle: 'CultureArticle',
   CultureArticleTranslation: 'CultureArticleTranslation',
   CultureTag: 'CultureTag',
-  CultureTagOnArticle: 'CultureTagOnArticle'
+  CultureTagOnArticle: 'CultureTagOnArticle',
+  TrainingProgram: 'TrainingProgram',
+  TrainingProgramTranslation: 'TrainingProgramTranslation',
+  TrainingTemplate: 'TrainingTemplate',
+  TrainingTemplateTranslation: 'TrainingTemplateTranslation',
+  TrainingStep: 'TrainingStep',
+  TrainingRun: 'TrainingRun'
 };
 
 /**

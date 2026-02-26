@@ -14,7 +14,9 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  refreshTokens RefreshToken[]
+  refreshTokens            RefreshToken[]
+  privateTrainingTemplates TrainingTemplate[] @relation("UserPrivateTrainingTemplates")
+  trainingRuns             TrainingRun[]
 }
 
 model RefreshToken {
@@ -102,4 +104,139 @@ model CultureTagOnArticle {
 
   @@id([articleId, tagId])
   @@index([tagId])
+}
+
+enum TrainingProgramKey {
+  BEGINNER
+  INTERMEDIATE
+  PRO
+  SQUARE
+  CALMING
+}
+
+enum TrainingKind {
+  PRESET
+  PRIVATE
+}
+
+enum BreathPhase {
+  INHALE
+  HOLD
+  EXHALE
+  REST
+}
+
+model TrainingProgram {
+  id          String             @id @default(cuid())
+  key         TrainingProgramKey @unique
+  slug        String             @unique
+  sortOrder   Int                @default(0)
+  isPublished Boolean            @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  translations TrainingProgramTranslation[]
+  trainings    TrainingTemplate[]
+
+  @@index([sortOrder, isPublished])
+}
+
+model TrainingProgramTranslation {
+  id        String   @id @default(cuid())
+  programId String
+  lang      Language
+
+  title       String
+  description String?
+
+  program TrainingProgram @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  @@unique([programId, lang])
+  @@index([lang])
+}
+
+model TrainingTemplate {
+  id   String       @id @default(cuid())
+  kind TrainingKind @default(PRESET)
+
+  slug      String? @unique
+  programId String?
+
+  ownerId String?
+  name    String?
+
+  sortOrder   Int     @default(0)
+  isPublished Boolean @default(true)
+  isPremium   Boolean @default(false)
+
+  pointCount  Int?
+  repeats     Int?
+  saveResults Boolean @default(true)
+  saveCO2     Boolean @default(false)
+  onlyClock   Boolean @default(false)
+
+  estimatedMinutes Int?
+  intensityLevel   Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  program TrainingProgram? @relation(fields: [programId], references: [id], onDelete: SetNull)
+
+  owner User? @relation("UserPrivateTrainingTemplates", fields: [ownerId], references: [id], onDelete: Cascade)
+
+  translations TrainingTemplateTranslation[]
+  steps        TrainingStep[]
+  runs         TrainingRun[]
+
+  @@index([programId, sortOrder])
+  @@index([ownerId, kind])
+}
+
+model TrainingTemplateTranslation {
+  id         String   @id @default(cuid())
+  templateId String
+  lang       Language
+
+  title       String
+  subtitle    String?
+  description String?
+
+  template TrainingTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@unique([templateId, lang])
+  @@index([lang])
+}
+
+model TrainingStep {
+  id         String @id @default(cuid())
+  templateId String
+  sortOrder  Int
+
+  phase           BreathPhase
+  durationSeconds Int
+
+  template TrainingTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@index([templateId, sortOrder])
+}
+
+model TrainingRun {
+  id         String @id @default(cuid())
+  userId     String
+  templateId String
+
+  startedAt    DateTime  @default(now())
+  finishedAt   DateTime?
+  totalSeconds Int?
+  completed    Boolean   @default(false)
+
+  metrics Json?
+
+  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template TrainingTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@index([userId, startedAt])
+  @@index([templateId])
 }
