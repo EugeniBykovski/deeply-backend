@@ -240,6 +240,63 @@ exports.Prisma.TrainingRunScalarFieldEnum = {
   metrics: 'metrics'
 };
 
+exports.Prisma.UserAchievementScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  scopeKey: 'scopeKey',
+  unlockedAt: 'unlockedAt',
+  payload: 'payload'
+};
+
+exports.Prisma.TrainingProgressCacheScalarFieldEnum = {
+  userId: 'userId',
+  updatedAt: 'updatedAt',
+  data: 'data'
+};
+
+exports.Prisma.DiveTemplateScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  sortOrder: 'sortOrder',
+  isPublished: 'isPublished',
+  isPremium: 'isPremium',
+  difficulty: 'difficulty',
+  maxDepthMeters: 'maxDepthMeters',
+  targetHoldSeconds: 'targetHoldSeconds',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DiveTemplateTranslationScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  lang: 'lang',
+  title: 'title',
+  subtitle: 'subtitle',
+  description: 'description'
+};
+
+exports.Prisma.DiveProfilePointScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  sortOrder: 'sortOrder',
+  timeSeconds: 'timeSeconds',
+  depthMeters: 'depthMeters'
+};
+
+exports.Prisma.DiveRunScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  templateId: 'templateId',
+  startedAt: 'startedAt',
+  finishedAt: 'finishedAt',
+  holdSeconds: 'holdSeconds',
+  maxDepthMeters: 'maxDepthMeters',
+  completed: 'completed',
+  metrics: 'metrics'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -247,6 +304,10 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.NullableJsonNullValueInput = {
   DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
@@ -299,6 +360,24 @@ exports.BreathPhase = exports.$Enums.BreathPhase = {
   REST: 'REST'
 };
 
+exports.AchievementType = exports.$Enums.AchievementType = {
+  FIRST_TRAINING: 'FIRST_TRAINING',
+  FIRST_PRIVATE: 'FIRST_PRIVATE',
+  STREAK_3: 'STREAK_3',
+  STREAK_7: 'STREAK_7',
+  STREAK_30: 'STREAK_30',
+  TOTAL_RUNS_25: 'TOTAL_RUNS_25',
+  TOTAL_RUNS_50: 'TOTAL_RUNS_50',
+  TOTAL_RUNS_100: 'TOTAL_RUNS_100',
+  COMPLETE_MAIN_12: 'COMPLETE_MAIN_12'
+};
+
+exports.DiveDifficulty = exports.$Enums.DiveDifficulty = {
+  EASY: 'EASY',
+  MEDIUM: 'MEDIUM',
+  HARD: 'HARD'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   RefreshToken: 'RefreshToken',
@@ -311,7 +390,13 @@ exports.Prisma.ModelName = {
   TrainingTemplate: 'TrainingTemplate',
   TrainingTemplateTranslation: 'TrainingTemplateTranslation',
   TrainingStep: 'TrainingStep',
-  TrainingRun: 'TrainingRun'
+  TrainingRun: 'TrainingRun',
+  UserAchievement: 'UserAchievement',
+  TrainingProgressCache: 'TrainingProgressCache',
+  DiveTemplate: 'DiveTemplate',
+  DiveTemplateTranslation: 'DiveTemplateTranslation',
+  DiveProfilePoint: 'DiveProfilePoint',
+  DiveRun: 'DiveRun'
 };
 
 /**

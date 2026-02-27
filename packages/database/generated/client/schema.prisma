@@ -15,8 +15,11 @@ model User {
   updatedAt DateTime @updatedAt
 
   refreshTokens            RefreshToken[]
-  privateTrainingTemplates TrainingTemplate[] @relation("UserPrivateTrainingTemplates")
+  privateTrainingTemplates TrainingTemplate[]     @relation("UserPrivateTrainingTemplates")
   trainingRuns             TrainingRun[]
+  achievements             UserAchievement[]
+  progressCache            TrainingProgressCache?
+  diveRuns                 DiveRun[]
 }
 
 model RefreshToken {
@@ -236,6 +239,119 @@ model TrainingRun {
 
   user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   template TrainingTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@index([userId, startedAt])
+  @@index([templateId])
+}
+
+enum AchievementType {
+  FIRST_TRAINING
+  FIRST_PRIVATE
+
+  STREAK_3
+  STREAK_7
+  STREAK_30
+
+  TOTAL_RUNS_25
+  TOTAL_RUNS_50
+  TOTAL_RUNS_100
+
+  COMPLETE_MAIN_12
+}
+
+model UserAchievement {
+  id         String          @id @default(cuid())
+  userId     String
+  type       AchievementType
+  scopeKey   String          @default("GLOBAL")
+  unlockedAt DateTime        @default(now())
+  payload    Json?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, type, scopeKey])
+  @@index([userId, unlockedAt])
+}
+
+model TrainingProgressCache {
+  userId    String   @id
+  updatedAt DateTime @updatedAt
+  data      Json
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum DiveDifficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+model DiveTemplate {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  sortOrder   Int     @default(0)
+  isPublished Boolean @default(true)
+  isPremium   Boolean @default(false)
+
+  difficulty        DiveDifficulty @default(EASY)
+  maxDepthMeters    Int
+  targetHoldSeconds Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  translations  DiveTemplateTranslation[]
+  profilePoints DiveProfilePoint[]
+  runs          DiveRun[]
+
+  @@index([sortOrder, isPublished])
+  @@index([isPremium, difficulty])
+}
+
+model DiveTemplateTranslation {
+  id         String   @id @default(cuid())
+  templateId String
+  lang       Language
+
+  title       String
+  subtitle    String?
+  description String?
+
+  template DiveTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@unique([templateId, lang])
+  @@index([lang])
+}
+
+model DiveProfilePoint {
+  id         String @id @default(cuid())
+  templateId String
+  sortOrder  Int
+
+  timeSeconds Int
+  depthMeters Int
+
+  template DiveTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@index([templateId, sortOrder])
+}
+
+model DiveRun {
+  id         String @id @default(cuid())
+  userId     String
+  templateId String
+
+  startedAt      DateTime  @default(now())
+  finishedAt     DateTime?
+  holdSeconds    Int?
+  maxDepthMeters Int?
+  completed      Boolean   @default(false)
+
+  metrics Json?
+
+  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template DiveTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
 
   @@index([userId, startedAt])
   @@index([templateId])

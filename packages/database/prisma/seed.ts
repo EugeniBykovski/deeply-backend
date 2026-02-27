@@ -8,6 +8,7 @@ import * as path from "node:path";
 import "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { seedTrain } from "./seed.train";
+import { seedDive } from "./seed.dive";
 
 const connectionString = process.env.DATABASE_URL;
 if (!connectionString) {
@@ -119,6 +120,7 @@ async function main() {
   }
 
   await seedTrain(prisma);
+  await seedDive(prisma);
 }
 
 main()

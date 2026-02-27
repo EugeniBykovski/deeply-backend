@@ -73,6 +73,36 @@ export type TrainingStep = $Result.DefaultSelection<Prisma.$TrainingStepPayload>
  * 
  */
 export type TrainingRun = $Result.DefaultSelection<Prisma.$TrainingRunPayload>
+/**
+ * Model UserAchievement
+ * 
+ */
+export type UserAchievement = $Result.DefaultSelection<Prisma.$UserAchievementPayload>
+/**
+ * Model TrainingProgressCache
+ * 
+ */
+export type TrainingProgressCache = $Result.DefaultSelection<Prisma.$TrainingProgressCachePayload>
+/**
+ * Model DiveTemplate
+ * 
+ */
+export type DiveTemplate = $Result.DefaultSelection<Prisma.$DiveTemplatePayload>
+/**
+ * Model DiveTemplateTranslation
+ * 
+ */
+export type DiveTemplateTranslation = $Result.DefaultSelection<Prisma.$DiveTemplateTranslationPayload>
+/**
+ * Model DiveProfilePoint
+ * 
+ */
+export type DiveProfilePoint = $Result.DefaultSelection<Prisma.$DiveProfilePointPayload>
+/**
+ * Model DiveRun
+ * 
+ */
+export type DiveRun = $Result.DefaultSelection<Prisma.$DiveRunPayload>
 
 /**
  * Enums
@@ -126,6 +156,30 @@ export const BreathPhase: {
 
 export type BreathPhase = (typeof BreathPhase)[keyof typeof BreathPhase]
 
+
+export const AchievementType: {
+  FIRST_TRAINING: 'FIRST_TRAINING',
+  FIRST_PRIVATE: 'FIRST_PRIVATE',
+  STREAK_3: 'STREAK_3',
+  STREAK_7: 'STREAK_7',
+  STREAK_30: 'STREAK_30',
+  TOTAL_RUNS_25: 'TOTAL_RUNS_25',
+  TOTAL_RUNS_50: 'TOTAL_RUNS_50',
+  TOTAL_RUNS_100: 'TOTAL_RUNS_100',
+  COMPLETE_MAIN_12: 'COMPLETE_MAIN_12'
+};
+
+export type AchievementType = (typeof AchievementType)[keyof typeof AchievementType]
+
+
+export const DiveDifficulty: {
+  EASY: 'EASY',
+  MEDIUM: 'MEDIUM',
+  HARD: 'HARD'
+};
+
+export type DiveDifficulty = (typeof DiveDifficulty)[keyof typeof DiveDifficulty]
+
 }
 
 export type Language = $Enums.Language
@@ -147,6 +201,14 @@ export const TrainingKind: typeof $Enums.TrainingKind
 export type BreathPhase = $Enums.BreathPhase
 
 export const BreathPhase: typeof $Enums.BreathPhase
+
+export type AchievementType = $Enums.AchievementType
+
+export const AchievementType: typeof $Enums.AchievementType
+
+export type DiveDifficulty = $Enums.DiveDifficulty
+
+export const DiveDifficulty: typeof $Enums.DiveDifficulty
 
 /**
  * ##  Prisma Client ʲˢ
@@ -384,6 +446,66 @@ export class PrismaClient<
     * ```
     */
   get trainingRun(): Prisma.TrainingRunDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userAchievement`: Exposes CRUD operations for the **UserAchievement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserAchievements
+    * const userAchievements = await prisma.userAchievement.findMany()
+    * ```
+    */
+  get userAchievement(): Prisma.UserAchievementDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trainingProgressCache`: Exposes CRUD operations for the **TrainingProgressCache** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrainingProgressCaches
+    * const trainingProgressCaches = await prisma.trainingProgressCache.findMany()
+    * ```
+    */
+  get trainingProgressCache(): Prisma.TrainingProgressCacheDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.diveTemplate`: Exposes CRUD operations for the **DiveTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DiveTemplates
+    * const diveTemplates = await prisma.diveTemplate.findMany()
+    * ```
+    */
+  get diveTemplate(): Prisma.DiveTemplateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.diveTemplateTranslation`: Exposes CRUD operations for the **DiveTemplateTranslation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DiveTemplateTranslations
+    * const diveTemplateTranslations = await prisma.diveTemplateTranslation.findMany()
+    * ```
+    */
+  get diveTemplateTranslation(): Prisma.DiveTemplateTranslationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.diveProfilePoint`: Exposes CRUD operations for the **DiveProfilePoint** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DiveProfilePoints
+    * const diveProfilePoints = await prisma.diveProfilePoint.findMany()
+    * ```
+    */
+  get diveProfilePoint(): Prisma.DiveProfilePointDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.diveRun`: Exposes CRUD operations for the **DiveRun** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DiveRuns
+    * const diveRuns = await prisma.diveRun.findMany()
+    * ```
+    */
+  get diveRun(): Prisma.DiveRunDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -829,7 +951,13 @@ export namespace Prisma {
     TrainingTemplate: 'TrainingTemplate',
     TrainingTemplateTranslation: 'TrainingTemplateTranslation',
     TrainingStep: 'TrainingStep',
-    TrainingRun: 'TrainingRun'
+    TrainingRun: 'TrainingRun',
+    UserAchievement: 'UserAchievement',
+    TrainingProgressCache: 'TrainingProgressCache',
+    DiveTemplate: 'DiveTemplate',
+    DiveTemplateTranslation: 'DiveTemplateTranslation',
+    DiveProfilePoint: 'DiveProfilePoint',
+    DiveRun: 'DiveRun'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -845,7 +973,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshToken" | "cultureArticle" | "cultureArticleTranslation" | "cultureTag" | "cultureTagOnArticle" | "trainingProgram" | "trainingProgramTranslation" | "trainingTemplate" | "trainingTemplateTranslation" | "trainingStep" | "trainingRun"
+      modelProps: "user" | "refreshToken" | "cultureArticle" | "cultureArticleTranslation" | "cultureTag" | "cultureTagOnArticle" | "trainingProgram" | "trainingProgramTranslation" | "trainingTemplate" | "trainingTemplateTranslation" | "trainingStep" | "trainingRun" | "userAchievement" | "trainingProgressCache" | "diveTemplate" | "diveTemplateTranslation" | "diveProfilePoint" | "diveRun"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1737,6 +1865,450 @@ export namespace Prisma {
           }
         }
       }
+      UserAchievement: {
+        payload: Prisma.$UserAchievementPayload<ExtArgs>
+        fields: Prisma.UserAchievementFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserAchievementFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserAchievementFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>
+          }
+          findFirst: {
+            args: Prisma.UserAchievementFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserAchievementFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>
+          }
+          findMany: {
+            args: Prisma.UserAchievementFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>[]
+          }
+          create: {
+            args: Prisma.UserAchievementCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>
+          }
+          createMany: {
+            args: Prisma.UserAchievementCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserAchievementCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>[]
+          }
+          delete: {
+            args: Prisma.UserAchievementDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>
+          }
+          update: {
+            args: Prisma.UserAchievementUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserAchievementDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserAchievementUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserAchievementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserAchievementUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>
+          }
+          aggregate: {
+            args: Prisma.UserAchievementAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserAchievement>
+          }
+          groupBy: {
+            args: Prisma.UserAchievementGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserAchievementGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserAchievementCountArgs<ExtArgs>
+            result: $Utils.Optional<UserAchievementCountAggregateOutputType> | number
+          }
+        }
+      }
+      TrainingProgressCache: {
+        payload: Prisma.$TrainingProgressCachePayload<ExtArgs>
+        fields: Prisma.TrainingProgressCacheFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrainingProgressCacheFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrainingProgressCacheFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>
+          }
+          findFirst: {
+            args: Prisma.TrainingProgressCacheFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrainingProgressCacheFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>
+          }
+          findMany: {
+            args: Prisma.TrainingProgressCacheFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>[]
+          }
+          create: {
+            args: Prisma.TrainingProgressCacheCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>
+          }
+          createMany: {
+            args: Prisma.TrainingProgressCacheCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrainingProgressCacheCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>[]
+          }
+          delete: {
+            args: Prisma.TrainingProgressCacheDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>
+          }
+          update: {
+            args: Prisma.TrainingProgressCacheUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>
+          }
+          deleteMany: {
+            args: Prisma.TrainingProgressCacheDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrainingProgressCacheUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrainingProgressCacheUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>[]
+          }
+          upsert: {
+            args: Prisma.TrainingProgressCacheUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingProgressCachePayload>
+          }
+          aggregate: {
+            args: Prisma.TrainingProgressCacheAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrainingProgressCache>
+          }
+          groupBy: {
+            args: Prisma.TrainingProgressCacheGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrainingProgressCacheGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrainingProgressCacheCountArgs<ExtArgs>
+            result: $Utils.Optional<TrainingProgressCacheCountAggregateOutputType> | number
+          }
+        }
+      }
+      DiveTemplate: {
+        payload: Prisma.$DiveTemplatePayload<ExtArgs>
+        fields: Prisma.DiveTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DiveTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DiveTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.DiveTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DiveTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.DiveTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.DiveTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.DiveTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DiveTemplateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.DiveTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>
+          }
+          update: {
+            args: Prisma.DiveTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.DiveTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DiveTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DiveTemplateUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>[]
+          }
+          upsert: {
+            args: Prisma.DiveTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.DiveTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDiveTemplate>
+          }
+          groupBy: {
+            args: Prisma.DiveTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DiveTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DiveTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<DiveTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
+      DiveTemplateTranslation: {
+        payload: Prisma.$DiveTemplateTranslationPayload<ExtArgs>
+        fields: Prisma.DiveTemplateTranslationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DiveTemplateTranslationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DiveTemplateTranslationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>
+          }
+          findFirst: {
+            args: Prisma.DiveTemplateTranslationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DiveTemplateTranslationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>
+          }
+          findMany: {
+            args: Prisma.DiveTemplateTranslationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>[]
+          }
+          create: {
+            args: Prisma.DiveTemplateTranslationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>
+          }
+          createMany: {
+            args: Prisma.DiveTemplateTranslationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DiveTemplateTranslationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>[]
+          }
+          delete: {
+            args: Prisma.DiveTemplateTranslationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>
+          }
+          update: {
+            args: Prisma.DiveTemplateTranslationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>
+          }
+          deleteMany: {
+            args: Prisma.DiveTemplateTranslationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DiveTemplateTranslationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DiveTemplateTranslationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>[]
+          }
+          upsert: {
+            args: Prisma.DiveTemplateTranslationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveTemplateTranslationPayload>
+          }
+          aggregate: {
+            args: Prisma.DiveTemplateTranslationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDiveTemplateTranslation>
+          }
+          groupBy: {
+            args: Prisma.DiveTemplateTranslationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DiveTemplateTranslationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DiveTemplateTranslationCountArgs<ExtArgs>
+            result: $Utils.Optional<DiveTemplateTranslationCountAggregateOutputType> | number
+          }
+        }
+      }
+      DiveProfilePoint: {
+        payload: Prisma.$DiveProfilePointPayload<ExtArgs>
+        fields: Prisma.DiveProfilePointFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DiveProfilePointFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DiveProfilePointFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>
+          }
+          findFirst: {
+            args: Prisma.DiveProfilePointFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DiveProfilePointFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>
+          }
+          findMany: {
+            args: Prisma.DiveProfilePointFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>[]
+          }
+          create: {
+            args: Prisma.DiveProfilePointCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>
+          }
+          createMany: {
+            args: Prisma.DiveProfilePointCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DiveProfilePointCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>[]
+          }
+          delete: {
+            args: Prisma.DiveProfilePointDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>
+          }
+          update: {
+            args: Prisma.DiveProfilePointUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>
+          }
+          deleteMany: {
+            args: Prisma.DiveProfilePointDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DiveProfilePointUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DiveProfilePointUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>[]
+          }
+          upsert: {
+            args: Prisma.DiveProfilePointUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveProfilePointPayload>
+          }
+          aggregate: {
+            args: Prisma.DiveProfilePointAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDiveProfilePoint>
+          }
+          groupBy: {
+            args: Prisma.DiveProfilePointGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DiveProfilePointGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DiveProfilePointCountArgs<ExtArgs>
+            result: $Utils.Optional<DiveProfilePointCountAggregateOutputType> | number
+          }
+        }
+      }
+      DiveRun: {
+        payload: Prisma.$DiveRunPayload<ExtArgs>
+        fields: Prisma.DiveRunFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DiveRunFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DiveRunFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>
+          }
+          findFirst: {
+            args: Prisma.DiveRunFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DiveRunFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>
+          }
+          findMany: {
+            args: Prisma.DiveRunFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>[]
+          }
+          create: {
+            args: Prisma.DiveRunCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>
+          }
+          createMany: {
+            args: Prisma.DiveRunCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DiveRunCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>[]
+          }
+          delete: {
+            args: Prisma.DiveRunDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>
+          }
+          update: {
+            args: Prisma.DiveRunUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>
+          }
+          deleteMany: {
+            args: Prisma.DiveRunDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DiveRunUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DiveRunUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>[]
+          }
+          upsert: {
+            args: Prisma.DiveRunUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiveRunPayload>
+          }
+          aggregate: {
+            args: Prisma.DiveRunAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDiveRun>
+          }
+          groupBy: {
+            args: Prisma.DiveRunGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DiveRunGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DiveRunCountArgs<ExtArgs>
+            result: $Utils.Optional<DiveRunCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1857,6 +2429,12 @@ export namespace Prisma {
     trainingTemplateTranslation?: TrainingTemplateTranslationOmit
     trainingStep?: TrainingStepOmit
     trainingRun?: TrainingRunOmit
+    userAchievement?: UserAchievementOmit
+    trainingProgressCache?: TrainingProgressCacheOmit
+    diveTemplate?: DiveTemplateOmit
+    diveTemplateTranslation?: DiveTemplateTranslationOmit
+    diveProfilePoint?: DiveProfilePointOmit
+    diveRun?: DiveRunOmit
   }
 
   /* Types for Logging */
@@ -1940,12 +2518,16 @@ export namespace Prisma {
     refreshTokens: number
     privateTrainingTemplates: number
     trainingRuns: number
+    achievements: number
+    diveRuns: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshTokens?: boolean | UserCountOutputTypeCountRefreshTokensArgs
     privateTrainingTemplates?: boolean | UserCountOutputTypeCountPrivateTrainingTemplatesArgs
     trainingRuns?: boolean | UserCountOutputTypeCountTrainingRunsArgs
+    achievements?: boolean | UserCountOutputTypeCountAchievementsArgs
+    diveRuns?: boolean | UserCountOutputTypeCountDiveRunsArgs
   }
 
   // Custom InputTypes
@@ -1978,6 +2560,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountTrainingRunsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TrainingRunWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAchievementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserAchievementWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDiveRunsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiveRunWhereInput
   }
 
 
@@ -2138,6 +2734,55 @@ export namespace Prisma {
    */
   export type TrainingTemplateCountOutputTypeCountRunsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TrainingRunWhereInput
+  }
+
+
+  /**
+   * Count Type DiveTemplateCountOutputType
+   */
+
+  export type DiveTemplateCountOutputType = {
+    translations: number
+    profilePoints: number
+    runs: number
+  }
+
+  export type DiveTemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | DiveTemplateCountOutputTypeCountTranslationsArgs
+    profilePoints?: boolean | DiveTemplateCountOutputTypeCountProfilePointsArgs
+    runs?: boolean | DiveTemplateCountOutputTypeCountRunsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DiveTemplateCountOutputType without action
+   */
+  export type DiveTemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateCountOutputType
+     */
+    select?: DiveTemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DiveTemplateCountOutputType without action
+   */
+  export type DiveTemplateCountOutputTypeCountTranslationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiveTemplateTranslationWhereInput
+  }
+
+  /**
+   * DiveTemplateCountOutputType without action
+   */
+  export type DiveTemplateCountOutputTypeCountProfilePointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiveProfilePointWhereInput
+  }
+
+  /**
+   * DiveTemplateCountOutputType without action
+   */
+  export type DiveTemplateCountOutputTypeCountRunsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiveRunWhereInput
   }
 
 
@@ -2312,6 +2957,9 @@ export namespace Prisma {
     refreshTokens?: boolean | User$refreshTokensArgs<ExtArgs>
     privateTrainingTemplates?: boolean | User$privateTrainingTemplatesArgs<ExtArgs>
     trainingRuns?: boolean | User$trainingRunsArgs<ExtArgs>
+    achievements?: boolean | User$achievementsArgs<ExtArgs>
+    progressCache?: boolean | User$progressCacheArgs<ExtArgs>
+    diveRuns?: boolean | User$diveRunsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2344,6 +2992,9 @@ export namespace Prisma {
     refreshTokens?: boolean | User$refreshTokensArgs<ExtArgs>
     privateTrainingTemplates?: boolean | User$privateTrainingTemplatesArgs<ExtArgs>
     trainingRuns?: boolean | User$trainingRunsArgs<ExtArgs>
+    achievements?: boolean | User$achievementsArgs<ExtArgs>
+    progressCache?: boolean | User$progressCacheArgs<ExtArgs>
+    diveRuns?: boolean | User$diveRunsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2355,6 +3006,9 @@ export namespace Prisma {
       refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
       privateTrainingTemplates: Prisma.$TrainingTemplatePayload<ExtArgs>[]
       trainingRuns: Prisma.$TrainingRunPayload<ExtArgs>[]
+      achievements: Prisma.$UserAchievementPayload<ExtArgs>[]
+      progressCache: Prisma.$TrainingProgressCachePayload<ExtArgs> | null
+      diveRuns: Prisma.$DiveRunPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2759,6 +3413,9 @@ export namespace Prisma {
     refreshTokens<T extends User$refreshTokensArgs<ExtArgs> = {}>(args?: Subset<T, User$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     privateTrainingTemplates<T extends User$privateTrainingTemplatesArgs<ExtArgs> = {}>(args?: Subset<T, User$privateTrainingTemplatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     trainingRuns<T extends User$trainingRunsArgs<ExtArgs> = {}>(args?: Subset<T, User$trainingRunsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    achievements<T extends User$achievementsArgs<ExtArgs> = {}>(args?: Subset<T, User$achievementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    progressCache<T extends User$progressCacheArgs<ExtArgs> = {}>(args?: Subset<T, User$progressCacheArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    diveRuns<T extends User$diveRunsArgs<ExtArgs> = {}>(args?: Subset<T, User$diveRunsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3250,6 +3907,73 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TrainingRunScalarFieldEnum | TrainingRunScalarFieldEnum[]
+  }
+
+  /**
+   * User.achievements
+   */
+  export type User$achievementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    where?: UserAchievementWhereInput
+    orderBy?: UserAchievementOrderByWithRelationInput | UserAchievementOrderByWithRelationInput[]
+    cursor?: UserAchievementWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserAchievementScalarFieldEnum | UserAchievementScalarFieldEnum[]
+  }
+
+  /**
+   * User.progressCache
+   */
+  export type User$progressCacheArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    where?: TrainingProgressCacheWhereInput
+  }
+
+  /**
+   * User.diveRuns
+   */
+  export type User$diveRunsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    where?: DiveRunWhereInput
+    orderBy?: DiveRunOrderByWithRelationInput | DiveRunOrderByWithRelationInput[]
+    cursor?: DiveRunWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DiveRunScalarFieldEnum | DiveRunScalarFieldEnum[]
   }
 
   /**
@@ -15648,6 +16372,6657 @@ export namespace Prisma {
 
 
   /**
+   * Model UserAchievement
+   */
+
+  export type AggregateUserAchievement = {
+    _count: UserAchievementCountAggregateOutputType | null
+    _min: UserAchievementMinAggregateOutputType | null
+    _max: UserAchievementMaxAggregateOutputType | null
+  }
+
+  export type UserAchievementMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    type: $Enums.AchievementType | null
+    scopeKey: string | null
+    unlockedAt: Date | null
+  }
+
+  export type UserAchievementMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    type: $Enums.AchievementType | null
+    scopeKey: string | null
+    unlockedAt: Date | null
+  }
+
+  export type UserAchievementCountAggregateOutputType = {
+    id: number
+    userId: number
+    type: number
+    scopeKey: number
+    unlockedAt: number
+    payload: number
+    _all: number
+  }
+
+
+  export type UserAchievementMinAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    scopeKey?: true
+    unlockedAt?: true
+  }
+
+  export type UserAchievementMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    scopeKey?: true
+    unlockedAt?: true
+  }
+
+  export type UserAchievementCountAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    scopeKey?: true
+    unlockedAt?: true
+    payload?: true
+    _all?: true
+  }
+
+  export type UserAchievementAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserAchievement to aggregate.
+     */
+    where?: UserAchievementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserAchievements to fetch.
+     */
+    orderBy?: UserAchievementOrderByWithRelationInput | UserAchievementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserAchievementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserAchievements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserAchievements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserAchievements
+    **/
+    _count?: true | UserAchievementCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserAchievementMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserAchievementMaxAggregateInputType
+  }
+
+  export type GetUserAchievementAggregateType<T extends UserAchievementAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserAchievement]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserAchievement[P]>
+      : GetScalarType<T[P], AggregateUserAchievement[P]>
+  }
+
+
+
+
+  export type UserAchievementGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserAchievementWhereInput
+    orderBy?: UserAchievementOrderByWithAggregationInput | UserAchievementOrderByWithAggregationInput[]
+    by: UserAchievementScalarFieldEnum[] | UserAchievementScalarFieldEnum
+    having?: UserAchievementScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserAchievementCountAggregateInputType | true
+    _min?: UserAchievementMinAggregateInputType
+    _max?: UserAchievementMaxAggregateInputType
+  }
+
+  export type UserAchievementGroupByOutputType = {
+    id: string
+    userId: string
+    type: $Enums.AchievementType
+    scopeKey: string
+    unlockedAt: Date
+    payload: JsonValue | null
+    _count: UserAchievementCountAggregateOutputType | null
+    _min: UserAchievementMinAggregateOutputType | null
+    _max: UserAchievementMaxAggregateOutputType | null
+  }
+
+  type GetUserAchievementGroupByPayload<T extends UserAchievementGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserAchievementGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserAchievementGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserAchievementGroupByOutputType[P]>
+            : GetScalarType<T[P], UserAchievementGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserAchievementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    scopeKey?: boolean
+    unlockedAt?: boolean
+    payload?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userAchievement"]>
+
+  export type UserAchievementSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    scopeKey?: boolean
+    unlockedAt?: boolean
+    payload?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userAchievement"]>
+
+  export type UserAchievementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    scopeKey?: boolean
+    unlockedAt?: boolean
+    payload?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userAchievement"]>
+
+  export type UserAchievementSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    scopeKey?: boolean
+    unlockedAt?: boolean
+    payload?: boolean
+  }
+
+  export type UserAchievementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "scopeKey" | "unlockedAt" | "payload", ExtArgs["result"]["userAchievement"]>
+  export type UserAchievementInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserAchievementIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserAchievementIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $UserAchievementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserAchievement"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      type: $Enums.AchievementType
+      scopeKey: string
+      unlockedAt: Date
+      payload: Prisma.JsonValue | null
+    }, ExtArgs["result"]["userAchievement"]>
+    composites: {}
+  }
+
+  type UserAchievementGetPayload<S extends boolean | null | undefined | UserAchievementDefaultArgs> = $Result.GetResult<Prisma.$UserAchievementPayload, S>
+
+  type UserAchievementCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserAchievementFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserAchievementCountAggregateInputType | true
+    }
+
+  export interface UserAchievementDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserAchievement'], meta: { name: 'UserAchievement' } }
+    /**
+     * Find zero or one UserAchievement that matches the filter.
+     * @param {UserAchievementFindUniqueArgs} args - Arguments to find a UserAchievement
+     * @example
+     * // Get one UserAchievement
+     * const userAchievement = await prisma.userAchievement.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserAchievementFindUniqueArgs>(args: SelectSubset<T, UserAchievementFindUniqueArgs<ExtArgs>>): Prisma__UserAchievementClient<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserAchievement that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserAchievementFindUniqueOrThrowArgs} args - Arguments to find a UserAchievement
+     * @example
+     * // Get one UserAchievement
+     * const userAchievement = await prisma.userAchievement.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserAchievementFindUniqueOrThrowArgs>(args: SelectSubset<T, UserAchievementFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserAchievementClient<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserAchievement that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAchievementFindFirstArgs} args - Arguments to find a UserAchievement
+     * @example
+     * // Get one UserAchievement
+     * const userAchievement = await prisma.userAchievement.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserAchievementFindFirstArgs>(args?: SelectSubset<T, UserAchievementFindFirstArgs<ExtArgs>>): Prisma__UserAchievementClient<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserAchievement that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAchievementFindFirstOrThrowArgs} args - Arguments to find a UserAchievement
+     * @example
+     * // Get one UserAchievement
+     * const userAchievement = await prisma.userAchievement.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserAchievementFindFirstOrThrowArgs>(args?: SelectSubset<T, UserAchievementFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserAchievementClient<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserAchievements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAchievementFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserAchievements
+     * const userAchievements = await prisma.userAchievement.findMany()
+     * 
+     * // Get first 10 UserAchievements
+     * const userAchievements = await prisma.userAchievement.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userAchievementWithIdOnly = await prisma.userAchievement.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserAchievementFindManyArgs>(args?: SelectSubset<T, UserAchievementFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserAchievement.
+     * @param {UserAchievementCreateArgs} args - Arguments to create a UserAchievement.
+     * @example
+     * // Create one UserAchievement
+     * const UserAchievement = await prisma.userAchievement.create({
+     *   data: {
+     *     // ... data to create a UserAchievement
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserAchievementCreateArgs>(args: SelectSubset<T, UserAchievementCreateArgs<ExtArgs>>): Prisma__UserAchievementClient<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserAchievements.
+     * @param {UserAchievementCreateManyArgs} args - Arguments to create many UserAchievements.
+     * @example
+     * // Create many UserAchievements
+     * const userAchievement = await prisma.userAchievement.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserAchievementCreateManyArgs>(args?: SelectSubset<T, UserAchievementCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserAchievements and returns the data saved in the database.
+     * @param {UserAchievementCreateManyAndReturnArgs} args - Arguments to create many UserAchievements.
+     * @example
+     * // Create many UserAchievements
+     * const userAchievement = await prisma.userAchievement.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserAchievements and only return the `id`
+     * const userAchievementWithIdOnly = await prisma.userAchievement.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserAchievementCreateManyAndReturnArgs>(args?: SelectSubset<T, UserAchievementCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserAchievement.
+     * @param {UserAchievementDeleteArgs} args - Arguments to delete one UserAchievement.
+     * @example
+     * // Delete one UserAchievement
+     * const UserAchievement = await prisma.userAchievement.delete({
+     *   where: {
+     *     // ... filter to delete one UserAchievement
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserAchievementDeleteArgs>(args: SelectSubset<T, UserAchievementDeleteArgs<ExtArgs>>): Prisma__UserAchievementClient<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserAchievement.
+     * @param {UserAchievementUpdateArgs} args - Arguments to update one UserAchievement.
+     * @example
+     * // Update one UserAchievement
+     * const userAchievement = await prisma.userAchievement.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserAchievementUpdateArgs>(args: SelectSubset<T, UserAchievementUpdateArgs<ExtArgs>>): Prisma__UserAchievementClient<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserAchievements.
+     * @param {UserAchievementDeleteManyArgs} args - Arguments to filter UserAchievements to delete.
+     * @example
+     * // Delete a few UserAchievements
+     * const { count } = await prisma.userAchievement.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserAchievementDeleteManyArgs>(args?: SelectSubset<T, UserAchievementDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserAchievements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAchievementUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserAchievements
+     * const userAchievement = await prisma.userAchievement.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserAchievementUpdateManyArgs>(args: SelectSubset<T, UserAchievementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserAchievements and returns the data updated in the database.
+     * @param {UserAchievementUpdateManyAndReturnArgs} args - Arguments to update many UserAchievements.
+     * @example
+     * // Update many UserAchievements
+     * const userAchievement = await prisma.userAchievement.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserAchievements and only return the `id`
+     * const userAchievementWithIdOnly = await prisma.userAchievement.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserAchievementUpdateManyAndReturnArgs>(args: SelectSubset<T, UserAchievementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserAchievement.
+     * @param {UserAchievementUpsertArgs} args - Arguments to update or create a UserAchievement.
+     * @example
+     * // Update or create a UserAchievement
+     * const userAchievement = await prisma.userAchievement.upsert({
+     *   create: {
+     *     // ... data to create a UserAchievement
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserAchievement we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserAchievementUpsertArgs>(args: SelectSubset<T, UserAchievementUpsertArgs<ExtArgs>>): Prisma__UserAchievementClient<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserAchievements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAchievementCountArgs} args - Arguments to filter UserAchievements to count.
+     * @example
+     * // Count the number of UserAchievements
+     * const count = await prisma.userAchievement.count({
+     *   where: {
+     *     // ... the filter for the UserAchievements we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserAchievementCountArgs>(
+      args?: Subset<T, UserAchievementCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserAchievementCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserAchievement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAchievementAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserAchievementAggregateArgs>(args: Subset<T, UserAchievementAggregateArgs>): Prisma.PrismaPromise<GetUserAchievementAggregateType<T>>
+
+    /**
+     * Group by UserAchievement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAchievementGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserAchievementGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserAchievementGroupByArgs['orderBy'] }
+        : { orderBy?: UserAchievementGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserAchievementGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserAchievementGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserAchievement model
+   */
+  readonly fields: UserAchievementFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserAchievement.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserAchievementClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserAchievement model
+   */
+  interface UserAchievementFieldRefs {
+    readonly id: FieldRef<"UserAchievement", 'String'>
+    readonly userId: FieldRef<"UserAchievement", 'String'>
+    readonly type: FieldRef<"UserAchievement", 'AchievementType'>
+    readonly scopeKey: FieldRef<"UserAchievement", 'String'>
+    readonly unlockedAt: FieldRef<"UserAchievement", 'DateTime'>
+    readonly payload: FieldRef<"UserAchievement", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserAchievement findUnique
+   */
+  export type UserAchievementFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAchievement to fetch.
+     */
+    where: UserAchievementWhereUniqueInput
+  }
+
+  /**
+   * UserAchievement findUniqueOrThrow
+   */
+  export type UserAchievementFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAchievement to fetch.
+     */
+    where: UserAchievementWhereUniqueInput
+  }
+
+  /**
+   * UserAchievement findFirst
+   */
+  export type UserAchievementFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAchievement to fetch.
+     */
+    where?: UserAchievementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserAchievements to fetch.
+     */
+    orderBy?: UserAchievementOrderByWithRelationInput | UserAchievementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserAchievements.
+     */
+    cursor?: UserAchievementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserAchievements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserAchievements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserAchievements.
+     */
+    distinct?: UserAchievementScalarFieldEnum | UserAchievementScalarFieldEnum[]
+  }
+
+  /**
+   * UserAchievement findFirstOrThrow
+   */
+  export type UserAchievementFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAchievement to fetch.
+     */
+    where?: UserAchievementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserAchievements to fetch.
+     */
+    orderBy?: UserAchievementOrderByWithRelationInput | UserAchievementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserAchievements.
+     */
+    cursor?: UserAchievementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserAchievements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserAchievements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserAchievements.
+     */
+    distinct?: UserAchievementScalarFieldEnum | UserAchievementScalarFieldEnum[]
+  }
+
+  /**
+   * UserAchievement findMany
+   */
+  export type UserAchievementFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * Filter, which UserAchievements to fetch.
+     */
+    where?: UserAchievementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserAchievements to fetch.
+     */
+    orderBy?: UserAchievementOrderByWithRelationInput | UserAchievementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserAchievements.
+     */
+    cursor?: UserAchievementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserAchievements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserAchievements.
+     */
+    skip?: number
+    distinct?: UserAchievementScalarFieldEnum | UserAchievementScalarFieldEnum[]
+  }
+
+  /**
+   * UserAchievement create
+   */
+  export type UserAchievementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserAchievement.
+     */
+    data: XOR<UserAchievementCreateInput, UserAchievementUncheckedCreateInput>
+  }
+
+  /**
+   * UserAchievement createMany
+   */
+  export type UserAchievementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserAchievements.
+     */
+    data: UserAchievementCreateManyInput | UserAchievementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserAchievement createManyAndReturn
+   */
+  export type UserAchievementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserAchievements.
+     */
+    data: UserAchievementCreateManyInput | UserAchievementCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserAchievement update
+   */
+  export type UserAchievementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserAchievement.
+     */
+    data: XOR<UserAchievementUpdateInput, UserAchievementUncheckedUpdateInput>
+    /**
+     * Choose, which UserAchievement to update.
+     */
+    where: UserAchievementWhereUniqueInput
+  }
+
+  /**
+   * UserAchievement updateMany
+   */
+  export type UserAchievementUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserAchievements.
+     */
+    data: XOR<UserAchievementUpdateManyMutationInput, UserAchievementUncheckedUpdateManyInput>
+    /**
+     * Filter which UserAchievements to update
+     */
+    where?: UserAchievementWhereInput
+    /**
+     * Limit how many UserAchievements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserAchievement updateManyAndReturn
+   */
+  export type UserAchievementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * The data used to update UserAchievements.
+     */
+    data: XOR<UserAchievementUpdateManyMutationInput, UserAchievementUncheckedUpdateManyInput>
+    /**
+     * Filter which UserAchievements to update
+     */
+    where?: UserAchievementWhereInput
+    /**
+     * Limit how many UserAchievements to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserAchievement upsert
+   */
+  export type UserAchievementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserAchievement to update in case it exists.
+     */
+    where: UserAchievementWhereUniqueInput
+    /**
+     * In case the UserAchievement found by the `where` argument doesn't exist, create a new UserAchievement with this data.
+     */
+    create: XOR<UserAchievementCreateInput, UserAchievementUncheckedCreateInput>
+    /**
+     * In case the UserAchievement was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserAchievementUpdateInput, UserAchievementUncheckedUpdateInput>
+  }
+
+  /**
+   * UserAchievement delete
+   */
+  export type UserAchievementDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+    /**
+     * Filter which UserAchievement to delete.
+     */
+    where: UserAchievementWhereUniqueInput
+  }
+
+  /**
+   * UserAchievement deleteMany
+   */
+  export type UserAchievementDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserAchievements to delete
+     */
+    where?: UserAchievementWhereInput
+    /**
+     * Limit how many UserAchievements to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserAchievement without action
+   */
+  export type UserAchievementDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TrainingProgressCache
+   */
+
+  export type AggregateTrainingProgressCache = {
+    _count: TrainingProgressCacheCountAggregateOutputType | null
+    _min: TrainingProgressCacheMinAggregateOutputType | null
+    _max: TrainingProgressCacheMaxAggregateOutputType | null
+  }
+
+  export type TrainingProgressCacheMinAggregateOutputType = {
+    userId: string | null
+    updatedAt: Date | null
+  }
+
+  export type TrainingProgressCacheMaxAggregateOutputType = {
+    userId: string | null
+    updatedAt: Date | null
+  }
+
+  export type TrainingProgressCacheCountAggregateOutputType = {
+    userId: number
+    updatedAt: number
+    data: number
+    _all: number
+  }
+
+
+  export type TrainingProgressCacheMinAggregateInputType = {
+    userId?: true
+    updatedAt?: true
+  }
+
+  export type TrainingProgressCacheMaxAggregateInputType = {
+    userId?: true
+    updatedAt?: true
+  }
+
+  export type TrainingProgressCacheCountAggregateInputType = {
+    userId?: true
+    updatedAt?: true
+    data?: true
+    _all?: true
+  }
+
+  export type TrainingProgressCacheAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingProgressCache to aggregate.
+     */
+    where?: TrainingProgressCacheWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingProgressCaches to fetch.
+     */
+    orderBy?: TrainingProgressCacheOrderByWithRelationInput | TrainingProgressCacheOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrainingProgressCacheWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingProgressCaches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingProgressCaches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrainingProgressCaches
+    **/
+    _count?: true | TrainingProgressCacheCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrainingProgressCacheMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrainingProgressCacheMaxAggregateInputType
+  }
+
+  export type GetTrainingProgressCacheAggregateType<T extends TrainingProgressCacheAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrainingProgressCache]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrainingProgressCache[P]>
+      : GetScalarType<T[P], AggregateTrainingProgressCache[P]>
+  }
+
+
+
+
+  export type TrainingProgressCacheGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingProgressCacheWhereInput
+    orderBy?: TrainingProgressCacheOrderByWithAggregationInput | TrainingProgressCacheOrderByWithAggregationInput[]
+    by: TrainingProgressCacheScalarFieldEnum[] | TrainingProgressCacheScalarFieldEnum
+    having?: TrainingProgressCacheScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrainingProgressCacheCountAggregateInputType | true
+    _min?: TrainingProgressCacheMinAggregateInputType
+    _max?: TrainingProgressCacheMaxAggregateInputType
+  }
+
+  export type TrainingProgressCacheGroupByOutputType = {
+    userId: string
+    updatedAt: Date
+    data: JsonValue
+    _count: TrainingProgressCacheCountAggregateOutputType | null
+    _min: TrainingProgressCacheMinAggregateOutputType | null
+    _max: TrainingProgressCacheMaxAggregateOutputType | null
+  }
+
+  type GetTrainingProgressCacheGroupByPayload<T extends TrainingProgressCacheGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrainingProgressCacheGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrainingProgressCacheGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrainingProgressCacheGroupByOutputType[P]>
+            : GetScalarType<T[P], TrainingProgressCacheGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrainingProgressCacheSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    updatedAt?: boolean
+    data?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingProgressCache"]>
+
+  export type TrainingProgressCacheSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    updatedAt?: boolean
+    data?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingProgressCache"]>
+
+  export type TrainingProgressCacheSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    updatedAt?: boolean
+    data?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trainingProgressCache"]>
+
+  export type TrainingProgressCacheSelectScalar = {
+    userId?: boolean
+    updatedAt?: boolean
+    data?: boolean
+  }
+
+  export type TrainingProgressCacheOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "updatedAt" | "data", ExtArgs["result"]["trainingProgressCache"]>
+  export type TrainingProgressCacheInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TrainingProgressCacheIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TrainingProgressCacheIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $TrainingProgressCachePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrainingProgressCache"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      userId: string
+      updatedAt: Date
+      data: Prisma.JsonValue
+    }, ExtArgs["result"]["trainingProgressCache"]>
+    composites: {}
+  }
+
+  type TrainingProgressCacheGetPayload<S extends boolean | null | undefined | TrainingProgressCacheDefaultArgs> = $Result.GetResult<Prisma.$TrainingProgressCachePayload, S>
+
+  type TrainingProgressCacheCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrainingProgressCacheFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrainingProgressCacheCountAggregateInputType | true
+    }
+
+  export interface TrainingProgressCacheDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrainingProgressCache'], meta: { name: 'TrainingProgressCache' } }
+    /**
+     * Find zero or one TrainingProgressCache that matches the filter.
+     * @param {TrainingProgressCacheFindUniqueArgs} args - Arguments to find a TrainingProgressCache
+     * @example
+     * // Get one TrainingProgressCache
+     * const trainingProgressCache = await prisma.trainingProgressCache.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrainingProgressCacheFindUniqueArgs>(args: SelectSubset<T, TrainingProgressCacheFindUniqueArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrainingProgressCache that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrainingProgressCacheFindUniqueOrThrowArgs} args - Arguments to find a TrainingProgressCache
+     * @example
+     * // Get one TrainingProgressCache
+     * const trainingProgressCache = await prisma.trainingProgressCache.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrainingProgressCacheFindUniqueOrThrowArgs>(args: SelectSubset<T, TrainingProgressCacheFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingProgressCache that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgressCacheFindFirstArgs} args - Arguments to find a TrainingProgressCache
+     * @example
+     * // Get one TrainingProgressCache
+     * const trainingProgressCache = await prisma.trainingProgressCache.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrainingProgressCacheFindFirstArgs>(args?: SelectSubset<T, TrainingProgressCacheFindFirstArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingProgressCache that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgressCacheFindFirstOrThrowArgs} args - Arguments to find a TrainingProgressCache
+     * @example
+     * // Get one TrainingProgressCache
+     * const trainingProgressCache = await prisma.trainingProgressCache.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrainingProgressCacheFindFirstOrThrowArgs>(args?: SelectSubset<T, TrainingProgressCacheFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrainingProgressCaches that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgressCacheFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrainingProgressCaches
+     * const trainingProgressCaches = await prisma.trainingProgressCache.findMany()
+     * 
+     * // Get first 10 TrainingProgressCaches
+     * const trainingProgressCaches = await prisma.trainingProgressCache.findMany({ take: 10 })
+     * 
+     * // Only select the `userId`
+     * const trainingProgressCacheWithUserIdOnly = await prisma.trainingProgressCache.findMany({ select: { userId: true } })
+     * 
+     */
+    findMany<T extends TrainingProgressCacheFindManyArgs>(args?: SelectSubset<T, TrainingProgressCacheFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrainingProgressCache.
+     * @param {TrainingProgressCacheCreateArgs} args - Arguments to create a TrainingProgressCache.
+     * @example
+     * // Create one TrainingProgressCache
+     * const TrainingProgressCache = await prisma.trainingProgressCache.create({
+     *   data: {
+     *     // ... data to create a TrainingProgressCache
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrainingProgressCacheCreateArgs>(args: SelectSubset<T, TrainingProgressCacheCreateArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrainingProgressCaches.
+     * @param {TrainingProgressCacheCreateManyArgs} args - Arguments to create many TrainingProgressCaches.
+     * @example
+     * // Create many TrainingProgressCaches
+     * const trainingProgressCache = await prisma.trainingProgressCache.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrainingProgressCacheCreateManyArgs>(args?: SelectSubset<T, TrainingProgressCacheCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TrainingProgressCaches and returns the data saved in the database.
+     * @param {TrainingProgressCacheCreateManyAndReturnArgs} args - Arguments to create many TrainingProgressCaches.
+     * @example
+     * // Create many TrainingProgressCaches
+     * const trainingProgressCache = await prisma.trainingProgressCache.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TrainingProgressCaches and only return the `userId`
+     * const trainingProgressCacheWithUserIdOnly = await prisma.trainingProgressCache.createManyAndReturn({
+     *   select: { userId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrainingProgressCacheCreateManyAndReturnArgs>(args?: SelectSubset<T, TrainingProgressCacheCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TrainingProgressCache.
+     * @param {TrainingProgressCacheDeleteArgs} args - Arguments to delete one TrainingProgressCache.
+     * @example
+     * // Delete one TrainingProgressCache
+     * const TrainingProgressCache = await prisma.trainingProgressCache.delete({
+     *   where: {
+     *     // ... filter to delete one TrainingProgressCache
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrainingProgressCacheDeleteArgs>(args: SelectSubset<T, TrainingProgressCacheDeleteArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrainingProgressCache.
+     * @param {TrainingProgressCacheUpdateArgs} args - Arguments to update one TrainingProgressCache.
+     * @example
+     * // Update one TrainingProgressCache
+     * const trainingProgressCache = await prisma.trainingProgressCache.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrainingProgressCacheUpdateArgs>(args: SelectSubset<T, TrainingProgressCacheUpdateArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrainingProgressCaches.
+     * @param {TrainingProgressCacheDeleteManyArgs} args - Arguments to filter TrainingProgressCaches to delete.
+     * @example
+     * // Delete a few TrainingProgressCaches
+     * const { count } = await prisma.trainingProgressCache.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrainingProgressCacheDeleteManyArgs>(args?: SelectSubset<T, TrainingProgressCacheDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingProgressCaches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgressCacheUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrainingProgressCaches
+     * const trainingProgressCache = await prisma.trainingProgressCache.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrainingProgressCacheUpdateManyArgs>(args: SelectSubset<T, TrainingProgressCacheUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingProgressCaches and returns the data updated in the database.
+     * @param {TrainingProgressCacheUpdateManyAndReturnArgs} args - Arguments to update many TrainingProgressCaches.
+     * @example
+     * // Update many TrainingProgressCaches
+     * const trainingProgressCache = await prisma.trainingProgressCache.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TrainingProgressCaches and only return the `userId`
+     * const trainingProgressCacheWithUserIdOnly = await prisma.trainingProgressCache.updateManyAndReturn({
+     *   select: { userId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrainingProgressCacheUpdateManyAndReturnArgs>(args: SelectSubset<T, TrainingProgressCacheUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TrainingProgressCache.
+     * @param {TrainingProgressCacheUpsertArgs} args - Arguments to update or create a TrainingProgressCache.
+     * @example
+     * // Update or create a TrainingProgressCache
+     * const trainingProgressCache = await prisma.trainingProgressCache.upsert({
+     *   create: {
+     *     // ... data to create a TrainingProgressCache
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrainingProgressCache we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrainingProgressCacheUpsertArgs>(args: SelectSubset<T, TrainingProgressCacheUpsertArgs<ExtArgs>>): Prisma__TrainingProgressCacheClient<$Result.GetResult<Prisma.$TrainingProgressCachePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TrainingProgressCaches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgressCacheCountArgs} args - Arguments to filter TrainingProgressCaches to count.
+     * @example
+     * // Count the number of TrainingProgressCaches
+     * const count = await prisma.trainingProgressCache.count({
+     *   where: {
+     *     // ... the filter for the TrainingProgressCaches we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrainingProgressCacheCountArgs>(
+      args?: Subset<T, TrainingProgressCacheCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrainingProgressCacheCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrainingProgressCache.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgressCacheAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrainingProgressCacheAggregateArgs>(args: Subset<T, TrainingProgressCacheAggregateArgs>): Prisma.PrismaPromise<GetTrainingProgressCacheAggregateType<T>>
+
+    /**
+     * Group by TrainingProgressCache.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingProgressCacheGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrainingProgressCacheGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrainingProgressCacheGroupByArgs['orderBy'] }
+        : { orderBy?: TrainingProgressCacheGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrainingProgressCacheGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrainingProgressCacheGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrainingProgressCache model
+   */
+  readonly fields: TrainingProgressCacheFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrainingProgressCache.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrainingProgressCacheClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrainingProgressCache model
+   */
+  interface TrainingProgressCacheFieldRefs {
+    readonly userId: FieldRef<"TrainingProgressCache", 'String'>
+    readonly updatedAt: FieldRef<"TrainingProgressCache", 'DateTime'>
+    readonly data: FieldRef<"TrainingProgressCache", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrainingProgressCache findUnique
+   */
+  export type TrainingProgressCacheFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgressCache to fetch.
+     */
+    where: TrainingProgressCacheWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgressCache findUniqueOrThrow
+   */
+  export type TrainingProgressCacheFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgressCache to fetch.
+     */
+    where: TrainingProgressCacheWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgressCache findFirst
+   */
+  export type TrainingProgressCacheFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgressCache to fetch.
+     */
+    where?: TrainingProgressCacheWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingProgressCaches to fetch.
+     */
+    orderBy?: TrainingProgressCacheOrderByWithRelationInput | TrainingProgressCacheOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingProgressCaches.
+     */
+    cursor?: TrainingProgressCacheWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingProgressCaches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingProgressCaches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingProgressCaches.
+     */
+    distinct?: TrainingProgressCacheScalarFieldEnum | TrainingProgressCacheScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgressCache findFirstOrThrow
+   */
+  export type TrainingProgressCacheFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgressCache to fetch.
+     */
+    where?: TrainingProgressCacheWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingProgressCaches to fetch.
+     */
+    orderBy?: TrainingProgressCacheOrderByWithRelationInput | TrainingProgressCacheOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingProgressCaches.
+     */
+    cursor?: TrainingProgressCacheWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingProgressCaches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingProgressCaches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingProgressCaches.
+     */
+    distinct?: TrainingProgressCacheScalarFieldEnum | TrainingProgressCacheScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgressCache findMany
+   */
+  export type TrainingProgressCacheFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * Filter, which TrainingProgressCaches to fetch.
+     */
+    where?: TrainingProgressCacheWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingProgressCaches to fetch.
+     */
+    orderBy?: TrainingProgressCacheOrderByWithRelationInput | TrainingProgressCacheOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrainingProgressCaches.
+     */
+    cursor?: TrainingProgressCacheWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingProgressCaches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingProgressCaches.
+     */
+    skip?: number
+    distinct?: TrainingProgressCacheScalarFieldEnum | TrainingProgressCacheScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingProgressCache create
+   */
+  export type TrainingProgressCacheCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TrainingProgressCache.
+     */
+    data: XOR<TrainingProgressCacheCreateInput, TrainingProgressCacheUncheckedCreateInput>
+  }
+
+  /**
+   * TrainingProgressCache createMany
+   */
+  export type TrainingProgressCacheCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrainingProgressCaches.
+     */
+    data: TrainingProgressCacheCreateManyInput | TrainingProgressCacheCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingProgressCache createManyAndReturn
+   */
+  export type TrainingProgressCacheCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * The data used to create many TrainingProgressCaches.
+     */
+    data: TrainingProgressCacheCreateManyInput | TrainingProgressCacheCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingProgressCache update
+   */
+  export type TrainingProgressCacheUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TrainingProgressCache.
+     */
+    data: XOR<TrainingProgressCacheUpdateInput, TrainingProgressCacheUncheckedUpdateInput>
+    /**
+     * Choose, which TrainingProgressCache to update.
+     */
+    where: TrainingProgressCacheWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgressCache updateMany
+   */
+  export type TrainingProgressCacheUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrainingProgressCaches.
+     */
+    data: XOR<TrainingProgressCacheUpdateManyMutationInput, TrainingProgressCacheUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingProgressCaches to update
+     */
+    where?: TrainingProgressCacheWhereInput
+    /**
+     * Limit how many TrainingProgressCaches to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingProgressCache updateManyAndReturn
+   */
+  export type TrainingProgressCacheUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * The data used to update TrainingProgressCaches.
+     */
+    data: XOR<TrainingProgressCacheUpdateManyMutationInput, TrainingProgressCacheUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingProgressCaches to update
+     */
+    where?: TrainingProgressCacheWhereInput
+    /**
+     * Limit how many TrainingProgressCaches to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TrainingProgressCache upsert
+   */
+  export type TrainingProgressCacheUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TrainingProgressCache to update in case it exists.
+     */
+    where: TrainingProgressCacheWhereUniqueInput
+    /**
+     * In case the TrainingProgressCache found by the `where` argument doesn't exist, create a new TrainingProgressCache with this data.
+     */
+    create: XOR<TrainingProgressCacheCreateInput, TrainingProgressCacheUncheckedCreateInput>
+    /**
+     * In case the TrainingProgressCache was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrainingProgressCacheUpdateInput, TrainingProgressCacheUncheckedUpdateInput>
+  }
+
+  /**
+   * TrainingProgressCache delete
+   */
+  export type TrainingProgressCacheDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+    /**
+     * Filter which TrainingProgressCache to delete.
+     */
+    where: TrainingProgressCacheWhereUniqueInput
+  }
+
+  /**
+   * TrainingProgressCache deleteMany
+   */
+  export type TrainingProgressCacheDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingProgressCaches to delete
+     */
+    where?: TrainingProgressCacheWhereInput
+    /**
+     * Limit how many TrainingProgressCaches to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingProgressCache without action
+   */
+  export type TrainingProgressCacheDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingProgressCache
+     */
+    select?: TrainingProgressCacheSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingProgressCache
+     */
+    omit?: TrainingProgressCacheOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrainingProgressCacheInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DiveTemplate
+   */
+
+  export type AggregateDiveTemplate = {
+    _count: DiveTemplateCountAggregateOutputType | null
+    _avg: DiveTemplateAvgAggregateOutputType | null
+    _sum: DiveTemplateSumAggregateOutputType | null
+    _min: DiveTemplateMinAggregateOutputType | null
+    _max: DiveTemplateMaxAggregateOutputType | null
+  }
+
+  export type DiveTemplateAvgAggregateOutputType = {
+    sortOrder: number | null
+    maxDepthMeters: number | null
+    targetHoldSeconds: number | null
+  }
+
+  export type DiveTemplateSumAggregateOutputType = {
+    sortOrder: number | null
+    maxDepthMeters: number | null
+    targetHoldSeconds: number | null
+  }
+
+  export type DiveTemplateMinAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    sortOrder: number | null
+    isPublished: boolean | null
+    isPremium: boolean | null
+    difficulty: $Enums.DiveDifficulty | null
+    maxDepthMeters: number | null
+    targetHoldSeconds: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DiveTemplateMaxAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    sortOrder: number | null
+    isPublished: boolean | null
+    isPremium: boolean | null
+    difficulty: $Enums.DiveDifficulty | null
+    maxDepthMeters: number | null
+    targetHoldSeconds: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DiveTemplateCountAggregateOutputType = {
+    id: number
+    slug: number
+    sortOrder: number
+    isPublished: number
+    isPremium: number
+    difficulty: number
+    maxDepthMeters: number
+    targetHoldSeconds: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DiveTemplateAvgAggregateInputType = {
+    sortOrder?: true
+    maxDepthMeters?: true
+    targetHoldSeconds?: true
+  }
+
+  export type DiveTemplateSumAggregateInputType = {
+    sortOrder?: true
+    maxDepthMeters?: true
+    targetHoldSeconds?: true
+  }
+
+  export type DiveTemplateMinAggregateInputType = {
+    id?: true
+    slug?: true
+    sortOrder?: true
+    isPublished?: true
+    isPremium?: true
+    difficulty?: true
+    maxDepthMeters?: true
+    targetHoldSeconds?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DiveTemplateMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    sortOrder?: true
+    isPublished?: true
+    isPremium?: true
+    difficulty?: true
+    maxDepthMeters?: true
+    targetHoldSeconds?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DiveTemplateCountAggregateInputType = {
+    id?: true
+    slug?: true
+    sortOrder?: true
+    isPublished?: true
+    isPremium?: true
+    difficulty?: true
+    maxDepthMeters?: true
+    targetHoldSeconds?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DiveTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiveTemplate to aggregate.
+     */
+    where?: DiveTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveTemplates to fetch.
+     */
+    orderBy?: DiveTemplateOrderByWithRelationInput | DiveTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DiveTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DiveTemplates
+    **/
+    _count?: true | DiveTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DiveTemplateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DiveTemplateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DiveTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DiveTemplateMaxAggregateInputType
+  }
+
+  export type GetDiveTemplateAggregateType<T extends DiveTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateDiveTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDiveTemplate[P]>
+      : GetScalarType<T[P], AggregateDiveTemplate[P]>
+  }
+
+
+
+
+  export type DiveTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiveTemplateWhereInput
+    orderBy?: DiveTemplateOrderByWithAggregationInput | DiveTemplateOrderByWithAggregationInput[]
+    by: DiveTemplateScalarFieldEnum[] | DiveTemplateScalarFieldEnum
+    having?: DiveTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DiveTemplateCountAggregateInputType | true
+    _avg?: DiveTemplateAvgAggregateInputType
+    _sum?: DiveTemplateSumAggregateInputType
+    _min?: DiveTemplateMinAggregateInputType
+    _max?: DiveTemplateMaxAggregateInputType
+  }
+
+  export type DiveTemplateGroupByOutputType = {
+    id: string
+    slug: string
+    sortOrder: number
+    isPublished: boolean
+    isPremium: boolean
+    difficulty: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: DiveTemplateCountAggregateOutputType | null
+    _avg: DiveTemplateAvgAggregateOutputType | null
+    _sum: DiveTemplateSumAggregateOutputType | null
+    _min: DiveTemplateMinAggregateOutputType | null
+    _max: DiveTemplateMaxAggregateOutputType | null
+  }
+
+  type GetDiveTemplateGroupByPayload<T extends DiveTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DiveTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DiveTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DiveTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], DiveTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DiveTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: boolean
+    maxDepthMeters?: boolean
+    targetHoldSeconds?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    translations?: boolean | DiveTemplate$translationsArgs<ExtArgs>
+    profilePoints?: boolean | DiveTemplate$profilePointsArgs<ExtArgs>
+    runs?: boolean | DiveTemplate$runsArgs<ExtArgs>
+    _count?: boolean | DiveTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveTemplate"]>
+
+  export type DiveTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: boolean
+    maxDepthMeters?: boolean
+    targetHoldSeconds?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["diveTemplate"]>
+
+  export type DiveTemplateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: boolean
+    maxDepthMeters?: boolean
+    targetHoldSeconds?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["diveTemplate"]>
+
+  export type DiveTemplateSelectScalar = {
+    id?: boolean
+    slug?: boolean
+    sortOrder?: boolean
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: boolean
+    maxDepthMeters?: boolean
+    targetHoldSeconds?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DiveTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "sortOrder" | "isPublished" | "isPremium" | "difficulty" | "maxDepthMeters" | "targetHoldSeconds" | "createdAt" | "updatedAt", ExtArgs["result"]["diveTemplate"]>
+  export type DiveTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    translations?: boolean | DiveTemplate$translationsArgs<ExtArgs>
+    profilePoints?: boolean | DiveTemplate$profilePointsArgs<ExtArgs>
+    runs?: boolean | DiveTemplate$runsArgs<ExtArgs>
+    _count?: boolean | DiveTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DiveTemplateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type DiveTemplateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $DiveTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DiveTemplate"
+    objects: {
+      translations: Prisma.$DiveTemplateTranslationPayload<ExtArgs>[]
+      profilePoints: Prisma.$DiveProfilePointPayload<ExtArgs>[]
+      runs: Prisma.$DiveRunPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      slug: string
+      sortOrder: number
+      isPublished: boolean
+      isPremium: boolean
+      difficulty: $Enums.DiveDifficulty
+      maxDepthMeters: number
+      targetHoldSeconds: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["diveTemplate"]>
+    composites: {}
+  }
+
+  type DiveTemplateGetPayload<S extends boolean | null | undefined | DiveTemplateDefaultArgs> = $Result.GetResult<Prisma.$DiveTemplatePayload, S>
+
+  type DiveTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DiveTemplateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DiveTemplateCountAggregateInputType | true
+    }
+
+  export interface DiveTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiveTemplate'], meta: { name: 'DiveTemplate' } }
+    /**
+     * Find zero or one DiveTemplate that matches the filter.
+     * @param {DiveTemplateFindUniqueArgs} args - Arguments to find a DiveTemplate
+     * @example
+     * // Get one DiveTemplate
+     * const diveTemplate = await prisma.diveTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DiveTemplateFindUniqueArgs>(args: SelectSubset<T, DiveTemplateFindUniqueArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DiveTemplate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DiveTemplateFindUniqueOrThrowArgs} args - Arguments to find a DiveTemplate
+     * @example
+     * // Get one DiveTemplate
+     * const diveTemplate = await prisma.diveTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DiveTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, DiveTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiveTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateFindFirstArgs} args - Arguments to find a DiveTemplate
+     * @example
+     * // Get one DiveTemplate
+     * const diveTemplate = await prisma.diveTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DiveTemplateFindFirstArgs>(args?: SelectSubset<T, DiveTemplateFindFirstArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiveTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateFindFirstOrThrowArgs} args - Arguments to find a DiveTemplate
+     * @example
+     * // Get one DiveTemplate
+     * const diveTemplate = await prisma.diveTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DiveTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, DiveTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DiveTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DiveTemplates
+     * const diveTemplates = await prisma.diveTemplate.findMany()
+     * 
+     * // Get first 10 DiveTemplates
+     * const diveTemplates = await prisma.diveTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const diveTemplateWithIdOnly = await prisma.diveTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DiveTemplateFindManyArgs>(args?: SelectSubset<T, DiveTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DiveTemplate.
+     * @param {DiveTemplateCreateArgs} args - Arguments to create a DiveTemplate.
+     * @example
+     * // Create one DiveTemplate
+     * const DiveTemplate = await prisma.diveTemplate.create({
+     *   data: {
+     *     // ... data to create a DiveTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends DiveTemplateCreateArgs>(args: SelectSubset<T, DiveTemplateCreateArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DiveTemplates.
+     * @param {DiveTemplateCreateManyArgs} args - Arguments to create many DiveTemplates.
+     * @example
+     * // Create many DiveTemplates
+     * const diveTemplate = await prisma.diveTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DiveTemplateCreateManyArgs>(args?: SelectSubset<T, DiveTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DiveTemplates and returns the data saved in the database.
+     * @param {DiveTemplateCreateManyAndReturnArgs} args - Arguments to create many DiveTemplates.
+     * @example
+     * // Create many DiveTemplates
+     * const diveTemplate = await prisma.diveTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DiveTemplates and only return the `id`
+     * const diveTemplateWithIdOnly = await prisma.diveTemplate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DiveTemplateCreateManyAndReturnArgs>(args?: SelectSubset<T, DiveTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DiveTemplate.
+     * @param {DiveTemplateDeleteArgs} args - Arguments to delete one DiveTemplate.
+     * @example
+     * // Delete one DiveTemplate
+     * const DiveTemplate = await prisma.diveTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one DiveTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DiveTemplateDeleteArgs>(args: SelectSubset<T, DiveTemplateDeleteArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DiveTemplate.
+     * @param {DiveTemplateUpdateArgs} args - Arguments to update one DiveTemplate.
+     * @example
+     * // Update one DiveTemplate
+     * const diveTemplate = await prisma.diveTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DiveTemplateUpdateArgs>(args: SelectSubset<T, DiveTemplateUpdateArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DiveTemplates.
+     * @param {DiveTemplateDeleteManyArgs} args - Arguments to filter DiveTemplates to delete.
+     * @example
+     * // Delete a few DiveTemplates
+     * const { count } = await prisma.diveTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DiveTemplateDeleteManyArgs>(args?: SelectSubset<T, DiveTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiveTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DiveTemplates
+     * const diveTemplate = await prisma.diveTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DiveTemplateUpdateManyArgs>(args: SelectSubset<T, DiveTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiveTemplates and returns the data updated in the database.
+     * @param {DiveTemplateUpdateManyAndReturnArgs} args - Arguments to update many DiveTemplates.
+     * @example
+     * // Update many DiveTemplates
+     * const diveTemplate = await prisma.diveTemplate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DiveTemplates and only return the `id`
+     * const diveTemplateWithIdOnly = await prisma.diveTemplate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DiveTemplateUpdateManyAndReturnArgs>(args: SelectSubset<T, DiveTemplateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DiveTemplate.
+     * @param {DiveTemplateUpsertArgs} args - Arguments to update or create a DiveTemplate.
+     * @example
+     * // Update or create a DiveTemplate
+     * const diveTemplate = await prisma.diveTemplate.upsert({
+     *   create: {
+     *     // ... data to create a DiveTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DiveTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DiveTemplateUpsertArgs>(args: SelectSubset<T, DiveTemplateUpsertArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DiveTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateCountArgs} args - Arguments to filter DiveTemplates to count.
+     * @example
+     * // Count the number of DiveTemplates
+     * const count = await prisma.diveTemplate.count({
+     *   where: {
+     *     // ... the filter for the DiveTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends DiveTemplateCountArgs>(
+      args?: Subset<T, DiveTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DiveTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DiveTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DiveTemplateAggregateArgs>(args: Subset<T, DiveTemplateAggregateArgs>): Prisma.PrismaPromise<GetDiveTemplateAggregateType<T>>
+
+    /**
+     * Group by DiveTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DiveTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DiveTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: DiveTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DiveTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiveTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DiveTemplate model
+   */
+  readonly fields: DiveTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DiveTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DiveTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    translations<T extends DiveTemplate$translationsArgs<ExtArgs> = {}>(args?: Subset<T, DiveTemplate$translationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    profilePoints<T extends DiveTemplate$profilePointsArgs<ExtArgs> = {}>(args?: Subset<T, DiveTemplate$profilePointsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    runs<T extends DiveTemplate$runsArgs<ExtArgs> = {}>(args?: Subset<T, DiveTemplate$runsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DiveTemplate model
+   */
+  interface DiveTemplateFieldRefs {
+    readonly id: FieldRef<"DiveTemplate", 'String'>
+    readonly slug: FieldRef<"DiveTemplate", 'String'>
+    readonly sortOrder: FieldRef<"DiveTemplate", 'Int'>
+    readonly isPublished: FieldRef<"DiveTemplate", 'Boolean'>
+    readonly isPremium: FieldRef<"DiveTemplate", 'Boolean'>
+    readonly difficulty: FieldRef<"DiveTemplate", 'DiveDifficulty'>
+    readonly maxDepthMeters: FieldRef<"DiveTemplate", 'Int'>
+    readonly targetHoldSeconds: FieldRef<"DiveTemplate", 'Int'>
+    readonly createdAt: FieldRef<"DiveTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"DiveTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DiveTemplate findUnique
+   */
+  export type DiveTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplate to fetch.
+     */
+    where: DiveTemplateWhereUniqueInput
+  }
+
+  /**
+   * DiveTemplate findUniqueOrThrow
+   */
+  export type DiveTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplate to fetch.
+     */
+    where: DiveTemplateWhereUniqueInput
+  }
+
+  /**
+   * DiveTemplate findFirst
+   */
+  export type DiveTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplate to fetch.
+     */
+    where?: DiveTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveTemplates to fetch.
+     */
+    orderBy?: DiveTemplateOrderByWithRelationInput | DiveTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiveTemplates.
+     */
+    cursor?: DiveTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiveTemplates.
+     */
+    distinct?: DiveTemplateScalarFieldEnum | DiveTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplate findFirstOrThrow
+   */
+  export type DiveTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplate to fetch.
+     */
+    where?: DiveTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveTemplates to fetch.
+     */
+    orderBy?: DiveTemplateOrderByWithRelationInput | DiveTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiveTemplates.
+     */
+    cursor?: DiveTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiveTemplates.
+     */
+    distinct?: DiveTemplateScalarFieldEnum | DiveTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplate findMany
+   */
+  export type DiveTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplates to fetch.
+     */
+    where?: DiveTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveTemplates to fetch.
+     */
+    orderBy?: DiveTemplateOrderByWithRelationInput | DiveTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DiveTemplates.
+     */
+    cursor?: DiveTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveTemplates.
+     */
+    skip?: number
+    distinct?: DiveTemplateScalarFieldEnum | DiveTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplate create
+   */
+  export type DiveTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DiveTemplate.
+     */
+    data: XOR<DiveTemplateCreateInput, DiveTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * DiveTemplate createMany
+   */
+  export type DiveTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DiveTemplates.
+     */
+    data: DiveTemplateCreateManyInput | DiveTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiveTemplate createManyAndReturn
+   */
+  export type DiveTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to create many DiveTemplates.
+     */
+    data: DiveTemplateCreateManyInput | DiveTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiveTemplate update
+   */
+  export type DiveTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DiveTemplate.
+     */
+    data: XOR<DiveTemplateUpdateInput, DiveTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which DiveTemplate to update.
+     */
+    where: DiveTemplateWhereUniqueInput
+  }
+
+  /**
+   * DiveTemplate updateMany
+   */
+  export type DiveTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DiveTemplates.
+     */
+    data: XOR<DiveTemplateUpdateManyMutationInput, DiveTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which DiveTemplates to update
+     */
+    where?: DiveTemplateWhereInput
+    /**
+     * Limit how many DiveTemplates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveTemplate updateManyAndReturn
+   */
+  export type DiveTemplateUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to update DiveTemplates.
+     */
+    data: XOR<DiveTemplateUpdateManyMutationInput, DiveTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which DiveTemplates to update
+     */
+    where?: DiveTemplateWhereInput
+    /**
+     * Limit how many DiveTemplates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveTemplate upsert
+   */
+  export type DiveTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DiveTemplate to update in case it exists.
+     */
+    where: DiveTemplateWhereUniqueInput
+    /**
+     * In case the DiveTemplate found by the `where` argument doesn't exist, create a new DiveTemplate with this data.
+     */
+    create: XOR<DiveTemplateCreateInput, DiveTemplateUncheckedCreateInput>
+    /**
+     * In case the DiveTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DiveTemplateUpdateInput, DiveTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * DiveTemplate delete
+   */
+  export type DiveTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which DiveTemplate to delete.
+     */
+    where: DiveTemplateWhereUniqueInput
+  }
+
+  /**
+   * DiveTemplate deleteMany
+   */
+  export type DiveTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiveTemplates to delete
+     */
+    where?: DiveTemplateWhereInput
+    /**
+     * Limit how many DiveTemplates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveTemplate.translations
+   */
+  export type DiveTemplate$translationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    where?: DiveTemplateTranslationWhereInput
+    orderBy?: DiveTemplateTranslationOrderByWithRelationInput | DiveTemplateTranslationOrderByWithRelationInput[]
+    cursor?: DiveTemplateTranslationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DiveTemplateTranslationScalarFieldEnum | DiveTemplateTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplate.profilePoints
+   */
+  export type DiveTemplate$profilePointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    where?: DiveProfilePointWhereInput
+    orderBy?: DiveProfilePointOrderByWithRelationInput | DiveProfilePointOrderByWithRelationInput[]
+    cursor?: DiveProfilePointWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DiveProfilePointScalarFieldEnum | DiveProfilePointScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplate.runs
+   */
+  export type DiveTemplate$runsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    where?: DiveRunWhereInput
+    orderBy?: DiveRunOrderByWithRelationInput | DiveRunOrderByWithRelationInput[]
+    cursor?: DiveRunWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DiveRunScalarFieldEnum | DiveRunScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplate without action
+   */
+  export type DiveTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplate
+     */
+    select?: DiveTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplate
+     */
+    omit?: DiveTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DiveTemplateTranslation
+   */
+
+  export type AggregateDiveTemplateTranslation = {
+    _count: DiveTemplateTranslationCountAggregateOutputType | null
+    _min: DiveTemplateTranslationMinAggregateOutputType | null
+    _max: DiveTemplateTranslationMaxAggregateOutputType | null
+  }
+
+  export type DiveTemplateTranslationMinAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    lang: $Enums.Language | null
+    title: string | null
+    subtitle: string | null
+    description: string | null
+  }
+
+  export type DiveTemplateTranslationMaxAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    lang: $Enums.Language | null
+    title: string | null
+    subtitle: string | null
+    description: string | null
+  }
+
+  export type DiveTemplateTranslationCountAggregateOutputType = {
+    id: number
+    templateId: number
+    lang: number
+    title: number
+    subtitle: number
+    description: number
+    _all: number
+  }
+
+
+  export type DiveTemplateTranslationMinAggregateInputType = {
+    id?: true
+    templateId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+  }
+
+  export type DiveTemplateTranslationMaxAggregateInputType = {
+    id?: true
+    templateId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+  }
+
+  export type DiveTemplateTranslationCountAggregateInputType = {
+    id?: true
+    templateId?: true
+    lang?: true
+    title?: true
+    subtitle?: true
+    description?: true
+    _all?: true
+  }
+
+  export type DiveTemplateTranslationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiveTemplateTranslation to aggregate.
+     */
+    where?: DiveTemplateTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveTemplateTranslations to fetch.
+     */
+    orderBy?: DiveTemplateTranslationOrderByWithRelationInput | DiveTemplateTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DiveTemplateTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveTemplateTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveTemplateTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DiveTemplateTranslations
+    **/
+    _count?: true | DiveTemplateTranslationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DiveTemplateTranslationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DiveTemplateTranslationMaxAggregateInputType
+  }
+
+  export type GetDiveTemplateTranslationAggregateType<T extends DiveTemplateTranslationAggregateArgs> = {
+        [P in keyof T & keyof AggregateDiveTemplateTranslation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDiveTemplateTranslation[P]>
+      : GetScalarType<T[P], AggregateDiveTemplateTranslation[P]>
+  }
+
+
+
+
+  export type DiveTemplateTranslationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiveTemplateTranslationWhereInput
+    orderBy?: DiveTemplateTranslationOrderByWithAggregationInput | DiveTemplateTranslationOrderByWithAggregationInput[]
+    by: DiveTemplateTranslationScalarFieldEnum[] | DiveTemplateTranslationScalarFieldEnum
+    having?: DiveTemplateTranslationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DiveTemplateTranslationCountAggregateInputType | true
+    _min?: DiveTemplateTranslationMinAggregateInputType
+    _max?: DiveTemplateTranslationMaxAggregateInputType
+  }
+
+  export type DiveTemplateTranslationGroupByOutputType = {
+    id: string
+    templateId: string
+    lang: $Enums.Language
+    title: string
+    subtitle: string | null
+    description: string | null
+    _count: DiveTemplateTranslationCountAggregateOutputType | null
+    _min: DiveTemplateTranslationMinAggregateOutputType | null
+    _max: DiveTemplateTranslationMaxAggregateOutputType | null
+  }
+
+  type GetDiveTemplateTranslationGroupByPayload<T extends DiveTemplateTranslationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DiveTemplateTranslationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DiveTemplateTranslationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DiveTemplateTranslationGroupByOutputType[P]>
+            : GetScalarType<T[P], DiveTemplateTranslationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DiveTemplateTranslationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveTemplateTranslation"]>
+
+  export type DiveTemplateTranslationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveTemplateTranslation"]>
+
+  export type DiveTemplateTranslationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveTemplateTranslation"]>
+
+  export type DiveTemplateTranslationSelectScalar = {
+    id?: boolean
+    templateId?: boolean
+    lang?: boolean
+    title?: boolean
+    subtitle?: boolean
+    description?: boolean
+  }
+
+  export type DiveTemplateTranslationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateId" | "lang" | "title" | "subtitle" | "description", ExtArgs["result"]["diveTemplateTranslation"]>
+  export type DiveTemplateTranslationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+  export type DiveTemplateTranslationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+  export type DiveTemplateTranslationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $DiveTemplateTranslationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DiveTemplateTranslation"
+    objects: {
+      template: Prisma.$DiveTemplatePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      templateId: string
+      lang: $Enums.Language
+      title: string
+      subtitle: string | null
+      description: string | null
+    }, ExtArgs["result"]["diveTemplateTranslation"]>
+    composites: {}
+  }
+
+  type DiveTemplateTranslationGetPayload<S extends boolean | null | undefined | DiveTemplateTranslationDefaultArgs> = $Result.GetResult<Prisma.$DiveTemplateTranslationPayload, S>
+
+  type DiveTemplateTranslationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DiveTemplateTranslationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DiveTemplateTranslationCountAggregateInputType | true
+    }
+
+  export interface DiveTemplateTranslationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiveTemplateTranslation'], meta: { name: 'DiveTemplateTranslation' } }
+    /**
+     * Find zero or one DiveTemplateTranslation that matches the filter.
+     * @param {DiveTemplateTranslationFindUniqueArgs} args - Arguments to find a DiveTemplateTranslation
+     * @example
+     * // Get one DiveTemplateTranslation
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DiveTemplateTranslationFindUniqueArgs>(args: SelectSubset<T, DiveTemplateTranslationFindUniqueArgs<ExtArgs>>): Prisma__DiveTemplateTranslationClient<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DiveTemplateTranslation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DiveTemplateTranslationFindUniqueOrThrowArgs} args - Arguments to find a DiveTemplateTranslation
+     * @example
+     * // Get one DiveTemplateTranslation
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DiveTemplateTranslationFindUniqueOrThrowArgs>(args: SelectSubset<T, DiveTemplateTranslationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiveTemplateTranslationClient<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiveTemplateTranslation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateTranslationFindFirstArgs} args - Arguments to find a DiveTemplateTranslation
+     * @example
+     * // Get one DiveTemplateTranslation
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DiveTemplateTranslationFindFirstArgs>(args?: SelectSubset<T, DiveTemplateTranslationFindFirstArgs<ExtArgs>>): Prisma__DiveTemplateTranslationClient<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiveTemplateTranslation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateTranslationFindFirstOrThrowArgs} args - Arguments to find a DiveTemplateTranslation
+     * @example
+     * // Get one DiveTemplateTranslation
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DiveTemplateTranslationFindFirstOrThrowArgs>(args?: SelectSubset<T, DiveTemplateTranslationFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiveTemplateTranslationClient<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DiveTemplateTranslations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateTranslationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DiveTemplateTranslations
+     * const diveTemplateTranslations = await prisma.diveTemplateTranslation.findMany()
+     * 
+     * // Get first 10 DiveTemplateTranslations
+     * const diveTemplateTranslations = await prisma.diveTemplateTranslation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const diveTemplateTranslationWithIdOnly = await prisma.diveTemplateTranslation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DiveTemplateTranslationFindManyArgs>(args?: SelectSubset<T, DiveTemplateTranslationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DiveTemplateTranslation.
+     * @param {DiveTemplateTranslationCreateArgs} args - Arguments to create a DiveTemplateTranslation.
+     * @example
+     * // Create one DiveTemplateTranslation
+     * const DiveTemplateTranslation = await prisma.diveTemplateTranslation.create({
+     *   data: {
+     *     // ... data to create a DiveTemplateTranslation
+     *   }
+     * })
+     * 
+     */
+    create<T extends DiveTemplateTranslationCreateArgs>(args: SelectSubset<T, DiveTemplateTranslationCreateArgs<ExtArgs>>): Prisma__DiveTemplateTranslationClient<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DiveTemplateTranslations.
+     * @param {DiveTemplateTranslationCreateManyArgs} args - Arguments to create many DiveTemplateTranslations.
+     * @example
+     * // Create many DiveTemplateTranslations
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DiveTemplateTranslationCreateManyArgs>(args?: SelectSubset<T, DiveTemplateTranslationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DiveTemplateTranslations and returns the data saved in the database.
+     * @param {DiveTemplateTranslationCreateManyAndReturnArgs} args - Arguments to create many DiveTemplateTranslations.
+     * @example
+     * // Create many DiveTemplateTranslations
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DiveTemplateTranslations and only return the `id`
+     * const diveTemplateTranslationWithIdOnly = await prisma.diveTemplateTranslation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DiveTemplateTranslationCreateManyAndReturnArgs>(args?: SelectSubset<T, DiveTemplateTranslationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DiveTemplateTranslation.
+     * @param {DiveTemplateTranslationDeleteArgs} args - Arguments to delete one DiveTemplateTranslation.
+     * @example
+     * // Delete one DiveTemplateTranslation
+     * const DiveTemplateTranslation = await prisma.diveTemplateTranslation.delete({
+     *   where: {
+     *     // ... filter to delete one DiveTemplateTranslation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DiveTemplateTranslationDeleteArgs>(args: SelectSubset<T, DiveTemplateTranslationDeleteArgs<ExtArgs>>): Prisma__DiveTemplateTranslationClient<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DiveTemplateTranslation.
+     * @param {DiveTemplateTranslationUpdateArgs} args - Arguments to update one DiveTemplateTranslation.
+     * @example
+     * // Update one DiveTemplateTranslation
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DiveTemplateTranslationUpdateArgs>(args: SelectSubset<T, DiveTemplateTranslationUpdateArgs<ExtArgs>>): Prisma__DiveTemplateTranslationClient<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DiveTemplateTranslations.
+     * @param {DiveTemplateTranslationDeleteManyArgs} args - Arguments to filter DiveTemplateTranslations to delete.
+     * @example
+     * // Delete a few DiveTemplateTranslations
+     * const { count } = await prisma.diveTemplateTranslation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DiveTemplateTranslationDeleteManyArgs>(args?: SelectSubset<T, DiveTemplateTranslationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiveTemplateTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateTranslationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DiveTemplateTranslations
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DiveTemplateTranslationUpdateManyArgs>(args: SelectSubset<T, DiveTemplateTranslationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiveTemplateTranslations and returns the data updated in the database.
+     * @param {DiveTemplateTranslationUpdateManyAndReturnArgs} args - Arguments to update many DiveTemplateTranslations.
+     * @example
+     * // Update many DiveTemplateTranslations
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DiveTemplateTranslations and only return the `id`
+     * const diveTemplateTranslationWithIdOnly = await prisma.diveTemplateTranslation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DiveTemplateTranslationUpdateManyAndReturnArgs>(args: SelectSubset<T, DiveTemplateTranslationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DiveTemplateTranslation.
+     * @param {DiveTemplateTranslationUpsertArgs} args - Arguments to update or create a DiveTemplateTranslation.
+     * @example
+     * // Update or create a DiveTemplateTranslation
+     * const diveTemplateTranslation = await prisma.diveTemplateTranslation.upsert({
+     *   create: {
+     *     // ... data to create a DiveTemplateTranslation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DiveTemplateTranslation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DiveTemplateTranslationUpsertArgs>(args: SelectSubset<T, DiveTemplateTranslationUpsertArgs<ExtArgs>>): Prisma__DiveTemplateTranslationClient<$Result.GetResult<Prisma.$DiveTemplateTranslationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DiveTemplateTranslations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateTranslationCountArgs} args - Arguments to filter DiveTemplateTranslations to count.
+     * @example
+     * // Count the number of DiveTemplateTranslations
+     * const count = await prisma.diveTemplateTranslation.count({
+     *   where: {
+     *     // ... the filter for the DiveTemplateTranslations we want to count
+     *   }
+     * })
+    **/
+    count<T extends DiveTemplateTranslationCountArgs>(
+      args?: Subset<T, DiveTemplateTranslationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DiveTemplateTranslationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DiveTemplateTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateTranslationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DiveTemplateTranslationAggregateArgs>(args: Subset<T, DiveTemplateTranslationAggregateArgs>): Prisma.PrismaPromise<GetDiveTemplateTranslationAggregateType<T>>
+
+    /**
+     * Group by DiveTemplateTranslation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveTemplateTranslationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DiveTemplateTranslationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DiveTemplateTranslationGroupByArgs['orderBy'] }
+        : { orderBy?: DiveTemplateTranslationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DiveTemplateTranslationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiveTemplateTranslationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DiveTemplateTranslation model
+   */
+  readonly fields: DiveTemplateTranslationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DiveTemplateTranslation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DiveTemplateTranslationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    template<T extends DiveTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DiveTemplateDefaultArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DiveTemplateTranslation model
+   */
+  interface DiveTemplateTranslationFieldRefs {
+    readonly id: FieldRef<"DiveTemplateTranslation", 'String'>
+    readonly templateId: FieldRef<"DiveTemplateTranslation", 'String'>
+    readonly lang: FieldRef<"DiveTemplateTranslation", 'Language'>
+    readonly title: FieldRef<"DiveTemplateTranslation", 'String'>
+    readonly subtitle: FieldRef<"DiveTemplateTranslation", 'String'>
+    readonly description: FieldRef<"DiveTemplateTranslation", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DiveTemplateTranslation findUnique
+   */
+  export type DiveTemplateTranslationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplateTranslation to fetch.
+     */
+    where: DiveTemplateTranslationWhereUniqueInput
+  }
+
+  /**
+   * DiveTemplateTranslation findUniqueOrThrow
+   */
+  export type DiveTemplateTranslationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplateTranslation to fetch.
+     */
+    where: DiveTemplateTranslationWhereUniqueInput
+  }
+
+  /**
+   * DiveTemplateTranslation findFirst
+   */
+  export type DiveTemplateTranslationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplateTranslation to fetch.
+     */
+    where?: DiveTemplateTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveTemplateTranslations to fetch.
+     */
+    orderBy?: DiveTemplateTranslationOrderByWithRelationInput | DiveTemplateTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiveTemplateTranslations.
+     */
+    cursor?: DiveTemplateTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveTemplateTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveTemplateTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiveTemplateTranslations.
+     */
+    distinct?: DiveTemplateTranslationScalarFieldEnum | DiveTemplateTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplateTranslation findFirstOrThrow
+   */
+  export type DiveTemplateTranslationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplateTranslation to fetch.
+     */
+    where?: DiveTemplateTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveTemplateTranslations to fetch.
+     */
+    orderBy?: DiveTemplateTranslationOrderByWithRelationInput | DiveTemplateTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiveTemplateTranslations.
+     */
+    cursor?: DiveTemplateTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveTemplateTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveTemplateTranslations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiveTemplateTranslations.
+     */
+    distinct?: DiveTemplateTranslationScalarFieldEnum | DiveTemplateTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplateTranslation findMany
+   */
+  export type DiveTemplateTranslationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveTemplateTranslations to fetch.
+     */
+    where?: DiveTemplateTranslationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveTemplateTranslations to fetch.
+     */
+    orderBy?: DiveTemplateTranslationOrderByWithRelationInput | DiveTemplateTranslationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DiveTemplateTranslations.
+     */
+    cursor?: DiveTemplateTranslationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveTemplateTranslations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveTemplateTranslations.
+     */
+    skip?: number
+    distinct?: DiveTemplateTranslationScalarFieldEnum | DiveTemplateTranslationScalarFieldEnum[]
+  }
+
+  /**
+   * DiveTemplateTranslation create
+   */
+  export type DiveTemplateTranslationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DiveTemplateTranslation.
+     */
+    data: XOR<DiveTemplateTranslationCreateInput, DiveTemplateTranslationUncheckedCreateInput>
+  }
+
+  /**
+   * DiveTemplateTranslation createMany
+   */
+  export type DiveTemplateTranslationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DiveTemplateTranslations.
+     */
+    data: DiveTemplateTranslationCreateManyInput | DiveTemplateTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiveTemplateTranslation createManyAndReturn
+   */
+  export type DiveTemplateTranslationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * The data used to create many DiveTemplateTranslations.
+     */
+    data: DiveTemplateTranslationCreateManyInput | DiveTemplateTranslationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiveTemplateTranslation update
+   */
+  export type DiveTemplateTranslationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DiveTemplateTranslation.
+     */
+    data: XOR<DiveTemplateTranslationUpdateInput, DiveTemplateTranslationUncheckedUpdateInput>
+    /**
+     * Choose, which DiveTemplateTranslation to update.
+     */
+    where: DiveTemplateTranslationWhereUniqueInput
+  }
+
+  /**
+   * DiveTemplateTranslation updateMany
+   */
+  export type DiveTemplateTranslationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DiveTemplateTranslations.
+     */
+    data: XOR<DiveTemplateTranslationUpdateManyMutationInput, DiveTemplateTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which DiveTemplateTranslations to update
+     */
+    where?: DiveTemplateTranslationWhereInput
+    /**
+     * Limit how many DiveTemplateTranslations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveTemplateTranslation updateManyAndReturn
+   */
+  export type DiveTemplateTranslationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * The data used to update DiveTemplateTranslations.
+     */
+    data: XOR<DiveTemplateTranslationUpdateManyMutationInput, DiveTemplateTranslationUncheckedUpdateManyInput>
+    /**
+     * Filter which DiveTemplateTranslations to update
+     */
+    where?: DiveTemplateTranslationWhereInput
+    /**
+     * Limit how many DiveTemplateTranslations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiveTemplateTranslation upsert
+   */
+  export type DiveTemplateTranslationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DiveTemplateTranslation to update in case it exists.
+     */
+    where: DiveTemplateTranslationWhereUniqueInput
+    /**
+     * In case the DiveTemplateTranslation found by the `where` argument doesn't exist, create a new DiveTemplateTranslation with this data.
+     */
+    create: XOR<DiveTemplateTranslationCreateInput, DiveTemplateTranslationUncheckedCreateInput>
+    /**
+     * In case the DiveTemplateTranslation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DiveTemplateTranslationUpdateInput, DiveTemplateTranslationUncheckedUpdateInput>
+  }
+
+  /**
+   * DiveTemplateTranslation delete
+   */
+  export type DiveTemplateTranslationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+    /**
+     * Filter which DiveTemplateTranslation to delete.
+     */
+    where: DiveTemplateTranslationWhereUniqueInput
+  }
+
+  /**
+   * DiveTemplateTranslation deleteMany
+   */
+  export type DiveTemplateTranslationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiveTemplateTranslations to delete
+     */
+    where?: DiveTemplateTranslationWhereInput
+    /**
+     * Limit how many DiveTemplateTranslations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveTemplateTranslation without action
+   */
+  export type DiveTemplateTranslationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveTemplateTranslation
+     */
+    select?: DiveTemplateTranslationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveTemplateTranslation
+     */
+    omit?: DiveTemplateTranslationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveTemplateTranslationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DiveProfilePoint
+   */
+
+  export type AggregateDiveProfilePoint = {
+    _count: DiveProfilePointCountAggregateOutputType | null
+    _avg: DiveProfilePointAvgAggregateOutputType | null
+    _sum: DiveProfilePointSumAggregateOutputType | null
+    _min: DiveProfilePointMinAggregateOutputType | null
+    _max: DiveProfilePointMaxAggregateOutputType | null
+  }
+
+  export type DiveProfilePointAvgAggregateOutputType = {
+    sortOrder: number | null
+    timeSeconds: number | null
+    depthMeters: number | null
+  }
+
+  export type DiveProfilePointSumAggregateOutputType = {
+    sortOrder: number | null
+    timeSeconds: number | null
+    depthMeters: number | null
+  }
+
+  export type DiveProfilePointMinAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    sortOrder: number | null
+    timeSeconds: number | null
+    depthMeters: number | null
+  }
+
+  export type DiveProfilePointMaxAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    sortOrder: number | null
+    timeSeconds: number | null
+    depthMeters: number | null
+  }
+
+  export type DiveProfilePointCountAggregateOutputType = {
+    id: number
+    templateId: number
+    sortOrder: number
+    timeSeconds: number
+    depthMeters: number
+    _all: number
+  }
+
+
+  export type DiveProfilePointAvgAggregateInputType = {
+    sortOrder?: true
+    timeSeconds?: true
+    depthMeters?: true
+  }
+
+  export type DiveProfilePointSumAggregateInputType = {
+    sortOrder?: true
+    timeSeconds?: true
+    depthMeters?: true
+  }
+
+  export type DiveProfilePointMinAggregateInputType = {
+    id?: true
+    templateId?: true
+    sortOrder?: true
+    timeSeconds?: true
+    depthMeters?: true
+  }
+
+  export type DiveProfilePointMaxAggregateInputType = {
+    id?: true
+    templateId?: true
+    sortOrder?: true
+    timeSeconds?: true
+    depthMeters?: true
+  }
+
+  export type DiveProfilePointCountAggregateInputType = {
+    id?: true
+    templateId?: true
+    sortOrder?: true
+    timeSeconds?: true
+    depthMeters?: true
+    _all?: true
+  }
+
+  export type DiveProfilePointAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiveProfilePoint to aggregate.
+     */
+    where?: DiveProfilePointWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveProfilePoints to fetch.
+     */
+    orderBy?: DiveProfilePointOrderByWithRelationInput | DiveProfilePointOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DiveProfilePointWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveProfilePoints from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveProfilePoints.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DiveProfilePoints
+    **/
+    _count?: true | DiveProfilePointCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DiveProfilePointAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DiveProfilePointSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DiveProfilePointMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DiveProfilePointMaxAggregateInputType
+  }
+
+  export type GetDiveProfilePointAggregateType<T extends DiveProfilePointAggregateArgs> = {
+        [P in keyof T & keyof AggregateDiveProfilePoint]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDiveProfilePoint[P]>
+      : GetScalarType<T[P], AggregateDiveProfilePoint[P]>
+  }
+
+
+
+
+  export type DiveProfilePointGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiveProfilePointWhereInput
+    orderBy?: DiveProfilePointOrderByWithAggregationInput | DiveProfilePointOrderByWithAggregationInput[]
+    by: DiveProfilePointScalarFieldEnum[] | DiveProfilePointScalarFieldEnum
+    having?: DiveProfilePointScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DiveProfilePointCountAggregateInputType | true
+    _avg?: DiveProfilePointAvgAggregateInputType
+    _sum?: DiveProfilePointSumAggregateInputType
+    _min?: DiveProfilePointMinAggregateInputType
+    _max?: DiveProfilePointMaxAggregateInputType
+  }
+
+  export type DiveProfilePointGroupByOutputType = {
+    id: string
+    templateId: string
+    sortOrder: number
+    timeSeconds: number
+    depthMeters: number
+    _count: DiveProfilePointCountAggregateOutputType | null
+    _avg: DiveProfilePointAvgAggregateOutputType | null
+    _sum: DiveProfilePointSumAggregateOutputType | null
+    _min: DiveProfilePointMinAggregateOutputType | null
+    _max: DiveProfilePointMaxAggregateOutputType | null
+  }
+
+  type GetDiveProfilePointGroupByPayload<T extends DiveProfilePointGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DiveProfilePointGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DiveProfilePointGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DiveProfilePointGroupByOutputType[P]>
+            : GetScalarType<T[P], DiveProfilePointGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DiveProfilePointSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    sortOrder?: boolean
+    timeSeconds?: boolean
+    depthMeters?: boolean
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveProfilePoint"]>
+
+  export type DiveProfilePointSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    sortOrder?: boolean
+    timeSeconds?: boolean
+    depthMeters?: boolean
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveProfilePoint"]>
+
+  export type DiveProfilePointSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    sortOrder?: boolean
+    timeSeconds?: boolean
+    depthMeters?: boolean
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveProfilePoint"]>
+
+  export type DiveProfilePointSelectScalar = {
+    id?: boolean
+    templateId?: boolean
+    sortOrder?: boolean
+    timeSeconds?: boolean
+    depthMeters?: boolean
+  }
+
+  export type DiveProfilePointOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateId" | "sortOrder" | "timeSeconds" | "depthMeters", ExtArgs["result"]["diveProfilePoint"]>
+  export type DiveProfilePointInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+  export type DiveProfilePointIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+  export type DiveProfilePointIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $DiveProfilePointPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DiveProfilePoint"
+    objects: {
+      template: Prisma.$DiveTemplatePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      templateId: string
+      sortOrder: number
+      timeSeconds: number
+      depthMeters: number
+    }, ExtArgs["result"]["diveProfilePoint"]>
+    composites: {}
+  }
+
+  type DiveProfilePointGetPayload<S extends boolean | null | undefined | DiveProfilePointDefaultArgs> = $Result.GetResult<Prisma.$DiveProfilePointPayload, S>
+
+  type DiveProfilePointCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DiveProfilePointFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DiveProfilePointCountAggregateInputType | true
+    }
+
+  export interface DiveProfilePointDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiveProfilePoint'], meta: { name: 'DiveProfilePoint' } }
+    /**
+     * Find zero or one DiveProfilePoint that matches the filter.
+     * @param {DiveProfilePointFindUniqueArgs} args - Arguments to find a DiveProfilePoint
+     * @example
+     * // Get one DiveProfilePoint
+     * const diveProfilePoint = await prisma.diveProfilePoint.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DiveProfilePointFindUniqueArgs>(args: SelectSubset<T, DiveProfilePointFindUniqueArgs<ExtArgs>>): Prisma__DiveProfilePointClient<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DiveProfilePoint that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DiveProfilePointFindUniqueOrThrowArgs} args - Arguments to find a DiveProfilePoint
+     * @example
+     * // Get one DiveProfilePoint
+     * const diveProfilePoint = await prisma.diveProfilePoint.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DiveProfilePointFindUniqueOrThrowArgs>(args: SelectSubset<T, DiveProfilePointFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiveProfilePointClient<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiveProfilePoint that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveProfilePointFindFirstArgs} args - Arguments to find a DiveProfilePoint
+     * @example
+     * // Get one DiveProfilePoint
+     * const diveProfilePoint = await prisma.diveProfilePoint.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DiveProfilePointFindFirstArgs>(args?: SelectSubset<T, DiveProfilePointFindFirstArgs<ExtArgs>>): Prisma__DiveProfilePointClient<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiveProfilePoint that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveProfilePointFindFirstOrThrowArgs} args - Arguments to find a DiveProfilePoint
+     * @example
+     * // Get one DiveProfilePoint
+     * const diveProfilePoint = await prisma.diveProfilePoint.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DiveProfilePointFindFirstOrThrowArgs>(args?: SelectSubset<T, DiveProfilePointFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiveProfilePointClient<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DiveProfilePoints that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveProfilePointFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DiveProfilePoints
+     * const diveProfilePoints = await prisma.diveProfilePoint.findMany()
+     * 
+     * // Get first 10 DiveProfilePoints
+     * const diveProfilePoints = await prisma.diveProfilePoint.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const diveProfilePointWithIdOnly = await prisma.diveProfilePoint.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DiveProfilePointFindManyArgs>(args?: SelectSubset<T, DiveProfilePointFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DiveProfilePoint.
+     * @param {DiveProfilePointCreateArgs} args - Arguments to create a DiveProfilePoint.
+     * @example
+     * // Create one DiveProfilePoint
+     * const DiveProfilePoint = await prisma.diveProfilePoint.create({
+     *   data: {
+     *     // ... data to create a DiveProfilePoint
+     *   }
+     * })
+     * 
+     */
+    create<T extends DiveProfilePointCreateArgs>(args: SelectSubset<T, DiveProfilePointCreateArgs<ExtArgs>>): Prisma__DiveProfilePointClient<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DiveProfilePoints.
+     * @param {DiveProfilePointCreateManyArgs} args - Arguments to create many DiveProfilePoints.
+     * @example
+     * // Create many DiveProfilePoints
+     * const diveProfilePoint = await prisma.diveProfilePoint.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DiveProfilePointCreateManyArgs>(args?: SelectSubset<T, DiveProfilePointCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DiveProfilePoints and returns the data saved in the database.
+     * @param {DiveProfilePointCreateManyAndReturnArgs} args - Arguments to create many DiveProfilePoints.
+     * @example
+     * // Create many DiveProfilePoints
+     * const diveProfilePoint = await prisma.diveProfilePoint.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DiveProfilePoints and only return the `id`
+     * const diveProfilePointWithIdOnly = await prisma.diveProfilePoint.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DiveProfilePointCreateManyAndReturnArgs>(args?: SelectSubset<T, DiveProfilePointCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DiveProfilePoint.
+     * @param {DiveProfilePointDeleteArgs} args - Arguments to delete one DiveProfilePoint.
+     * @example
+     * // Delete one DiveProfilePoint
+     * const DiveProfilePoint = await prisma.diveProfilePoint.delete({
+     *   where: {
+     *     // ... filter to delete one DiveProfilePoint
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DiveProfilePointDeleteArgs>(args: SelectSubset<T, DiveProfilePointDeleteArgs<ExtArgs>>): Prisma__DiveProfilePointClient<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DiveProfilePoint.
+     * @param {DiveProfilePointUpdateArgs} args - Arguments to update one DiveProfilePoint.
+     * @example
+     * // Update one DiveProfilePoint
+     * const diveProfilePoint = await prisma.diveProfilePoint.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DiveProfilePointUpdateArgs>(args: SelectSubset<T, DiveProfilePointUpdateArgs<ExtArgs>>): Prisma__DiveProfilePointClient<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DiveProfilePoints.
+     * @param {DiveProfilePointDeleteManyArgs} args - Arguments to filter DiveProfilePoints to delete.
+     * @example
+     * // Delete a few DiveProfilePoints
+     * const { count } = await prisma.diveProfilePoint.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DiveProfilePointDeleteManyArgs>(args?: SelectSubset<T, DiveProfilePointDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiveProfilePoints.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveProfilePointUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DiveProfilePoints
+     * const diveProfilePoint = await prisma.diveProfilePoint.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DiveProfilePointUpdateManyArgs>(args: SelectSubset<T, DiveProfilePointUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiveProfilePoints and returns the data updated in the database.
+     * @param {DiveProfilePointUpdateManyAndReturnArgs} args - Arguments to update many DiveProfilePoints.
+     * @example
+     * // Update many DiveProfilePoints
+     * const diveProfilePoint = await prisma.diveProfilePoint.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DiveProfilePoints and only return the `id`
+     * const diveProfilePointWithIdOnly = await prisma.diveProfilePoint.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DiveProfilePointUpdateManyAndReturnArgs>(args: SelectSubset<T, DiveProfilePointUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DiveProfilePoint.
+     * @param {DiveProfilePointUpsertArgs} args - Arguments to update or create a DiveProfilePoint.
+     * @example
+     * // Update or create a DiveProfilePoint
+     * const diveProfilePoint = await prisma.diveProfilePoint.upsert({
+     *   create: {
+     *     // ... data to create a DiveProfilePoint
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DiveProfilePoint we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DiveProfilePointUpsertArgs>(args: SelectSubset<T, DiveProfilePointUpsertArgs<ExtArgs>>): Prisma__DiveProfilePointClient<$Result.GetResult<Prisma.$DiveProfilePointPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DiveProfilePoints.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveProfilePointCountArgs} args - Arguments to filter DiveProfilePoints to count.
+     * @example
+     * // Count the number of DiveProfilePoints
+     * const count = await prisma.diveProfilePoint.count({
+     *   where: {
+     *     // ... the filter for the DiveProfilePoints we want to count
+     *   }
+     * })
+    **/
+    count<T extends DiveProfilePointCountArgs>(
+      args?: Subset<T, DiveProfilePointCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DiveProfilePointCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DiveProfilePoint.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveProfilePointAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DiveProfilePointAggregateArgs>(args: Subset<T, DiveProfilePointAggregateArgs>): Prisma.PrismaPromise<GetDiveProfilePointAggregateType<T>>
+
+    /**
+     * Group by DiveProfilePoint.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveProfilePointGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DiveProfilePointGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DiveProfilePointGroupByArgs['orderBy'] }
+        : { orderBy?: DiveProfilePointGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DiveProfilePointGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiveProfilePointGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DiveProfilePoint model
+   */
+  readonly fields: DiveProfilePointFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DiveProfilePoint.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DiveProfilePointClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    template<T extends DiveTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DiveTemplateDefaultArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DiveProfilePoint model
+   */
+  interface DiveProfilePointFieldRefs {
+    readonly id: FieldRef<"DiveProfilePoint", 'String'>
+    readonly templateId: FieldRef<"DiveProfilePoint", 'String'>
+    readonly sortOrder: FieldRef<"DiveProfilePoint", 'Int'>
+    readonly timeSeconds: FieldRef<"DiveProfilePoint", 'Int'>
+    readonly depthMeters: FieldRef<"DiveProfilePoint", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DiveProfilePoint findUnique
+   */
+  export type DiveProfilePointFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveProfilePoint to fetch.
+     */
+    where: DiveProfilePointWhereUniqueInput
+  }
+
+  /**
+   * DiveProfilePoint findUniqueOrThrow
+   */
+  export type DiveProfilePointFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveProfilePoint to fetch.
+     */
+    where: DiveProfilePointWhereUniqueInput
+  }
+
+  /**
+   * DiveProfilePoint findFirst
+   */
+  export type DiveProfilePointFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveProfilePoint to fetch.
+     */
+    where?: DiveProfilePointWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveProfilePoints to fetch.
+     */
+    orderBy?: DiveProfilePointOrderByWithRelationInput | DiveProfilePointOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiveProfilePoints.
+     */
+    cursor?: DiveProfilePointWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveProfilePoints from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveProfilePoints.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiveProfilePoints.
+     */
+    distinct?: DiveProfilePointScalarFieldEnum | DiveProfilePointScalarFieldEnum[]
+  }
+
+  /**
+   * DiveProfilePoint findFirstOrThrow
+   */
+  export type DiveProfilePointFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveProfilePoint to fetch.
+     */
+    where?: DiveProfilePointWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveProfilePoints to fetch.
+     */
+    orderBy?: DiveProfilePointOrderByWithRelationInput | DiveProfilePointOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiveProfilePoints.
+     */
+    cursor?: DiveProfilePointWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveProfilePoints from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveProfilePoints.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiveProfilePoints.
+     */
+    distinct?: DiveProfilePointScalarFieldEnum | DiveProfilePointScalarFieldEnum[]
+  }
+
+  /**
+   * DiveProfilePoint findMany
+   */
+  export type DiveProfilePointFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveProfilePoints to fetch.
+     */
+    where?: DiveProfilePointWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveProfilePoints to fetch.
+     */
+    orderBy?: DiveProfilePointOrderByWithRelationInput | DiveProfilePointOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DiveProfilePoints.
+     */
+    cursor?: DiveProfilePointWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveProfilePoints from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveProfilePoints.
+     */
+    skip?: number
+    distinct?: DiveProfilePointScalarFieldEnum | DiveProfilePointScalarFieldEnum[]
+  }
+
+  /**
+   * DiveProfilePoint create
+   */
+  export type DiveProfilePointCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DiveProfilePoint.
+     */
+    data: XOR<DiveProfilePointCreateInput, DiveProfilePointUncheckedCreateInput>
+  }
+
+  /**
+   * DiveProfilePoint createMany
+   */
+  export type DiveProfilePointCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DiveProfilePoints.
+     */
+    data: DiveProfilePointCreateManyInput | DiveProfilePointCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiveProfilePoint createManyAndReturn
+   */
+  export type DiveProfilePointCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * The data used to create many DiveProfilePoints.
+     */
+    data: DiveProfilePointCreateManyInput | DiveProfilePointCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiveProfilePoint update
+   */
+  export type DiveProfilePointUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DiveProfilePoint.
+     */
+    data: XOR<DiveProfilePointUpdateInput, DiveProfilePointUncheckedUpdateInput>
+    /**
+     * Choose, which DiveProfilePoint to update.
+     */
+    where: DiveProfilePointWhereUniqueInput
+  }
+
+  /**
+   * DiveProfilePoint updateMany
+   */
+  export type DiveProfilePointUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DiveProfilePoints.
+     */
+    data: XOR<DiveProfilePointUpdateManyMutationInput, DiveProfilePointUncheckedUpdateManyInput>
+    /**
+     * Filter which DiveProfilePoints to update
+     */
+    where?: DiveProfilePointWhereInput
+    /**
+     * Limit how many DiveProfilePoints to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveProfilePoint updateManyAndReturn
+   */
+  export type DiveProfilePointUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * The data used to update DiveProfilePoints.
+     */
+    data: XOR<DiveProfilePointUpdateManyMutationInput, DiveProfilePointUncheckedUpdateManyInput>
+    /**
+     * Filter which DiveProfilePoints to update
+     */
+    where?: DiveProfilePointWhereInput
+    /**
+     * Limit how many DiveProfilePoints to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiveProfilePoint upsert
+   */
+  export type DiveProfilePointUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DiveProfilePoint to update in case it exists.
+     */
+    where: DiveProfilePointWhereUniqueInput
+    /**
+     * In case the DiveProfilePoint found by the `where` argument doesn't exist, create a new DiveProfilePoint with this data.
+     */
+    create: XOR<DiveProfilePointCreateInput, DiveProfilePointUncheckedCreateInput>
+    /**
+     * In case the DiveProfilePoint was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DiveProfilePointUpdateInput, DiveProfilePointUncheckedUpdateInput>
+  }
+
+  /**
+   * DiveProfilePoint delete
+   */
+  export type DiveProfilePointDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+    /**
+     * Filter which DiveProfilePoint to delete.
+     */
+    where: DiveProfilePointWhereUniqueInput
+  }
+
+  /**
+   * DiveProfilePoint deleteMany
+   */
+  export type DiveProfilePointDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiveProfilePoints to delete
+     */
+    where?: DiveProfilePointWhereInput
+    /**
+     * Limit how many DiveProfilePoints to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveProfilePoint without action
+   */
+  export type DiveProfilePointDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveProfilePoint
+     */
+    select?: DiveProfilePointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveProfilePoint
+     */
+    omit?: DiveProfilePointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveProfilePointInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DiveRun
+   */
+
+  export type AggregateDiveRun = {
+    _count: DiveRunCountAggregateOutputType | null
+    _avg: DiveRunAvgAggregateOutputType | null
+    _sum: DiveRunSumAggregateOutputType | null
+    _min: DiveRunMinAggregateOutputType | null
+    _max: DiveRunMaxAggregateOutputType | null
+  }
+
+  export type DiveRunAvgAggregateOutputType = {
+    holdSeconds: number | null
+    maxDepthMeters: number | null
+  }
+
+  export type DiveRunSumAggregateOutputType = {
+    holdSeconds: number | null
+    maxDepthMeters: number | null
+  }
+
+  export type DiveRunMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    templateId: string | null
+    startedAt: Date | null
+    finishedAt: Date | null
+    holdSeconds: number | null
+    maxDepthMeters: number | null
+    completed: boolean | null
+  }
+
+  export type DiveRunMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    templateId: string | null
+    startedAt: Date | null
+    finishedAt: Date | null
+    holdSeconds: number | null
+    maxDepthMeters: number | null
+    completed: boolean | null
+  }
+
+  export type DiveRunCountAggregateOutputType = {
+    id: number
+    userId: number
+    templateId: number
+    startedAt: number
+    finishedAt: number
+    holdSeconds: number
+    maxDepthMeters: number
+    completed: number
+    metrics: number
+    _all: number
+  }
+
+
+  export type DiveRunAvgAggregateInputType = {
+    holdSeconds?: true
+    maxDepthMeters?: true
+  }
+
+  export type DiveRunSumAggregateInputType = {
+    holdSeconds?: true
+    maxDepthMeters?: true
+  }
+
+  export type DiveRunMinAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    startedAt?: true
+    finishedAt?: true
+    holdSeconds?: true
+    maxDepthMeters?: true
+    completed?: true
+  }
+
+  export type DiveRunMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    startedAt?: true
+    finishedAt?: true
+    holdSeconds?: true
+    maxDepthMeters?: true
+    completed?: true
+  }
+
+  export type DiveRunCountAggregateInputType = {
+    id?: true
+    userId?: true
+    templateId?: true
+    startedAt?: true
+    finishedAt?: true
+    holdSeconds?: true
+    maxDepthMeters?: true
+    completed?: true
+    metrics?: true
+    _all?: true
+  }
+
+  export type DiveRunAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiveRun to aggregate.
+     */
+    where?: DiveRunWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveRuns to fetch.
+     */
+    orderBy?: DiveRunOrderByWithRelationInput | DiveRunOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DiveRunWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveRuns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveRuns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DiveRuns
+    **/
+    _count?: true | DiveRunCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DiveRunAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DiveRunSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DiveRunMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DiveRunMaxAggregateInputType
+  }
+
+  export type GetDiveRunAggregateType<T extends DiveRunAggregateArgs> = {
+        [P in keyof T & keyof AggregateDiveRun]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDiveRun[P]>
+      : GetScalarType<T[P], AggregateDiveRun[P]>
+  }
+
+
+
+
+  export type DiveRunGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiveRunWhereInput
+    orderBy?: DiveRunOrderByWithAggregationInput | DiveRunOrderByWithAggregationInput[]
+    by: DiveRunScalarFieldEnum[] | DiveRunScalarFieldEnum
+    having?: DiveRunScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DiveRunCountAggregateInputType | true
+    _avg?: DiveRunAvgAggregateInputType
+    _sum?: DiveRunSumAggregateInputType
+    _min?: DiveRunMinAggregateInputType
+    _max?: DiveRunMaxAggregateInputType
+  }
+
+  export type DiveRunGroupByOutputType = {
+    id: string
+    userId: string
+    templateId: string
+    startedAt: Date
+    finishedAt: Date | null
+    holdSeconds: number | null
+    maxDepthMeters: number | null
+    completed: boolean
+    metrics: JsonValue | null
+    _count: DiveRunCountAggregateOutputType | null
+    _avg: DiveRunAvgAggregateOutputType | null
+    _sum: DiveRunSumAggregateOutputType | null
+    _min: DiveRunMinAggregateOutputType | null
+    _max: DiveRunMaxAggregateOutputType | null
+  }
+
+  type GetDiveRunGroupByPayload<T extends DiveRunGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DiveRunGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DiveRunGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DiveRunGroupByOutputType[P]>
+            : GetScalarType<T[P], DiveRunGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DiveRunSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    startedAt?: boolean
+    finishedAt?: boolean
+    holdSeconds?: boolean
+    maxDepthMeters?: boolean
+    completed?: boolean
+    metrics?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveRun"]>
+
+  export type DiveRunSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    startedAt?: boolean
+    finishedAt?: boolean
+    holdSeconds?: boolean
+    maxDepthMeters?: boolean
+    completed?: boolean
+    metrics?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveRun"]>
+
+  export type DiveRunSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    startedAt?: boolean
+    finishedAt?: boolean
+    holdSeconds?: boolean
+    maxDepthMeters?: boolean
+    completed?: boolean
+    metrics?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diveRun"]>
+
+  export type DiveRunSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    templateId?: boolean
+    startedAt?: boolean
+    finishedAt?: boolean
+    holdSeconds?: boolean
+    maxDepthMeters?: boolean
+    completed?: boolean
+    metrics?: boolean
+  }
+
+  export type DiveRunOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "templateId" | "startedAt" | "finishedAt" | "holdSeconds" | "maxDepthMeters" | "completed" | "metrics", ExtArgs["result"]["diveRun"]>
+  export type DiveRunInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+  export type DiveRunIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+  export type DiveRunIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    template?: boolean | DiveTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $DiveRunPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DiveRun"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      template: Prisma.$DiveTemplatePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      templateId: string
+      startedAt: Date
+      finishedAt: Date | null
+      holdSeconds: number | null
+      maxDepthMeters: number | null
+      completed: boolean
+      metrics: Prisma.JsonValue | null
+    }, ExtArgs["result"]["diveRun"]>
+    composites: {}
+  }
+
+  type DiveRunGetPayload<S extends boolean | null | undefined | DiveRunDefaultArgs> = $Result.GetResult<Prisma.$DiveRunPayload, S>
+
+  type DiveRunCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DiveRunFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DiveRunCountAggregateInputType | true
+    }
+
+  export interface DiveRunDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiveRun'], meta: { name: 'DiveRun' } }
+    /**
+     * Find zero or one DiveRun that matches the filter.
+     * @param {DiveRunFindUniqueArgs} args - Arguments to find a DiveRun
+     * @example
+     * // Get one DiveRun
+     * const diveRun = await prisma.diveRun.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DiveRunFindUniqueArgs>(args: SelectSubset<T, DiveRunFindUniqueArgs<ExtArgs>>): Prisma__DiveRunClient<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DiveRun that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DiveRunFindUniqueOrThrowArgs} args - Arguments to find a DiveRun
+     * @example
+     * // Get one DiveRun
+     * const diveRun = await prisma.diveRun.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DiveRunFindUniqueOrThrowArgs>(args: SelectSubset<T, DiveRunFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiveRunClient<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiveRun that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveRunFindFirstArgs} args - Arguments to find a DiveRun
+     * @example
+     * // Get one DiveRun
+     * const diveRun = await prisma.diveRun.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DiveRunFindFirstArgs>(args?: SelectSubset<T, DiveRunFindFirstArgs<ExtArgs>>): Prisma__DiveRunClient<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiveRun that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveRunFindFirstOrThrowArgs} args - Arguments to find a DiveRun
+     * @example
+     * // Get one DiveRun
+     * const diveRun = await prisma.diveRun.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DiveRunFindFirstOrThrowArgs>(args?: SelectSubset<T, DiveRunFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiveRunClient<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DiveRuns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveRunFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DiveRuns
+     * const diveRuns = await prisma.diveRun.findMany()
+     * 
+     * // Get first 10 DiveRuns
+     * const diveRuns = await prisma.diveRun.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const diveRunWithIdOnly = await prisma.diveRun.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DiveRunFindManyArgs>(args?: SelectSubset<T, DiveRunFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DiveRun.
+     * @param {DiveRunCreateArgs} args - Arguments to create a DiveRun.
+     * @example
+     * // Create one DiveRun
+     * const DiveRun = await prisma.diveRun.create({
+     *   data: {
+     *     // ... data to create a DiveRun
+     *   }
+     * })
+     * 
+     */
+    create<T extends DiveRunCreateArgs>(args: SelectSubset<T, DiveRunCreateArgs<ExtArgs>>): Prisma__DiveRunClient<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DiveRuns.
+     * @param {DiveRunCreateManyArgs} args - Arguments to create many DiveRuns.
+     * @example
+     * // Create many DiveRuns
+     * const diveRun = await prisma.diveRun.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DiveRunCreateManyArgs>(args?: SelectSubset<T, DiveRunCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DiveRuns and returns the data saved in the database.
+     * @param {DiveRunCreateManyAndReturnArgs} args - Arguments to create many DiveRuns.
+     * @example
+     * // Create many DiveRuns
+     * const diveRun = await prisma.diveRun.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DiveRuns and only return the `id`
+     * const diveRunWithIdOnly = await prisma.diveRun.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DiveRunCreateManyAndReturnArgs>(args?: SelectSubset<T, DiveRunCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DiveRun.
+     * @param {DiveRunDeleteArgs} args - Arguments to delete one DiveRun.
+     * @example
+     * // Delete one DiveRun
+     * const DiveRun = await prisma.diveRun.delete({
+     *   where: {
+     *     // ... filter to delete one DiveRun
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DiveRunDeleteArgs>(args: SelectSubset<T, DiveRunDeleteArgs<ExtArgs>>): Prisma__DiveRunClient<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DiveRun.
+     * @param {DiveRunUpdateArgs} args - Arguments to update one DiveRun.
+     * @example
+     * // Update one DiveRun
+     * const diveRun = await prisma.diveRun.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DiveRunUpdateArgs>(args: SelectSubset<T, DiveRunUpdateArgs<ExtArgs>>): Prisma__DiveRunClient<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DiveRuns.
+     * @param {DiveRunDeleteManyArgs} args - Arguments to filter DiveRuns to delete.
+     * @example
+     * // Delete a few DiveRuns
+     * const { count } = await prisma.diveRun.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DiveRunDeleteManyArgs>(args?: SelectSubset<T, DiveRunDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiveRuns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveRunUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DiveRuns
+     * const diveRun = await prisma.diveRun.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DiveRunUpdateManyArgs>(args: SelectSubset<T, DiveRunUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiveRuns and returns the data updated in the database.
+     * @param {DiveRunUpdateManyAndReturnArgs} args - Arguments to update many DiveRuns.
+     * @example
+     * // Update many DiveRuns
+     * const diveRun = await prisma.diveRun.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DiveRuns and only return the `id`
+     * const diveRunWithIdOnly = await prisma.diveRun.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DiveRunUpdateManyAndReturnArgs>(args: SelectSubset<T, DiveRunUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DiveRun.
+     * @param {DiveRunUpsertArgs} args - Arguments to update or create a DiveRun.
+     * @example
+     * // Update or create a DiveRun
+     * const diveRun = await prisma.diveRun.upsert({
+     *   create: {
+     *     // ... data to create a DiveRun
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DiveRun we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DiveRunUpsertArgs>(args: SelectSubset<T, DiveRunUpsertArgs<ExtArgs>>): Prisma__DiveRunClient<$Result.GetResult<Prisma.$DiveRunPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DiveRuns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveRunCountArgs} args - Arguments to filter DiveRuns to count.
+     * @example
+     * // Count the number of DiveRuns
+     * const count = await prisma.diveRun.count({
+     *   where: {
+     *     // ... the filter for the DiveRuns we want to count
+     *   }
+     * })
+    **/
+    count<T extends DiveRunCountArgs>(
+      args?: Subset<T, DiveRunCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DiveRunCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DiveRun.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveRunAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DiveRunAggregateArgs>(args: Subset<T, DiveRunAggregateArgs>): Prisma.PrismaPromise<GetDiveRunAggregateType<T>>
+
+    /**
+     * Group by DiveRun.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiveRunGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DiveRunGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DiveRunGroupByArgs['orderBy'] }
+        : { orderBy?: DiveRunGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DiveRunGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiveRunGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DiveRun model
+   */
+  readonly fields: DiveRunFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DiveRun.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DiveRunClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    template<T extends DiveTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DiveTemplateDefaultArgs<ExtArgs>>): Prisma__DiveTemplateClient<$Result.GetResult<Prisma.$DiveTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DiveRun model
+   */
+  interface DiveRunFieldRefs {
+    readonly id: FieldRef<"DiveRun", 'String'>
+    readonly userId: FieldRef<"DiveRun", 'String'>
+    readonly templateId: FieldRef<"DiveRun", 'String'>
+    readonly startedAt: FieldRef<"DiveRun", 'DateTime'>
+    readonly finishedAt: FieldRef<"DiveRun", 'DateTime'>
+    readonly holdSeconds: FieldRef<"DiveRun", 'Int'>
+    readonly maxDepthMeters: FieldRef<"DiveRun", 'Int'>
+    readonly completed: FieldRef<"DiveRun", 'Boolean'>
+    readonly metrics: FieldRef<"DiveRun", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DiveRun findUnique
+   */
+  export type DiveRunFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveRun to fetch.
+     */
+    where: DiveRunWhereUniqueInput
+  }
+
+  /**
+   * DiveRun findUniqueOrThrow
+   */
+  export type DiveRunFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveRun to fetch.
+     */
+    where: DiveRunWhereUniqueInput
+  }
+
+  /**
+   * DiveRun findFirst
+   */
+  export type DiveRunFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveRun to fetch.
+     */
+    where?: DiveRunWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveRuns to fetch.
+     */
+    orderBy?: DiveRunOrderByWithRelationInput | DiveRunOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiveRuns.
+     */
+    cursor?: DiveRunWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveRuns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveRuns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiveRuns.
+     */
+    distinct?: DiveRunScalarFieldEnum | DiveRunScalarFieldEnum[]
+  }
+
+  /**
+   * DiveRun findFirstOrThrow
+   */
+  export type DiveRunFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveRun to fetch.
+     */
+    where?: DiveRunWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveRuns to fetch.
+     */
+    orderBy?: DiveRunOrderByWithRelationInput | DiveRunOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiveRuns.
+     */
+    cursor?: DiveRunWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveRuns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveRuns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiveRuns.
+     */
+    distinct?: DiveRunScalarFieldEnum | DiveRunScalarFieldEnum[]
+  }
+
+  /**
+   * DiveRun findMany
+   */
+  export type DiveRunFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * Filter, which DiveRuns to fetch.
+     */
+    where?: DiveRunWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiveRuns to fetch.
+     */
+    orderBy?: DiveRunOrderByWithRelationInput | DiveRunOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DiveRuns.
+     */
+    cursor?: DiveRunWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiveRuns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiveRuns.
+     */
+    skip?: number
+    distinct?: DiveRunScalarFieldEnum | DiveRunScalarFieldEnum[]
+  }
+
+  /**
+   * DiveRun create
+   */
+  export type DiveRunCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DiveRun.
+     */
+    data: XOR<DiveRunCreateInput, DiveRunUncheckedCreateInput>
+  }
+
+  /**
+   * DiveRun createMany
+   */
+  export type DiveRunCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DiveRuns.
+     */
+    data: DiveRunCreateManyInput | DiveRunCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiveRun createManyAndReturn
+   */
+  export type DiveRunCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * The data used to create many DiveRuns.
+     */
+    data: DiveRunCreateManyInput | DiveRunCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiveRun update
+   */
+  export type DiveRunUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DiveRun.
+     */
+    data: XOR<DiveRunUpdateInput, DiveRunUncheckedUpdateInput>
+    /**
+     * Choose, which DiveRun to update.
+     */
+    where: DiveRunWhereUniqueInput
+  }
+
+  /**
+   * DiveRun updateMany
+   */
+  export type DiveRunUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DiveRuns.
+     */
+    data: XOR<DiveRunUpdateManyMutationInput, DiveRunUncheckedUpdateManyInput>
+    /**
+     * Filter which DiveRuns to update
+     */
+    where?: DiveRunWhereInput
+    /**
+     * Limit how many DiveRuns to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveRun updateManyAndReturn
+   */
+  export type DiveRunUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * The data used to update DiveRuns.
+     */
+    data: XOR<DiveRunUpdateManyMutationInput, DiveRunUncheckedUpdateManyInput>
+    /**
+     * Filter which DiveRuns to update
+     */
+    where?: DiveRunWhereInput
+    /**
+     * Limit how many DiveRuns to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiveRun upsert
+   */
+  export type DiveRunUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DiveRun to update in case it exists.
+     */
+    where: DiveRunWhereUniqueInput
+    /**
+     * In case the DiveRun found by the `where` argument doesn't exist, create a new DiveRun with this data.
+     */
+    create: XOR<DiveRunCreateInput, DiveRunUncheckedCreateInput>
+    /**
+     * In case the DiveRun was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DiveRunUpdateInput, DiveRunUncheckedUpdateInput>
+  }
+
+  /**
+   * DiveRun delete
+   */
+  export type DiveRunDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+    /**
+     * Filter which DiveRun to delete.
+     */
+    where: DiveRunWhereUniqueInput
+  }
+
+  /**
+   * DiveRun deleteMany
+   */
+  export type DiveRunDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiveRuns to delete
+     */
+    where?: DiveRunWhereInput
+    /**
+     * Limit how many DiveRuns to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiveRun without action
+   */
+  export type DiveRunDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiveRun
+     */
+    select?: DiveRunSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiveRun
+     */
+    omit?: DiveRunOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiveRunInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -15817,6 +23192,81 @@ export namespace Prisma {
   export type TrainingRunScalarFieldEnum = (typeof TrainingRunScalarFieldEnum)[keyof typeof TrainingRunScalarFieldEnum]
 
 
+  export const UserAchievementScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    type: 'type',
+    scopeKey: 'scopeKey',
+    unlockedAt: 'unlockedAt',
+    payload: 'payload'
+  };
+
+  export type UserAchievementScalarFieldEnum = (typeof UserAchievementScalarFieldEnum)[keyof typeof UserAchievementScalarFieldEnum]
+
+
+  export const TrainingProgressCacheScalarFieldEnum: {
+    userId: 'userId',
+    updatedAt: 'updatedAt',
+    data: 'data'
+  };
+
+  export type TrainingProgressCacheScalarFieldEnum = (typeof TrainingProgressCacheScalarFieldEnum)[keyof typeof TrainingProgressCacheScalarFieldEnum]
+
+
+  export const DiveTemplateScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    sortOrder: 'sortOrder',
+    isPublished: 'isPublished',
+    isPremium: 'isPremium',
+    difficulty: 'difficulty',
+    maxDepthMeters: 'maxDepthMeters',
+    targetHoldSeconds: 'targetHoldSeconds',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DiveTemplateScalarFieldEnum = (typeof DiveTemplateScalarFieldEnum)[keyof typeof DiveTemplateScalarFieldEnum]
+
+
+  export const DiveTemplateTranslationScalarFieldEnum: {
+    id: 'id',
+    templateId: 'templateId',
+    lang: 'lang',
+    title: 'title',
+    subtitle: 'subtitle',
+    description: 'description'
+  };
+
+  export type DiveTemplateTranslationScalarFieldEnum = (typeof DiveTemplateTranslationScalarFieldEnum)[keyof typeof DiveTemplateTranslationScalarFieldEnum]
+
+
+  export const DiveProfilePointScalarFieldEnum: {
+    id: 'id',
+    templateId: 'templateId',
+    sortOrder: 'sortOrder',
+    timeSeconds: 'timeSeconds',
+    depthMeters: 'depthMeters'
+  };
+
+  export type DiveProfilePointScalarFieldEnum = (typeof DiveProfilePointScalarFieldEnum)[keyof typeof DiveProfilePointScalarFieldEnum]
+
+
+  export const DiveRunScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    templateId: 'templateId',
+    startedAt: 'startedAt',
+    finishedAt: 'finishedAt',
+    holdSeconds: 'holdSeconds',
+    maxDepthMeters: 'maxDepthMeters',
+    completed: 'completed',
+    metrics: 'metrics'
+  };
+
+  export type DiveRunScalarFieldEnum = (typeof DiveRunScalarFieldEnum)[keyof typeof DiveRunScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -15831,6 +23281,13 @@ export namespace Prisma {
   };
 
   export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -15997,6 +23454,34 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AchievementType'
+   */
+  export type EnumAchievementTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AchievementType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AchievementType[]'
+   */
+  export type ListEnumAchievementTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AchievementType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DiveDifficulty'
+   */
+  export type EnumDiveDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiveDifficulty'>
+    
+
+
+  /**
+   * Reference to a field of type 'DiveDifficulty[]'
+   */
+  export type ListEnumDiveDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiveDifficulty[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -16025,6 +23510,9 @@ export namespace Prisma {
     refreshTokens?: RefreshTokenListRelationFilter
     privateTrainingTemplates?: TrainingTemplateListRelationFilter
     trainingRuns?: TrainingRunListRelationFilter
+    achievements?: UserAchievementListRelationFilter
+    progressCache?: XOR<TrainingProgressCacheNullableScalarRelationFilter, TrainingProgressCacheWhereInput> | null
+    diveRuns?: DiveRunListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -16036,6 +23524,9 @@ export namespace Prisma {
     refreshTokens?: RefreshTokenOrderByRelationAggregateInput
     privateTrainingTemplates?: TrainingTemplateOrderByRelationAggregateInput
     trainingRuns?: TrainingRunOrderByRelationAggregateInput
+    achievements?: UserAchievementOrderByRelationAggregateInput
+    progressCache?: TrainingProgressCacheOrderByWithRelationInput
+    diveRuns?: DiveRunOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -16050,6 +23541,9 @@ export namespace Prisma {
     refreshTokens?: RefreshTokenListRelationFilter
     privateTrainingTemplates?: TrainingTemplateListRelationFilter
     trainingRuns?: TrainingRunListRelationFilter
+    achievements?: UserAchievementListRelationFilter
+    progressCache?: XOR<TrainingProgressCacheNullableScalarRelationFilter, TrainingProgressCacheWhereInput> | null
+    diveRuns?: DiveRunListRelationFilter
   }, "id" | "appleSub">
 
   export type UserOrderByWithAggregationInput = {
@@ -16837,6 +24331,398 @@ export namespace Prisma {
     metrics?: JsonNullableWithAggregatesFilter<"TrainingRun">
   }
 
+  export type UserAchievementWhereInput = {
+    AND?: UserAchievementWhereInput | UserAchievementWhereInput[]
+    OR?: UserAchievementWhereInput[]
+    NOT?: UserAchievementWhereInput | UserAchievementWhereInput[]
+    id?: StringFilter<"UserAchievement"> | string
+    userId?: StringFilter<"UserAchievement"> | string
+    type?: EnumAchievementTypeFilter<"UserAchievement"> | $Enums.AchievementType
+    scopeKey?: StringFilter<"UserAchievement"> | string
+    unlockedAt?: DateTimeFilter<"UserAchievement"> | Date | string
+    payload?: JsonNullableFilter<"UserAchievement">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type UserAchievementOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    scopeKey?: SortOrder
+    unlockedAt?: SortOrder
+    payload?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type UserAchievementWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_type_scopeKey?: UserAchievementUserIdTypeScopeKeyCompoundUniqueInput
+    AND?: UserAchievementWhereInput | UserAchievementWhereInput[]
+    OR?: UserAchievementWhereInput[]
+    NOT?: UserAchievementWhereInput | UserAchievementWhereInput[]
+    userId?: StringFilter<"UserAchievement"> | string
+    type?: EnumAchievementTypeFilter<"UserAchievement"> | $Enums.AchievementType
+    scopeKey?: StringFilter<"UserAchievement"> | string
+    unlockedAt?: DateTimeFilter<"UserAchievement"> | Date | string
+    payload?: JsonNullableFilter<"UserAchievement">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_type_scopeKey">
+
+  export type UserAchievementOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    scopeKey?: SortOrder
+    unlockedAt?: SortOrder
+    payload?: SortOrderInput | SortOrder
+    _count?: UserAchievementCountOrderByAggregateInput
+    _max?: UserAchievementMaxOrderByAggregateInput
+    _min?: UserAchievementMinOrderByAggregateInput
+  }
+
+  export type UserAchievementScalarWhereWithAggregatesInput = {
+    AND?: UserAchievementScalarWhereWithAggregatesInput | UserAchievementScalarWhereWithAggregatesInput[]
+    OR?: UserAchievementScalarWhereWithAggregatesInput[]
+    NOT?: UserAchievementScalarWhereWithAggregatesInput | UserAchievementScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserAchievement"> | string
+    userId?: StringWithAggregatesFilter<"UserAchievement"> | string
+    type?: EnumAchievementTypeWithAggregatesFilter<"UserAchievement"> | $Enums.AchievementType
+    scopeKey?: StringWithAggregatesFilter<"UserAchievement"> | string
+    unlockedAt?: DateTimeWithAggregatesFilter<"UserAchievement"> | Date | string
+    payload?: JsonNullableWithAggregatesFilter<"UserAchievement">
+  }
+
+  export type TrainingProgressCacheWhereInput = {
+    AND?: TrainingProgressCacheWhereInput | TrainingProgressCacheWhereInput[]
+    OR?: TrainingProgressCacheWhereInput[]
+    NOT?: TrainingProgressCacheWhereInput | TrainingProgressCacheWhereInput[]
+    userId?: StringFilter<"TrainingProgressCache"> | string
+    updatedAt?: DateTimeFilter<"TrainingProgressCache"> | Date | string
+    data?: JsonFilter<"TrainingProgressCache">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type TrainingProgressCacheOrderByWithRelationInput = {
+    userId?: SortOrder
+    updatedAt?: SortOrder
+    data?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type TrainingProgressCacheWhereUniqueInput = Prisma.AtLeast<{
+    userId?: string
+    AND?: TrainingProgressCacheWhereInput | TrainingProgressCacheWhereInput[]
+    OR?: TrainingProgressCacheWhereInput[]
+    NOT?: TrainingProgressCacheWhereInput | TrainingProgressCacheWhereInput[]
+    updatedAt?: DateTimeFilter<"TrainingProgressCache"> | Date | string
+    data?: JsonFilter<"TrainingProgressCache">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "userId">
+
+  export type TrainingProgressCacheOrderByWithAggregationInput = {
+    userId?: SortOrder
+    updatedAt?: SortOrder
+    data?: SortOrder
+    _count?: TrainingProgressCacheCountOrderByAggregateInput
+    _max?: TrainingProgressCacheMaxOrderByAggregateInput
+    _min?: TrainingProgressCacheMinOrderByAggregateInput
+  }
+
+  export type TrainingProgressCacheScalarWhereWithAggregatesInput = {
+    AND?: TrainingProgressCacheScalarWhereWithAggregatesInput | TrainingProgressCacheScalarWhereWithAggregatesInput[]
+    OR?: TrainingProgressCacheScalarWhereWithAggregatesInput[]
+    NOT?: TrainingProgressCacheScalarWhereWithAggregatesInput | TrainingProgressCacheScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"TrainingProgressCache"> | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TrainingProgressCache"> | Date | string
+    data?: JsonWithAggregatesFilter<"TrainingProgressCache">
+  }
+
+  export type DiveTemplateWhereInput = {
+    AND?: DiveTemplateWhereInput | DiveTemplateWhereInput[]
+    OR?: DiveTemplateWhereInput[]
+    NOT?: DiveTemplateWhereInput | DiveTemplateWhereInput[]
+    id?: StringFilter<"DiveTemplate"> | string
+    slug?: StringFilter<"DiveTemplate"> | string
+    sortOrder?: IntFilter<"DiveTemplate"> | number
+    isPublished?: BoolFilter<"DiveTemplate"> | boolean
+    isPremium?: BoolFilter<"DiveTemplate"> | boolean
+    difficulty?: EnumDiveDifficultyFilter<"DiveTemplate"> | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFilter<"DiveTemplate"> | number
+    targetHoldSeconds?: IntNullableFilter<"DiveTemplate"> | number | null
+    createdAt?: DateTimeFilter<"DiveTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"DiveTemplate"> | Date | string
+    translations?: DiveTemplateTranslationListRelationFilter
+    profilePoints?: DiveProfilePointListRelationFilter
+    runs?: DiveRunListRelationFilter
+  }
+
+  export type DiveTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    difficulty?: SortOrder
+    maxDepthMeters?: SortOrder
+    targetHoldSeconds?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    translations?: DiveTemplateTranslationOrderByRelationAggregateInput
+    profilePoints?: DiveProfilePointOrderByRelationAggregateInput
+    runs?: DiveRunOrderByRelationAggregateInput
+  }
+
+  export type DiveTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: DiveTemplateWhereInput | DiveTemplateWhereInput[]
+    OR?: DiveTemplateWhereInput[]
+    NOT?: DiveTemplateWhereInput | DiveTemplateWhereInput[]
+    sortOrder?: IntFilter<"DiveTemplate"> | number
+    isPublished?: BoolFilter<"DiveTemplate"> | boolean
+    isPremium?: BoolFilter<"DiveTemplate"> | boolean
+    difficulty?: EnumDiveDifficultyFilter<"DiveTemplate"> | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFilter<"DiveTemplate"> | number
+    targetHoldSeconds?: IntNullableFilter<"DiveTemplate"> | number | null
+    createdAt?: DateTimeFilter<"DiveTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"DiveTemplate"> | Date | string
+    translations?: DiveTemplateTranslationListRelationFilter
+    profilePoints?: DiveProfilePointListRelationFilter
+    runs?: DiveRunListRelationFilter
+  }, "id" | "slug">
+
+  export type DiveTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    difficulty?: SortOrder
+    maxDepthMeters?: SortOrder
+    targetHoldSeconds?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DiveTemplateCountOrderByAggregateInput
+    _avg?: DiveTemplateAvgOrderByAggregateInput
+    _max?: DiveTemplateMaxOrderByAggregateInput
+    _min?: DiveTemplateMinOrderByAggregateInput
+    _sum?: DiveTemplateSumOrderByAggregateInput
+  }
+
+  export type DiveTemplateScalarWhereWithAggregatesInput = {
+    AND?: DiveTemplateScalarWhereWithAggregatesInput | DiveTemplateScalarWhereWithAggregatesInput[]
+    OR?: DiveTemplateScalarWhereWithAggregatesInput[]
+    NOT?: DiveTemplateScalarWhereWithAggregatesInput | DiveTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DiveTemplate"> | string
+    slug?: StringWithAggregatesFilter<"DiveTemplate"> | string
+    sortOrder?: IntWithAggregatesFilter<"DiveTemplate"> | number
+    isPublished?: BoolWithAggregatesFilter<"DiveTemplate"> | boolean
+    isPremium?: BoolWithAggregatesFilter<"DiveTemplate"> | boolean
+    difficulty?: EnumDiveDifficultyWithAggregatesFilter<"DiveTemplate"> | $Enums.DiveDifficulty
+    maxDepthMeters?: IntWithAggregatesFilter<"DiveTemplate"> | number
+    targetHoldSeconds?: IntNullableWithAggregatesFilter<"DiveTemplate"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"DiveTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DiveTemplate"> | Date | string
+  }
+
+  export type DiveTemplateTranslationWhereInput = {
+    AND?: DiveTemplateTranslationWhereInput | DiveTemplateTranslationWhereInput[]
+    OR?: DiveTemplateTranslationWhereInput[]
+    NOT?: DiveTemplateTranslationWhereInput | DiveTemplateTranslationWhereInput[]
+    id?: StringFilter<"DiveTemplateTranslation"> | string
+    templateId?: StringFilter<"DiveTemplateTranslation"> | string
+    lang?: EnumLanguageFilter<"DiveTemplateTranslation"> | $Enums.Language
+    title?: StringFilter<"DiveTemplateTranslation"> | string
+    subtitle?: StringNullableFilter<"DiveTemplateTranslation"> | string | null
+    description?: StringNullableFilter<"DiveTemplateTranslation"> | string | null
+    template?: XOR<DiveTemplateScalarRelationFilter, DiveTemplateWhereInput>
+  }
+
+  export type DiveTemplateTranslationOrderByWithRelationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    template?: DiveTemplateOrderByWithRelationInput
+  }
+
+  export type DiveTemplateTranslationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    templateId_lang?: DiveTemplateTranslationTemplateIdLangCompoundUniqueInput
+    AND?: DiveTemplateTranslationWhereInput | DiveTemplateTranslationWhereInput[]
+    OR?: DiveTemplateTranslationWhereInput[]
+    NOT?: DiveTemplateTranslationWhereInput | DiveTemplateTranslationWhereInput[]
+    templateId?: StringFilter<"DiveTemplateTranslation"> | string
+    lang?: EnumLanguageFilter<"DiveTemplateTranslation"> | $Enums.Language
+    title?: StringFilter<"DiveTemplateTranslation"> | string
+    subtitle?: StringNullableFilter<"DiveTemplateTranslation"> | string | null
+    description?: StringNullableFilter<"DiveTemplateTranslation"> | string | null
+    template?: XOR<DiveTemplateScalarRelationFilter, DiveTemplateWhereInput>
+  }, "id" | "templateId_lang">
+
+  export type DiveTemplateTranslationOrderByWithAggregationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    _count?: DiveTemplateTranslationCountOrderByAggregateInput
+    _max?: DiveTemplateTranslationMaxOrderByAggregateInput
+    _min?: DiveTemplateTranslationMinOrderByAggregateInput
+  }
+
+  export type DiveTemplateTranslationScalarWhereWithAggregatesInput = {
+    AND?: DiveTemplateTranslationScalarWhereWithAggregatesInput | DiveTemplateTranslationScalarWhereWithAggregatesInput[]
+    OR?: DiveTemplateTranslationScalarWhereWithAggregatesInput[]
+    NOT?: DiveTemplateTranslationScalarWhereWithAggregatesInput | DiveTemplateTranslationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DiveTemplateTranslation"> | string
+    templateId?: StringWithAggregatesFilter<"DiveTemplateTranslation"> | string
+    lang?: EnumLanguageWithAggregatesFilter<"DiveTemplateTranslation"> | $Enums.Language
+    title?: StringWithAggregatesFilter<"DiveTemplateTranslation"> | string
+    subtitle?: StringNullableWithAggregatesFilter<"DiveTemplateTranslation"> | string | null
+    description?: StringNullableWithAggregatesFilter<"DiveTemplateTranslation"> | string | null
+  }
+
+  export type DiveProfilePointWhereInput = {
+    AND?: DiveProfilePointWhereInput | DiveProfilePointWhereInput[]
+    OR?: DiveProfilePointWhereInput[]
+    NOT?: DiveProfilePointWhereInput | DiveProfilePointWhereInput[]
+    id?: StringFilter<"DiveProfilePoint"> | string
+    templateId?: StringFilter<"DiveProfilePoint"> | string
+    sortOrder?: IntFilter<"DiveProfilePoint"> | number
+    timeSeconds?: IntFilter<"DiveProfilePoint"> | number
+    depthMeters?: IntFilter<"DiveProfilePoint"> | number
+    template?: XOR<DiveTemplateScalarRelationFilter, DiveTemplateWhereInput>
+  }
+
+  export type DiveProfilePointOrderByWithRelationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    timeSeconds?: SortOrder
+    depthMeters?: SortOrder
+    template?: DiveTemplateOrderByWithRelationInput
+  }
+
+  export type DiveProfilePointWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DiveProfilePointWhereInput | DiveProfilePointWhereInput[]
+    OR?: DiveProfilePointWhereInput[]
+    NOT?: DiveProfilePointWhereInput | DiveProfilePointWhereInput[]
+    templateId?: StringFilter<"DiveProfilePoint"> | string
+    sortOrder?: IntFilter<"DiveProfilePoint"> | number
+    timeSeconds?: IntFilter<"DiveProfilePoint"> | number
+    depthMeters?: IntFilter<"DiveProfilePoint"> | number
+    template?: XOR<DiveTemplateScalarRelationFilter, DiveTemplateWhereInput>
+  }, "id">
+
+  export type DiveProfilePointOrderByWithAggregationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    timeSeconds?: SortOrder
+    depthMeters?: SortOrder
+    _count?: DiveProfilePointCountOrderByAggregateInput
+    _avg?: DiveProfilePointAvgOrderByAggregateInput
+    _max?: DiveProfilePointMaxOrderByAggregateInput
+    _min?: DiveProfilePointMinOrderByAggregateInput
+    _sum?: DiveProfilePointSumOrderByAggregateInput
+  }
+
+  export type DiveProfilePointScalarWhereWithAggregatesInput = {
+    AND?: DiveProfilePointScalarWhereWithAggregatesInput | DiveProfilePointScalarWhereWithAggregatesInput[]
+    OR?: DiveProfilePointScalarWhereWithAggregatesInput[]
+    NOT?: DiveProfilePointScalarWhereWithAggregatesInput | DiveProfilePointScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DiveProfilePoint"> | string
+    templateId?: StringWithAggregatesFilter<"DiveProfilePoint"> | string
+    sortOrder?: IntWithAggregatesFilter<"DiveProfilePoint"> | number
+    timeSeconds?: IntWithAggregatesFilter<"DiveProfilePoint"> | number
+    depthMeters?: IntWithAggregatesFilter<"DiveProfilePoint"> | number
+  }
+
+  export type DiveRunWhereInput = {
+    AND?: DiveRunWhereInput | DiveRunWhereInput[]
+    OR?: DiveRunWhereInput[]
+    NOT?: DiveRunWhereInput | DiveRunWhereInput[]
+    id?: StringFilter<"DiveRun"> | string
+    userId?: StringFilter<"DiveRun"> | string
+    templateId?: StringFilter<"DiveRun"> | string
+    startedAt?: DateTimeFilter<"DiveRun"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"DiveRun"> | Date | string | null
+    holdSeconds?: IntNullableFilter<"DiveRun"> | number | null
+    maxDepthMeters?: IntNullableFilter<"DiveRun"> | number | null
+    completed?: BoolFilter<"DiveRun"> | boolean
+    metrics?: JsonNullableFilter<"DiveRun">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    template?: XOR<DiveTemplateScalarRelationFilter, DiveTemplateWhereInput>
+  }
+
+  export type DiveRunOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    holdSeconds?: SortOrderInput | SortOrder
+    maxDepthMeters?: SortOrderInput | SortOrder
+    completed?: SortOrder
+    metrics?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    template?: DiveTemplateOrderByWithRelationInput
+  }
+
+  export type DiveRunWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DiveRunWhereInput | DiveRunWhereInput[]
+    OR?: DiveRunWhereInput[]
+    NOT?: DiveRunWhereInput | DiveRunWhereInput[]
+    userId?: StringFilter<"DiveRun"> | string
+    templateId?: StringFilter<"DiveRun"> | string
+    startedAt?: DateTimeFilter<"DiveRun"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"DiveRun"> | Date | string | null
+    holdSeconds?: IntNullableFilter<"DiveRun"> | number | null
+    maxDepthMeters?: IntNullableFilter<"DiveRun"> | number | null
+    completed?: BoolFilter<"DiveRun"> | boolean
+    metrics?: JsonNullableFilter<"DiveRun">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    template?: XOR<DiveTemplateScalarRelationFilter, DiveTemplateWhereInput>
+  }, "id">
+
+  export type DiveRunOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    holdSeconds?: SortOrderInput | SortOrder
+    maxDepthMeters?: SortOrderInput | SortOrder
+    completed?: SortOrder
+    metrics?: SortOrderInput | SortOrder
+    _count?: DiveRunCountOrderByAggregateInput
+    _avg?: DiveRunAvgOrderByAggregateInput
+    _max?: DiveRunMaxOrderByAggregateInput
+    _min?: DiveRunMinOrderByAggregateInput
+    _sum?: DiveRunSumOrderByAggregateInput
+  }
+
+  export type DiveRunScalarWhereWithAggregatesInput = {
+    AND?: DiveRunScalarWhereWithAggregatesInput | DiveRunScalarWhereWithAggregatesInput[]
+    OR?: DiveRunScalarWhereWithAggregatesInput[]
+    NOT?: DiveRunScalarWhereWithAggregatesInput | DiveRunScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DiveRun"> | string
+    userId?: StringWithAggregatesFilter<"DiveRun"> | string
+    templateId?: StringWithAggregatesFilter<"DiveRun"> | string
+    startedAt?: DateTimeWithAggregatesFilter<"DiveRun"> | Date | string
+    finishedAt?: DateTimeNullableWithAggregatesFilter<"DiveRun"> | Date | string | null
+    holdSeconds?: IntNullableWithAggregatesFilter<"DiveRun"> | number | null
+    maxDepthMeters?: IntNullableWithAggregatesFilter<"DiveRun"> | number | null
+    completed?: BoolWithAggregatesFilter<"DiveRun"> | boolean
+    metrics?: JsonNullableWithAggregatesFilter<"DiveRun">
+  }
+
   export type UserCreateInput = {
     id?: string
     appleSub: string
@@ -16846,6 +24732,9 @@ export namespace Prisma {
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
     privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
     trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -16857,6 +24746,9 @@ export namespace Prisma {
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
     trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheUncheckedCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -16868,6 +24760,9 @@ export namespace Prisma {
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
     trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -16879,6 +24774,9 @@ export namespace Prisma {
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
     trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUncheckedUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -17711,6 +25609,411 @@ export namespace Prisma {
     metrics?: NullableJsonNullValueInput | InputJsonValue
   }
 
+  export type UserAchievementCreateInput = {
+    id?: string
+    type: $Enums.AchievementType
+    scopeKey?: string
+    unlockedAt?: Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    user: UserCreateNestedOneWithoutAchievementsInput
+  }
+
+  export type UserAchievementUncheckedCreateInput = {
+    id?: string
+    userId: string
+    type: $Enums.AchievementType
+    scopeKey?: string
+    unlockedAt?: Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAchievementTypeFieldUpdateOperationsInput | $Enums.AchievementType
+    scopeKey?: StringFieldUpdateOperationsInput | string
+    unlockedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+    user?: UserUpdateOneRequiredWithoutAchievementsNestedInput
+  }
+
+  export type UserAchievementUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAchievementTypeFieldUpdateOperationsInput | $Enums.AchievementType
+    scopeKey?: StringFieldUpdateOperationsInput | string
+    unlockedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementCreateManyInput = {
+    id?: string
+    userId: string
+    type: $Enums.AchievementType
+    scopeKey?: string
+    unlockedAt?: Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAchievementTypeFieldUpdateOperationsInput | $Enums.AchievementType
+    scopeKey?: StringFieldUpdateOperationsInput | string
+    unlockedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAchievementTypeFieldUpdateOperationsInput | $Enums.AchievementType
+    scopeKey?: StringFieldUpdateOperationsInput | string
+    unlockedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingProgressCacheCreateInput = {
+    updatedAt?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+    user: UserCreateNestedOneWithoutProgressCacheInput
+  }
+
+  export type TrainingProgressCacheUncheckedCreateInput = {
+    userId: string
+    updatedAt?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingProgressCacheUpdateInput = {
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+    user?: UserUpdateOneRequiredWithoutProgressCacheNestedInput
+  }
+
+  export type TrainingProgressCacheUncheckedUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingProgressCacheCreateManyInput = {
+    userId: string
+    updatedAt?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingProgressCacheUpdateManyMutationInput = {
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingProgressCacheUncheckedUpdateManyInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveTemplateCreateInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: DiveTemplateTranslationCreateNestedManyWithoutTemplateInput
+    profilePoints?: DiveProfilePointCreateNestedManyWithoutTemplateInput
+    runs?: DiveRunCreateNestedManyWithoutTemplateInput
+  }
+
+  export type DiveTemplateUncheckedCreateInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: DiveTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput
+    profilePoints?: DiveProfilePointUncheckedCreateNestedManyWithoutTemplateInput
+    runs?: DiveRunUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type DiveTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: DiveTemplateTranslationUpdateManyWithoutTemplateNestedInput
+    profilePoints?: DiveProfilePointUpdateManyWithoutTemplateNestedInput
+    runs?: DiveRunUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type DiveTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: DiveTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput
+    profilePoints?: DiveProfilePointUncheckedUpdateManyWithoutTemplateNestedInput
+    runs?: DiveRunUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type DiveTemplateCreateManyInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DiveTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiveTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiveTemplateTranslationCreateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+    template: DiveTemplateCreateNestedOneWithoutTranslationsInput
+  }
+
+  export type DiveTemplateTranslationUncheckedCreateInput = {
+    id?: string
+    templateId: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type DiveTemplateTranslationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    template?: DiveTemplateUpdateOneRequiredWithoutTranslationsNestedInput
+  }
+
+  export type DiveTemplateTranslationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DiveTemplateTranslationCreateManyInput = {
+    id?: string
+    templateId: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type DiveTemplateTranslationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DiveTemplateTranslationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DiveProfilePointCreateInput = {
+    id?: string
+    sortOrder: number
+    timeSeconds: number
+    depthMeters: number
+    template: DiveTemplateCreateNestedOneWithoutProfilePointsInput
+  }
+
+  export type DiveProfilePointUncheckedCreateInput = {
+    id?: string
+    templateId: string
+    sortOrder: number
+    timeSeconds: number
+    depthMeters: number
+  }
+
+  export type DiveProfilePointUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    timeSeconds?: IntFieldUpdateOperationsInput | number
+    depthMeters?: IntFieldUpdateOperationsInput | number
+    template?: DiveTemplateUpdateOneRequiredWithoutProfilePointsNestedInput
+  }
+
+  export type DiveProfilePointUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    timeSeconds?: IntFieldUpdateOperationsInput | number
+    depthMeters?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiveProfilePointCreateManyInput = {
+    id?: string
+    templateId: string
+    sortOrder: number
+    timeSeconds: number
+    depthMeters: number
+  }
+
+  export type DiveProfilePointUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    timeSeconds?: IntFieldUpdateOperationsInput | number
+    depthMeters?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiveProfilePointUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    timeSeconds?: IntFieldUpdateOperationsInput | number
+    depthMeters?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiveRunCreateInput = {
+    id?: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    user: UserCreateNestedOneWithoutDiveRunsInput
+    template: DiveTemplateCreateNestedOneWithoutRunsInput
+  }
+
+  export type DiveRunUncheckedCreateInput = {
+    id?: string
+    userId: string
+    templateId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    user?: UserUpdateOneRequiredWithoutDiveRunsNestedInput
+    template?: DiveTemplateUpdateOneRequiredWithoutRunsNestedInput
+  }
+
+  export type DiveRunUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunCreateManyInput = {
+    id?: string
+    userId: string
+    templateId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -17770,6 +26073,23 @@ export namespace Prisma {
     none?: TrainingRunWhereInput
   }
 
+  export type UserAchievementListRelationFilter = {
+    every?: UserAchievementWhereInput
+    some?: UserAchievementWhereInput
+    none?: UserAchievementWhereInput
+  }
+
+  export type TrainingProgressCacheNullableScalarRelationFilter = {
+    is?: TrainingProgressCacheWhereInput | null
+    isNot?: TrainingProgressCacheWhereInput | null
+  }
+
+  export type DiveRunListRelationFilter = {
+    every?: DiveRunWhereInput
+    some?: DiveRunWhereInput
+    none?: DiveRunWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -17784,6 +26104,14 @@ export namespace Prisma {
   }
 
   export type TrainingRunOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserAchievementOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DiveRunOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18576,6 +26904,324 @@ export namespace Prisma {
     _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
+  export type EnumAchievementTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AchievementType | EnumAchievementTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AchievementType[] | ListEnumAchievementTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AchievementType[] | ListEnumAchievementTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAchievementTypeFilter<$PrismaModel> | $Enums.AchievementType
+  }
+
+  export type UserAchievementUserIdTypeScopeKeyCompoundUniqueInput = {
+    userId: string
+    type: $Enums.AchievementType
+    scopeKey: string
+  }
+
+  export type UserAchievementCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    scopeKey?: SortOrder
+    unlockedAt?: SortOrder
+    payload?: SortOrder
+  }
+
+  export type UserAchievementMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    scopeKey?: SortOrder
+    unlockedAt?: SortOrder
+  }
+
+  export type UserAchievementMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    scopeKey?: SortOrder
+    unlockedAt?: SortOrder
+  }
+
+  export type EnumAchievementTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AchievementType | EnumAchievementTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AchievementType[] | ListEnumAchievementTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AchievementType[] | ListEnumAchievementTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAchievementTypeWithAggregatesFilter<$PrismaModel> | $Enums.AchievementType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAchievementTypeFilter<$PrismaModel>
+    _max?: NestedEnumAchievementTypeFilter<$PrismaModel>
+  }
+  export type JsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type TrainingProgressCacheCountOrderByAggregateInput = {
+    userId?: SortOrder
+    updatedAt?: SortOrder
+    data?: SortOrder
+  }
+
+  export type TrainingProgressCacheMaxOrderByAggregateInput = {
+    userId?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TrainingProgressCacheMinOrderByAggregateInput = {
+    userId?: SortOrder
+    updatedAt?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type EnumDiveDifficultyFilter<$PrismaModel = never> = {
+    equals?: $Enums.DiveDifficulty | EnumDiveDifficultyFieldRefInput<$PrismaModel>
+    in?: $Enums.DiveDifficulty[] | ListEnumDiveDifficultyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DiveDifficulty[] | ListEnumDiveDifficultyFieldRefInput<$PrismaModel>
+    not?: NestedEnumDiveDifficultyFilter<$PrismaModel> | $Enums.DiveDifficulty
+  }
+
+  export type DiveTemplateTranslationListRelationFilter = {
+    every?: DiveTemplateTranslationWhereInput
+    some?: DiveTemplateTranslationWhereInput
+    none?: DiveTemplateTranslationWhereInput
+  }
+
+  export type DiveProfilePointListRelationFilter = {
+    every?: DiveProfilePointWhereInput
+    some?: DiveProfilePointWhereInput
+    none?: DiveProfilePointWhereInput
+  }
+
+  export type DiveTemplateTranslationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DiveProfilePointOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DiveTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    difficulty?: SortOrder
+    maxDepthMeters?: SortOrder
+    targetHoldSeconds?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiveTemplateAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+    maxDepthMeters?: SortOrder
+    targetHoldSeconds?: SortOrder
+  }
+
+  export type DiveTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    difficulty?: SortOrder
+    maxDepthMeters?: SortOrder
+    targetHoldSeconds?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiveTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    sortOrder?: SortOrder
+    isPublished?: SortOrder
+    isPremium?: SortOrder
+    difficulty?: SortOrder
+    maxDepthMeters?: SortOrder
+    targetHoldSeconds?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiveTemplateSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+    maxDepthMeters?: SortOrder
+    targetHoldSeconds?: SortOrder
+  }
+
+  export type EnumDiveDifficultyWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DiveDifficulty | EnumDiveDifficultyFieldRefInput<$PrismaModel>
+    in?: $Enums.DiveDifficulty[] | ListEnumDiveDifficultyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DiveDifficulty[] | ListEnumDiveDifficultyFieldRefInput<$PrismaModel>
+    not?: NestedEnumDiveDifficultyWithAggregatesFilter<$PrismaModel> | $Enums.DiveDifficulty
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDiveDifficultyFilter<$PrismaModel>
+    _max?: NestedEnumDiveDifficultyFilter<$PrismaModel>
+  }
+
+  export type DiveTemplateScalarRelationFilter = {
+    is?: DiveTemplateWhereInput
+    isNot?: DiveTemplateWhereInput
+  }
+
+  export type DiveTemplateTranslationTemplateIdLangCompoundUniqueInput = {
+    templateId: string
+    lang: $Enums.Language
+  }
+
+  export type DiveTemplateTranslationCountOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+  }
+
+  export type DiveTemplateTranslationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+  }
+
+  export type DiveTemplateTranslationMinOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    lang?: SortOrder
+    title?: SortOrder
+    subtitle?: SortOrder
+    description?: SortOrder
+  }
+
+  export type DiveProfilePointCountOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    timeSeconds?: SortOrder
+    depthMeters?: SortOrder
+  }
+
+  export type DiveProfilePointAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+    timeSeconds?: SortOrder
+    depthMeters?: SortOrder
+  }
+
+  export type DiveProfilePointMaxOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    timeSeconds?: SortOrder
+    depthMeters?: SortOrder
+  }
+
+  export type DiveProfilePointMinOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    sortOrder?: SortOrder
+    timeSeconds?: SortOrder
+    depthMeters?: SortOrder
+  }
+
+  export type DiveProfilePointSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+    timeSeconds?: SortOrder
+    depthMeters?: SortOrder
+  }
+
+  export type DiveRunCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrder
+    holdSeconds?: SortOrder
+    maxDepthMeters?: SortOrder
+    completed?: SortOrder
+    metrics?: SortOrder
+  }
+
+  export type DiveRunAvgOrderByAggregateInput = {
+    holdSeconds?: SortOrder
+    maxDepthMeters?: SortOrder
+  }
+
+  export type DiveRunMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrder
+    holdSeconds?: SortOrder
+    maxDepthMeters?: SortOrder
+    completed?: SortOrder
+  }
+
+  export type DiveRunMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    templateId?: SortOrder
+    startedAt?: SortOrder
+    finishedAt?: SortOrder
+    holdSeconds?: SortOrder
+    maxDepthMeters?: SortOrder
+    completed?: SortOrder
+  }
+
+  export type DiveRunSumOrderByAggregateInput = {
+    holdSeconds?: SortOrder
+    maxDepthMeters?: SortOrder
+  }
+
   export type RefreshTokenCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput> | RefreshTokenCreateWithoutUserInput[] | RefreshTokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput | RefreshTokenCreateOrConnectWithoutUserInput[]
@@ -18597,6 +27243,26 @@ export namespace Prisma {
     connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
   }
 
+  export type UserAchievementCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserAchievementCreateWithoutUserInput, UserAchievementUncheckedCreateWithoutUserInput> | UserAchievementCreateWithoutUserInput[] | UserAchievementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserAchievementCreateOrConnectWithoutUserInput | UserAchievementCreateOrConnectWithoutUserInput[]
+    createMany?: UserAchievementCreateManyUserInputEnvelope
+    connect?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+  }
+
+  export type TrainingProgressCacheCreateNestedOneWithoutUserInput = {
+    create?: XOR<TrainingProgressCacheCreateWithoutUserInput, TrainingProgressCacheUncheckedCreateWithoutUserInput>
+    connectOrCreate?: TrainingProgressCacheCreateOrConnectWithoutUserInput
+    connect?: TrainingProgressCacheWhereUniqueInput
+  }
+
+  export type DiveRunCreateNestedManyWithoutUserInput = {
+    create?: XOR<DiveRunCreateWithoutUserInput, DiveRunUncheckedCreateWithoutUserInput> | DiveRunCreateWithoutUserInput[] | DiveRunUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DiveRunCreateOrConnectWithoutUserInput | DiveRunCreateOrConnectWithoutUserInput[]
+    createMany?: DiveRunCreateManyUserInputEnvelope
+    connect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+  }
+
   export type RefreshTokenUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput> | RefreshTokenCreateWithoutUserInput[] | RefreshTokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput | RefreshTokenCreateOrConnectWithoutUserInput[]
@@ -18616,6 +27282,26 @@ export namespace Prisma {
     connectOrCreate?: TrainingRunCreateOrConnectWithoutUserInput | TrainingRunCreateOrConnectWithoutUserInput[]
     createMany?: TrainingRunCreateManyUserInputEnvelope
     connect?: TrainingRunWhereUniqueInput | TrainingRunWhereUniqueInput[]
+  }
+
+  export type UserAchievementUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserAchievementCreateWithoutUserInput, UserAchievementUncheckedCreateWithoutUserInput> | UserAchievementCreateWithoutUserInput[] | UserAchievementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserAchievementCreateOrConnectWithoutUserInput | UserAchievementCreateOrConnectWithoutUserInput[]
+    createMany?: UserAchievementCreateManyUserInputEnvelope
+    connect?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+  }
+
+  export type TrainingProgressCacheUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<TrainingProgressCacheCreateWithoutUserInput, TrainingProgressCacheUncheckedCreateWithoutUserInput>
+    connectOrCreate?: TrainingProgressCacheCreateOrConnectWithoutUserInput
+    connect?: TrainingProgressCacheWhereUniqueInput
+  }
+
+  export type DiveRunUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<DiveRunCreateWithoutUserInput, DiveRunUncheckedCreateWithoutUserInput> | DiveRunCreateWithoutUserInput[] | DiveRunUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DiveRunCreateOrConnectWithoutUserInput | DiveRunCreateOrConnectWithoutUserInput[]
+    createMany?: DiveRunCreateManyUserInputEnvelope
+    connect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -18672,6 +27358,44 @@ export namespace Prisma {
     deleteMany?: TrainingRunScalarWhereInput | TrainingRunScalarWhereInput[]
   }
 
+  export type UserAchievementUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserAchievementCreateWithoutUserInput, UserAchievementUncheckedCreateWithoutUserInput> | UserAchievementCreateWithoutUserInput[] | UserAchievementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserAchievementCreateOrConnectWithoutUserInput | UserAchievementCreateOrConnectWithoutUserInput[]
+    upsert?: UserAchievementUpsertWithWhereUniqueWithoutUserInput | UserAchievementUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserAchievementCreateManyUserInputEnvelope
+    set?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+    disconnect?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+    delete?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+    connect?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+    update?: UserAchievementUpdateWithWhereUniqueWithoutUserInput | UserAchievementUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserAchievementUpdateManyWithWhereWithoutUserInput | UserAchievementUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserAchievementScalarWhereInput | UserAchievementScalarWhereInput[]
+  }
+
+  export type TrainingProgressCacheUpdateOneWithoutUserNestedInput = {
+    create?: XOR<TrainingProgressCacheCreateWithoutUserInput, TrainingProgressCacheUncheckedCreateWithoutUserInput>
+    connectOrCreate?: TrainingProgressCacheCreateOrConnectWithoutUserInput
+    upsert?: TrainingProgressCacheUpsertWithoutUserInput
+    disconnect?: TrainingProgressCacheWhereInput | boolean
+    delete?: TrainingProgressCacheWhereInput | boolean
+    connect?: TrainingProgressCacheWhereUniqueInput
+    update?: XOR<XOR<TrainingProgressCacheUpdateToOneWithWhereWithoutUserInput, TrainingProgressCacheUpdateWithoutUserInput>, TrainingProgressCacheUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DiveRunUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DiveRunCreateWithoutUserInput, DiveRunUncheckedCreateWithoutUserInput> | DiveRunCreateWithoutUserInput[] | DiveRunUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DiveRunCreateOrConnectWithoutUserInput | DiveRunCreateOrConnectWithoutUserInput[]
+    upsert?: DiveRunUpsertWithWhereUniqueWithoutUserInput | DiveRunUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DiveRunCreateManyUserInputEnvelope
+    set?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    disconnect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    delete?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    connect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    update?: DiveRunUpdateWithWhereUniqueWithoutUserInput | DiveRunUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DiveRunUpdateManyWithWhereWithoutUserInput | DiveRunUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DiveRunScalarWhereInput | DiveRunScalarWhereInput[]
+  }
+
   export type RefreshTokenUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput> | RefreshTokenCreateWithoutUserInput[] | RefreshTokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput | RefreshTokenCreateOrConnectWithoutUserInput[]
@@ -18712,6 +27436,44 @@ export namespace Prisma {
     update?: TrainingRunUpdateWithWhereUniqueWithoutUserInput | TrainingRunUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: TrainingRunUpdateManyWithWhereWithoutUserInput | TrainingRunUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: TrainingRunScalarWhereInput | TrainingRunScalarWhereInput[]
+  }
+
+  export type UserAchievementUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserAchievementCreateWithoutUserInput, UserAchievementUncheckedCreateWithoutUserInput> | UserAchievementCreateWithoutUserInput[] | UserAchievementUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserAchievementCreateOrConnectWithoutUserInput | UserAchievementCreateOrConnectWithoutUserInput[]
+    upsert?: UserAchievementUpsertWithWhereUniqueWithoutUserInput | UserAchievementUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserAchievementCreateManyUserInputEnvelope
+    set?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+    disconnect?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+    delete?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+    connect?: UserAchievementWhereUniqueInput | UserAchievementWhereUniqueInput[]
+    update?: UserAchievementUpdateWithWhereUniqueWithoutUserInput | UserAchievementUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserAchievementUpdateManyWithWhereWithoutUserInput | UserAchievementUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserAchievementScalarWhereInput | UserAchievementScalarWhereInput[]
+  }
+
+  export type TrainingProgressCacheUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<TrainingProgressCacheCreateWithoutUserInput, TrainingProgressCacheUncheckedCreateWithoutUserInput>
+    connectOrCreate?: TrainingProgressCacheCreateOrConnectWithoutUserInput
+    upsert?: TrainingProgressCacheUpsertWithoutUserInput
+    disconnect?: TrainingProgressCacheWhereInput | boolean
+    delete?: TrainingProgressCacheWhereInput | boolean
+    connect?: TrainingProgressCacheWhereUniqueInput
+    update?: XOR<XOR<TrainingProgressCacheUpdateToOneWithWhereWithoutUserInput, TrainingProgressCacheUpdateWithoutUserInput>, TrainingProgressCacheUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DiveRunUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DiveRunCreateWithoutUserInput, DiveRunUncheckedCreateWithoutUserInput> | DiveRunCreateWithoutUserInput[] | DiveRunUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DiveRunCreateOrConnectWithoutUserInput | DiveRunCreateOrConnectWithoutUserInput[]
+    upsert?: DiveRunUpsertWithWhereUniqueWithoutUserInput | DiveRunUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DiveRunCreateManyUserInputEnvelope
+    set?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    disconnect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    delete?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    connect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    update?: DiveRunUpdateWithWhereUniqueWithoutUserInput | DiveRunUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DiveRunUpdateManyWithWhereWithoutUserInput | DiveRunUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DiveRunScalarWhereInput | DiveRunScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutRefreshTokensInput = {
@@ -19252,6 +28014,224 @@ export namespace Prisma {
     update?: XOR<XOR<TrainingTemplateUpdateToOneWithWhereWithoutRunsInput, TrainingTemplateUpdateWithoutRunsInput>, TrainingTemplateUncheckedUpdateWithoutRunsInput>
   }
 
+  export type UserCreateNestedOneWithoutAchievementsInput = {
+    create?: XOR<UserCreateWithoutAchievementsInput, UserUncheckedCreateWithoutAchievementsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAchievementsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumAchievementTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AchievementType
+  }
+
+  export type UserUpdateOneRequiredWithoutAchievementsNestedInput = {
+    create?: XOR<UserCreateWithoutAchievementsInput, UserUncheckedCreateWithoutAchievementsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAchievementsInput
+    upsert?: UserUpsertWithoutAchievementsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAchievementsInput, UserUpdateWithoutAchievementsInput>, UserUncheckedUpdateWithoutAchievementsInput>
+  }
+
+  export type UserCreateNestedOneWithoutProgressCacheInput = {
+    create?: XOR<UserCreateWithoutProgressCacheInput, UserUncheckedCreateWithoutProgressCacheInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProgressCacheInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutProgressCacheNestedInput = {
+    create?: XOR<UserCreateWithoutProgressCacheInput, UserUncheckedCreateWithoutProgressCacheInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProgressCacheInput
+    upsert?: UserUpsertWithoutProgressCacheInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProgressCacheInput, UserUpdateWithoutProgressCacheInput>, UserUncheckedUpdateWithoutProgressCacheInput>
+  }
+
+  export type DiveTemplateTranslationCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<DiveTemplateTranslationCreateWithoutTemplateInput, DiveTemplateTranslationUncheckedCreateWithoutTemplateInput> | DiveTemplateTranslationCreateWithoutTemplateInput[] | DiveTemplateTranslationUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveTemplateTranslationCreateOrConnectWithoutTemplateInput | DiveTemplateTranslationCreateOrConnectWithoutTemplateInput[]
+    createMany?: DiveTemplateTranslationCreateManyTemplateInputEnvelope
+    connect?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+  }
+
+  export type DiveProfilePointCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<DiveProfilePointCreateWithoutTemplateInput, DiveProfilePointUncheckedCreateWithoutTemplateInput> | DiveProfilePointCreateWithoutTemplateInput[] | DiveProfilePointUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveProfilePointCreateOrConnectWithoutTemplateInput | DiveProfilePointCreateOrConnectWithoutTemplateInput[]
+    createMany?: DiveProfilePointCreateManyTemplateInputEnvelope
+    connect?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+  }
+
+  export type DiveRunCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<DiveRunCreateWithoutTemplateInput, DiveRunUncheckedCreateWithoutTemplateInput> | DiveRunCreateWithoutTemplateInput[] | DiveRunUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveRunCreateOrConnectWithoutTemplateInput | DiveRunCreateOrConnectWithoutTemplateInput[]
+    createMany?: DiveRunCreateManyTemplateInputEnvelope
+    connect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+  }
+
+  export type DiveTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<DiveTemplateTranslationCreateWithoutTemplateInput, DiveTemplateTranslationUncheckedCreateWithoutTemplateInput> | DiveTemplateTranslationCreateWithoutTemplateInput[] | DiveTemplateTranslationUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveTemplateTranslationCreateOrConnectWithoutTemplateInput | DiveTemplateTranslationCreateOrConnectWithoutTemplateInput[]
+    createMany?: DiveTemplateTranslationCreateManyTemplateInputEnvelope
+    connect?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+  }
+
+  export type DiveProfilePointUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<DiveProfilePointCreateWithoutTemplateInput, DiveProfilePointUncheckedCreateWithoutTemplateInput> | DiveProfilePointCreateWithoutTemplateInput[] | DiveProfilePointUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveProfilePointCreateOrConnectWithoutTemplateInput | DiveProfilePointCreateOrConnectWithoutTemplateInput[]
+    createMany?: DiveProfilePointCreateManyTemplateInputEnvelope
+    connect?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+  }
+
+  export type DiveRunUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<DiveRunCreateWithoutTemplateInput, DiveRunUncheckedCreateWithoutTemplateInput> | DiveRunCreateWithoutTemplateInput[] | DiveRunUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveRunCreateOrConnectWithoutTemplateInput | DiveRunCreateOrConnectWithoutTemplateInput[]
+    createMany?: DiveRunCreateManyTemplateInputEnvelope
+    connect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+  }
+
+  export type EnumDiveDifficultyFieldUpdateOperationsInput = {
+    set?: $Enums.DiveDifficulty
+  }
+
+  export type DiveTemplateTranslationUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<DiveTemplateTranslationCreateWithoutTemplateInput, DiveTemplateTranslationUncheckedCreateWithoutTemplateInput> | DiveTemplateTranslationCreateWithoutTemplateInput[] | DiveTemplateTranslationUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveTemplateTranslationCreateOrConnectWithoutTemplateInput | DiveTemplateTranslationCreateOrConnectWithoutTemplateInput[]
+    upsert?: DiveTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput | DiveTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: DiveTemplateTranslationCreateManyTemplateInputEnvelope
+    set?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+    disconnect?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+    delete?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+    connect?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+    update?: DiveTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput | DiveTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: DiveTemplateTranslationUpdateManyWithWhereWithoutTemplateInput | DiveTemplateTranslationUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: DiveTemplateTranslationScalarWhereInput | DiveTemplateTranslationScalarWhereInput[]
+  }
+
+  export type DiveProfilePointUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<DiveProfilePointCreateWithoutTemplateInput, DiveProfilePointUncheckedCreateWithoutTemplateInput> | DiveProfilePointCreateWithoutTemplateInput[] | DiveProfilePointUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveProfilePointCreateOrConnectWithoutTemplateInput | DiveProfilePointCreateOrConnectWithoutTemplateInput[]
+    upsert?: DiveProfilePointUpsertWithWhereUniqueWithoutTemplateInput | DiveProfilePointUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: DiveProfilePointCreateManyTemplateInputEnvelope
+    set?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+    disconnect?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+    delete?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+    connect?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+    update?: DiveProfilePointUpdateWithWhereUniqueWithoutTemplateInput | DiveProfilePointUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: DiveProfilePointUpdateManyWithWhereWithoutTemplateInput | DiveProfilePointUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: DiveProfilePointScalarWhereInput | DiveProfilePointScalarWhereInput[]
+  }
+
+  export type DiveRunUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<DiveRunCreateWithoutTemplateInput, DiveRunUncheckedCreateWithoutTemplateInput> | DiveRunCreateWithoutTemplateInput[] | DiveRunUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveRunCreateOrConnectWithoutTemplateInput | DiveRunCreateOrConnectWithoutTemplateInput[]
+    upsert?: DiveRunUpsertWithWhereUniqueWithoutTemplateInput | DiveRunUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: DiveRunCreateManyTemplateInputEnvelope
+    set?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    disconnect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    delete?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    connect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    update?: DiveRunUpdateWithWhereUniqueWithoutTemplateInput | DiveRunUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: DiveRunUpdateManyWithWhereWithoutTemplateInput | DiveRunUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: DiveRunScalarWhereInput | DiveRunScalarWhereInput[]
+  }
+
+  export type DiveTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<DiveTemplateTranslationCreateWithoutTemplateInput, DiveTemplateTranslationUncheckedCreateWithoutTemplateInput> | DiveTemplateTranslationCreateWithoutTemplateInput[] | DiveTemplateTranslationUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveTemplateTranslationCreateOrConnectWithoutTemplateInput | DiveTemplateTranslationCreateOrConnectWithoutTemplateInput[]
+    upsert?: DiveTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput | DiveTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: DiveTemplateTranslationCreateManyTemplateInputEnvelope
+    set?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+    disconnect?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+    delete?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+    connect?: DiveTemplateTranslationWhereUniqueInput | DiveTemplateTranslationWhereUniqueInput[]
+    update?: DiveTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput | DiveTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: DiveTemplateTranslationUpdateManyWithWhereWithoutTemplateInput | DiveTemplateTranslationUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: DiveTemplateTranslationScalarWhereInput | DiveTemplateTranslationScalarWhereInput[]
+  }
+
+  export type DiveProfilePointUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<DiveProfilePointCreateWithoutTemplateInput, DiveProfilePointUncheckedCreateWithoutTemplateInput> | DiveProfilePointCreateWithoutTemplateInput[] | DiveProfilePointUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveProfilePointCreateOrConnectWithoutTemplateInput | DiveProfilePointCreateOrConnectWithoutTemplateInput[]
+    upsert?: DiveProfilePointUpsertWithWhereUniqueWithoutTemplateInput | DiveProfilePointUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: DiveProfilePointCreateManyTemplateInputEnvelope
+    set?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+    disconnect?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+    delete?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+    connect?: DiveProfilePointWhereUniqueInput | DiveProfilePointWhereUniqueInput[]
+    update?: DiveProfilePointUpdateWithWhereUniqueWithoutTemplateInput | DiveProfilePointUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: DiveProfilePointUpdateManyWithWhereWithoutTemplateInput | DiveProfilePointUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: DiveProfilePointScalarWhereInput | DiveProfilePointScalarWhereInput[]
+  }
+
+  export type DiveRunUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<DiveRunCreateWithoutTemplateInput, DiveRunUncheckedCreateWithoutTemplateInput> | DiveRunCreateWithoutTemplateInput[] | DiveRunUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: DiveRunCreateOrConnectWithoutTemplateInput | DiveRunCreateOrConnectWithoutTemplateInput[]
+    upsert?: DiveRunUpsertWithWhereUniqueWithoutTemplateInput | DiveRunUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: DiveRunCreateManyTemplateInputEnvelope
+    set?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    disconnect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    delete?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    connect?: DiveRunWhereUniqueInput | DiveRunWhereUniqueInput[]
+    update?: DiveRunUpdateWithWhereUniqueWithoutTemplateInput | DiveRunUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: DiveRunUpdateManyWithWhereWithoutTemplateInput | DiveRunUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: DiveRunScalarWhereInput | DiveRunScalarWhereInput[]
+  }
+
+  export type DiveTemplateCreateNestedOneWithoutTranslationsInput = {
+    create?: XOR<DiveTemplateCreateWithoutTranslationsInput, DiveTemplateUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: DiveTemplateCreateOrConnectWithoutTranslationsInput
+    connect?: DiveTemplateWhereUniqueInput
+  }
+
+  export type DiveTemplateUpdateOneRequiredWithoutTranslationsNestedInput = {
+    create?: XOR<DiveTemplateCreateWithoutTranslationsInput, DiveTemplateUncheckedCreateWithoutTranslationsInput>
+    connectOrCreate?: DiveTemplateCreateOrConnectWithoutTranslationsInput
+    upsert?: DiveTemplateUpsertWithoutTranslationsInput
+    connect?: DiveTemplateWhereUniqueInput
+    update?: XOR<XOR<DiveTemplateUpdateToOneWithWhereWithoutTranslationsInput, DiveTemplateUpdateWithoutTranslationsInput>, DiveTemplateUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type DiveTemplateCreateNestedOneWithoutProfilePointsInput = {
+    create?: XOR<DiveTemplateCreateWithoutProfilePointsInput, DiveTemplateUncheckedCreateWithoutProfilePointsInput>
+    connectOrCreate?: DiveTemplateCreateOrConnectWithoutProfilePointsInput
+    connect?: DiveTemplateWhereUniqueInput
+  }
+
+  export type DiveTemplateUpdateOneRequiredWithoutProfilePointsNestedInput = {
+    create?: XOR<DiveTemplateCreateWithoutProfilePointsInput, DiveTemplateUncheckedCreateWithoutProfilePointsInput>
+    connectOrCreate?: DiveTemplateCreateOrConnectWithoutProfilePointsInput
+    upsert?: DiveTemplateUpsertWithoutProfilePointsInput
+    connect?: DiveTemplateWhereUniqueInput
+    update?: XOR<XOR<DiveTemplateUpdateToOneWithWhereWithoutProfilePointsInput, DiveTemplateUpdateWithoutProfilePointsInput>, DiveTemplateUncheckedUpdateWithoutProfilePointsInput>
+  }
+
+  export type UserCreateNestedOneWithoutDiveRunsInput = {
+    create?: XOR<UserCreateWithoutDiveRunsInput, UserUncheckedCreateWithoutDiveRunsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDiveRunsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type DiveTemplateCreateNestedOneWithoutRunsInput = {
+    create?: XOR<DiveTemplateCreateWithoutRunsInput, DiveTemplateUncheckedCreateWithoutRunsInput>
+    connectOrCreate?: DiveTemplateCreateOrConnectWithoutRunsInput
+    connect?: DiveTemplateWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutDiveRunsNestedInput = {
+    create?: XOR<UserCreateWithoutDiveRunsInput, UserUncheckedCreateWithoutDiveRunsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDiveRunsInput
+    upsert?: UserUpsertWithoutDiveRunsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDiveRunsInput, UserUpdateWithoutDiveRunsInput>, UserUncheckedUpdateWithoutDiveRunsInput>
+  }
+
+  export type DiveTemplateUpdateOneRequiredWithoutRunsNestedInput = {
+    create?: XOR<DiveTemplateCreateWithoutRunsInput, DiveTemplateUncheckedCreateWithoutRunsInput>
+    connectOrCreate?: DiveTemplateCreateOrConnectWithoutRunsInput
+    upsert?: DiveTemplateUpsertWithoutRunsInput
+    connect?: DiveTemplateWhereUniqueInput
+    update?: XOR<XOR<DiveTemplateUpdateToOneWithWhereWithoutRunsInput, DiveTemplateUpdateWithoutRunsInput>, DiveTemplateUncheckedUpdateWithoutRunsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -19561,6 +28541,63 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type NestedEnumAchievementTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AchievementType | EnumAchievementTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AchievementType[] | ListEnumAchievementTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AchievementType[] | ListEnumAchievementTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAchievementTypeFilter<$PrismaModel> | $Enums.AchievementType
+  }
+
+  export type NestedEnumAchievementTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AchievementType | EnumAchievementTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AchievementType[] | ListEnumAchievementTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AchievementType[] | ListEnumAchievementTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAchievementTypeWithAggregatesFilter<$PrismaModel> | $Enums.AchievementType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAchievementTypeFilter<$PrismaModel>
+    _max?: NestedEnumAchievementTypeFilter<$PrismaModel>
+  }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedEnumDiveDifficultyFilter<$PrismaModel = never> = {
+    equals?: $Enums.DiveDifficulty | EnumDiveDifficultyFieldRefInput<$PrismaModel>
+    in?: $Enums.DiveDifficulty[] | ListEnumDiveDifficultyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DiveDifficulty[] | ListEnumDiveDifficultyFieldRefInput<$PrismaModel>
+    not?: NestedEnumDiveDifficultyFilter<$PrismaModel> | $Enums.DiveDifficulty
+  }
+
+  export type NestedEnumDiveDifficultyWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DiveDifficulty | EnumDiveDifficultyFieldRefInput<$PrismaModel>
+    in?: $Enums.DiveDifficulty[] | ListEnumDiveDifficultyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DiveDifficulty[] | ListEnumDiveDifficultyFieldRefInput<$PrismaModel>
+    not?: NestedEnumDiveDifficultyWithAggregatesFilter<$PrismaModel> | $Enums.DiveDifficulty
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDiveDifficultyFilter<$PrismaModel>
+    _max?: NestedEnumDiveDifficultyFilter<$PrismaModel>
+  }
+
   export type RefreshTokenCreateWithoutUserInput = {
     id?: string
     tokenHash: string
@@ -19675,6 +28712,79 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserAchievementCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.AchievementType
+    scopeKey?: string
+    unlockedAt?: Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementUncheckedCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.AchievementType
+    scopeKey?: string
+    unlockedAt?: Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementCreateOrConnectWithoutUserInput = {
+    where: UserAchievementWhereUniqueInput
+    create: XOR<UserAchievementCreateWithoutUserInput, UserAchievementUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserAchievementCreateManyUserInputEnvelope = {
+    data: UserAchievementCreateManyUserInput | UserAchievementCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrainingProgressCacheCreateWithoutUserInput = {
+    updatedAt?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingProgressCacheUncheckedCreateWithoutUserInput = {
+    updatedAt?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingProgressCacheCreateOrConnectWithoutUserInput = {
+    where: TrainingProgressCacheWhereUniqueInput
+    create: XOR<TrainingProgressCacheCreateWithoutUserInput, TrainingProgressCacheUncheckedCreateWithoutUserInput>
+  }
+
+  export type DiveRunCreateWithoutUserInput = {
+    id?: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    template: DiveTemplateCreateNestedOneWithoutRunsInput
+  }
+
+  export type DiveRunUncheckedCreateWithoutUserInput = {
+    id?: string
+    templateId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunCreateOrConnectWithoutUserInput = {
+    where: DiveRunWhereUniqueInput
+    create: XOR<DiveRunCreateWithoutUserInput, DiveRunUncheckedCreateWithoutUserInput>
+  }
+
+  export type DiveRunCreateManyUserInputEnvelope = {
+    data: DiveRunCreateManyUserInput | DiveRunCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type RefreshTokenUpsertWithWhereUniqueWithoutUserInput = {
     where: RefreshTokenWhereUniqueInput
     update: XOR<RefreshTokenUpdateWithoutUserInput, RefreshTokenUncheckedUpdateWithoutUserInput>
@@ -19774,6 +28884,86 @@ export namespace Prisma {
     metrics?: JsonNullableFilter<"TrainingRun">
   }
 
+  export type UserAchievementUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserAchievementWhereUniqueInput
+    update: XOR<UserAchievementUpdateWithoutUserInput, UserAchievementUncheckedUpdateWithoutUserInput>
+    create: XOR<UserAchievementCreateWithoutUserInput, UserAchievementUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserAchievementUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserAchievementWhereUniqueInput
+    data: XOR<UserAchievementUpdateWithoutUserInput, UserAchievementUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserAchievementUpdateManyWithWhereWithoutUserInput = {
+    where: UserAchievementScalarWhereInput
+    data: XOR<UserAchievementUpdateManyMutationInput, UserAchievementUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserAchievementScalarWhereInput = {
+    AND?: UserAchievementScalarWhereInput | UserAchievementScalarWhereInput[]
+    OR?: UserAchievementScalarWhereInput[]
+    NOT?: UserAchievementScalarWhereInput | UserAchievementScalarWhereInput[]
+    id?: StringFilter<"UserAchievement"> | string
+    userId?: StringFilter<"UserAchievement"> | string
+    type?: EnumAchievementTypeFilter<"UserAchievement"> | $Enums.AchievementType
+    scopeKey?: StringFilter<"UserAchievement"> | string
+    unlockedAt?: DateTimeFilter<"UserAchievement"> | Date | string
+    payload?: JsonNullableFilter<"UserAchievement">
+  }
+
+  export type TrainingProgressCacheUpsertWithoutUserInput = {
+    update: XOR<TrainingProgressCacheUpdateWithoutUserInput, TrainingProgressCacheUncheckedUpdateWithoutUserInput>
+    create: XOR<TrainingProgressCacheCreateWithoutUserInput, TrainingProgressCacheUncheckedCreateWithoutUserInput>
+    where?: TrainingProgressCacheWhereInput
+  }
+
+  export type TrainingProgressCacheUpdateToOneWithWhereWithoutUserInput = {
+    where?: TrainingProgressCacheWhereInput
+    data: XOR<TrainingProgressCacheUpdateWithoutUserInput, TrainingProgressCacheUncheckedUpdateWithoutUserInput>
+  }
+
+  export type TrainingProgressCacheUpdateWithoutUserInput = {
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type TrainingProgressCacheUncheckedUpdateWithoutUserInput = {
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunUpsertWithWhereUniqueWithoutUserInput = {
+    where: DiveRunWhereUniqueInput
+    update: XOR<DiveRunUpdateWithoutUserInput, DiveRunUncheckedUpdateWithoutUserInput>
+    create: XOR<DiveRunCreateWithoutUserInput, DiveRunUncheckedCreateWithoutUserInput>
+  }
+
+  export type DiveRunUpdateWithWhereUniqueWithoutUserInput = {
+    where: DiveRunWhereUniqueInput
+    data: XOR<DiveRunUpdateWithoutUserInput, DiveRunUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DiveRunUpdateManyWithWhereWithoutUserInput = {
+    where: DiveRunScalarWhereInput
+    data: XOR<DiveRunUpdateManyMutationInput, DiveRunUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type DiveRunScalarWhereInput = {
+    AND?: DiveRunScalarWhereInput | DiveRunScalarWhereInput[]
+    OR?: DiveRunScalarWhereInput[]
+    NOT?: DiveRunScalarWhereInput | DiveRunScalarWhereInput[]
+    id?: StringFilter<"DiveRun"> | string
+    userId?: StringFilter<"DiveRun"> | string
+    templateId?: StringFilter<"DiveRun"> | string
+    startedAt?: DateTimeFilter<"DiveRun"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"DiveRun"> | Date | string | null
+    holdSeconds?: IntNullableFilter<"DiveRun"> | number | null
+    maxDepthMeters?: IntNullableFilter<"DiveRun"> | number | null
+    completed?: BoolFilter<"DiveRun"> | boolean
+    metrics?: JsonNullableFilter<"DiveRun">
+  }
+
   export type UserCreateWithoutRefreshTokensInput = {
     id?: string
     appleSub: string
@@ -19782,6 +28972,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
     trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRefreshTokensInput = {
@@ -19792,6 +28985,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
     trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheUncheckedCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRefreshTokensInput = {
@@ -19818,6 +29014,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
     trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefreshTokensInput = {
@@ -19828,6 +29027,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
     trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUncheckedUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CultureArticleTranslationCreateWithoutArticleInput = {
@@ -20363,6 +29565,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
     trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPrivateTrainingTemplatesInput = {
@@ -20373,6 +29578,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheUncheckedCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPrivateTrainingTemplatesInput = {
@@ -20512,6 +29720,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPrivateTrainingTemplatesInput = {
@@ -20522,6 +29733,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUncheckedUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TrainingTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput = {
@@ -20819,6 +30033,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
     privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTrainingRunsInput = {
@@ -20829,6 +30046,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheUncheckedCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTrainingRunsInput = {
@@ -20906,6 +30126,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTrainingRunsInput = {
@@ -20916,6 +30139,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUncheckedUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TrainingTemplateUpsertWithoutRunsInput = {
@@ -20975,6 +30201,591 @@ export namespace Prisma {
     steps?: TrainingStepUncheckedUpdateManyWithoutTemplateNestedInput
   }
 
+  export type UserCreateWithoutAchievementsInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutAchievementsInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheUncheckedCreateNestedOneWithoutUserInput
+    diveRuns?: DiveRunUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutAchievementsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAchievementsInput, UserUncheckedCreateWithoutAchievementsInput>
+  }
+
+  export type UserUpsertWithoutAchievementsInput = {
+    update: XOR<UserUpdateWithoutAchievementsInput, UserUncheckedUpdateWithoutAchievementsInput>
+    create: XOR<UserCreateWithoutAchievementsInput, UserUncheckedCreateWithoutAchievementsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAchievementsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAchievementsInput, UserUncheckedUpdateWithoutAchievementsInput>
+  }
+
+  export type UserUpdateWithoutAchievementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAchievementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUncheckedUpdateOneWithoutUserNestedInput
+    diveRuns?: DiveRunUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutProgressCacheInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    diveRuns?: DiveRunCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutProgressCacheInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    diveRuns?: DiveRunUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutProgressCacheInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProgressCacheInput, UserUncheckedCreateWithoutProgressCacheInput>
+  }
+
+  export type UserUpsertWithoutProgressCacheInput = {
+    update: XOR<UserUpdateWithoutProgressCacheInput, UserUncheckedUpdateWithoutProgressCacheInput>
+    create: XOR<UserCreateWithoutProgressCacheInput, UserUncheckedCreateWithoutProgressCacheInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProgressCacheInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProgressCacheInput, UserUncheckedUpdateWithoutProgressCacheInput>
+  }
+
+  export type UserUpdateWithoutProgressCacheInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    diveRuns?: DiveRunUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProgressCacheInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    diveRuns?: DiveRunUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type DiveTemplateTranslationCreateWithoutTemplateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type DiveTemplateTranslationUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type DiveTemplateTranslationCreateOrConnectWithoutTemplateInput = {
+    where: DiveTemplateTranslationWhereUniqueInput
+    create: XOR<DiveTemplateTranslationCreateWithoutTemplateInput, DiveTemplateTranslationUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type DiveTemplateTranslationCreateManyTemplateInputEnvelope = {
+    data: DiveTemplateTranslationCreateManyTemplateInput | DiveTemplateTranslationCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DiveProfilePointCreateWithoutTemplateInput = {
+    id?: string
+    sortOrder: number
+    timeSeconds: number
+    depthMeters: number
+  }
+
+  export type DiveProfilePointUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    sortOrder: number
+    timeSeconds: number
+    depthMeters: number
+  }
+
+  export type DiveProfilePointCreateOrConnectWithoutTemplateInput = {
+    where: DiveProfilePointWhereUniqueInput
+    create: XOR<DiveProfilePointCreateWithoutTemplateInput, DiveProfilePointUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type DiveProfilePointCreateManyTemplateInputEnvelope = {
+    data: DiveProfilePointCreateManyTemplateInput | DiveProfilePointCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DiveRunCreateWithoutTemplateInput = {
+    id?: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    user: UserCreateNestedOneWithoutDiveRunsInput
+  }
+
+  export type DiveRunUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    userId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunCreateOrConnectWithoutTemplateInput = {
+    where: DiveRunWhereUniqueInput
+    create: XOR<DiveRunCreateWithoutTemplateInput, DiveRunUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type DiveRunCreateManyTemplateInputEnvelope = {
+    data: DiveRunCreateManyTemplateInput | DiveRunCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DiveTemplateTranslationUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: DiveTemplateTranslationWhereUniqueInput
+    update: XOR<DiveTemplateTranslationUpdateWithoutTemplateInput, DiveTemplateTranslationUncheckedUpdateWithoutTemplateInput>
+    create: XOR<DiveTemplateTranslationCreateWithoutTemplateInput, DiveTemplateTranslationUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type DiveTemplateTranslationUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: DiveTemplateTranslationWhereUniqueInput
+    data: XOR<DiveTemplateTranslationUpdateWithoutTemplateInput, DiveTemplateTranslationUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type DiveTemplateTranslationUpdateManyWithWhereWithoutTemplateInput = {
+    where: DiveTemplateTranslationScalarWhereInput
+    data: XOR<DiveTemplateTranslationUpdateManyMutationInput, DiveTemplateTranslationUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type DiveTemplateTranslationScalarWhereInput = {
+    AND?: DiveTemplateTranslationScalarWhereInput | DiveTemplateTranslationScalarWhereInput[]
+    OR?: DiveTemplateTranslationScalarWhereInput[]
+    NOT?: DiveTemplateTranslationScalarWhereInput | DiveTemplateTranslationScalarWhereInput[]
+    id?: StringFilter<"DiveTemplateTranslation"> | string
+    templateId?: StringFilter<"DiveTemplateTranslation"> | string
+    lang?: EnumLanguageFilter<"DiveTemplateTranslation"> | $Enums.Language
+    title?: StringFilter<"DiveTemplateTranslation"> | string
+    subtitle?: StringNullableFilter<"DiveTemplateTranslation"> | string | null
+    description?: StringNullableFilter<"DiveTemplateTranslation"> | string | null
+  }
+
+  export type DiveProfilePointUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: DiveProfilePointWhereUniqueInput
+    update: XOR<DiveProfilePointUpdateWithoutTemplateInput, DiveProfilePointUncheckedUpdateWithoutTemplateInput>
+    create: XOR<DiveProfilePointCreateWithoutTemplateInput, DiveProfilePointUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type DiveProfilePointUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: DiveProfilePointWhereUniqueInput
+    data: XOR<DiveProfilePointUpdateWithoutTemplateInput, DiveProfilePointUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type DiveProfilePointUpdateManyWithWhereWithoutTemplateInput = {
+    where: DiveProfilePointScalarWhereInput
+    data: XOR<DiveProfilePointUpdateManyMutationInput, DiveProfilePointUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type DiveProfilePointScalarWhereInput = {
+    AND?: DiveProfilePointScalarWhereInput | DiveProfilePointScalarWhereInput[]
+    OR?: DiveProfilePointScalarWhereInput[]
+    NOT?: DiveProfilePointScalarWhereInput | DiveProfilePointScalarWhereInput[]
+    id?: StringFilter<"DiveProfilePoint"> | string
+    templateId?: StringFilter<"DiveProfilePoint"> | string
+    sortOrder?: IntFilter<"DiveProfilePoint"> | number
+    timeSeconds?: IntFilter<"DiveProfilePoint"> | number
+    depthMeters?: IntFilter<"DiveProfilePoint"> | number
+  }
+
+  export type DiveRunUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: DiveRunWhereUniqueInput
+    update: XOR<DiveRunUpdateWithoutTemplateInput, DiveRunUncheckedUpdateWithoutTemplateInput>
+    create: XOR<DiveRunCreateWithoutTemplateInput, DiveRunUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type DiveRunUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: DiveRunWhereUniqueInput
+    data: XOR<DiveRunUpdateWithoutTemplateInput, DiveRunUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type DiveRunUpdateManyWithWhereWithoutTemplateInput = {
+    where: DiveRunScalarWhereInput
+    data: XOR<DiveRunUpdateManyMutationInput, DiveRunUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type DiveTemplateCreateWithoutTranslationsInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profilePoints?: DiveProfilePointCreateNestedManyWithoutTemplateInput
+    runs?: DiveRunCreateNestedManyWithoutTemplateInput
+  }
+
+  export type DiveTemplateUncheckedCreateWithoutTranslationsInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profilePoints?: DiveProfilePointUncheckedCreateNestedManyWithoutTemplateInput
+    runs?: DiveRunUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type DiveTemplateCreateOrConnectWithoutTranslationsInput = {
+    where: DiveTemplateWhereUniqueInput
+    create: XOR<DiveTemplateCreateWithoutTranslationsInput, DiveTemplateUncheckedCreateWithoutTranslationsInput>
+  }
+
+  export type DiveTemplateUpsertWithoutTranslationsInput = {
+    update: XOR<DiveTemplateUpdateWithoutTranslationsInput, DiveTemplateUncheckedUpdateWithoutTranslationsInput>
+    create: XOR<DiveTemplateCreateWithoutTranslationsInput, DiveTemplateUncheckedCreateWithoutTranslationsInput>
+    where?: DiveTemplateWhereInput
+  }
+
+  export type DiveTemplateUpdateToOneWithWhereWithoutTranslationsInput = {
+    where?: DiveTemplateWhereInput
+    data: XOR<DiveTemplateUpdateWithoutTranslationsInput, DiveTemplateUncheckedUpdateWithoutTranslationsInput>
+  }
+
+  export type DiveTemplateUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profilePoints?: DiveProfilePointUpdateManyWithoutTemplateNestedInput
+    runs?: DiveRunUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type DiveTemplateUncheckedUpdateWithoutTranslationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profilePoints?: DiveProfilePointUncheckedUpdateManyWithoutTemplateNestedInput
+    runs?: DiveRunUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type DiveTemplateCreateWithoutProfilePointsInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: DiveTemplateTranslationCreateNestedManyWithoutTemplateInput
+    runs?: DiveRunCreateNestedManyWithoutTemplateInput
+  }
+
+  export type DiveTemplateUncheckedCreateWithoutProfilePointsInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: DiveTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput
+    runs?: DiveRunUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type DiveTemplateCreateOrConnectWithoutProfilePointsInput = {
+    where: DiveTemplateWhereUniqueInput
+    create: XOR<DiveTemplateCreateWithoutProfilePointsInput, DiveTemplateUncheckedCreateWithoutProfilePointsInput>
+  }
+
+  export type DiveTemplateUpsertWithoutProfilePointsInput = {
+    update: XOR<DiveTemplateUpdateWithoutProfilePointsInput, DiveTemplateUncheckedUpdateWithoutProfilePointsInput>
+    create: XOR<DiveTemplateCreateWithoutProfilePointsInput, DiveTemplateUncheckedCreateWithoutProfilePointsInput>
+    where?: DiveTemplateWhereInput
+  }
+
+  export type DiveTemplateUpdateToOneWithWhereWithoutProfilePointsInput = {
+    where?: DiveTemplateWhereInput
+    data: XOR<DiveTemplateUpdateWithoutProfilePointsInput, DiveTemplateUncheckedUpdateWithoutProfilePointsInput>
+  }
+
+  export type DiveTemplateUpdateWithoutProfilePointsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: DiveTemplateTranslationUpdateManyWithoutTemplateNestedInput
+    runs?: DiveRunUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type DiveTemplateUncheckedUpdateWithoutProfilePointsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: DiveTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput
+    runs?: DiveRunUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type UserCreateWithoutDiveRunsInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutDiveRunsInput = {
+    id?: string
+    appleSub: string
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
+    trainingRuns?: TrainingRunUncheckedCreateNestedManyWithoutUserInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    progressCache?: TrainingProgressCacheUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutDiveRunsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDiveRunsInput, UserUncheckedCreateWithoutDiveRunsInput>
+  }
+
+  export type DiveTemplateCreateWithoutRunsInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: DiveTemplateTranslationCreateNestedManyWithoutTemplateInput
+    profilePoints?: DiveProfilePointCreateNestedManyWithoutTemplateInput
+  }
+
+  export type DiveTemplateUncheckedCreateWithoutRunsInput = {
+    id?: string
+    slug: string
+    sortOrder?: number
+    isPublished?: boolean
+    isPremium?: boolean
+    difficulty?: $Enums.DiveDifficulty
+    maxDepthMeters: number
+    targetHoldSeconds?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    translations?: DiveTemplateTranslationUncheckedCreateNestedManyWithoutTemplateInput
+    profilePoints?: DiveProfilePointUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type DiveTemplateCreateOrConnectWithoutRunsInput = {
+    where: DiveTemplateWhereUniqueInput
+    create: XOR<DiveTemplateCreateWithoutRunsInput, DiveTemplateUncheckedCreateWithoutRunsInput>
+  }
+
+  export type UserUpsertWithoutDiveRunsInput = {
+    update: XOR<UserUpdateWithoutDiveRunsInput, UserUncheckedUpdateWithoutDiveRunsInput>
+    create: XOR<UserCreateWithoutDiveRunsInput, UserUncheckedCreateWithoutDiveRunsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDiveRunsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDiveRunsInput, UserUncheckedUpdateWithoutDiveRunsInput>
+  }
+
+  export type UserUpdateWithoutDiveRunsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDiveRunsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appleSub?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
+    trainingRuns?: TrainingRunUncheckedUpdateManyWithoutUserNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    progressCache?: TrainingProgressCacheUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type DiveTemplateUpsertWithoutRunsInput = {
+    update: XOR<DiveTemplateUpdateWithoutRunsInput, DiveTemplateUncheckedUpdateWithoutRunsInput>
+    create: XOR<DiveTemplateCreateWithoutRunsInput, DiveTemplateUncheckedCreateWithoutRunsInput>
+    where?: DiveTemplateWhereInput
+  }
+
+  export type DiveTemplateUpdateToOneWithWhereWithoutRunsInput = {
+    where?: DiveTemplateWhereInput
+    data: XOR<DiveTemplateUpdateWithoutRunsInput, DiveTemplateUncheckedUpdateWithoutRunsInput>
+  }
+
+  export type DiveTemplateUpdateWithoutRunsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: DiveTemplateTranslationUpdateManyWithoutTemplateNestedInput
+    profilePoints?: DiveProfilePointUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type DiveTemplateUncheckedUpdateWithoutRunsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    isPremium?: BoolFieldUpdateOperationsInput | boolean
+    difficulty?: EnumDiveDifficultyFieldUpdateOperationsInput | $Enums.DiveDifficulty
+    maxDepthMeters?: IntFieldUpdateOperationsInput | number
+    targetHoldSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: DiveTemplateTranslationUncheckedUpdateManyWithoutTemplateNestedInput
+    profilePoints?: DiveProfilePointUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
   export type RefreshTokenCreateManyUserInput = {
     id?: string
     tokenHash: string
@@ -21010,6 +30821,25 @@ export namespace Prisma {
     startedAt?: Date | string
     finishedAt?: Date | string | null
     totalSeconds?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementCreateManyUserInput = {
+    id?: string
+    type: $Enums.AchievementType
+    scopeKey?: string
+    unlockedAt?: Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunCreateManyUserInput = {
+    id?: string
+    templateId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
     completed?: boolean
     metrics?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -21133,6 +30963,63 @@ export namespace Prisma {
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAchievementTypeFieldUpdateOperationsInput | $Enums.AchievementType
+    scopeKey?: StringFieldUpdateOperationsInput | string
+    unlockedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAchievementTypeFieldUpdateOperationsInput | $Enums.AchievementType
+    scopeKey?: StringFieldUpdateOperationsInput | string
+    unlockedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type UserAchievementUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumAchievementTypeFieldUpdateOperationsInput | $Enums.AchievementType
+    scopeKey?: StringFieldUpdateOperationsInput | string
+    unlockedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payload?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    template?: DiveTemplateUpdateOneRequiredWithoutRunsNestedInput
+  }
+
+  export type DiveRunUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
     completed?: BoolFieldUpdateOperationsInput | boolean
     metrics?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -21423,6 +31310,110 @@ export namespace Prisma {
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveTemplateTranslationCreateManyTemplateInput = {
+    id?: string
+    lang: $Enums.Language
+    title: string
+    subtitle?: string | null
+    description?: string | null
+  }
+
+  export type DiveProfilePointCreateManyTemplateInput = {
+    id?: string
+    sortOrder: number
+    timeSeconds: number
+    depthMeters: number
+  }
+
+  export type DiveRunCreateManyTemplateInput = {
+    id?: string
+    userId: string
+    startedAt?: Date | string
+    finishedAt?: Date | string | null
+    holdSeconds?: number | null
+    maxDepthMeters?: number | null
+    completed?: boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveTemplateTranslationUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DiveTemplateTranslationUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DiveTemplateTranslationUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    lang?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    title?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DiveProfilePointUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    timeSeconds?: IntFieldUpdateOperationsInput | number
+    depthMeters?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiveProfilePointUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    timeSeconds?: IntFieldUpdateOperationsInput | number
+    depthMeters?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiveProfilePointUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    timeSeconds?: IntFieldUpdateOperationsInput | number
+    depthMeters?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DiveRunUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+    user?: UserUpdateOneRequiredWithoutDiveRunsNestedInput
+  }
+
+  export type DiveRunUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    metrics?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type DiveRunUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    holdSeconds?: NullableIntFieldUpdateOperationsInput | number | null
+    maxDepthMeters?: NullableIntFieldUpdateOperationsInput | number | null
     completed?: BoolFieldUpdateOperationsInput | boolean
     metrics?: NullableJsonNullValueInput | InputJsonValue
   }
