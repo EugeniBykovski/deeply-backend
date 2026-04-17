@@ -16,7 +16,7 @@ export class TokenService {
 
   private getAccessTtl(): JwtSignOptions['expiresIn'] {
     return (this.config.get<string>('JWT_ACCESS_TTL') ??
-      '15m') as JwtSignOptions['expiresIn'];
+      '30d') as JwtSignOptions['expiresIn'];
   }
 
   private getRefreshTtl(): JwtSignOptions['expiresIn'] {
