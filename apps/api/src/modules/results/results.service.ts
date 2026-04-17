@@ -235,7 +235,7 @@ export class ResultsService {
       }
     }
 
-    // valid runs count + valid per template (for completion)
+    // valid runs (for program progress + achievements — uses 80% threshold)
     let totalValidRuns = 0;
     const validTemplateIds = new Set<string>();
 
@@ -246,6 +246,11 @@ export class ResultsService {
         validTemplateIds.add(r.templateId);
       }
     }
+
+    // total completed runs across ALL training types (preset + private) — no threshold
+    const totalCompletedRuns = await this.prisma.trainingRun.count({
+      where: { userId, completed: true },
+    });
 
     const currentStreakDays = await this.computeStreakDays(userId);
 
@@ -289,7 +294,10 @@ export class ResultsService {
       select: {
         id: true,
         name: true,
-        runs: { select: { totalSeconds: true, startedAt: true } },
+        runs: {
+          where: { completed: true },
+          select: { totalSeconds: true, startedAt: true },
+        },
       },
     });
 
@@ -341,7 +349,7 @@ export class ResultsService {
       programs: programsOut,
       privateTrainings: privateOut,
       achievements: achievementsOut,
-      overall: { totalRuns: totalValidRuns, currentStreakDays },
+      overall: { totalRuns: totalCompletedRuns, currentStreakDays },
     };
 
     await this.prisma.trainingProgressCache.upsert({
@@ -520,6 +528,105 @@ export class ResultsService {
       completedMain: items.filter((x) => x.isMain && x.isDone).length,
       items,
     };
+  }
+
+  async getRecentRuns(userId: string, langRaw?: string, limit = 20) {
+    const lang = this.normalizeLang(langRaw);
+    const fb = this.fallback(lang);
+
+    // Training runs
+    const trainingRuns = await this.prisma.trainingRun.findMany({
+      where: { userId },
+      orderBy: { startedAt: 'desc' },
+      take: limit,
+      select: {
+        id: true,
+        startedAt: true,
+        totalSeconds: true,
+        completed: true,
+        template: {
+          select: {
+            id: true,
+            kind: true,
+            name: true,
+            translations: {
+              where: { lang: { in: [lang, fb] } },
+              select: { lang: true, title: true },
+            },
+          },
+        },
+      },
+    });
+
+    // Dive runs
+    const diveRuns = await this.prisma.diveRun.findMany({
+      where: { userId },
+      orderBy: { startedAt: 'desc' },
+      take: limit,
+      select: {
+        id: true,
+        startedAt: true,
+        holdSeconds: true,
+        completed: true,
+        template: {
+          select: {
+            id: true,
+            translations: {
+              where: { lang: { in: [lang, fb] } },
+              select: { lang: true, title: true },
+            },
+          },
+        },
+      },
+    });
+
+    type RunEntry = {
+      id: string;
+      type: 'training' | 'dive';
+      startedAt: string;
+      completed: boolean;
+      title: string;
+      totalSeconds: number | null;
+    };
+
+    const trainEntries: RunEntry[] = trainingRuns.map((r) => {
+      const tr =
+        r.template.translations.find((t) => t.lang === lang) ??
+        r.template.translations.find((t) => t.lang === fb);
+      const title =
+        r.template.kind === 'PRIVATE'
+          ? (r.template.name ?? 'Private Training')
+          : (tr?.title ?? 'Training');
+      return {
+        id: r.id,
+        type: 'training',
+        startedAt: r.startedAt.toISOString(),
+        completed: r.completed,
+        title,
+        totalSeconds: r.totalSeconds ?? null,
+      };
+    });
+
+    const diveEntries: RunEntry[] = diveRuns.map((r) => {
+      const tr =
+        r.template.translations.find((t) => t.lang === lang) ??
+        r.template.translations.find((t) => t.lang === fb);
+      return {
+        id: r.id,
+        type: 'dive',
+        startedAt: r.startedAt.toISOString(),
+        completed: r.completed,
+        title: tr?.title ?? 'Dive',
+        totalSeconds: r.holdSeconds ?? null,
+      };
+    });
+
+    // Merge and sort by date
+    const combined = [...trainEntries, ...diveEntries].sort(
+      (a, b) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime(),
+    );
+
+    return combined.slice(0, limit);
   }
 
   async getPrivateReportById(

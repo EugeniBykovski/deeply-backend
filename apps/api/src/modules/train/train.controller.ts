@@ -4,6 +4,7 @@ import {
   Get,
   Headers,
   Param,
+  Patch,
   Post,
   Query,
   UseGuards,
@@ -24,6 +25,7 @@ import { TrainService } from './train.service';
 import { TrainingDetailDto } from './dto/training-detail.dto';
 import { CreatePrivateTrainingDto } from './dto/create-private-training.dto';
 import { CreateTrainingRunDto } from './dto/create-training-run.dto';
+import { UpdateTrainingRunDto } from './dto/update-training-run.dto';
 import { JwtAccessGuard } from '../auth/guards/jwt-access.guard';
 import { OptionalJwtAccessGuard } from '../auth/guards/optional-jwt-access.guard';
 import {
@@ -198,6 +200,22 @@ export class TrainController {
     @Body() dto: CreatePrivateTrainingDto,
   ) {
     return this.train.createPrivateTemplate(user?.userId ?? null, dto);
+  }
+
+  @Patch('runs/:id')
+  @UseGuards(JwtAccessGuard)
+  @ApiBearerAuth('access-token')
+  @ApiOperation({ summary: 'Update a training run (mark complete, add totalSeconds)' })
+  @ApiOkResponse({ schema: { example: { id: 'ck...', completed: true, totalSeconds: 180, startedAt: '2026-02-26T12:00:00.000Z', finishedAt: '2026-02-26T12:03:00.000Z' } } })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized / not your run' })
+  @ApiNotFoundResponse({ description: 'Run not found' })
+  @ApiParam({ name: 'id', example: 'ck...' })
+  updateRun(
+    @CurrentUser() user: CurrentUserType,
+    @Param('id') id: string,
+    @Body() dto: UpdateTrainingRunDto,
+  ) {
+    return this.train.updateRun(user.userId, id, dto);
   }
 
   @Post('runs')

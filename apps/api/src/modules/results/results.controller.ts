@@ -133,6 +133,18 @@ export class ResultsController {
     return this.results.getProgramReport(user.userId, slug, resolvedLang);
   }
 
+  @Get('recent')
+  @ApiOperation({ summary: 'Recent training + dive runs (last 20, merged & sorted)' })
+  @ApiQuery({ name: 'lang', required: false, enum: LANGUAGE_ENUM, example: 'en' })
+  @ApiHeader({ name: 'accept-language', required: false, example: 'en' })
+  recentRuns(
+    @CurrentUser() user: CurrentUserType,
+    @Query('lang') lang?: string,
+    @Headers('accept-language') acceptLanguage?: string,
+  ) {
+    return this.results.getRecentRuns(user.userId, lang ?? acceptLanguage);
+  }
+
   @Get('private/:id')
   @ApiOperation({
     summary: 'Private training report by template id (runs + stats)',

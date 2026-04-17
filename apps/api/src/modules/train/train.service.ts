@@ -315,6 +315,57 @@ export class TrainService {
     return { id: created.id };
   }
 
+  async updateRun(userId: string, runId: string, dto: any) {
+    const run = await this.prisma.trainingRun.findUnique({
+      where: { id: runId },
+      select: { id: true, userId: true },
+    });
+
+    if (!run) throw new NotFoundException('Run not found');
+    if (run.userId !== userId)
+      throw new UnauthorizedException('Not your run');
+
+    const updated = await this.prisma.trainingRun.update({
+      where: { id: runId },
+      data: {
+        ...(dto.completed !== undefined ? { completed: dto.completed } : {}),
+        ...(dto.totalSeconds !== undefined
+          ? {
+              totalSeconds: dto.totalSeconds,
+              finishedAt: new Date(),
+            }
+          : {}),
+        // Always set finishedAt when marking completed, even without totalSeconds
+        ...(dto.completed === true && dto.totalSeconds === undefined
+          ? { finishedAt: new Date() }
+          : {}),
+        ...(dto.metrics !== undefined ? { metrics: dto.metrics } : {}),
+      },
+      select: {
+        id: true,
+        completed: true,
+        totalSeconds: true,
+        startedAt: true,
+        finishedAt: true,
+      },
+    });
+
+    // Bust the summary cache so the next getSummary() call sees this completion.
+    // Without this, getSummary() compares cache.updatedAt against run.startedAt
+    // (which never changes after completion) and incorrectly serves stale data.
+    if (dto.completed === true) {
+      await this.prisma.trainingProgressCache.deleteMany({ where: { userId } });
+    }
+
+    return {
+      id: updated.id,
+      completed: updated.completed,
+      totalSeconds: updated.totalSeconds,
+      startedAt: updated.startedAt.toISOString(),
+      finishedAt: updated.finishedAt?.toISOString() ?? null,
+    };
+  }
+
   async createRun(userId: string, dto: any) {
     const template = await this.prisma.trainingTemplate.findUnique({
       where: { id: dto.templateId },
