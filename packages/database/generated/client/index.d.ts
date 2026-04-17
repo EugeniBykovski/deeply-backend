@@ -133,7 +133,10 @@ export const TrainingProgramKey: {
   INTERMEDIATE: 'INTERMEDIATE',
   PRO: 'PRO',
   SQUARE: 'SQUARE',
-  CALMING: 'CALMING'
+  CALMING: 'CALMING',
+  DYNAMIC: 'DYNAMIC',
+  STATIC: 'STATIC',
+  WARM_UP: 'WARM_UP'
 };
 
 export type TrainingProgramKey = (typeof TrainingProgramKey)[keyof typeof TrainingProgramKey]

@@ -22,13 +22,9 @@ function estimatedMinutes(steps: Step[], repeats: number) {
 }
 
 function normalizePointsTarget(i: number) {
-  return 8 + ((i - 1) % 5);
+  return 8 + ((i - 1) % 6);
 }
 
-/**
- * Build steps by repeating a cycle until we reach pointsTarget.
- * Allows per-cycle adjustments for ladder workouts.
- */
 function buildSteps(
   cycle: Step[],
   pointsTarget: number,
@@ -58,7 +54,7 @@ type Pattern = {
   en: { title: string; subtitle: string; description: string };
   build: (pointsTarget: number, level: number) => Step[];
   repeats: (i: number) => number;
-  intensity: (i: number) => number; // 1..10
+  intensity: (i: number) => number;
   saveCO2: boolean;
 };
 
@@ -72,6 +68,7 @@ type ProgramDef = {
 };
 
 const PROGRAMS: ProgramDef[] = [
+  // ── 1. BEGINNER ──────────────────────────────────────────────────────────────
   {
     key: TrainingProgramKey.BEGINNER,
     slug: "beginner",
@@ -100,15 +97,12 @@ const PROGRAMS: ProgramDef[] = [
           description: "Even breathing. Exhale slightly longer than inhale.",
         },
         build: (points, level) =>
-          buildSteps(
-            [
-              { phase: BreathPhase.INHALE, durationSeconds: 4 + level },
-              { phase: BreathPhase.EXHALE, durationSeconds: 6 + level },
-              { phase: BreathPhase.REST, durationSeconds: 2 },
-            ],
-            points,
-          ),
-        repeats: (i) => 1,
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 + level },
+            { phase: BreathPhase.EXHALE, durationSeconds: 6 + level },
+            { phase: BreathPhase.REST, durationSeconds: 2 },
+          ], points),
+        repeats: () => 1,
         intensity: (i) => clamp(2 + Math.floor((i - 1) / 7), 1, 4),
         saveCO2: false,
       },
@@ -117,8 +111,7 @@ const PROGRAMS: ProgramDef[] = [
         ru: {
           title: "Мягкая задержка",
           subtitle: "Intro hold",
-          description:
-            "Лёгкая задержка после вдоха. Без усилия — только контроль.",
+          description: "Лёгкая задержка после вдоха. Без усилия — только контроль.",
         },
         en: {
           title: "Gentle hold",
@@ -126,16 +119,13 @@ const PROGRAMS: ProgramDef[] = [
           description: "Easy hold after inhale. No forcing — just control.",
         },
         build: (points, level) =>
-          buildSteps(
-            [
-              { phase: BreathPhase.INHALE, durationSeconds: 5 + level },
-              { phase: BreathPhase.HOLD, durationSeconds: 10 + level * 2 },
-              { phase: BreathPhase.EXHALE, durationSeconds: 6 + level },
-              { phase: BreathPhase.REST, durationSeconds: 3 },
-            ],
-            points,
-          ),
-        repeats: (i) => 1,
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 5 + level },
+            { phase: BreathPhase.HOLD, durationSeconds: 10 + level * 2 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 6 + level },
+            { phase: BreathPhase.REST, durationSeconds: 3 },
+          ], points),
+        repeats: () => 1,
         intensity: (i) => clamp(3 + Math.floor((i - 1) / 6), 2, 6),
         saveCO2: false,
       },
@@ -144,8 +134,7 @@ const PROGRAMS: ProgramDef[] = [
         ru: {
           title: "CO₂ mini",
           subtitle: "CO₂ tolerance",
-          description:
-            "Короткий отдых, стабильная задержка. Учимся сохранять спокойствие.",
+          description: "Короткий отдых, стабильная задержка. Учимся сохранять спокойствие.",
         },
         en: {
           title: "CO₂ mini",
@@ -153,23 +142,20 @@ const PROGRAMS: ProgramDef[] = [
           description: "Short rest, stable hold. Practice staying calm.",
         },
         build: (points, level) =>
-          buildSteps(
-            [
-              { phase: BreathPhase.INHALE, durationSeconds: 4 },
-              { phase: BreathPhase.HOLD, durationSeconds: 14 + level * 2 },
-              { phase: BreathPhase.EXHALE, durationSeconds: 6 },
-              { phase: BreathPhase.REST, durationSeconds: 6 - level },
-            ],
-            points,
-            (s) => s,
-          ),
-        repeats: (i) => 1,
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 },
+            { phase: BreathPhase.HOLD, durationSeconds: 14 + level * 2 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 6 },
+            { phase: BreathPhase.REST, durationSeconds: clamp(6 - level, 3, 8) },
+          ], points),
+        repeats: () => 1,
         intensity: (i) => clamp(4 + Math.floor((i - 1) / 6), 3, 7),
         saveCO2: true,
       },
     ],
   },
 
+  // ── 2. INTERMEDIATE ──────────────────────────────────────────────────────────
   {
     key: TrainingProgramKey.INTERMEDIATE,
     slug: "intermediate",
@@ -210,16 +196,13 @@ const PROGRAMS: ProgramDef[] = [
             points,
             (s, cycleIndex) => {
               if (s.phase === BreathPhase.REST) {
-                return {
-                  ...s,
-                  durationSeconds: clamp(baseRest - cycleIndex, 5, 20),
-                };
+                return { ...s, durationSeconds: clamp(baseRest - cycleIndex, 5, 20) };
               }
               return s;
             },
           );
         },
-        repeats: (i) => 1,
+        repeats: () => 1,
         intensity: (i) => clamp(5 + Math.floor((i - 1) / 5), 5, 8),
         saveCO2: true,
       },
@@ -228,38 +211,32 @@ const PROGRAMS: ProgramDef[] = [
         ru: {
           title: "O₂ лестница",
           subtitle: "O₂ ladder",
-          description:
-            "Отдых стабильный, задержка растёт. Рекомендуется сухая практика.",
+          description: "Отдых стабильный, задержка растёт. Рекомендуется сухая практика.",
         },
         en: {
           title: "O₂ ladder",
           subtitle: "O₂ ladder",
-          description:
-            "Rest stable, hold increases. Recommended as dry practice.",
+          description: "Rest stable, hold increases. Recommended as dry practice.",
         },
         build: (points, level) => {
           const baseHold = 18 + level * 2;
-          const rest = 12;
           return buildSteps(
             [
               { phase: BreathPhase.INHALE, durationSeconds: 4 },
               { phase: BreathPhase.HOLD, durationSeconds: baseHold },
               { phase: BreathPhase.EXHALE, durationSeconds: 7 },
-              { phase: BreathPhase.REST, durationSeconds: rest },
+              { phase: BreathPhase.REST, durationSeconds: 12 },
             ],
             points,
             (s, cycleIndex) => {
               if (s.phase === BreathPhase.HOLD) {
-                return {
-                  ...s,
-                  durationSeconds: clamp(baseHold + cycleIndex * 2, 10, 70),
-                };
+                return { ...s, durationSeconds: clamp(baseHold + cycleIndex * 2, 10, 70) };
               }
               return s;
             },
           );
         },
-        repeats: (i) => 1,
+        repeats: () => 1,
         intensity: (i) => clamp(6 + Math.floor((i - 1) / 6), 6, 9),
         saveCO2: true,
       },
@@ -276,22 +253,20 @@ const PROGRAMS: ProgramDef[] = [
           description: "Quality and relaxation over duration.",
         },
         build: (points, level) =>
-          buildSteps(
-            [
-              { phase: BreathPhase.INHALE, durationSeconds: 5 },
-              { phase: BreathPhase.HOLD, durationSeconds: 16 + level * 2 },
-              { phase: BreathPhase.EXHALE, durationSeconds: 8 + level },
-              { phase: BreathPhase.REST, durationSeconds: 6 },
-            ],
-            points,
-          ),
-        repeats: (i) => 1,
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 5 },
+            { phase: BreathPhase.HOLD, durationSeconds: 16 + level * 2 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 8 + level },
+            { phase: BreathPhase.REST, durationSeconds: 6 },
+          ], points),
+        repeats: () => 1,
         intensity: (i) => clamp(5 + Math.floor((i - 1) / 7), 4, 7),
         saveCO2: true,
       },
     ],
   },
 
+  // ── 3. PRO ───────────────────────────────────────────────────────────────────
   {
     key: TrainingProgramKey.PRO,
     slug: "pro",
@@ -333,16 +308,13 @@ const PROGRAMS: ProgramDef[] = [
             points,
             (s, cycleIndex) => {
               if (s.phase === BreathPhase.REST) {
-                return {
-                  ...s,
-                  durationSeconds: clamp(restBase - cycleIndex, 4, 15),
-                };
+                return { ...s, durationSeconds: clamp(restBase - cycleIndex, 4, 15) };
               }
               return s;
             },
           );
         },
-        repeats: (i) => 1,
+        repeats: () => 1,
         intensity: (i) => clamp(8 + Math.floor((i - 1) / 8), 8, 10),
         saveCO2: true,
       },
@@ -351,38 +323,32 @@ const PROGRAMS: ProgramDef[] = [
         ru: {
           title: "O₂ прогрессия",
           subtitle: "Dry-only",
-          description:
-            "Отдых фиксирован, задержка растёт. Требует точного самоконтроля.",
+          description: "Отдых фиксирован, задержка растёт. Требует точного самоконтроля.",
         },
         en: {
           title: "O₂ progressive",
           subtitle: "Dry-only",
-          description:
-            "Fixed rest, increasing hold. Requires precise self-control.",
+          description: "Fixed rest, increasing hold. Requires precise self-control.",
         },
         build: (points, level) => {
-          const rest = 14;
           const baseHold = 26 + level * 2;
           return buildSteps(
             [
               { phase: BreathPhase.INHALE, durationSeconds: 4 },
               { phase: BreathPhase.HOLD, durationSeconds: baseHold },
               { phase: BreathPhase.EXHALE, durationSeconds: 10 },
-              { phase: BreathPhase.REST, durationSeconds: rest },
+              { phase: BreathPhase.REST, durationSeconds: 14 },
             ],
             points,
             (s, cycleIndex) => {
               if (s.phase === BreathPhase.HOLD) {
-                return {
-                  ...s,
-                  durationSeconds: clamp(baseHold + cycleIndex * 3, 20, 90),
-                };
+                return { ...s, durationSeconds: clamp(baseHold + cycleIndex * 3, 20, 90) };
               }
               return s;
             },
           );
         },
-        repeats: (i) => 1,
+        repeats: () => 1,
         intensity: (i) => clamp(8 + Math.floor((i - 1) / 10), 8, 10),
         saveCO2: true,
       },
@@ -397,25 +363,22 @@ const PROGRAMS: ProgramDef[] = [
         en: {
           title: "Recovery (Pro)",
           subtitle: "Recovery",
-          description:
-            "Stabilize pulse and regain clarity. Key between heavy sessions.",
+          description: "Stabilize pulse and regain clarity. Key between heavy sessions.",
         },
         build: (points, level) =>
-          buildSteps(
-            [
-              { phase: BreathPhase.INHALE, durationSeconds: 4 },
-              { phase: BreathPhase.EXHALE, durationSeconds: 10 + level },
-              { phase: BreathPhase.REST, durationSeconds: 2 },
-            ],
-            points,
-          ),
-        repeats: (i) => 1,
-        intensity: (i) => 3,
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 10 + level },
+            { phase: BreathPhase.REST, durationSeconds: 2 },
+          ], points),
+        repeats: () => 1,
+        intensity: () => 3,
         saveCO2: false,
       },
     ],
   },
 
+  // ── 4. SQUARE ────────────────────────────────────────────────────────────────
   {
     key: TrainingProgramKey.SQUARE,
     slug: "square",
@@ -444,17 +407,14 @@ const PROGRAMS: ProgramDef[] = [
         },
         build: (points, level) => {
           const d = clamp(4 + level, 4, 7);
-          return buildSteps(
-            [
-              { phase: BreathPhase.INHALE, durationSeconds: d },
-              { phase: BreathPhase.HOLD, durationSeconds: d },
-              { phase: BreathPhase.EXHALE, durationSeconds: d },
-              { phase: BreathPhase.HOLD, durationSeconds: d },
-            ],
-            points,
-          );
+          return buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: d },
+            { phase: BreathPhase.HOLD, durationSeconds: d },
+            { phase: BreathPhase.EXHALE, durationSeconds: d },
+            { phase: BreathPhase.HOLD, durationSeconds: d },
+          ], points);
         },
-        repeats: (i) => 1,
+        repeats: () => 1,
         intensity: (i) => clamp(3 + Math.floor((i - 1) / 7), 3, 6),
         saveCO2: false,
       },
@@ -471,22 +431,20 @@ const PROGRAMS: ProgramDef[] = [
           description: "Shift to calm: slightly longer exhale.",
         },
         build: (points, level) =>
-          buildSteps(
-            [
-              { phase: BreathPhase.INHALE, durationSeconds: 4 + level },
-              { phase: BreathPhase.HOLD, durationSeconds: 4 + level },
-              { phase: BreathPhase.EXHALE, durationSeconds: 6 + level },
-              { phase: BreathPhase.HOLD, durationSeconds: 4 + level },
-            ],
-            points,
-          ),
-        repeats: (i) => 1,
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 + level },
+            { phase: BreathPhase.HOLD, durationSeconds: 4 + level },
+            { phase: BreathPhase.EXHALE, durationSeconds: 6 + level },
+            { phase: BreathPhase.HOLD, durationSeconds: 4 + level },
+          ], points),
+        repeats: () => 1,
         intensity: (i) => clamp(4 + Math.floor((i - 1) / 8), 4, 6),
         saveCO2: false,
       },
     ],
   },
 
+  // ── 5. CALMING ───────────────────────────────────────────────────────────────
   {
     key: TrainingProgramKey.CALMING,
     slug: "calming",
@@ -498,8 +456,7 @@ const PROGRAMS: ProgramDef[] = [
     },
     enProgram: {
       title: "Calming exercises",
-      description:
-        "Reduce stress: longer exhale, gentle pauses, post-load recovery.",
+      description: "Reduce stress: longer exhale, gentle pauses, post-load recovery.",
     },
     patterns: [
       {
@@ -515,16 +472,13 @@ const PROGRAMS: ProgramDef[] = [
           description: "Exhale longer than inhale. Quick calming.",
         },
         build: (points, level) =>
-          buildSteps(
-            [
-              { phase: BreathPhase.INHALE, durationSeconds: 4 },
-              { phase: BreathPhase.EXHALE, durationSeconds: 8 + level },
-              { phase: BreathPhase.REST, durationSeconds: 2 },
-            ],
-            points,
-          ),
-        repeats: (i) => 1,
-        intensity: (i) => 1,
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 8 + level },
+            { phase: BreathPhase.REST, durationSeconds: 2 },
+          ], points),
+        repeats: () => 1,
+        intensity: () => 1,
         saveCO2: false,
       },
       {
@@ -540,16 +494,318 @@ const PROGRAMS: ProgramDef[] = [
           description: "No holds. Long exhale and soft pause.",
         },
         build: (points, level) =>
-          buildSteps(
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 10 + level },
+            { phase: BreathPhase.REST, durationSeconds: 3 },
+          ], points),
+        repeats: () => 1,
+        intensity: () => 1,
+        saveCO2: false,
+      },
+    ],
+  },
+
+  // ── 6. DYNAMIC ───────────────────────────────────────────────────────────────
+  {
+    key: TrainingProgramKey.DYNAMIC,
+    slug: "dynamic",
+    sortOrder: 6,
+    ruProgram: {
+      title: "Dynamic apnea",
+      description:
+        "Подготовка к динамике: эффективное движение, дыхание под нагрузкой, уравновешивание.",
+    },
+    enProgram: {
+      title: "Dynamic apnea",
+      description:
+        "Dynamic prep: efficient movement, breath under load, equalization patterns.",
+    },
+    patterns: [
+      {
+        code: "dynamic-base",
+        ru: {
+          title: "Динамика: база",
+          subtitle: "Base",
+          description: "Ровный вдох, контроль выдоха. Движение без спешки.",
+        },
+        en: {
+          title: "Dynamic base",
+          subtitle: "Base",
+          description: "Even inhale, controlled exhale. Movement without rush.",
+        },
+        build: (points, level) =>
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 + level },
+            { phase: BreathPhase.HOLD, durationSeconds: 12 + level * 2 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 7 + level },
+            { phase: BreathPhase.REST, durationSeconds: 8 },
+          ], points),
+        repeats: () => 1,
+        intensity: (i) => clamp(3 + Math.floor((i - 1) / 6), 3, 7),
+        saveCO2: true,
+      },
+      {
+        code: "dynamic-co2",
+        ru: {
+          title: "Динамика: CO₂",
+          subtitle: "CO₂ load",
+          description: "Высокий CO₂ при движении. Учимся держать темп под давлением.",
+        },
+        en: {
+          title: "Dynamic CO₂",
+          subtitle: "CO₂ load",
+          description: "High CO₂ during motion. Maintain pace under pressure.",
+        },
+        build: (points, level) => {
+          const hold = 18 + level * 3;
+          const rest = clamp(8 - level, 4, 10);
+          return buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 },
+            { phase: BreathPhase.HOLD, durationSeconds: hold },
+            { phase: BreathPhase.EXHALE, durationSeconds: 6 },
+            { phase: BreathPhase.REST, durationSeconds: rest },
+          ], points,
+          (s, cycleIndex) => {
+            if (s.phase === BreathPhase.REST) {
+              return { ...s, durationSeconds: clamp(rest - cycleIndex, 3, 10) };
+            }
+            return s;
+          });
+        },
+        repeats: () => 1,
+        intensity: (i) => clamp(5 + Math.floor((i - 1) / 5), 5, 9),
+        saveCO2: true,
+      },
+      {
+        code: "dynamic-o2",
+        ru: {
+          title: "Динамика: O₂",
+          subtitle: "O₂ load",
+          description: "Задержка растёт. Нарабатываем дистанцию без кислорода.",
+        },
+        en: {
+          title: "Dynamic O₂",
+          subtitle: "O₂ load",
+          description: "Growing hold. Build distance without oxygen.",
+        },
+        build: (points, level) => {
+          const baseHold = 15 + level * 2;
+          return buildSteps(
             [
               { phase: BreathPhase.INHALE, durationSeconds: 4 },
-              { phase: BreathPhase.EXHALE, durationSeconds: 10 + level },
-              { phase: BreathPhase.REST, durationSeconds: 3 },
+              { phase: BreathPhase.HOLD, durationSeconds: baseHold },
+              { phase: BreathPhase.EXHALE, durationSeconds: 8 },
+              { phase: BreathPhase.REST, durationSeconds: 10 },
             ],
             points,
-          ),
-        repeats: (i) => 1,
-        intensity: (i) => 1,
+            (s, cycleIndex) => {
+              if (s.phase === BreathPhase.HOLD) {
+                return { ...s, durationSeconds: clamp(baseHold + cycleIndex * 2, 10, 60) };
+              }
+              return s;
+            },
+          );
+        },
+        repeats: () => 1,
+        intensity: (i) => clamp(6 + Math.floor((i - 1) / 6), 6, 10),
+        saveCO2: true,
+      },
+    ],
+  },
+
+  // ── 7. STATIC ────────────────────────────────────────────────────────────────
+  {
+    key: TrainingProgramKey.STATIC,
+    slug: "static",
+    sortOrder: 7,
+    ruProgram: {
+      title: "Static apnea",
+      description:
+        "Максимальные задержки в покое: управление контракциями, ментальная устойчивость.",
+    },
+    enProgram: {
+      title: "Static apnea",
+      description:
+        "Max breath-hold at rest: contraction tolerance, mental resilience.",
+    },
+    patterns: [
+      {
+        code: "static-base",
+        ru: {
+          title: "Статика: база",
+          subtitle: "Base",
+          description: "Длинная задержка в покое. Полное расслабление тела и разума.",
+        },
+        en: {
+          title: "Static base",
+          subtitle: "Base",
+          description: "Long hold at rest. Full relaxation of body and mind.",
+        },
+        build: (points, level) =>
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 5 },
+            { phase: BreathPhase.HOLD, durationSeconds: 25 + level * 4 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 10 },
+            { phase: BreathPhase.REST, durationSeconds: 15 },
+          ], points),
+        repeats: () => 1,
+        intensity: (i) => clamp(5 + Math.floor((i - 1) / 5), 5, 9),
+        saveCO2: true,
+      },
+      {
+        code: "static-co2-table",
+        ru: {
+          title: "CO₂ таблица",
+          subtitle: "CO₂ table",
+          description: "Фиксированная задержка, уменьшающийся отдых. Классика статики.",
+        },
+        en: {
+          title: "CO₂ table",
+          subtitle: "CO₂ table",
+          description: "Fixed hold, decreasing rest. Classic static protocol.",
+        },
+        build: (points, level) => {
+          const hold = 20 + level * 3;
+          const baseRest = 16 - level;
+          return buildSteps(
+            [
+              { phase: BreathPhase.INHALE, durationSeconds: 4 },
+              { phase: BreathPhase.HOLD, durationSeconds: hold },
+              { phase: BreathPhase.EXHALE, durationSeconds: 8 },
+              { phase: BreathPhase.REST, durationSeconds: baseRest },
+            ],
+            points,
+            (s, cycleIndex) => {
+              if (s.phase === BreathPhase.REST) {
+                return { ...s, durationSeconds: clamp(baseRest - cycleIndex * 2, 5, 20) };
+              }
+              return s;
+            },
+          );
+        },
+        repeats: () => 1,
+        intensity: (i) => clamp(6 + Math.floor((i - 1) / 5), 6, 10),
+        saveCO2: true,
+      },
+      {
+        code: "static-o2-table",
+        ru: {
+          title: "O₂ таблица",
+          subtitle: "O₂ table",
+          description: "Фиксированный отдых, задержка растёт. Предельная практика.",
+        },
+        en: {
+          title: "O₂ table",
+          subtitle: "O₂ table",
+          description: "Fixed rest, hold increases. Limit practice.",
+        },
+        build: (points, level) => {
+          const baseHold = 22 + level * 3;
+          return buildSteps(
+            [
+              { phase: BreathPhase.INHALE, durationSeconds: 4 },
+              { phase: BreathPhase.HOLD, durationSeconds: baseHold },
+              { phase: BreathPhase.EXHALE, durationSeconds: 10 },
+              { phase: BreathPhase.REST, durationSeconds: 12 },
+            ],
+            points,
+            (s, cycleIndex) => {
+              if (s.phase === BreathPhase.HOLD) {
+                return { ...s, durationSeconds: clamp(baseHold + cycleIndex * 4, 15, 120) };
+              }
+              return s;
+            },
+          );
+        },
+        repeats: () => 1,
+        intensity: (i) => clamp(7 + Math.floor((i - 1) / 6), 7, 10),
+        saveCO2: true,
+      },
+    ],
+  },
+
+  // ── 8. WARM_UP ───────────────────────────────────────────────────────────────
+  {
+    key: TrainingProgramKey.WARM_UP,
+    slug: "warm-up",
+    sortOrder: 8,
+    ruProgram: {
+      title: "Pre-dive warm-up",
+      description:
+        "Активация перед нырком: насыщение кислородом, расслабление, запуск диафрагмы.",
+    },
+    enProgram: {
+      title: "Pre-dive warm-up",
+      description:
+        "Pre-dive activation: oxygen saturation, relaxation, diaphragm engagement.",
+    },
+    patterns: [
+      {
+        code: "warmup-activation",
+        ru: {
+          title: "Активация",
+          subtitle: "Activation",
+          description: "Глубокий вдох, полный выдох. Готовим тело к задержкам.",
+        },
+        en: {
+          title: "Activation",
+          subtitle: "Activation",
+          description: "Deep inhale, full exhale. Prepare the body for holds.",
+        },
+        build: (points, level) =>
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 5 + level },
+            { phase: BreathPhase.HOLD, durationSeconds: 5 + level },
+            { phase: BreathPhase.EXHALE, durationSeconds: 8 + level },
+            { phase: BreathPhase.REST, durationSeconds: 4 },
+          ], points),
+        repeats: () => 1,
+        intensity: (i) => clamp(2 + Math.floor((i - 1) / 8), 1, 4),
+        saveCO2: false,
+      },
+      {
+        code: "warmup-diaphragm",
+        ru: {
+          title: "Диафрагма",
+          subtitle: "Diaphragm",
+          description: "Диафрагмальное дыхание. Активируем правильную механику.",
+        },
+        en: {
+          title: "Diaphragm",
+          subtitle: "Diaphragm",
+          description: "Diaphragmatic breathing. Engage proper mechanics.",
+        },
+        build: (points, level) =>
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 6 + level },
+            { phase: BreathPhase.EXHALE, durationSeconds: 8 + level },
+            { phase: BreathPhase.REST, durationSeconds: 3 },
+          ], points),
+        repeats: () => 1,
+        intensity: (i) => clamp(2 + Math.floor((i - 1) / 10), 1, 3),
+        saveCO2: false,
+      },
+      {
+        code: "warmup-release",
+        ru: {
+          title: "Расслабление",
+          subtitle: "Release",
+          description: "Снять напряжение перед нырком. Пульс вниз, разум спокоен.",
+        },
+        en: {
+          title: "Release",
+          subtitle: "Release",
+          description: "Release tension before the dive. Lower HR, quiet mind.",
+        },
+        build: (points, level) =>
+          buildSteps([
+            { phase: BreathPhase.INHALE, durationSeconds: 4 },
+            { phase: BreathPhase.EXHALE, durationSeconds: 12 + level },
+            { phase: BreathPhase.REST, durationSeconds: 4 },
+          ], points),
+        repeats: () => 1,
+        intensity: () => 1,
         saveCO2: false,
       },
     ],
@@ -604,11 +860,11 @@ export async function seedTrain(prisma: PrismaClient) {
       },
     });
 
-    for (let i = 1; i <= 20; i++) {
+    // 30 trainings per program: 1-10 free, 11-30 locked/premium
+    for (let i = 1; i <= 30; i++) {
       const isPremium = i > 10;
       const pointsTarget = normalizePointsTarget(i);
-
-      const level = clamp(Math.floor((i - 1) / 7), 0, 3);
+      const level = clamp(Math.floor((i - 1) / 10), 0, 3);
 
       const pattern = programDef.patterns[(i - 1) % programDef.patterns.length];
       const steps = pattern.build(pointsTarget, level);
@@ -688,9 +944,7 @@ export async function seedTrain(prisma: PrismaClient) {
         },
       });
 
-      await prisma.trainingStep.deleteMany({
-        where: { templateId: template.id },
-      });
+      await prisma.trainingStep.deleteMany({ where: { templateId: template.id } });
 
       await prisma.trainingStep.createMany({
         data: steps.map((s, idx) => ({
@@ -701,5 +955,9 @@ export async function seedTrain(prisma: PrismaClient) {
         })),
       });
     }
+
+    console.log(`[seed] train: ${programDef.slug} done (30 trainings)`);
   }
+
+  console.log("[seed] train: done");
 }

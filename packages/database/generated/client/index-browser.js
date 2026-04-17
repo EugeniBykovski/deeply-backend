@@ -345,7 +345,10 @@ exports.TrainingProgramKey = exports.$Enums.TrainingProgramKey = {
   INTERMEDIATE: 'INTERMEDIATE',
   PRO: 'PRO',
   SQUARE: 'SQUARE',
-  CALMING: 'CALMING'
+  CALMING: 'CALMING',
+  DYNAMIC: 'DYNAMIC',
+  STATIC: 'STATIC',
+  WARM_UP: 'WARM_UP'
 };
 
 exports.TrainingKind = exports.$Enums.TrainingKind = {

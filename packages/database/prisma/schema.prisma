@@ -115,6 +115,9 @@ enum TrainingProgramKey {
   PRO
   SQUARE
   CALMING
+  DYNAMIC
+  STATIC
+  WARM_UP
 }
 
 enum TrainingKind {

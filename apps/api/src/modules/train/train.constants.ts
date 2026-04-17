@@ -6,6 +6,9 @@ export const TRAINING_PROGRAM_KEY_ENUM = [
   'PRO',
   'SQUARE',
   'CALMING',
+  'DYNAMIC',
+  'STATIC',
+  'WARM_UP',
 ] as const;
 
 export const BREATH_PHASE_ENUM = ['INHALE', 'HOLD', 'EXHALE', 'REST'] as const;
