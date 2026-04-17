@@ -25,6 +25,7 @@ import { TrainingDetailDto } from './dto/training-detail.dto';
 import { CreatePrivateTrainingDto } from './dto/create-private-training.dto';
 import { CreateTrainingRunDto } from './dto/create-training-run.dto';
 import { JwtAccessGuard } from '../auth/guards/jwt-access.guard';
+import { OptionalJwtAccessGuard } from '../auth/guards/optional-jwt-access.guard';
 import {
   CurrentUser,
   CurrentUserType,
@@ -80,7 +81,14 @@ export class TrainController {
     return this.train.getBlocks(resolvedLang);
   }
 
+  /**
+   * Lists trainings in a program.
+   * Uses OptionalJwtAccessGuard so authenticated users get per-training
+   * run-status fields (lastRunStatus) while unauthenticated users get the
+   * same list with lastRunStatus: null on every item.
+   */
   @Get('programs/:slug/trainings')
+  @UseGuards(OptionalJwtAccessGuard)
   @ApiOperation({
     summary: 'List trainings in a program (20 items, localized)',
   })
@@ -95,6 +103,7 @@ export class TrainController {
             title: 'Train 1',
             isPremium: false,
             isLocked: false,
+            lastRunStatus: 'completed',
             lang: 'en',
           },
         ],
@@ -114,11 +123,13 @@ export class TrainController {
     @Param('slug') slug: string,
     @Query('lang') lang?: string,
     @Headers('accept-language') acceptLanguage?: string,
+    @CurrentUser() user?: CurrentUserType | null,
   ) {
     const resolvedLang = lang ?? acceptLanguage;
     return this.train.listProgramTrainings({
       programSlug: slug,
       lang: resolvedLang,
+      userId: user?.userId ?? null,
     });
   }
 
@@ -170,18 +181,23 @@ export class TrainController {
     return this.train.listPrivateTemplates(user.userId);
   }
 
+  /**
+   * Creates a personal/private training.
+   * Auth is optional — anyone can create a training.
+   * If the user is authenticated, the training is associated with their account.
+   */
   @Post('private')
-  @UseGuards(JwtAccessGuard)
-  @ApiBearerAuth('access-token')
-  @ApiOperation({ summary: 'Create a private training template' })
+  @UseGuards(OptionalJwtAccessGuard)
+  @ApiOperation({
+    summary: 'Create a private training template (no auth required)',
+  })
   @ApiOkResponse({ schema: { example: { id: 'ck...' } } })
   @ApiBadRequestResponse({ description: 'Validation error' })
-  @ApiUnauthorizedResponse({ description: 'Missing/invalid access token' })
   createPrivate(
-    @CurrentUser() user: CurrentUserType,
+    @CurrentUser() user: CurrentUserType | null,
     @Body() dto: CreatePrivateTrainingDto,
   ) {
-    return this.train.createPrivateTemplate(user.userId, dto);
+    return this.train.createPrivateTemplate(user?.userId ?? null, dto);
   }
 
   @Post('runs')

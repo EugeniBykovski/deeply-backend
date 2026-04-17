@@ -5,12 +5,16 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { PRISMA } from '../../database/prisma.provider';
-import type { PrismaClient, Language, TrainingProgramKey } from '@repo/db';
+import type { PrismaClient, Language } from '@repo/db';
 import { PRIVATE_TRAIN_BLOCK } from './train.constants';
+
+type RunStatus = 'completed' | 'in_progress' | null;
 
 type ListTrainingsParams = {
   programSlug: string;
   lang?: string;
+  /** When supplied, per-training run status is added to each item */
+  userId?: string | null;
 };
 
 @Injectable()
@@ -129,6 +133,31 @@ export class TrainService {
       },
     });
 
+    // Build a per-templateId run-status map when the user is authenticated
+    const runStatusMap = new Map<string, RunStatus>();
+    if (params.userId) {
+      const templateIds = templates.map((t) => t.id);
+      // Fetch the most recent run per template for this user in one query
+      const runs = await this.prisma.trainingRun.findMany({
+        where: {
+          userId: params.userId,
+          templateId: { in: templateIds },
+        },
+        orderBy: { startedAt: 'desc' },
+        select: { templateId: true, completed: true },
+      });
+
+      // Keep only the latest run per template
+      for (const run of runs) {
+        if (!runStatusMap.has(run.templateId)) {
+          runStatusMap.set(
+            run.templateId,
+            run.completed ? 'completed' : 'in_progress',
+          );
+        }
+      }
+    }
+
     const items = templates.map((t) => {
       const tr =
         t.translations.find((x) => x.lang === lang) ??
@@ -144,6 +173,8 @@ export class TrainService {
         isLocked: this.computeIsLocked(t.isPremium),
         estimatedMinutes: t.estimatedMinutes ?? null,
         intensityLevel: t.intensityLevel ?? null,
+        /** null when not authenticated or no runs yet */
+        lastRunStatus: runStatusMap.get(t.id) ?? null,
         lang: (tr?.lang ?? lang) as any,
       };
     });
@@ -256,11 +287,12 @@ export class TrainService {
     };
   }
 
-  async createPrivateTemplate(userId: string, dto: any) {
+  /** userId is optional — unauthenticated users can create trainings */
+  async createPrivateTemplate(userId: string | null, dto: any) {
     const created = await this.prisma.trainingTemplate.create({
       data: {
         kind: 'PRIVATE',
-        ownerId: userId,
+        ...(userId ? { ownerId: userId } : {}),
         name: dto.name,
         pointCount: dto.pointCount ?? null,
         repeats: dto.repeats ?? null,
@@ -291,8 +323,12 @@ export class TrainService {
 
     if (!template) throw new NotFoundException('Training template not found');
 
-    // private template must belong to user
-    if (template.kind === 'PRIVATE' && template.ownerId !== userId) {
+    // private template ownership check — only if it has an owner
+    if (
+      template.kind === 'PRIVATE' &&
+      template.ownerId !== null &&
+      template.ownerId !== userId
+    ) {
       throw new UnauthorizedException('Not your private training');
     }
 
