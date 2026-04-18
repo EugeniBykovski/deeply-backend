@@ -576,6 +576,7 @@ export class ResultsService {
         template: {
           select: {
             id: true,
+            slug: true,
             translations: {
               where: { lang: { in: [lang, fb] } },
               select: { lang: true, title: true },
