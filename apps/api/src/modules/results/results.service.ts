@@ -567,6 +567,7 @@ export class ResultsService {
         id: true,
         startedAt: true,
         holdSeconds: true,
+        maxDepthMeters: true,
         completed: true,
         template: {
           select: {
@@ -587,6 +588,7 @@ export class ResultsService {
       completed: boolean;
       title: string;
       totalSeconds: number | null;
+      maxDepthMeters?: number | null;
     };
 
     const trainEntries: RunEntry[] = trainingRuns.map((r) => {
@@ -618,6 +620,7 @@ export class ResultsService {
         completed: r.completed,
         title: tr?.title ?? 'Dive',
         totalSeconds: r.holdSeconds ?? null,
+        maxDepthMeters: r.maxDepthMeters ?? null,
       };
     });
 
