@@ -2807,6 +2807,10 @@ export namespace Prisma {
     id: string | null
     appleSub: string | null
     email: string | null
+    rcCustomerId: string | null
+    isPro: boolean | null
+    proExpiresAt: Date | null
+    proActivatedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2815,6 +2819,10 @@ export namespace Prisma {
     id: string | null
     appleSub: string | null
     email: string | null
+    rcCustomerId: string | null
+    isPro: boolean | null
+    proExpiresAt: Date | null
+    proActivatedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2823,6 +2831,10 @@ export namespace Prisma {
     id: number
     appleSub: number
     email: number
+    rcCustomerId: number
+    isPro: number
+    proExpiresAt: number
+    proActivatedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2833,6 +2845,10 @@ export namespace Prisma {
     id?: true
     appleSub?: true
     email?: true
+    rcCustomerId?: true
+    isPro?: true
+    proExpiresAt?: true
+    proActivatedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2841,6 +2857,10 @@ export namespace Prisma {
     id?: true
     appleSub?: true
     email?: true
+    rcCustomerId?: true
+    isPro?: true
+    proExpiresAt?: true
+    proActivatedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2849,6 +2869,10 @@ export namespace Prisma {
     id?: true
     appleSub?: true
     email?: true
+    rcCustomerId?: true
+    isPro?: true
+    proExpiresAt?: true
+    proActivatedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2930,6 +2954,10 @@ export namespace Prisma {
     id: string
     appleSub: string
     email: string | null
+    rcCustomerId: string | null
+    isPro: boolean
+    proExpiresAt: Date | null
+    proActivatedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -2955,6 +2983,10 @@ export namespace Prisma {
     id?: boolean
     appleSub?: boolean
     email?: boolean
+    rcCustomerId?: boolean
+    isPro?: boolean
+    proExpiresAt?: boolean
+    proActivatedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     refreshTokens?: boolean | User$refreshTokensArgs<ExtArgs>
@@ -2970,6 +3002,10 @@ export namespace Prisma {
     id?: boolean
     appleSub?: boolean
     email?: boolean
+    rcCustomerId?: boolean
+    isPro?: boolean
+    proExpiresAt?: boolean
+    proActivatedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2978,6 +3014,10 @@ export namespace Prisma {
     id?: boolean
     appleSub?: boolean
     email?: boolean
+    rcCustomerId?: boolean
+    isPro?: boolean
+    proExpiresAt?: boolean
+    proActivatedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2986,11 +3026,15 @@ export namespace Prisma {
     id?: boolean
     appleSub?: boolean
     email?: boolean
+    rcCustomerId?: boolean
+    isPro?: boolean
+    proExpiresAt?: boolean
+    proActivatedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "appleSub" | "email" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "appleSub" | "email" | "rcCustomerId" | "isPro" | "proExpiresAt" | "proActivatedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshTokens?: boolean | User$refreshTokensArgs<ExtArgs>
     privateTrainingTemplates?: boolean | User$privateTrainingTemplatesArgs<ExtArgs>
@@ -3017,6 +3061,10 @@ export namespace Prisma {
       id: string
       appleSub: string
       email: string | null
+      rcCustomerId: string | null
+      isPro: boolean
+      proExpiresAt: Date | null
+      proActivatedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -3451,6 +3499,10 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly appleSub: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
+    readonly rcCustomerId: FieldRef<"User", 'String'>
+    readonly isPro: FieldRef<"User", 'Boolean'>
+    readonly proExpiresAt: FieldRef<"User", 'DateTime'>
+    readonly proActivatedAt: FieldRef<"User", 'DateTime'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -23043,6 +23095,10 @@ export namespace Prisma {
     id: 'id',
     appleSub: 'appleSub',
     email: 'email',
+    rcCustomerId: 'rcCustomerId',
+    isPro: 'isPro',
+    proExpiresAt: 'proExpiresAt',
+    proActivatedAt: 'proActivatedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -23338,6 +23394,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -23376,13 +23439,6 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -23508,6 +23564,10 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     appleSub?: StringFilter<"User"> | string
     email?: StringNullableFilter<"User"> | string | null
+    rcCustomerId?: StringNullableFilter<"User"> | string | null
+    isPro?: BoolFilter<"User"> | boolean
+    proExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    proActivatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     refreshTokens?: RefreshTokenListRelationFilter
@@ -23522,6 +23582,10 @@ export namespace Prisma {
     id?: SortOrder
     appleSub?: SortOrder
     email?: SortOrderInput | SortOrder
+    rcCustomerId?: SortOrderInput | SortOrder
+    isPro?: SortOrder
+    proExpiresAt?: SortOrderInput | SortOrder
+    proActivatedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     refreshTokens?: RefreshTokenOrderByRelationAggregateInput
@@ -23535,10 +23599,14 @@ export namespace Prisma {
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     appleSub?: string
+    rcCustomerId?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     email?: StringNullableFilter<"User"> | string | null
+    isPro?: BoolFilter<"User"> | boolean
+    proExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    proActivatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     refreshTokens?: RefreshTokenListRelationFilter
@@ -23547,12 +23615,16 @@ export namespace Prisma {
     achievements?: UserAchievementListRelationFilter
     progressCache?: XOR<TrainingProgressCacheNullableScalarRelationFilter, TrainingProgressCacheWhereInput> | null
     diveRuns?: DiveRunListRelationFilter
-  }, "id" | "appleSub">
+  }, "id" | "appleSub" | "rcCustomerId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     appleSub?: SortOrder
     email?: SortOrderInput | SortOrder
+    rcCustomerId?: SortOrderInput | SortOrder
+    isPro?: SortOrder
+    proExpiresAt?: SortOrderInput | SortOrder
+    proActivatedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -23567,6 +23639,10 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     appleSub?: StringWithAggregatesFilter<"User"> | string
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
+    rcCustomerId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    isPro?: BoolWithAggregatesFilter<"User"> | boolean
+    proExpiresAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    proActivatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -24730,6 +24806,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -24744,6 +24824,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -24758,6 +24842,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -24772,6 +24860,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -24786,6 +24878,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -24794,6 +24890,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -24802,6 +24902,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -26047,6 +26151,22 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -26122,6 +26242,10 @@ export namespace Prisma {
     id?: SortOrder
     appleSub?: SortOrder
     email?: SortOrder
+    rcCustomerId?: SortOrder
+    isPro?: SortOrder
+    proExpiresAt?: SortOrder
+    proActivatedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -26130,6 +26254,10 @@ export namespace Prisma {
     id?: SortOrder
     appleSub?: SortOrder
     email?: SortOrder
+    rcCustomerId?: SortOrder
+    isPro?: SortOrder
+    proExpiresAt?: SortOrder
+    proActivatedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -26138,6 +26266,10 @@ export namespace Prisma {
     id?: SortOrder
     appleSub?: SortOrder
     email?: SortOrder
+    rcCustomerId?: SortOrder
+    isPro?: SortOrder
+    proExpiresAt?: SortOrder
+    proActivatedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -26178,6 +26310,28 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -26190,17 +26344,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type UserScalarRelationFilter = {
@@ -26238,20 +26381,6 @@ export namespace Prisma {
     revokedAt?: SortOrder
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type EnumCultureSectionFilter<$PrismaModel = never> = {
     equals?: $Enums.CultureSection | EnumCultureSectionFieldRefInput<$PrismaModel>
     in?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
@@ -26268,11 +26397,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type CultureArticleTranslationListRelationFilter = {
@@ -26363,14 +26487,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type EnumLanguageFilter<$PrismaModel = never> = {
@@ -27315,6 +27431,14 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -27485,10 +27609,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type UserUpdateOneRequiredWithoutRefreshTokensNestedInput = {
     create?: XOR<UserCreateWithoutRefreshTokensInput, UserUncheckedCreateWithoutRefreshTokensInput>
     connectOrCreate?: UserCreateOrConnectWithoutRefreshTokensInput
@@ -27535,10 +27655,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type CultureArticleTranslationUpdateManyWithoutArticleNestedInput = {
@@ -28263,6 +28379,22 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -28330,29 +28462,12 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -28369,16 +28484,25 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type NestedEnumCultureSectionFilter<$PrismaModel = never> = {
     equals?: $Enums.CultureSection | EnumCultureSectionFieldRefInput<$PrismaModel>
     in?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
     notIn?: $Enums.CultureSection[] | ListEnumCultureSectionFieldRefInput<$PrismaModel>
     not?: NestedEnumCultureSectionFilter<$PrismaModel> | $Enums.CultureSection
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedEnumCultureSectionWithAggregatesFilter<$PrismaModel = never> = {
@@ -28416,14 +28540,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumLanguageFilter<$PrismaModel = never> = {
@@ -28971,6 +29087,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
@@ -28984,6 +29104,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
@@ -29013,6 +29137,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
@@ -29026,6 +29154,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
@@ -29564,6 +29696,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -29577,6 +29713,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -29719,6 +29859,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -29732,6 +29876,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -30032,6 +30180,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -30045,6 +30197,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -30125,6 +30281,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -30138,6 +30298,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -30208,6 +30372,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -30221,6 +30389,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -30250,6 +30422,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -30263,6 +30439,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -30276,6 +30456,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -30289,6 +30473,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -30318,6 +30506,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -30331,6 +30523,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -30649,6 +30845,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -30662,6 +30862,10 @@ export namespace Prisma {
     id?: string
     appleSub: string
     email?: string | null
+    rcCustomerId?: string | null
+    isPro?: boolean
+    proExpiresAt?: Date | string | null
+    proActivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -30726,6 +30930,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -30739,6 +30947,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     appleSub?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    rcCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    isPro?: BoolFieldUpdateOperationsInput | boolean
+    proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput

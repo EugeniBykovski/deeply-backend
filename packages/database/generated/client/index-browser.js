@@ -124,6 +124,10 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   appleSub: 'appleSub',
   email: 'email',
+  rcCustomerId: 'rcCustomerId',
+  isPro: 'isPro',
+  proExpiresAt: 'proExpiresAt',
+  proActivatedAt: 'proActivatedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

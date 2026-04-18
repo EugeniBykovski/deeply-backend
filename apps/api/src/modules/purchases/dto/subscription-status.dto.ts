@@ -1,18 +1,12 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
-export class UserResponseDto {
-  @ApiProperty()
-  id!: string;
-
-  @ApiPropertyOptional()
-  email?: string | null;
-
-  @ApiProperty()
-  appleSub!: string;
-
+export class SubscriptionStatusDto {
   @ApiProperty()
   isPro!: boolean;
 
   @ApiPropertyOptional()
   proExpiresAt?: string | null;
+
+  @ApiPropertyOptional()
+  proActivatedAt?: string | null;
 }

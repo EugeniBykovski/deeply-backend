@@ -6,6 +6,7 @@ import { CultureModule } from './modules/culture/culture.module';
 import { TrainModule } from './modules/train/train.module';
 import { ResultsModule } from './modules/results/results.module';
 import { DiveModule } from './modules/dive/dive.module';
+import { PurchasesModule } from './modules/purchases/purchases.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { DiveModule } from './modules/dive/dive.module';
     TrainModule,
     ResultsModule,
     DiveModule,
+    PurchasesModule,
   ],
 })
 export class AppModule {}

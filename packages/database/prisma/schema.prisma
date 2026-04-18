@@ -11,6 +11,13 @@ model User {
   id        String   @id @default(cuid())
   appleSub  String   @unique
   email     String?
+
+  // RevenueCat subscription
+  rcCustomerId   String?   @unique // equals user.id by convention
+  isPro          Boolean   @default(false)
+  proExpiresAt   DateTime?
+  proActivatedAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
