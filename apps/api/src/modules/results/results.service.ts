@@ -547,11 +547,15 @@ export class ResultsService {
         template: {
           select: {
             id: true,
+            slug: true,
             kind: true,
             name: true,
             translations: {
               where: { lang: { in: [lang, fb] } },
               select: { lang: true, title: true },
+            },
+            program: {
+              select: { slug: true },
             },
           },
         },
@@ -589,6 +593,8 @@ export class ResultsService {
       title: string;
       totalSeconds: number | null;
       maxDepthMeters?: number | null;
+      templateSlug: string | null;
+      programSlug: string | null;
     };
 
     const trainEntries: RunEntry[] = trainingRuns.map((r) => {
@@ -606,6 +612,8 @@ export class ResultsService {
         completed: r.completed,
         title,
         totalSeconds: r.totalSeconds ?? null,
+        templateSlug: r.template.slug ?? null,
+        programSlug: r.template.program?.slug ?? null,
       };
     });
 
@@ -621,6 +629,8 @@ export class ResultsService {
         title: tr?.title ?? 'Dive',
         totalSeconds: r.holdSeconds ?? null,
         maxDepthMeters: r.maxDepthMeters ?? null,
+        templateSlug: r.template.slug ?? null,
+        programSlug: null,
       };
     });
 
