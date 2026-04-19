@@ -121,6 +121,7 @@ export class TrainService {
         isPremium: true,
         estimatedMinutes: true,
         intensityLevel: true,
+        repeats: true,
         translations: {
           where: { lang: { in: [lang, fallback] } },
           select: {
@@ -173,6 +174,7 @@ export class TrainService {
         isLocked: this.computeIsLocked(t.isPremium),
         estimatedMinutes: t.estimatedMinutes ?? null,
         intensityLevel: t.intensityLevel ?? null,
+        repeats: t.repeats ?? null,
         /** null when not authenticated or no runs yet */
         lastRunStatus: runStatusMap.get(t.id) ?? null,
         lang: (tr?.lang ?? lang) as any,
