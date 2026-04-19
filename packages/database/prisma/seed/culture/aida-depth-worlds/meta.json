@@ -1,0 +1,20 @@
+{
+  "slug": "aida-depth-worlds",
+  "section": "COMPETITIONS",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-04-05",
+  "translations": {
+    "ru": {
+      "title": "Чемпионат мира AIDA по глубине: как это устроено",
+      "subtitle": "Дисциплины, протокол и то, что делает соревнования по фридайвингу уникальными",
+      "description": "CWT, CNF, FIM — какие дисциплины входят в чемпионат мира, как устроен протокол выступления и что отличает соревновательный фридайвинг от других видов спорта."
+    },
+    "en": {
+      "title": "AIDA Depth World Championship: How It Works",
+      "subtitle": "Disciplines, protocol, and what makes freediving competition unique",
+      "description": "CWT, CNF, FIM — which disciplines are included, how competition protocol works, and what distinguishes competitive freediving from other sports."
+    }
+  }
+}

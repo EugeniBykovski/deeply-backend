@@ -1,0 +1,20 @@
+{
+  "slug": "competition-safety-protocol",
+  "section": "SAFETY",
+  "coverImageUrl": null,
+  "readTimeMinutes": 4,
+  "isPublished": true,
+  "publishedAt": "2026-04-10",
+  "translations": {
+    "ru": {
+      "title": "Протокол безопасности на соревнованиях: зачем он существует",
+      "subtitle": "Правило напарника, поверхностный протокол, судьи на глубине",
+      "description": "Соревновательный фридайвинг выглядит индивидуальным видом спорта. Но система безопасности вокруг каждого ныряния — командная работа."
+    },
+    "en": {
+      "title": "Competition Safety Protocol: Why It Exists",
+      "subtitle": "The buddy rule, surface protocol, safety divers at depth",
+      "description": "Competitive freediving looks like an individual sport. But the safety system around each dive is teamwork."
+    }
+  }
+}

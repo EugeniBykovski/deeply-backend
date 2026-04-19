@@ -1,0 +1,20 @@
+{
+  "slug": "freediving-history-overview",
+  "section": "HISTORY",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-04-09",
+  "translations": {
+    "ru": {
+      "title": "История фридайвинга: от ам до AIDA",
+      "subtitle": "Как практика, существовавшая тысячи лет, стала современным видом спорта",
+      "description": "Прибрежные ныряльщики Японии и Кореи, первые глубинные рекорды 1950-х, основание AIDA и рост мировых чемпионатов — краткая история фридайвинга."
+    },
+    "en": {
+      "title": "Freediving History: From the Ama to AIDA",
+      "subtitle": "How a practice thousands of years old became a modern sport",
+      "description": "Japan and Korea's coastal divers, the first depth records of the 1950s, AIDA's founding, and the growth of world championships — a brief history of freediving."
+    }
+  }
+}

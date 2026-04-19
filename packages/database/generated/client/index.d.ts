@@ -122,7 +122,9 @@ export const CultureSection: {
   COMPETITIONS: 'COMPETITIONS',
   TRAINING: 'TRAINING',
   RELAX: 'RELAX',
-  SAFETY: 'SAFETY'
+  SAFETY: 'SAFETY',
+  SCIENCE: 'SCIENCE',
+  HISTORY: 'HISTORY'
 };
 
 export type CultureSection = (typeof CultureSection)[keyof typeof CultureSection]

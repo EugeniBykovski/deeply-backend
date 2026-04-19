@@ -1,0 +1,20 @@
+{
+  "slug": "pool-disciplines-sta-dyn-dnf",
+  "section": "TRAINING",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-04-07",
+  "translations": {
+    "ru": {
+      "title": "Бассейновый фридайвинг: STA, DYN и DNF",
+      "subtitle": "Как устроены дисциплины в бассейне — и почему они важны",
+      "description": "Статика, динамика и динамика без ласт — три основных дисциплины бассейнового фридайвинга. У каждой своя физиология, своя техника и своя специфика тренировок."
+    },
+    "en": {
+      "title": "Pool Freediving: STA, DYN, and DNF Explained",
+      "subtitle": "How pool disciplines work — and why they matter",
+      "description": "Static Apnea, Dynamic with Fins, and Dynamic Without Fins — three core pool disciplines. Each has its own physiology, technique, and training demands."
+    }
+  }
+}

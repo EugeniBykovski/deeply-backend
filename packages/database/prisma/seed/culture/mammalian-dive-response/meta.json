@@ -1,0 +1,20 @@
+{
+  "slug": "mammalian-dive-response",
+  "section": "SCIENCE",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-04-01",
+  "translations": {
+    "ru": {
+      "title": "Рефлекс ныряния: тело знает, что делать",
+      "subtitle": "Физиология погружения изнутри",
+      "description": "Брадикардия, вазоконстрикция, перераспределение крови — как ваш организм автоматически переходит в режим экономии кислорода при нырянии."
+    },
+    "en": {
+      "title": "The Mammalian Dive Response: Your Body Already Knows",
+      "subtitle": "The physiology of submersion, from the inside",
+      "description": "Bradycardia, vasoconstriction, blood shift — how your body automatically switches into oxygen-conservation mode the moment you submerge."
+    }
+  }
+}

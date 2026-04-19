@@ -336,7 +336,9 @@ exports.CultureSection = exports.$Enums.CultureSection = {
   COMPETITIONS: 'COMPETITIONS',
   TRAINING: 'TRAINING',
   RELAX: 'RELAX',
-  SAFETY: 'SAFETY'
+  SAFETY: 'SAFETY',
+  SCIENCE: 'SCIENCE',
+  HISTORY: 'HISTORY'
 };
 
 exports.Language = exports.$Enums.Language = {

@@ -1,0 +1,20 @@
+{
+  "slug": "freediving-mental-focus",
+  "section": "TRAINING",
+  "coverImageUrl": null,
+  "readTimeMinutes": 5,
+  "isPublished": true,
+  "publishedAt": "2026-04-08",
+  "translations": {
+    "ru": {
+      "title": "Ментальная игра: почему спокойствие — это стратегия",
+      "subtitle": "Тревога — это потреблённый кислород. Управление нервной системой как часть тренировки.",
+      "description": "Страх под водой ускоряет расход кислорода. Опытные фридайверы не борются с дискомфортом — они меняют своё отношение к нему."
+    },
+    "en": {
+      "title": "The Mental Game: Why Calm Is the Strategy",
+      "subtitle": "Anxiety is oxygen debt. Managing your nervous system is part of training.",
+      "description": "Fear underwater accelerates oxygen use. Experienced freedivers do not fight discomfort — they change their relationship to it."
+    }
+  }
+}

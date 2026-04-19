@@ -58,6 +58,8 @@ enum CultureSection {
   TRAINING
   RELAX
   SAFETY
+  SCIENCE
+  HISTORY
 }
 
 model CultureArticle {

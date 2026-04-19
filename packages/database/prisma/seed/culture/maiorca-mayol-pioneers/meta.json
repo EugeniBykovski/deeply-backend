@@ -1,0 +1,20 @@
+{
+  "slug": "maiorca-mayol-pioneers",
+  "section": "HISTORY",
+  "coverImageUrl": null,
+  "readTimeMinutes": 7,
+  "isPublished": true,
+  "publishedAt": "2026-04-03",
+  "translations": {
+    "ru": {
+      "title": "Майорка и Майоль: два человека и глубина",
+      "subtitle": "Пионеры, которые построили фундамент современного фридайвинга",
+      "description": "Итальянский рыбак и французский морской биолог соревновались десятилетиями. Их соперничество превратило задержку дыхания в вид спорта."
+    },
+    "en": {
+      "title": "Maiorca and Mayol: Two Men and the Depth",
+      "subtitle": "The pioneers who built the foundation of modern freediving",
+      "description": "An Italian fisherman's son and a French marine biologist competed for decades. Their rivalry turned breath-hold diving into a sport."
+    }
+  }
+}

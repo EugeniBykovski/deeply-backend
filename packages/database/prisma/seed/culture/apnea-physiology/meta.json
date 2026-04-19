@@ -1,0 +1,20 @@
+{
+  "slug": "apnea-physiology",
+  "section": "SCIENCE",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-04-02",
+  "translations": {
+    "ru": {
+      "title": "Что происходит в теле во время задержки дыхания",
+      "subtitle": "Апноэ изнутри: от первой секунды до предела",
+      "description": "CO₂ накапливается раньше, чем кончается O₂. Сокращения диафрагмы — это сигнал, а не опасность. Как устроена задержка дыхания физиологически."
+    },
+    "en": {
+      "title": "What Happens in Your Body During a Breath-Hold",
+      "subtitle": "Apnea from the inside: from first second to limit",
+      "description": "CO₂ builds before O₂ runs out. Diaphragm contractions are a signal, not a crisis. How breath-hold physiology actually works."
+    }
+  }
+}

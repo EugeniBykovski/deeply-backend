@@ -20,13 +20,23 @@ export const CULTURE_SECTIONS = [
     description: 'Методики тренировок',
   },
   {
-    key: 'RELAX',
-    title: 'Relax',
-    description: 'Восстановление и дыхание',
+    key: 'SCIENCE',
+    title: 'Science',
+    description: 'Физиология и биология',
+  },
+  {
+    key: 'HISTORY',
+    title: 'History',
+    description: 'История фридайвинга',
   },
   {
     key: 'SAFETY',
     title: 'Safety',
     description: 'Безопасность и чек-листы',
+  },
+  {
+    key: 'RELAX',
+    title: 'Relax',
+    description: 'Восстановление и дыхание',
   },
 ] as const;

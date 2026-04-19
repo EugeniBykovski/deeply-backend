@@ -1,0 +1,20 @@
+{
+  "slug": "cwt-depth-disciplines",
+  "section": "TRAINING",
+  "coverImageUrl": null,
+  "readTimeMinutes": 6,
+  "isPublished": true,
+  "publishedAt": "2026-04-06",
+  "translations": {
+    "ru": {
+      "title": "CWT, CNF, FIM, VWT: путеводитель по дисциплинам глубины",
+      "subtitle": "Что означают названия и чем они отличаются на практике",
+      "description": "Каждая дисциплина глубины тестирует разное сочетание физиологии и техники. Этот разбор поможет разобраться в том, что вы читаете о спорте — и что тренировать."
+    },
+    "en": {
+      "title": "CWT, CNF, FIM, VWT: A Guide to the Depth Disciplines",
+      "subtitle": "What the names mean and how they differ in practice",
+      "description": "Each depth discipline tests a different combination of physiology and technique. This breakdown will help you understand what you read about the sport — and what to train."
+    }
+  }
+}
