@@ -157,22 +157,29 @@ export class PurchasesService {
 
   // ─── Signature verification ──────────────────────────────────────────────────
 
-  private verifyWebhookSignature(rawBody: string, signature: string | undefined): void {
-    const secret = this.config.get<string>('REVENUECAT_WEBHOOK_SECRET');
+  private verifyWebhookSignature(_rawBody: string, authHeader: string | undefined): void {
+    const secret = this.config.get<string>('REVENUECAT_SECRET_KEY');
     if (!secret) return; // not configured → skip verification in dev
 
-    if (!signature) {
-      throw new Error('Missing RevenueCat webhook signature');
+    if (!authHeader) {
+      throw new Error('Missing RevenueCat webhook authorization header');
     }
 
-    const crypto = require('crypto') as typeof import('crypto');
-    const expected = crypto
-      .createHmac('sha256', secret)
-      .update(rawBody, 'utf8')
-      .digest('hex');
+    // RevenueCat sends: Authorization: Bearer <secret_key>
+    // Strip the "Bearer " prefix before comparing.
+    const token = authHeader.startsWith('Bearer ')
+      ? authHeader.slice(7)
+      : authHeader;
 
-    if (signature !== expected) {
-      throw new Error('Invalid RevenueCat webhook signature');
+    const crypto = require('crypto') as typeof import('crypto');
+    const expected = Buffer.from(secret, 'utf8');
+    const received = Buffer.from(token, 'utf8');
+
+    if (
+      expected.length !== received.length ||
+      !crypto.timingSafeEqual(expected, received)
+    ) {
+      throw new Error('Invalid RevenueCat webhook authorization');
     }
   }
 }

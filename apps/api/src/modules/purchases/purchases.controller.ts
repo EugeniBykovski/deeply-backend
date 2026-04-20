@@ -36,7 +36,7 @@ export class PurchasesController {
   @ApiOperation({ summary: 'RevenueCat webhook receiver' })
   async webhook(
     @Req() req: Request,
-    @Headers('x-rc-webhook-authorization') signature: string | undefined,
+    @Headers('authorization') signature: string | undefined,
   ) {
     const rawBody = (req as any).rawBody as string | undefined;
     if (!rawBody) throw new BadRequestException('Missing raw body');
