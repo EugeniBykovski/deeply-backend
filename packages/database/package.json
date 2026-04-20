@@ -18,6 +18,7 @@
     "db:seed": "prisma db seed"
   },
   "dependencies": {
+    "@prisma/client": "7.4.1",
     "@prisma/adapter-pg": "7.4.1",
     "dotenv": ">=16"
   },
