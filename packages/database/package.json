@@ -16,5 +16,12 @@
     "db:deploy": "prisma migrate deploy",
     "db:migrate:gen": "prisma migrate dev && prisma generate",
     "db:seed": "prisma db seed"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "7.4.1",
+    "dotenv": ">=16"
+  },
+  "devDependencies": {
+    "prisma": "7.4.1"
   }
 }
