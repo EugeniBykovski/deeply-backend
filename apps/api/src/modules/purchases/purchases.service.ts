@@ -158,7 +158,7 @@ export class PurchasesService {
   // ─── Signature verification ──────────────────────────────────────────────────
 
   private verifyWebhookSignature(_rawBody: string, authHeader: string | undefined): void {
-    const secret = this.config.get<string>('REVENUECAT_SECRET_KEY');
+    const secret = this.config.get<string>('REVENUECAT_WEBHOOK_SECRET');
     if (!secret) return; // not configured → skip verification in dev
 
     if (!authHeader) {
