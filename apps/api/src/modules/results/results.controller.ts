@@ -1,7 +1,11 @@
 import {
+  BadRequestException,
   Controller,
+  Delete,
   Get,
   Headers,
+  HttpCode,
+  HttpStatus,
   Param,
   Query,
   UseGuards,
@@ -9,6 +13,7 @@ import {
 import {
   ApiBearerAuth,
   ApiHeader,
+  ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
@@ -143,6 +148,33 @@ export class ResultsController {
     @Headers('accept-language') acceptLanguage?: string,
   ) {
     return this.results.getRecentRuns(user.userId, lang ?? acceptLanguage);
+  }
+
+  @Delete('runs/all')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete all training and dive runs for the current user' })
+  @ApiNoContentResponse({ description: 'All runs deleted' })
+  deleteAllRuns(@CurrentUser() user: CurrentUserType) {
+    return this.results.deleteAllRuns(user.userId);
+  }
+
+  @Delete('runs/:type/:id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete a single run by type (training | dive) and id' })
+  @ApiNoContentResponse({ description: 'Run deleted' })
+  @ApiNotFoundResponse({ description: 'Run not found' })
+  @ApiParam({ name: 'type', enum: ['training', 'dive'] })
+  @ApiParam({ name: 'id', example: 'ck...' })
+  deleteRun(
+    @CurrentUser() user: CurrentUserType,
+    @Param('type') type: string,
+    @Param('id') id: string,
+  ) {
+    console.log('[ResultsController.deleteRun] type=%s id=%s userId=%s', type, id, user.userId);
+    if (type !== 'training' && type !== 'dive') {
+      throw new BadRequestException('type must be "training" or "dive"');
+    }
+    return this.results.deleteRun(user.userId, type as 'training' | 'dive', id);
   }
 
   @Get('private/:id')

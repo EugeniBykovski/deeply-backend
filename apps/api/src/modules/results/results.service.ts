@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { PRISMA } from '../../database/prisma.provider';
 import type { PrismaClient, Language, AchievementType } from '@repo/db';
 import {
@@ -594,6 +594,7 @@ export class ResultsService {
       title: string;
       totalSeconds: number | null;
       maxDepthMeters?: number | null;
+      templateId: string;
       templateSlug: string | null;
       programSlug: string | null;
     };
@@ -613,6 +614,7 @@ export class ResultsService {
         completed: r.completed,
         title,
         totalSeconds: r.totalSeconds ?? null,
+        templateId: r.template.id,
         templateSlug: r.template.slug ?? null,
         programSlug: r.template.program?.slug ?? null,
       };
@@ -630,6 +632,7 @@ export class ResultsService {
         title: tr?.title ?? 'Dive',
         totalSeconds: r.holdSeconds ?? null,
         maxDepthMeters: r.maxDepthMeters ?? null,
+        templateId: r.template.id,
         templateSlug: r.template.slug ?? null,
         programSlug: null,
       };
@@ -641,6 +644,35 @@ export class ResultsService {
     );
 
     return combined.slice(0, limit);
+  }
+
+  async deleteRun(userId: string, type: 'training' | 'dive', runId: string) {
+    console.log('[ResultsService.deleteRun] type=%s runId=%s userId=%s', type, runId, userId);
+    if (type === 'training') {
+      const run = await this.prisma.trainingRun.findUnique({
+        where: { id: runId },
+        select: { id: true, userId: true },
+      });
+      console.log('[ResultsService.deleteRun] db lookup result=%o', run);
+      if (!run) throw new NotFoundException('Training run not found');
+      if (run.userId !== userId) throw new UnauthorizedException('Not your run');
+      await this.prisma.trainingRun.delete({ where: { id: runId } });
+      await this.prisma.trainingProgressCache.deleteMany({ where: { userId } });
+    } else {
+      const run = await this.prisma.diveRun.findUnique({
+        where: { id: runId },
+        select: { id: true, userId: true },
+      });
+      if (!run) throw new NotFoundException('Dive run not found');
+      if (run.userId !== userId) throw new UnauthorizedException('Not your run');
+      await this.prisma.diveRun.delete({ where: { id: runId } });
+    }
+  }
+
+  async deleteAllRuns(userId: string) {
+    await this.prisma.trainingRun.deleteMany({ where: { userId } });
+    await this.prisma.diveRun.deleteMany({ where: { userId } });
+    await this.prisma.trainingProgressCache.deleteMany({ where: { userId } });
   }
 
   async getPrivateReportById(

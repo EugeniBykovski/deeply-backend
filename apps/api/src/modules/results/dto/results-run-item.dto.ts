@@ -15,6 +15,9 @@ export class ResultsRunItemDto {
   @ApiProperty({ example: true })
   completed!: boolean;
 
+  @ApiPropertyOptional({ example: 'ck...' })
+  templateId?: string | null;
+
   @ApiPropertyOptional({ example: { co2Score: 7, note: 'felt calm' } })
   metrics?: any;
 }
