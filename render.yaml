@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: free
     rootDir: .
-    buildCommand: npm ci && cd packages/database && npx prisma generate && cd ../.. && npm run build --workspace=packages/database && cd packages/database && npx prisma migrate deploy && npx prisma db seed && cd ../.. && npm run build --workspace=apps/api
+    buildCommand: npm ci && cd packages/database && npx prisma generate && cd ../.. && npm run build --workspace=packages/database && cd packages/database && npx prisma migrate deploy --url "$DIRECT_URL" && npx prisma db seed && cd ../.. && npm run build --workspace=apps/api
     startCommand: node apps/api/dist/main
     envVars:
       - key: NODE_ENV
