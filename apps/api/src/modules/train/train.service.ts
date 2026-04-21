@@ -404,4 +404,18 @@ export class TrainService {
 
     return { id: run.id, startedAt: run.startedAt.toISOString() };
   }
+
+  async deleteRun(userId: string, runId: string) {
+    const run = await this.prisma.trainingRun.findUnique({
+      where: { id: runId },
+      select: { id: true, userId: true },
+    });
+
+    if (!run) throw new NotFoundException('Run not found');
+    if (run.userId !== userId) throw new UnauthorizedException('Not your run');
+
+    await this.prisma.trainingRun.delete({ where: { id: runId } });
+    // Bust the progress cache so the next summary reflects the deletion.
+    await this.prisma.trainingProgressCache.deleteMany({ where: { userId } });
+  }
 }

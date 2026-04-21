@@ -1,8 +1,11 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Headers,
+  HttpCode,
+  HttpStatus,
   Param,
   Post,
   Query,
@@ -11,6 +14,8 @@ import {
 import {
   ApiBearerAuth,
   ApiConsumes,
+  ApiNoContentResponse,
+  ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiParam,
@@ -99,5 +104,21 @@ export class DiveController {
     @Body() dto: DiveRunCreateDto,
   ) {
     return this.dive.createRun(user.userId, dto);
+  }
+
+  @Delete('run/:id')
+  @UseGuards(JwtAccessGuard)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiBearerAuth('access-token')
+  @ApiOperation({ summary: 'Delete a dive run by id' })
+  @ApiNoContentResponse({ description: 'Dive run deleted' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized / not your run' })
+  @ApiNotFoundResponse({ description: 'Dive run not found' })
+  @ApiParam({ name: 'id', example: 'ck...' })
+  deleteRun(
+    @CurrentUser() user: CurrentUserType,
+    @Param('id') id: string,
+  ) {
+    return this.dive.deleteRun(user.userId, id);
   }
 }

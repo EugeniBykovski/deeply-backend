@@ -1,8 +1,11 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Headers,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -13,6 +16,7 @@ import {
   ApiBadRequestResponse,
   ApiBearerAuth,
   ApiHeader,
+  ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
@@ -234,5 +238,21 @@ export class TrainController {
     @Body() dto: CreateTrainingRunDto,
   ) {
     return this.train.createRun(user.userId, dto);
+  }
+
+  @Delete('runs/:id')
+  @UseGuards(JwtAccessGuard)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiBearerAuth('access-token')
+  @ApiOperation({ summary: 'Delete a training run by id' })
+  @ApiNoContentResponse({ description: 'Run deleted' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized / not your run' })
+  @ApiNotFoundResponse({ description: 'Run not found' })
+  @ApiParam({ name: 'id', example: 'ck...' })
+  deleteRun(
+    @CurrentUser() user: CurrentUserType,
+    @Param('id') id: string,
+  ) {
+    return this.train.deleteRun(user.userId, id);
   }
 }

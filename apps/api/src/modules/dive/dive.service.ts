@@ -202,4 +202,16 @@ export class DiveService {
       debug: { interpolated: true },
     };
   }
+
+  async deleteRun(userId: string, runId: string) {
+    const run = await this.prisma.diveRun.findUnique({
+      where: { id: runId },
+      select: { id: true, userId: true },
+    });
+
+    if (!run) throw new NotFoundException('Dive run not found');
+    if (run.userId !== userId) throw new UnauthorizedException('Not your run');
+
+    await this.prisma.diveRun.delete({ where: { id: runId } });
+  }
 }
