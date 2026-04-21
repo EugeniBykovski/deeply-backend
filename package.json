@@ -6,7 +6,18 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "check-types": "turbo run check-types",
+
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:reset": "docker compose down -v && docker compose up -d",
+
+    "db:migrate": "npm run db:migrate -w packages/database",
+    "db:seed": "npm run db:seed -w packages/database",
+    "db:generate": "npm run db:generate -w packages/database",
+
+    "migrate:prod": "bash scripts/migrate-prod.sh",
+    "seed:prod": "bash scripts/seed-prod.sh"
   },
   "devDependencies": {
     "@types/node": "^25.3.0",
