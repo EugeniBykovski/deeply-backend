@@ -17,6 +17,9 @@
     "db:migrate:gen": "prisma migrate dev && prisma generate",
     "db:seed": "prisma db seed"
   },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "dependencies": {
     "@prisma/client": "7.4.1",
     "@prisma/adapter-pg": "7.4.1",
