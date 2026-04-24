@@ -22,6 +22,14 @@ export class AuthService {
   async loginWithApple(token: string) {
     const claims = await this.apple.verifyIdentityToken(token);
 
+    // Check for an existing record before the upsert so we can return
+    // isNewUser to the client. The client uses this to decide whether the
+    // user needs to go through the onboarding questionnaire.
+    const existing = await this.prisma.user.findUnique({
+      where: { appleSub: claims.sub },
+      select: { id: true },
+    });
+
     const user = await this.prisma.user.upsert({
       where: { appleSub: claims.sub },
       update: { ...(claims.email ? { email: claims.email } : {}) },
@@ -31,6 +39,8 @@ export class AuthService {
       },
       select: { id: true },
     });
+
+    const isNewUser = !existing;
 
     const accessToken = await this.tokens.signAccessToken(user.id);
     const refreshToken = await this.tokens.signRefreshToken(user.id);
@@ -45,7 +55,7 @@ export class AuthService {
 
     await this.pruneOldRefreshTokens(user.id);
 
-    return { accessToken, refreshToken };
+    return { accessToken, refreshToken, isNewUser };
   }
 
   async refresh(refreshToken: string) {
