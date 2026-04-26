@@ -140,7 +140,8 @@ export class TrainController {
   }
 
   @Get('trainings/:slug')
-  @ApiOperation({ summary: 'Get training by slug (steps included)' })
+  @UseGuards(OptionalJwtAccessGuard)
+  @ApiOperation({ summary: 'Get training by slug (steps included). isLocked respects Pro status.' })
   @ApiOkResponse({ type: TrainingDetailDto })
   @ApiNotFoundResponse({ description: 'Training not found' })
   @ApiParam({
@@ -156,12 +157,13 @@ export class TrainController {
   })
   @ApiHeader({ name: 'accept-language', required: false, example: 'en' })
   getTraining(
+    @CurrentUser() user: CurrentUserType | null,
     @Param('slug') slug: string,
     @Query('lang') lang?: string,
     @Headers('accept-language') acceptLanguage?: string,
   ) {
     const resolvedLang = lang ?? acceptLanguage;
-    return this.train.getTrainingBySlug(slug, resolvedLang);
+    return this.train.getTrainingBySlug(slug, resolvedLang, user?.userId ?? null);
   }
 
   @Get('private')

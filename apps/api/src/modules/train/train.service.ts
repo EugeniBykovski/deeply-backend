@@ -30,9 +30,19 @@ export class TrainService {
     return lang === 'ru' ? ('en' as Language) : ('ru' as Language);
   }
 
-  // just without payments - premium locked
-  private computeIsLocked(isPremium: boolean) {
-    return isPremium;
+  /** A training is locked when it is premium AND the user is not a Pro subscriber. */
+  private computeIsLocked(isPremium: boolean, isPro = false) {
+    return isPremium && !isPro;
+  }
+
+  /** Resolve the user's Pro status in one query. Returns false when userId is absent. */
+  private async resolveIsPro(userId?: string | null): Promise<boolean> {
+    if (!userId) return false;
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { isPro: true },
+    });
+    return user?.isPro ?? false;
   }
 
   async getBlocks(langRaw?: string) {
@@ -134,30 +144,34 @@ export class TrainService {
       },
     });
 
-    // Build a per-templateId run-status map when the user is authenticated
-    const runStatusMap = new Map<string, RunStatus>();
-    if (params.userId) {
-      const templateIds = templates.map((t) => t.id);
-      // Fetch the most recent run per template for this user in one query
-      const runs = await this.prisma.trainingRun.findMany({
-        where: {
-          userId: params.userId,
-          templateId: { in: templateIds },
-        },
-        orderBy: { startedAt: 'desc' },
-        select: { templateId: true, completed: true },
-      });
+    // Resolve Pro status and run history in parallel when authenticated
+    const [isPro, runStatusMap] = await Promise.all([
+      this.resolveIsPro(params.userId),
+      (async () => {
+        const map = new Map<string, RunStatus>();
+        if (!params.userId) return map;
 
-      // Keep only the latest run per template
-      for (const run of runs) {
-        if (!runStatusMap.has(run.templateId)) {
-          runStatusMap.set(
-            run.templateId,
-            run.completed ? 'completed' : 'in_progress',
-          );
+        const templateIds = templates.map((t) => t.id);
+        const runs = await this.prisma.trainingRun.findMany({
+          where: {
+            userId: params.userId,
+            templateId: { in: templateIds },
+          },
+          orderBy: { startedAt: 'desc' },
+          select: { templateId: true, completed: true },
+        });
+
+        for (const run of runs) {
+          if (!map.has(run.templateId)) {
+            map.set(
+              run.templateId,
+              run.completed ? 'completed' : 'in_progress',
+            );
+          }
         }
-      }
-    }
+        return map;
+      })(),
+    ]);
 
     const items = templates.map((t) => {
       const tr =
@@ -171,7 +185,7 @@ export class TrainService {
         subtitle: tr?.subtitle ?? null,
         description: tr?.description ?? null,
         isPremium: t.isPremium,
-        isLocked: this.computeIsLocked(t.isPremium),
+        isLocked: this.computeIsLocked(t.isPremium, isPro),
         estimatedMinutes: t.estimatedMinutes ?? null,
         intensityLevel: t.intensityLevel ?? null,
         repeats: t.repeats ?? null,
@@ -184,7 +198,7 @@ export class TrainService {
     return { program: { key: program.key, slug: program.slug }, items };
   }
 
-  async getTrainingBySlug(slug: string, langRaw?: string) {
+  async getTrainingBySlug(slug: string, langRaw?: string, userId?: string | null) {
     const lang = this.normalizeLang(langRaw);
     const fallback = this.fallbackLang(lang);
 
@@ -221,9 +235,11 @@ export class TrainService {
 
     if (!t) throw new NotFoundException('Training not found');
 
-    const tr =
+    const [tr, isPro] = [
       t.translations.find((x) => x.lang === lang) ??
-      t.translations.find((x) => x.lang === fallback);
+        t.translations.find((x) => x.lang === fallback),
+      await this.resolveIsPro(userId),
+    ];
 
     return {
       id: t.id,
@@ -235,7 +251,7 @@ export class TrainService {
       subtitle: tr?.subtitle ?? null,
       description: tr?.description ?? null,
       isPremium: t.isPremium,
-      isLocked: this.computeIsLocked(t.isPremium),
+      isLocked: this.computeIsLocked(t.isPremium, isPro),
       estimatedMinutes: t.estimatedMinutes ?? null,
       intensityLevel: t.intensityLevel ?? null,
       pointCount: t.pointCount ?? null,
@@ -385,9 +401,10 @@ export class TrainService {
       throw new UnauthorizedException('Not your private training');
     }
 
-    // premium lock
+    // Premium trainings are only blocked for non-Pro users.
     if (template.isPremium) {
-      throw new UnauthorizedException('Premium training is locked');
+      const isPro = await this.resolveIsPro(userId);
+      if (!isPro) throw new UnauthorizedException('Premium training is locked');
     }
 
     const run = await this.prisma.trainingRun.create({

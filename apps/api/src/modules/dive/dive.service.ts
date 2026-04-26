@@ -16,9 +16,20 @@ export class DiveService {
     return normalizeLang(langRaw) as Language;
   }
 
-  async listTemplates(langRaw?: string) {
+  /** Resolve the user's Pro status in one query. Returns false when userId is absent. */
+  private async resolveIsPro(userId?: string | null): Promise<boolean> {
+    if (!userId) return false;
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { isPro: true },
+    });
+    return user?.isPro ?? false;
+  }
+
+  async listTemplates(langRaw?: string, userId?: string | null) {
     const lang = this.toLang(langRaw);
     const fb = fallbackLang(lang as any) as Language;
+    const isPro = await this.resolveIsPro(userId);
 
     const rows = await this.prisma.diveTemplate.findMany({
       where: { isPublished: true },
@@ -55,7 +66,7 @@ export class DiveService {
           maxDepthMeters: t.maxDepthMeters,
           targetHoldSeconds: t.targetHoldSeconds ?? null,
           isPremium: t.isPremium,
-          isLocked: computeIsLocked(t.isPremium),
+          isLocked: computeIsLocked(t.isPremium, isPro),
           title: tr?.title ?? 'Dive',
           subtitle: tr?.subtitle ?? null,
           description: tr?.description ?? null,
@@ -65,9 +76,10 @@ export class DiveService {
     };
   }
 
-  async getTemplateBySlug(slug: string, langRaw?: string) {
+  async getTemplateBySlug(slug: string, langRaw?: string, userId?: string | null) {
     const lang = this.toLang(langRaw);
     const fb = fallbackLang(lang as any) as Language;
+    const isPro = await this.resolveIsPro(userId);
 
     const t = await this.prisma.diveTemplate.findUnique({
       where: { slug },
@@ -107,7 +119,7 @@ export class DiveService {
       maxDepthMeters: t.maxDepthMeters,
       targetHoldSeconds: t.targetHoldSeconds ?? null,
       isPremium: t.isPremium,
-      isLocked: computeIsLocked(t.isPremium),
+      isLocked: computeIsLocked(t.isPremium, isPro),
       title: tr?.title ?? 'Dive',
       subtitle: tr?.subtitle ?? null,
       description: tr?.description ?? null,
@@ -124,14 +136,11 @@ export class DiveService {
 
     const hs = Math.max(0, holdSeconds);
 
-    // if before first point
     if (hs <= points[0].timeSeconds) return points[0].depthMeters;
 
-    // if after last point
     const last = points[points.length - 1];
     if (hs >= last.timeSeconds) return last.depthMeters;
 
-    // find segment
     for (let i = 1; i < points.length; i++) {
       const a = points[i - 1];
       const b = points[i];
@@ -171,8 +180,10 @@ export class DiveService {
     if (!t || !t.isPublished)
       throw new NotFoundException('Dive template not found');
 
+    // Premium dives are only blocked for non-Pro users.
     if (t.isPremium) {
-      throw new UnauthorizedException('Premium dive is locked');
+      const isPro = await this.resolveIsPro(userId);
+      if (!isPro) throw new UnauthorizedException('Premium dive is locked');
     }
 
     const holdSeconds = Math.max(0, Math.floor(dto.holdSeconds));

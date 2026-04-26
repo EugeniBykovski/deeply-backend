@@ -32,6 +32,7 @@ import { DiveTemplateDto } from './dto/dive-template.dto';
 import { DiveRunCreateDto } from './dto/dive-run-create.dto';
 import { DiveRunCreateResponseDto } from './dto/dive-run-create-response.dto';
 import { JwtAccessGuard } from '../auth/guards/jwt-access.guard';
+import { OptionalJwtAccessGuard } from '../auth/guards/optional-jwt-access.guard';
 import {
   CurrentUser,
   CurrentUserType,
@@ -43,9 +44,9 @@ export class DiveController {
   constructor(private readonly dive: DiveService) {}
 
   @Get('templates')
+  @UseGuards(OptionalJwtAccessGuard)
   @ApiOperation({
-    summary:
-      'List dive templates (localized). Premium dives are locked for now.',
+    summary: 'List dive templates (localized). isLocked respects the caller\'s Pro status.',
   })
   @ApiOkResponse({ type: DiveListResponseDto })
   @ApiQuery({
@@ -57,16 +58,18 @@ export class DiveController {
   @ApiHeader({ name: 'accept-language', required: false, example: 'en' })
   @ApiBadRequestResponse({ description: 'Validation error' })
   list(
+    @CurrentUser() user: CurrentUserType | null,
     @Query('lang') lang?: string,
     @Headers('accept-language') acceptLanguage?: string,
   ) {
     const resolvedLang = lang ?? acceptLanguage;
-    return this.dive.listTemplates(resolvedLang);
+    return this.dive.listTemplates(resolvedLang, user?.userId ?? null);
   }
 
   @Get('templates/:slug')
+  @UseGuards(OptionalJwtAccessGuard)
   @ApiOperation({
-    summary: 'Get dive template by slug (localized) + profile points (8-12)',
+    summary: 'Get dive template by slug (localized) + profile points. isLocked respects Pro status.',
   })
   @ApiOkResponse({ type: DiveTemplateDto })
   @ApiParam({ name: 'slug', example: 'dive-1' })
@@ -78,12 +81,13 @@ export class DiveController {
   })
   @ApiHeader({ name: 'accept-language', required: false, example: 'en' })
   get(
+    @CurrentUser() user: CurrentUserType | null,
     @Param('slug') slug: string,
     @Query('lang') lang?: string,
     @Headers('accept-language') acceptLanguage?: string,
   ) {
     const resolvedLang = lang ?? acceptLanguage;
-    return this.dive.getTemplateBySlug(slug, resolvedLang);
+    return this.dive.getTemplateBySlug(slug, resolvedLang, user?.userId ?? null);
   }
 
   @Post('run')
