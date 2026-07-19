@@ -18,6 +18,15 @@ model User {
   proExpiresAt   DateTime?
   proActivatedAt DateTime?
 
+  // Trial + extended entitlement mirror (always written from RevenueCat
+  // webhook/REST data, never independently computed by the backend)
+  trialStartedAt            DateTime?
+  trialEndsAt               DateTime?
+  lastEntitlementPeriodType String?
+  proWillRenew              Boolean?
+  proUnsubscribeDetectedAt  DateTime?
+  proBillingIssueDetectedAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

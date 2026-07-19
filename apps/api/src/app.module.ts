@@ -7,6 +7,7 @@ import { TrainModule } from './modules/train/train.module';
 import { ResultsModule } from './modules/results/results.module';
 import { DiveModule } from './modules/dive/dive.module';
 import { PurchasesModule } from './modules/purchases/purchases.module';
+import { EntitlementModule } from './modules/entitlement/entitlement.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { PurchasesModule } from './modules/purchases/purchases.module';
     ResultsModule,
     DiveModule,
     PurchasesModule,
+    EntitlementModule,
   ],
 })
 export class AppModule {}

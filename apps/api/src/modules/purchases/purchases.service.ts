@@ -2,18 +2,35 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { PrismaClient } from '@repo/db';
 import { PRISMA } from '../../database/prisma.provider';
+import { EntitlementService } from '../entitlement/entitlement.service';
 
 const RC_API = 'https://api.revenuecat.com/v1';
 const PRO_ENTITLEMENT = 'Deeply Pro';
 
 /** RevenueCat webhook event types that affect subscription status */
-const ACTIVE_EVENTS = new Set(['INITIAL_PURCHASE', 'RENEWAL', 'UNCANCELLATION', 'SUBSCRIBER_ALIAS']);
-const EXPIRED_EVENTS = new Set(['EXPIRATION', 'BILLING_ISSUE_WITHOUT_GRACE_PERIOD']);
+const ACTIVE_EVENTS = new Set([
+  'INITIAL_PURCHASE',
+  'RENEWAL',
+  'UNCANCELLATION',
+  'SUBSCRIBER_ALIAS',
+]);
+const EXPIRED_EVENTS = new Set(['EXPIRATION']);
 const CANCELLED_EVENTS = new Set(['CANCELLATION']);
+const BILLING_ISSUE_EVENTS = new Set(['BILLING_ISSUE']);
 
 interface RcSubscriber {
   subscriber: {
-    entitlements: Record<string, { expires_date: string | null; purchase_date: string | null } | undefined>;
+    entitlements: Record<
+      string,
+      | {
+          expires_date: string | null;
+          purchase_date: string | null;
+          period_type?: string;
+          unsubscribe_detected_at?: string | null;
+          billing_issues_detected_at?: string | null;
+        }
+      | undefined
+    >;
   };
 }
 
@@ -24,11 +41,15 @@ export class PurchasesService {
   constructor(
     @Inject(PRISMA) private readonly prisma: PrismaClient,
     private readonly config: ConfigService,
+    private readonly entitlement: EntitlementService,
   ) {}
 
   // ─── Webhook handler ────────────────────────────────────────────────────────
 
-  async handleWebhook(rawBody: string, signature: string | undefined): Promise<void> {
+  async handleWebhook(
+    rawBody: string,
+    signature: string | undefined,
+  ): Promise<void> {
     this.verifyWebhookSignature(rawBody, signature);
 
     let payload: { api_version: string; event: Record<string, unknown> };
@@ -42,11 +63,13 @@ export class PurchasesService {
     const event = payload?.event;
     if (!event || typeof event.type !== 'string') return;
 
-    const type = event.type as string;
+    const type = event.type;
     const appUserId = event.app_user_id as string | undefined;
     const expirationAtMs = event.expiration_at_ms as number | null | undefined;
     const purchasedAtMs = event.purchased_at_ms as number | null | undefined;
-    const entitlementIds = (event.entitlement_ids as string[] | null | undefined) ?? [];
+    const entitlementIds =
+      (event.entitlement_ids as string[] | null | undefined) ?? [];
+    const periodType = event.period_type as string | undefined;
 
     if (!appUserId) return;
 
@@ -54,13 +77,15 @@ export class PurchasesService {
     const affectsPro =
       entitlementIds.includes(PRO_ENTITLEMENT) ||
       EXPIRED_EVENTS.has(type) || // expiration events may not carry entitlement_ids
-      CANCELLED_EVENTS.has(type);
+      CANCELLED_EVENTS.has(type) ||
+      BILLING_ISSUE_EVENTS.has(type);
 
     if (!affectsPro) return;
 
     this.logger.log(`RevenueCat webhook: ${type} for user ${appUserId}`);
 
     if (ACTIVE_EVENTS.has(type)) {
+      const isTrial = periodType === 'TRIAL';
       await this.prisma.user.updateMany({
         where: { id: appUserId },
         data: {
@@ -68,12 +93,28 @@ export class PurchasesService {
           rcCustomerId: appUserId,
           proExpiresAt: expirationAtMs ? new Date(expirationAtMs) : null,
           proActivatedAt: purchasedAtMs ? new Date(purchasedAtMs) : new Date(),
+          lastEntitlementPeriodType: periodType ?? null,
+          proWillRenew: true,
+          proUnsubscribeDetectedAt: null,
+          proBillingIssueDetectedAt: null,
+          ...(isTrial && {
+            trialStartedAt: purchasedAtMs
+              ? new Date(purchasedAtMs)
+              : new Date(),
+            trialEndsAt: expirationAtMs ? new Date(expirationAtMs) : null,
+          }),
         },
+      });
+    } else if (BILLING_ISSUE_EVENTS.has(type)) {
+      // Grace period: Apple/RC still grant access — do not revoke isPro.
+      await this.prisma.user.updateMany({
+        where: { id: appUserId },
+        data: { proBillingIssueDetectedAt: new Date() },
       });
     } else if (EXPIRED_EVENTS.has(type)) {
       await this.prisma.user.updateMany({
         where: { id: appUserId },
-        data: { isPro: false },
+        data: { isPro: false, proBillingIssueDetectedAt: null },
       });
     } else if (CANCELLED_EVENTS.has(type)) {
       // Cancellation: keep isPro = true until expiration date
@@ -81,6 +122,8 @@ export class PurchasesService {
         where: { id: appUserId },
         data: {
           proExpiresAt: expirationAtMs ? new Date(expirationAtMs) : undefined,
+          proWillRenew: false,
+          proUnsubscribeDetectedAt: new Date(),
         },
       });
     }
@@ -104,7 +147,9 @@ export class PurchasesService {
         },
       });
       if (!res.ok) {
-        this.logger.warn(`RevenueCat sync failed for ${userId}: HTTP ${res.status}`);
+        this.logger.warn(
+          `RevenueCat sync failed for ${userId}: HTTP ${res.status}`,
+        );
         return;
       }
       data = (await res.json()) as RcSubscriber;
@@ -127,6 +172,7 @@ export class PurchasesService {
       ? new Date(proEntitlement.expires_date)
       : null;
     const isActive = !expiresDate || expiresDate > new Date();
+    const isTrial = proEntitlement.period_type === 'TRIAL';
 
     await this.prisma.user.updateMany({
       where: { id: userId },
@@ -137,6 +183,20 @@ export class PurchasesService {
         proActivatedAt: proEntitlement.purchase_date
           ? new Date(proEntitlement.purchase_date)
           : undefined,
+        lastEntitlementPeriodType: proEntitlement.period_type ?? null,
+        proWillRenew: !proEntitlement.unsubscribe_detected_at,
+        proUnsubscribeDetectedAt: proEntitlement.unsubscribe_detected_at
+          ? new Date(proEntitlement.unsubscribe_detected_at)
+          : null,
+        proBillingIssueDetectedAt: proEntitlement.billing_issues_detected_at
+          ? new Date(proEntitlement.billing_issues_detected_at)
+          : null,
+        ...(isTrial && {
+          trialStartedAt: proEntitlement.purchase_date
+            ? new Date(proEntitlement.purchase_date)
+            : undefined,
+          trialEndsAt: expiresDate,
+        }),
       },
     });
   }
@@ -146,18 +206,31 @@ export class PurchasesService {
   async getStatus(userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
-      select: { isPro: true, proExpiresAt: true, proActivatedAt: true },
+      select: {
+        isPro: true,
+        proExpiresAt: true,
+        proActivatedAt: true,
+        trialEndsAt: true,
+        lastEntitlementPeriodType: true,
+        proWillRenew: true,
+        proBillingIssueDetectedAt: true,
+      },
     });
+
+    const snapshot = this.entitlement.computeState(user ?? null);
+
     return {
       isPro: user?.isPro ?? false,
-      proExpiresAt: user?.proExpiresAt?.toISOString() ?? null,
-      proActivatedAt: user?.proActivatedAt?.toISOString() ?? null,
+      ...snapshot,
     };
   }
 
   // ─── Signature verification ──────────────────────────────────────────────────
 
-  private verifyWebhookSignature(_rawBody: string, authHeader: string | undefined): void {
+  private verifyWebhookSignature(
+    _rawBody: string,
+    authHeader: string | undefined,
+  ): void {
     const secret = this.config.get<string>('REVENUECAT_WEBHOOK_SECRET');
     if (!secret) return; // not configured → skip verification in dev
 

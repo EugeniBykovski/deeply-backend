@@ -21,6 +21,10 @@ export class RcWebhookEventDto {
 
   @IsOptional()
   entitlement_ids?: string[] | null;
+
+  @IsOptional()
+  @IsString()
+  period_type?: string;
 }
 
 export class RcWebhookPayloadDto {

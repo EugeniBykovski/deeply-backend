@@ -2813,6 +2813,12 @@ export namespace Prisma {
     isPro: boolean | null
     proExpiresAt: Date | null
     proActivatedAt: Date | null
+    trialStartedAt: Date | null
+    trialEndsAt: Date | null
+    lastEntitlementPeriodType: string | null
+    proWillRenew: boolean | null
+    proUnsubscribeDetectedAt: Date | null
+    proBillingIssueDetectedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2825,6 +2831,12 @@ export namespace Prisma {
     isPro: boolean | null
     proExpiresAt: Date | null
     proActivatedAt: Date | null
+    trialStartedAt: Date | null
+    trialEndsAt: Date | null
+    lastEntitlementPeriodType: string | null
+    proWillRenew: boolean | null
+    proUnsubscribeDetectedAt: Date | null
+    proBillingIssueDetectedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2837,6 +2849,12 @@ export namespace Prisma {
     isPro: number
     proExpiresAt: number
     proActivatedAt: number
+    trialStartedAt: number
+    trialEndsAt: number
+    lastEntitlementPeriodType: number
+    proWillRenew: number
+    proUnsubscribeDetectedAt: number
+    proBillingIssueDetectedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2851,6 +2869,12 @@ export namespace Prisma {
     isPro?: true
     proExpiresAt?: true
     proActivatedAt?: true
+    trialStartedAt?: true
+    trialEndsAt?: true
+    lastEntitlementPeriodType?: true
+    proWillRenew?: true
+    proUnsubscribeDetectedAt?: true
+    proBillingIssueDetectedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2863,6 +2887,12 @@ export namespace Prisma {
     isPro?: true
     proExpiresAt?: true
     proActivatedAt?: true
+    trialStartedAt?: true
+    trialEndsAt?: true
+    lastEntitlementPeriodType?: true
+    proWillRenew?: true
+    proUnsubscribeDetectedAt?: true
+    proBillingIssueDetectedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2875,6 +2905,12 @@ export namespace Prisma {
     isPro?: true
     proExpiresAt?: true
     proActivatedAt?: true
+    trialStartedAt?: true
+    trialEndsAt?: true
+    lastEntitlementPeriodType?: true
+    proWillRenew?: true
+    proUnsubscribeDetectedAt?: true
+    proBillingIssueDetectedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2960,6 +2996,12 @@ export namespace Prisma {
     isPro: boolean
     proExpiresAt: Date | null
     proActivatedAt: Date | null
+    trialStartedAt: Date | null
+    trialEndsAt: Date | null
+    lastEntitlementPeriodType: string | null
+    proWillRenew: boolean | null
+    proUnsubscribeDetectedAt: Date | null
+    proBillingIssueDetectedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -2989,6 +3031,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: boolean
     proActivatedAt?: boolean
+    trialStartedAt?: boolean
+    trialEndsAt?: boolean
+    lastEntitlementPeriodType?: boolean
+    proWillRenew?: boolean
+    proUnsubscribeDetectedAt?: boolean
+    proBillingIssueDetectedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     refreshTokens?: boolean | User$refreshTokensArgs<ExtArgs>
@@ -3008,6 +3056,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: boolean
     proActivatedAt?: boolean
+    trialStartedAt?: boolean
+    trialEndsAt?: boolean
+    lastEntitlementPeriodType?: boolean
+    proWillRenew?: boolean
+    proUnsubscribeDetectedAt?: boolean
+    proBillingIssueDetectedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -3020,6 +3074,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: boolean
     proActivatedAt?: boolean
+    trialStartedAt?: boolean
+    trialEndsAt?: boolean
+    lastEntitlementPeriodType?: boolean
+    proWillRenew?: boolean
+    proUnsubscribeDetectedAt?: boolean
+    proBillingIssueDetectedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -3032,11 +3092,17 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: boolean
     proActivatedAt?: boolean
+    trialStartedAt?: boolean
+    trialEndsAt?: boolean
+    lastEntitlementPeriodType?: boolean
+    proWillRenew?: boolean
+    proUnsubscribeDetectedAt?: boolean
+    proBillingIssueDetectedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "appleSub" | "email" | "rcCustomerId" | "isPro" | "proExpiresAt" | "proActivatedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "appleSub" | "email" | "rcCustomerId" | "isPro" | "proExpiresAt" | "proActivatedAt" | "trialStartedAt" | "trialEndsAt" | "lastEntitlementPeriodType" | "proWillRenew" | "proUnsubscribeDetectedAt" | "proBillingIssueDetectedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshTokens?: boolean | User$refreshTokensArgs<ExtArgs>
     privateTrainingTemplates?: boolean | User$privateTrainingTemplatesArgs<ExtArgs>
@@ -3067,6 +3133,12 @@ export namespace Prisma {
       isPro: boolean
       proExpiresAt: Date | null
       proActivatedAt: Date | null
+      trialStartedAt: Date | null
+      trialEndsAt: Date | null
+      lastEntitlementPeriodType: string | null
+      proWillRenew: boolean | null
+      proUnsubscribeDetectedAt: Date | null
+      proBillingIssueDetectedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -3505,6 +3577,12 @@ export namespace Prisma {
     readonly isPro: FieldRef<"User", 'Boolean'>
     readonly proExpiresAt: FieldRef<"User", 'DateTime'>
     readonly proActivatedAt: FieldRef<"User", 'DateTime'>
+    readonly trialStartedAt: FieldRef<"User", 'DateTime'>
+    readonly trialEndsAt: FieldRef<"User", 'DateTime'>
+    readonly lastEntitlementPeriodType: FieldRef<"User", 'String'>
+    readonly proWillRenew: FieldRef<"User", 'Boolean'>
+    readonly proUnsubscribeDetectedAt: FieldRef<"User", 'DateTime'>
+    readonly proBillingIssueDetectedAt: FieldRef<"User", 'DateTime'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -23101,6 +23179,12 @@ export namespace Prisma {
     isPro: 'isPro',
     proExpiresAt: 'proExpiresAt',
     proActivatedAt: 'proActivatedAt',
+    trialStartedAt: 'trialStartedAt',
+    trialEndsAt: 'trialEndsAt',
+    lastEntitlementPeriodType: 'lastEntitlementPeriodType',
+    proWillRenew: 'proWillRenew',
+    proUnsubscribeDetectedAt: 'proUnsubscribeDetectedAt',
+    proBillingIssueDetectedAt: 'proBillingIssueDetectedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -23570,6 +23654,12 @@ export namespace Prisma {
     isPro?: BoolFilter<"User"> | boolean
     proExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
     proActivatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    trialStartedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    trialEndsAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    lastEntitlementPeriodType?: StringNullableFilter<"User"> | string | null
+    proWillRenew?: BoolNullableFilter<"User"> | boolean | null
+    proUnsubscribeDetectedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    proBillingIssueDetectedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     refreshTokens?: RefreshTokenListRelationFilter
@@ -23588,6 +23678,12 @@ export namespace Prisma {
     isPro?: SortOrder
     proExpiresAt?: SortOrderInput | SortOrder
     proActivatedAt?: SortOrderInput | SortOrder
+    trialStartedAt?: SortOrderInput | SortOrder
+    trialEndsAt?: SortOrderInput | SortOrder
+    lastEntitlementPeriodType?: SortOrderInput | SortOrder
+    proWillRenew?: SortOrderInput | SortOrder
+    proUnsubscribeDetectedAt?: SortOrderInput | SortOrder
+    proBillingIssueDetectedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     refreshTokens?: RefreshTokenOrderByRelationAggregateInput
@@ -23609,6 +23705,12 @@ export namespace Prisma {
     isPro?: BoolFilter<"User"> | boolean
     proExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
     proActivatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    trialStartedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    trialEndsAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    lastEntitlementPeriodType?: StringNullableFilter<"User"> | string | null
+    proWillRenew?: BoolNullableFilter<"User"> | boolean | null
+    proUnsubscribeDetectedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    proBillingIssueDetectedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     refreshTokens?: RefreshTokenListRelationFilter
@@ -23627,6 +23729,12 @@ export namespace Prisma {
     isPro?: SortOrder
     proExpiresAt?: SortOrderInput | SortOrder
     proActivatedAt?: SortOrderInput | SortOrder
+    trialStartedAt?: SortOrderInput | SortOrder
+    trialEndsAt?: SortOrderInput | SortOrder
+    lastEntitlementPeriodType?: SortOrderInput | SortOrder
+    proWillRenew?: SortOrderInput | SortOrder
+    proUnsubscribeDetectedAt?: SortOrderInput | SortOrder
+    proBillingIssueDetectedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -23645,6 +23753,12 @@ export namespace Prisma {
     isPro?: BoolWithAggregatesFilter<"User"> | boolean
     proExpiresAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     proActivatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    trialStartedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    trialEndsAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    lastEntitlementPeriodType?: StringNullableWithAggregatesFilter<"User"> | string | null
+    proWillRenew?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    proUnsubscribeDetectedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    proBillingIssueDetectedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -24812,6 +24926,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -24830,6 +24950,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -24848,6 +24974,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -24866,6 +24998,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -24884,6 +25022,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -24896,6 +25040,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -24908,6 +25058,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -26169,6 +26325,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -26248,6 +26409,12 @@ export namespace Prisma {
     isPro?: SortOrder
     proExpiresAt?: SortOrder
     proActivatedAt?: SortOrder
+    trialStartedAt?: SortOrder
+    trialEndsAt?: SortOrder
+    lastEntitlementPeriodType?: SortOrder
+    proWillRenew?: SortOrder
+    proUnsubscribeDetectedAt?: SortOrder
+    proBillingIssueDetectedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -26260,6 +26427,12 @@ export namespace Prisma {
     isPro?: SortOrder
     proExpiresAt?: SortOrder
     proActivatedAt?: SortOrder
+    trialStartedAt?: SortOrder
+    trialEndsAt?: SortOrder
+    lastEntitlementPeriodType?: SortOrder
+    proWillRenew?: SortOrder
+    proUnsubscribeDetectedAt?: SortOrder
+    proBillingIssueDetectedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -26272,6 +26445,12 @@ export namespace Prisma {
     isPro?: SortOrder
     proExpiresAt?: SortOrder
     proActivatedAt?: SortOrder
+    trialStartedAt?: SortOrder
+    trialEndsAt?: SortOrder
+    lastEntitlementPeriodType?: SortOrder
+    proWillRenew?: SortOrder
+    proUnsubscribeDetectedAt?: SortOrder
+    proBillingIssueDetectedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -26332,6 +26511,14 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -27441,6 +27628,10 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -28397,6 +28588,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -28484,6 +28680,14 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -29093,6 +29297,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     privateTrainingTemplates?: TrainingTemplateCreateNestedManyWithoutOwnerInput
@@ -29110,6 +29320,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     privateTrainingTemplates?: TrainingTemplateUncheckedCreateNestedManyWithoutOwnerInput
@@ -29143,6 +29359,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     privateTrainingTemplates?: TrainingTemplateUpdateManyWithoutOwnerNestedInput
@@ -29160,6 +29382,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     privateTrainingTemplates?: TrainingTemplateUncheckedUpdateManyWithoutOwnerNestedInput
@@ -29702,6 +29930,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -29719,6 +29953,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -29865,6 +30105,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -29882,6 +30128,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -30186,6 +30438,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -30203,6 +30461,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -30287,6 +30551,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -30304,6 +30574,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -30378,6 +30654,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -30395,6 +30677,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -30428,6 +30716,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -30445,6 +30739,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -30462,6 +30762,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -30479,6 +30785,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -30512,6 +30824,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -30529,6 +30847,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -30851,6 +31175,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenCreateNestedManyWithoutUserInput
@@ -30868,6 +31198,12 @@ export namespace Prisma {
     isPro?: boolean
     proExpiresAt?: Date | string | null
     proActivatedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    lastEntitlementPeriodType?: string | null
+    proWillRenew?: boolean | null
+    proUnsubscribeDetectedAt?: Date | string | null
+    proBillingIssueDetectedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     refreshTokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -30936,6 +31272,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUpdateManyWithoutUserNestedInput
@@ -30953,6 +31295,12 @@ export namespace Prisma {
     isPro?: BoolFieldUpdateOperationsInput | boolean
     proExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     proActivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastEntitlementPeriodType?: NullableStringFieldUpdateOperationsInput | string | null
+    proWillRenew?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    proUnsubscribeDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    proBillingIssueDetectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshTokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput

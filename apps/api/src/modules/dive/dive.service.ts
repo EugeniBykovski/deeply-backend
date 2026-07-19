@@ -6,30 +6,25 @@ import {
 } from '@nestjs/common';
 import { PRISMA } from '../../database/prisma.provider';
 import type { PrismaClient, Language } from '@repo/db';
-import { computeIsLocked, fallbackLang, normalizeLang } from './dive.constants';
+import { fallbackLang, normalizeLang } from './dive.constants';
+import { EntitlementService } from '../entitlement/entitlement.service';
+import { isPracticeLocked } from '../entitlement/entitlement.types';
 
 @Injectable()
 export class DiveService {
-  constructor(@Inject(PRISMA) private readonly prisma: PrismaClient) {}
+  constructor(
+    @Inject(PRISMA) private readonly prisma: PrismaClient,
+    private readonly entitlement: EntitlementService,
+  ) {}
 
   private toLang(langRaw?: string): Language {
     return normalizeLang(langRaw) as Language;
   }
 
-  /** Resolve the user's Pro status in one query. Returns false when userId is absent. */
-  private async resolveIsPro(userId?: string | null): Promise<boolean> {
-    if (!userId) return false;
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-      select: { isPro: true },
-    });
-    return user?.isPro ?? false;
-  }
-
   async listTemplates(langRaw?: string, userId?: string | null) {
     const lang = this.toLang(langRaw);
     const fb = fallbackLang(lang as any) as Language;
-    const isPro = await this.resolveIsPro(userId);
+    const entitlement = await this.entitlement.getSnapshot(userId);
 
     const rows = await this.prisma.diveTemplate.findMany({
       where: { isPublished: true },
@@ -66,7 +61,7 @@ export class DiveService {
           maxDepthMeters: t.maxDepthMeters,
           targetHoldSeconds: t.targetHoldSeconds ?? null,
           isPremium: t.isPremium,
-          isLocked: computeIsLocked(t.isPremium, isPro),
+          isLocked: isPracticeLocked(t.isPremium, entitlement.hasFullAccess),
           title: tr?.title ?? 'Dive',
           subtitle: tr?.subtitle ?? null,
           description: tr?.description ?? null,
@@ -76,10 +71,14 @@ export class DiveService {
     };
   }
 
-  async getTemplateBySlug(slug: string, langRaw?: string, userId?: string | null) {
+  async getTemplateBySlug(
+    slug: string,
+    langRaw?: string,
+    userId?: string | null,
+  ) {
     const lang = this.toLang(langRaw);
     const fb = fallbackLang(lang as any) as Language;
-    const isPro = await this.resolveIsPro(userId);
+    const entitlement = await this.entitlement.getSnapshot(userId);
 
     const t = await this.prisma.diveTemplate.findUnique({
       where: { slug },
@@ -119,7 +118,7 @@ export class DiveService {
       maxDepthMeters: t.maxDepthMeters,
       targetHoldSeconds: t.targetHoldSeconds ?? null,
       isPremium: t.isPremium,
-      isLocked: computeIsLocked(t.isPremium, isPro),
+      isLocked: isPracticeLocked(t.isPremium, entitlement.hasFullAccess),
       title: tr?.title ?? 'Dive',
       subtitle: tr?.subtitle ?? null,
       description: tr?.description ?? null,
@@ -180,10 +179,11 @@ export class DiveService {
     if (!t || !t.isPublished)
       throw new NotFoundException('Dive template not found');
 
-    // Premium dives are only blocked for non-Pro users.
+    // Premium dives are only blocked for users without full access.
     if (t.isPremium) {
-      const isPro = await this.resolveIsPro(userId);
-      if (!isPro) throw new UnauthorizedException('Premium dive is locked');
+      const hasFullAccess = await this.entitlement.hasFullAccess(userId);
+      if (!hasFullAccess)
+        throw new UnauthorizedException('Premium dive is locked');
     }
 
     const holdSeconds = Math.max(0, Math.floor(dto.holdSeconds));

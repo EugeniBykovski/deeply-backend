@@ -2,12 +2,10 @@ import {
   CanActivate,
   ExecutionContext,
   ForbiddenException,
-  Inject,
   Injectable,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import type { PrismaClient } from '@repo/db';
-import { PRISMA } from '../../../database/prisma.provider';
+import { EntitlementService } from '../../entitlement/entitlement.service';
 import { SKIP_PREMIUM_KEY } from '../decorators/require-pro.decorator';
 
 /**
@@ -27,7 +25,7 @@ import { SKIP_PREMIUM_KEY } from '../decorators/require-pro.decorator';
 @Injectable()
 export class PremiumGuard implements CanActivate {
   constructor(
-    @Inject(PRISMA) private readonly prisma: PrismaClient,
+    private readonly entitlement: EntitlementService,
     private readonly reflector: Reflector,
   ) {}
 
@@ -42,16 +40,9 @@ export class PremiumGuard implements CanActivate {
     const userId: string | undefined = req.user?.userId;
     if (!userId) throw new ForbiddenException('Authentication required');
 
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-      select: { isPro: true, proExpiresAt: true },
-    });
+    const hasFullAccess = await this.entitlement.hasFullAccess(userId);
 
-    const isActive =
-      user?.isPro === true &&
-      (user.proExpiresAt === null || user.proExpiresAt > new Date());
-
-    if (!isActive) {
+    if (!hasFullAccess) {
       throw new ForbiddenException('Deeply Pro subscription required');
     }
 

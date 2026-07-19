@@ -128,6 +128,12 @@ exports.Prisma.UserScalarFieldEnum = {
   isPro: 'isPro',
   proExpiresAt: 'proExpiresAt',
   proActivatedAt: 'proActivatedAt',
+  trialStartedAt: 'trialStartedAt',
+  trialEndsAt: 'trialEndsAt',
+  lastEntitlementPeriodType: 'lastEntitlementPeriodType',
+  proWillRenew: 'proWillRenew',
+  proUnsubscribeDetectedAt: 'proUnsubscribeDetectedAt',
+  proBillingIssueDetectedAt: 'proBillingIssueDetectedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
