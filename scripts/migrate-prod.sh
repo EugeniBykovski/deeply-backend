@@ -25,5 +25,8 @@ fi
 
 echo "→ Applying migrations to production..."
 cd "$ROOT/packages/database"
-npx prisma migrate deploy --url "$DIRECT_URL"
+# prisma.config.ts resolves datasource.url from DATABASE_URL; migrate deploy
+# no longer accepts a --url flag (removed since Prisma 7). Override
+# DATABASE_URL with the non-pooled DIRECT_URL for this invocation only.
+DATABASE_URL="$DIRECT_URL" npx prisma migrate deploy
 echo "✓ Migrations applied."
