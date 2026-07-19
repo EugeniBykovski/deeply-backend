@@ -25,6 +25,14 @@ function normalizePointsTarget(i: number) {
   return 8 + ((i - 1) % 6);
 }
 
+/**
+ * Exactly one practice per program stays free after the trial expires —
+ * the first (lowest sortOrder), which is the intended introductory practice.
+ */
+export function isFreeIntroIndex(i: number) {
+  return i === 1;
+}
+
 function buildSteps(
   cycle: Step[],
   pointsTarget: number,
@@ -884,9 +892,10 @@ export async function seedTrain(prisma: PrismaClient) {
       },
     });
 
-    // 30 trainings per program: 1-10 free, 11-30 locked/premium
+    // 30 trainings per program: only the first is free (the intended
+    // introductory practice); the rest require an active trial or Pro.
     for (let i = 1; i <= 30; i++) {
-      const isPremium = i > 10;
+      const isPremium = !isFreeIntroIndex(i);
       const pointsTarget = normalizePointsTarget(i);
       const level = clamp(Math.floor((i - 1) / 10), 0, 3);
 

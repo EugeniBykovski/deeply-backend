@@ -46,11 +46,12 @@ function genProfilePoints(
 }
 
 // 30 dives inspired by real freediving disciplines and competition progressions.
-// Dives 1–10 free, 11–30 premium.
+// Only dive 1 (the intended introductory dive) stays free after the trial
+// expires; dives 2-30 require an active trial or Pro.
 // Disciplines: STA = Static Apnea, DYN = Dynamic with fins, DNF = Dynamic No Fins,
 // FIM = Free Immersion, CWT = Constant Weight, CWTB = CWT Bi-fins, VWT = Variable Weight.
-const DIVES: DiveMeta[] = [
-  // ── FREE (1–10) ──────────────────────────────────────────────────────────────
+export const DIVES: DiveMeta[] = [
+  // ── FREE (1) ─────────────────────────────────────────────────────────────────
   {
     slug: "breath-discovery",
     sortOrder: 1,
@@ -74,7 +75,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "surface-relaxation",
     sortOrder: 2,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 8,
     targetHoldSeconds: 60,
@@ -94,7 +95,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "shallow-glide",
     sortOrder: 3,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 10,
     targetHoldSeconds: 75,
@@ -114,7 +115,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "blue-window",
     sortOrder: 4,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 12,
     targetHoldSeconds: 90,
@@ -134,7 +135,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "first-freefall",
     sortOrder: 5,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 15,
     targetHoldSeconds: 105,
@@ -154,7 +155,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "rope-descent",
     sortOrder: 6,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 18,
     targetHoldSeconds: 120,
@@ -174,7 +175,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "neutral-zone",
     sortOrder: 7,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 20,
     targetHoldSeconds: 135,
@@ -194,7 +195,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "blue-corridor",
     sortOrder: 8,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 22,
     targetHoldSeconds: 150,
@@ -214,7 +215,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "equalisation-drill",
     sortOrder: 9,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 25,
     targetHoldSeconds: 165,
@@ -234,7 +235,7 @@ const DIVES: DiveMeta[] = [
   {
     slug: "divers-gate",
     sortOrder: 10,
-    isPremium: false,
+    isPremium: true,
     difficulty: "EASY",
     maxDepthMeters: 28,
     targetHoldSeconds: 180,

@@ -15,7 +15,8 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:migrate:gen": "prisma migrate dev && prisma generate",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "test": "jest"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -26,6 +27,16 @@
     "dotenv": ">=16"
   },
   "devDependencies": {
-    "prisma": "7.4.1"
+    "prisma": "7.4.1",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
+  },
+  "jest": {
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testEnvironment": "node"
   }
 }
